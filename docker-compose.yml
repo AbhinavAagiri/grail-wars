@@ -1,0 +1,81 @@
+# Grail Wars — single-host deployment (Oracle Cloud Always Free, or any Docker host).
+#
+# Two containers: the game itself, and Caddy in front of it for HTTPS.
+# The game's port is deliberately NOT published on the host — only Caddy can
+# reach it. That keeps everything on one origin, which is what the client's
+# socket wiring and the server's production CORS/CSP settings both assume.
+#
+#   cp .env.example .env     # then set CONTACT_EMAIL and SITE_ADDRESS
+#   docker compose up -d --build
+#
+# One instance only. Rooms, drafted Servants and the war timeline live in the
+# process's memory, so a second instance would hold a second, half-empty world.
+
+services:
+  app:
+    build: .
+    image: grail-wars:latest
+    restart: unless-stopped
+    # Read by the server for every optional key. Copy .env.example to .env first.
+    env_file:
+      - .env
+    environment:
+      # Values here beat env_file, deliberately: .env is a development template
+      # whose NODE_ENV says development, and inheriting that in a deployed
+      # container would quietly disable the production posture.
+      NODE_ENV: production
+    # Reachable from Caddy only; not exposed to the network. Follows PORT so the
+    # declaration never drifts from what the server actually listens on.
+    expose:
+      - '${PORT:-3000}'
+    volumes:
+      # Character research survives restarts and redeploys, so a restart does not
+      # re-query every wiki. Nothing else is persisted — by design, games do not
+      # survive a restart.
+      - research-cache:/app/server/.cache
+    healthcheck:
+      # Mirrors the healthcheck baked into the image; declared here too so the
+      # `service_healthy` condition below is explicit rather than inherited.
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:'+(process.env.PORT||3000)+'/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      app:
+        # Wait for a passing healthcheck so Caddy never proxies to a server that
+        # has not finished starting.
+        condition: service_healthy
+    ports:
+      - '80:80'
+      - '443:443'
+      # HTTP/3 is off: it needs 443/udp published here *and* allowed in the
+      # Oracle VCN security list. Add both if you want it.
+    environment:
+      # The public hostname, no scheme. Override it in .env; the fallback only
+      # serves the site on localhost with a self-signed certificate.
+      SITE_ADDRESS: ${SITE_ADDRESS:-localhost}
+      # Mirrors the app's PORT so the proxy target follows it automatically.
+      APP_PORT: ${PORT:-3000}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # Issued certificates and Caddy's state. Keep these: throwing /data away
+      # on every restart means re-requesting certificates from Let's Encrypt
+      # each time, which will eventually hit their rate limit.
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  caddy-data:
+  caddy-config:
+  research-cache:

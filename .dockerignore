@@ -1,0 +1,20 @@
+node_modules
+**/node_modules
+
+# Portable Node toolchain kept in the workspace, never in the image.
+.tools
+
+# Build output is produced inside the image.
+**/dist
+
+# Local runtime caches and secrets. `.env*` also keeps a future .env.production
+# out of the image build stage, where `COPY . .` would otherwise pick it up.
+**/.cache
+.env*
+**/.env*
+
+# VCS / editor noise.
+.git
+.gitignore
+.freebuff
+**/*.log

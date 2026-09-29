@@ -1,0 +1,1863 @@
+[
+  {
+    "id": "scout_distant",
+    "category": "scouting",
+    "weight": 4,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "scouted": true },
+    "text": [
+      "{A} scouts {L} and spots {B} from a distance.",
+      "{A} watches {B} cross {L} and memorises how they move.",
+      "{A} studies {B} from the far end of {L}."
+    ]
+  },
+  {
+    "id": "scout_rooftop",
+    "category": "scouting",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": { "scouted": true },
+    "text": [
+      "{A} watches {B} fight from the rooftops, studying {NP_B}.",
+      "From a rooftop above {L}, {A} takes the measure of {NP_B}.",
+      "{A} shadows {B} all evening, learning the shape of {NP_B}."
+    ]
+  },
+  {
+    "id": "scout_master",
+    "category": "scouting",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{MA} spends the night searching for a safe base for {A}.",
+      "{MA} maps the city by bus route, marking every place {A} could hide.",
+      "{MA} argues that {A} should rest. {A} does not rest."
+    ]
+  },
+  {
+    "id": "scout_tracks",
+    "category": "scouting",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "scouted": true },
+    "text": [
+      "{A} follows {B} through {L} without being seen.",
+      "{A} tracks {B} back to their territory.",
+      "{A} waits in {L} until {B} passes, and simply watches."
+    ]
+  },
+  {
+    "id": "scout_mana",
+    "category": "scouting",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} reads the flow of mana across the city and counts how many Servants are left.",
+      "{A} sits at {L} and feels the war thinning.",
+      "{A} notices the pressure of other Servants fading, one by one."
+    ]
+  },
+  {
+    "id": "scout_rumor",
+    "category": "scouting",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} questions a passerby about strange lights near {L}.",
+      "{A} listens to the local gossip about the night the sky cracked.",
+      "{A} reads the newspapers nobody else bothered to read."
+    ]
+  },
+
+  {
+    "id": "trap_set",
+    "category": "trap",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "trap": true },
+    "text": [
+      "{A} sets a trap at {L} for anyone foolish enough to pass.",
+      "{A} spends the afternoon wiring {L} with something unpleasant.",
+      "{A} leaves a lure at {L} and waits a long way off."
+    ]
+  },
+  {
+    "id": "trap_spring",
+    "category": "trap",
+    "weight": 3,
+    "days": [2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false, "trap": true },
+    "text": [
+      "{B} triggers {A}'s trap at {L}.",
+      "{A}'s trap catches {B} at {L}.",
+      "{B} walks into a prepared killing ground at {L}."
+    ]
+  },
+  {
+    "id": "trap_ward",
+    "category": "trap",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "trap": true },
+    "text": [
+      "{A} lays a bounded field around {L} and waits.",
+      "{A} marks the entrances to {L} and does not plan to lose there.",
+      "{A} makes {L} into a place where only they can move freely."
+    ]
+  },
+
+  {
+    "id": "social_drink",
+    "category": "social",
+    "weight": 4,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} and {B} share a drink and argue about what they would wish for.",
+      "{A} and {B} sit in {L} and trade wishes like cards.",
+      "{A} buys {B} a drink. Neither mentions that they will have to fight later."
+    ]
+  },
+  {
+    "id": "social_truce",
+    "category": "social",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} offers {B} a truce until the Church calls a winner.",
+      "{A} and {B} agree to postpone the inevitable for one more night.",
+      "{A} suggests they leave each other alone until there are fewer of them."
+    ]
+  },
+  {
+    "id": "social_masters",
+    "category": "social",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} and {B} argue over whose Master is more incompetent.",
+      "{MA} and {MB} shout at each other across {L} while {A} and {B} wait it out.",
+      "{A} admits to {B} that their Master is, honestly, a liability."
+    ]
+  },
+  {
+    "id": "social_food",
+    "category": "social",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} and {B} split convenience-store food at {L}.",
+      "{A} discovers that {B} has never eaten anything from a machine before.",
+      "{A} and {B} eat in silence, which is almost companionable."
+    ]
+  },
+  {
+    "id": "social_talk",
+    "category": "social",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} asks {B} what they were like before they were summoned.",
+      "{B} tells {A} a story about home that {A} will remember.",
+      "{A} and {B} talk about the people they left behind."
+    ]
+  },
+  {
+    "id": "social_laugh",
+    "category": "social",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{B} tells {A} a joke. {A} does not laugh.",
+      "{A} makes a joke about the Grail. {B} laughs despite themselves.",
+      "{A} and {B} argue about whether anything here is actually funny."
+    ]
+  },
+  {
+    "id": "social_spar",
+    "category": "social",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} and {B} spar at {L} without intent to kill.",
+      "{A} challenges {B} to a friendly match and loses graciously.",
+      "{A} and {B} test each other at {L} and stop before anyone bleeds."
+    ]
+  },
+  {
+    "id": "social_agreement",
+    "category": "social",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} and {B} agree that the whole war is ridiculous, and part ways.",
+      "{A} and {B} complain about the Grail, the Church, and their Masters.",
+      "{A} and {B} promise to remember each other after this is over."
+    ]
+  },
+
+  {
+    "id": "alliance_accept",
+    "category": "alliance",
+    "weight": 4,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": { "alliance": true },
+    "text": [
+      "{A} proposes an alliance with {B}. {B} accepts.",
+      "{A} and {B} shake hands at {L} and agree to fight the others first.",
+      "{A} offers {B} an alliance. {B} considers it for one long moment, then agrees."
+    ]
+  },
+  {
+    "id": "alliance_cautious",
+    "category": "alliance",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": { "alliance": true },
+    "text": [
+      "{A} proposes an alliance with {B}. {B} agrees, warily.",
+      "{A} and {B} agree to watch each other's backs, for now.",
+      "{A} and {B} form a working arrangement with no trust in it at all."
+    ]
+  },
+  {
+    "id": "alliance_pact",
+    "category": "alliance",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": { "alliance": true },
+    "text": [
+      "{A} and {B} swear a pact at {L}. Neither will strike first.",
+      "{A} and {B} bind themselves to a truce neither can easily break.",
+      "{A} and {B} make a promise that both already expect to regret."
+    ]
+  },
+  {
+    "id": "alliance_refuse",
+    "category": "alliance",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} proposes an alliance with {B}. {B} laughs and refuses.",
+      "{A} asks {B} to stand together. {B} says they prefer to stand alone.",
+      "{A} offers {B} an alliance and gets a flat no."
+    ]
+  },
+  {
+    "id": "alliance_proud",
+    "category": "alliance",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} offers {B} an alliance. {B} says they need no help, but stays to talk.",
+      "{A} suggests cooperation. {B} insists they will win this alone, and means it.",
+      "{A} proposes an alliance. {B} answers with a speech about their own strength."
+    ]
+  },
+
+  {
+    "id": "break_quiet",
+    "category": "alliance_break",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "needsAlliance": true },
+    "effects": { "allianceBreak": true },
+    "text": [
+      "{A} quietly ends the alliance with {B} and walks away.",
+      "{A} tells {B} the arrangement is over, and does not explain why.",
+      "{A} stops answering {B}'s signals. The alliance simply stops existing."
+    ]
+  },
+  {
+    "id": "break_distance",
+    "category": "alliance_break",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "needsAlliance": true },
+    "effects": { "allianceBreak": true },
+    "text": [
+      "{A} and {B} agree their alliance has outlived its use.",
+      "{A} and {B} divide the city between them and go their separate ways.",
+      "{A} and {B} part at {L} without a single promise."
+    ]
+  },
+  {
+    "id": "break_fail",
+    "category": "alliance_break",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "needsAlliance": true },
+    "effects": {},
+    "text": [
+      "{A} looks for {B} to end the alliance, but {B} is already gone.",
+      "{A} decides to break with {B}, and then decides to wait one more day.",
+      "{A} almost says it, and does not."
+    ]
+  },
+
+  {
+    "id": "betray_strike",
+    "category": "betrayal",
+    "weight": 4,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "needsAlliance": true },
+    "effects": { "duel": true, "lethal": true, "betrayal": true, "allianceBreak": true },
+    "text": [
+      "{A} betrays {B}, striking while their guard is down.",
+      "{A} breaks the pact with {B} at {L}.",
+      "{A} decides the alliance has served its purpose, and {B} finds out at {L}."
+    ]
+  },
+  {
+    "id": "betray_whisper",
+    "category": "betrayal",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "betrayal": true },
+    "text": [
+      "{A} lures {B} to {L} under the pretense of a meeting.",
+      "{A} arranges a private meeting with {B}, and it is a trap.",
+      "{A} calls {B} to {L} with a friendly tone that fools no one but works anyway."
+    ]
+  },
+  {
+    "id": "betray_last",
+    "category": "betrayal",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "betrayal": true },
+    "text": [
+      "{A} decides that only one of them can hold the Grail, and chooses {B}.",
+      "{A} strikes {B} from behind, because the Grail only grants one wish.",
+      "{A} decides that friendship was a luxury and {B} is a liability."
+    ]
+  },
+  {
+    "id": "betray_offer",
+    "category": "betrayal",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "betrayal": true },
+    "text": [
+      "{A} offers {B} a partnership at {L}, and means something else entirely.",
+      "{A} tells {B} they have found the Grail's location, which is a lie.",
+      "{A} sells {B} a promise and delivers an ambush."
+    ]
+  },
+
+  {
+    "id": "plea_fail",
+    "category": "diplomacy",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "targetTag": ["ruthless", "sadistic", "prideful"], "scoreGap": ">=8" },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} is unable to convince {B} to not kill {A}.",
+      "{A} begs {B} for mercy at {L}. {B} shows none.",
+      "{A} tries to talk their way out of the fight, but {B} has no interest in words."
+    ]
+  },
+  {
+    "id": "plea_success",
+    "category": "diplomacy",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} talks {B} out of the fight. Both walk away.",
+      "{A} makes an argument that {B} cannot actually refute, and {B} lowers their weapon.",
+      "{A} offers {B} a reason to live another day. {B} accepts it."
+    ]
+  },
+  {
+    "id": "diplomacy_intimidate",
+    "category": "diplomacy",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} tries to intimidate {B}, who is unimpressed.",
+      "{A} describes exactly how this would end. {B} is not persuaded.",
+      "{A} threatens {B} at {L}. {B} simply waits to see if it happens."
+    ]
+  },
+  {
+    "id": "diplomacy_bargain",
+    "category": "diplomacy",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} offers {B} information in exchange for a truce.",
+      "{A} and {B} negotiate at {L} and both leave dissatisfied but alive.",
+      "{A} trades a secret about another Servant for one quiet night."
+    ]
+  },
+
+  {
+    "id": "skirmish_challenge",
+    "category": "skirmish",
+    "weight": 5,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} challenges {B} to a duel at {L}.",
+      "{A} calls {B} out at {L} and does not expect an answer.",
+      "{A} announces themselves to {B} the way a knight would."
+    ]
+  },
+  {
+    "id": "skirmish_clash",
+    "category": "skirmish",
+    "weight": 5,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} and {B} clash at {L}, testing each other's strength.",
+      "{A} and {B} collide at {L} and neither gives ground.",
+      "{A} and {B} exchange blows at {L} until both are breathing hard."
+    ]
+  },
+  {
+    "id": "skirmish_stumble",
+    "category": "skirmish",
+    "weight": 4,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} stumbles into {B} at {L}. Neither backs down.",
+      "{A} and {B} meet by accident at {L} and make it a fight.",
+      "{A} rounds a corner at {L} and finds {B} already waiting."
+    ]
+  },
+  {
+    "id": "skirmish_pressure",
+    "category": "skirmish",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} presses {B} through {L}, looking for a weakness.",
+      "{A} forces {B} onto the back foot at {L}.",
+      "{A} attacks {B} to see what {NP_B} actually does."
+    ]
+  },
+  {
+    "id": "skirmish_standoff",
+    "category": "skirmish",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} and {B} face each other across {L} and neither moves first.",
+      "{A} measures {B} at {L}. {B} measures {A} back.",
+      "{A} arrives at {L} to find {B} already there, and they begin."
+    ]
+  },
+  {
+    "id": "skirmish_spells",
+    "category": "skirmish",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} and {B} throw everything at each other at {L} and both survive it.",
+      "{A} tests {NP_A} against {B} at {L}.",
+      "{A} and {B} exchange their signature techniques above {L}."
+    ]
+  },
+  {
+    "id": "skirmish_rooftops",
+    "category": "skirmish",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} chases {B} across the rooftops above {L}.",
+      "{A} and {B} fight along the skyline near {L}.",
+      "{A} pursues {B} through the dark above {L}."
+    ]
+  },
+  {
+    "id": "skirmish_warning",
+    "category": "skirmish",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": false },
+    "text": [
+      "{A} warns {B} away from {L}, and is ignored.",
+      "{A} attacks {B} once, as a message.",
+      "{A} warns {B} at {L} and means every word of it."
+    ]
+  },
+
+  {
+    "id": "duel_hunt_down",
+    "category": "duel",
+    "weight": 5,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} hunts down {B} at {L}.",
+      "{A} corners {B} and declares that only one may leave.",
+      "{A} finds {B} at {L} and this time there is no audience."
+    ]
+  },
+  {
+    "id": "duel_corner",
+    "category": "duel",
+    "weight": 4,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} corners {B} at {L} and there is nowhere left to go.",
+      "{B} tries to withdraw from {L}. {A} does not allow it.",
+      "{A} blocks the last exit from {L} and {B} understands what that means."
+    ]
+  },
+  {
+    "id": "duel_formal",
+    "category": "duel",
+    "weight": 4,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} and {B} agree that this will be settled properly, and only one of them will walk away.",
+      "{A} challenges {B} to a duel to the death at {L}.",
+      "{A} and {B} bow to each other at {L}, and then stop holding back."
+    ]
+  },
+  {
+    "id": "duel_ambush",
+    "category": "duel",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "ambush": true },
+    "text": [
+      "{A} attacks {B} without warning at {L}.",
+      "{A} strikes first at {L}, and {B} never saw it coming.",
+      "{A} waits in the dark of {L} until {B} is close enough."
+    ]
+  },
+  {
+    "id": "duel_ideology",
+    "category": "duel",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} and {B} fight at {L} over two wishes that cannot both be granted.",
+      "{A} and {B} discover they want opposite things, and act accordingly.",
+      "{A} and {B} argue at {L} until the argument becomes a fight to the death."
+    ]
+  },
+  {
+    "id": "duel_revenge",
+    "category": "duel",
+    "weight": 4,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "needsGrudge": true },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} comes for {B} at {L} to settle what happened before.",
+      "{A} has not forgotten what was done to them, and finds {B} at {L}.",
+      "{A} tracks {B} to {L} and says nothing before attacking."
+    ]
+  },
+  {
+    "id": "duel_night",
+    "category": "duel",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} and {B} meet at {L} in the last hour before dawn.",
+      "{A} finds {B} alone at {L} and decides to finish it.",
+      "{A} and {B} end up the only two people left at {L}, and that is enough reason."
+    ]
+  },
+  {
+    "id": "duel_merciless",
+    "category": "duel",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "actorTag": ["ruthless", "sadistic", "treacherous"] },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} decides {B} has been alive for long enough.",
+      "{A} tells {B} exactly what is about to happen, and then does it.",
+      "{A} goes after {B} at {L} with no intention of leaving a witness."
+    ]
+  },
+  {
+    "id": "duel_desperate",
+    "category": "duel",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "actorTag": ["cowardly", "reckless", "prideful"] },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} gambles everything on a single attack against {B} at {L}.",
+      "{A} attacks {B} knowing they might not survive it.",
+      "{A} decides that dying is better than watching {B} win."
+    ]
+  },
+
+  {
+    "id": "hunt_wounded",
+    "category": "hunt",
+    "weight": 5,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "targetInjuriesAtLeast": 1 },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} tracks the wounded {B} through {L}.",
+      "{A} finds where {B} went to hide, and follows the blood.",
+      "{A} hunts {B} across {L} while {B} is still healing."
+    ]
+  },
+  {
+    "id": "hunt_weak",
+    "category": "hunt",
+    "weight": 4,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "scoreGap": ">=10" },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} finds the weakest remaining Servant and goes to {L}.",
+      "{A} decides that removing {B} is the obvious next move.",
+      "{A} treats {B} as a formality and heads for {L}."
+    ]
+  },
+  {
+    "id": "hunt_mana",
+    "category": "hunt",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} hunts {B} at {L} knowing their mana is running out.",
+      "{A} waits until {B} cannot sustain themselves any longer, then moves.",
+      "{A} strikes while {B} is still weak from the last fight."
+    ]
+  },
+  {
+    "id": "hunt_church",
+    "category": "hunt",
+    "weight": 3,
+    "days": [3, 4],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} joins the hunt for {B} after the Church names them a rule-breaker.",
+      "{A} answers the Church's announcement by going after {B}.",
+      "{A} pretends the announcement was an invitation, and hunts {B}."
+    ]
+  },
+  {
+    "id": "hunt_last",
+    "category": "hunt",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} hunts {B} through the last of the city's empty places.",
+      "{A} follows {B} to {L} and there is no one left to intervene.",
+      "{A} decides that {B} is the last obstacle worth removing."
+    ]
+  },
+
+  {
+    "id": "teamup_joint",
+    "category": "teamup",
+    "weight": 4,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "ally", "target"],
+    "effects": { "duel": true, "lethal": true, "team": true },
+    "text": [
+      "{A} and {C} team up against {B}.",
+      "{A} and {C} agree that {B} is the greater threat.",
+      "{A} calls in {C} to help end {B}."
+    ]
+  },
+  {
+    "id": "teamup_hunt",
+    "category": "teamup",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "ally", "target"],
+    "effects": { "duel": true, "lethal": true, "team": true },
+    "text": [
+      "{A} and {C} corner {B} at {L} together.",
+      "{A} and {C} surround {B} at {L} and close in.",
+      "{A} brings {C} along to make certain of it."
+    ]
+  },
+  {
+    "id": "teamup_rescue",
+    "category": "teamup",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "ally", "target"],
+    "effects": { "duel": true, "lethal": false, "team": true },
+    "text": [
+      "{C} interrupts {B}'s attack on {A} at {L}.",
+      "{A} is losing to {B} until {C} arrives at {L}.",
+      "{C} arrives to drag {A} out of a fight at {L}."
+    ]
+  },
+  {
+    "id": "teamup_alliance",
+    "category": "teamup",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "ally", "target"],
+    "requires": { "needsAlliance": true },
+    "effects": { "duel": true, "lethal": true, "team": true },
+    "text": [
+      "{A} and their ally {C} take on {B} together.",
+      "{A} and {C} honour their pact by attacking {B} at {L}.",
+      "{A} and {C} fight side by side against {B} at {L}."
+    ]
+  },
+
+  {
+    "id": "chaos_three",
+    "category": "chaos",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target", "ally"],
+    "effects": { "duel": true, "lethal": true, "chaos": true },
+    "text": [
+      "{A}, {B} and {C} collide at {L} in a three-way fight.",
+      "Three Servants meet at {L} and only one of them keeps their footing.",
+      "{A}, {B} and {C} all reach {L} at the same moment."
+    ]
+  },
+  {
+    "id": "chaos_pile",
+    "category": "chaos",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target", "ally"],
+    "effects": { "duel": true, "lethal": true, "chaos": true },
+    "text": [
+      "{A} is attacked by both {B} and {C} at {L}.",
+      "{B} and {C} both decide to eliminate {A} at {L}.",
+      "{A} walks into {L} and finds {B} and {C} already fighting, then joins in."
+    ]
+  },
+  {
+    "id": "chaos_calamity",
+    "category": "chaos",
+    "weight": 2,
+    "days": [4, 5],
+    "roles": ["actor", "target", "ally"],
+    "effects": { "duel": true, "lethal": true, "chaos": true },
+    "text": [
+      "{A}, {B} and {C} are pulled into the same collapsing space at {L}.",
+      "The ground gives way at {L} and {A}, {B} and {C} all fall into it.",
+      "{A}, {B} and {C} fight in the ruins of {L} as the Grail's mana spills over."
+    ]
+  },
+
+  {
+    "id": "rematch_return",
+    "category": "rematch",
+    "weight": 4,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "metBefore": true },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} returns to {L} for revenge against {B}.",
+      "{A} and {B} meet at {L} for the second time, and this time it counts.",
+      "{A} has been waiting for this rematch since the moment they lost it."
+    ]
+  },
+  {
+    "id": "rematch_score",
+    "category": "rematch",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "metBefore": true },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} and {B} settle it at {L} once and for all.",
+      "{A} calls {B} back to {L} to finish what they started.",
+      "{A} and {B} return to {L} with nothing left to prove and everything to lose."
+    ]
+  },
+  {
+    "id": "rematch_rival",
+    "category": "rematch",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} and {B} have been circling each other all war. It ends at {L}.",
+      "{A} finally gets the fight with {B} they actually wanted.",
+      "{A} and {B} agree that it was always going to be the two of them."
+    ]
+  },
+  {
+    "id": "rematch_scar",
+    "category": "rematch",
+    "weight": 2,
+    "days": [4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "metBefore": true },
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} carries a scar from {B}. They find {B} again at {L}.",
+      "{A} has been planning this since the last time they met {B} at {L}.",
+      "{A} and {B} finish the argument they started days ago."
+    ]
+  },
+
+  {
+    "id": "master_command",
+    "category": "master",
+    "weight": 4,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "buff": true },
+    "text": [
+      "{MA} spends a Command Spell to boost {A}'s speed.",
+      "{MA} orders {A} to win, and the Command Spell makes it real.",
+      "{MA} burns a Command Spell so {A} can go one step further than they should."
+    ]
+  },
+  {
+    "id": "master_mana",
+    "category": "master",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "manaDelta": -10 },
+    "text": [
+      "{MA} runs out of mana. {A} weakens.",
+      "{MA} collapses from exhaustion and {A} feels the supply thin.",
+      "{A} has to hold back. {MA} cannot sustain them much longer."
+    ]
+  },
+  {
+    "id": "master_attack",
+    "category": "master",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "masterInjury": true },
+    "text": [
+      "A rogue mage attacks {MA}; {A} rushes to defend them.",
+      "{MA} is caught in the crossfire at {L}. {A} arrives just in time.",
+      "Someone comes for {MA} at {L}, and {A} makes them regret it."
+    ]
+  },
+  {
+    "id": "master_argument",
+    "category": "master",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor"],
+    "effects": { "morale": -1 },
+    "text": [
+      "{MA} argues with {A} about strategy.",
+      "{MA} wants to run. {A} refuses, and they spend the night shouting.",
+      "{A} and {MA} do not agree on anything except staying alive."
+    ]
+  },
+  {
+    "id": "master_talk",
+    "category": "master",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "morale": 1 },
+    "text": [
+      "{MA} tells {A} they are glad it was them who answered.",
+      "{A} and {MA} eat together at {L} and talk about nothing important.",
+      "{MA} asks {A} what they want. {A} answers honestly."
+    ]
+  },
+  {
+    "id": "master_hide",
+    "category": "master",
+    "weight": 2,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{MA} moves to a new hiding place and {A} escorts them there.",
+      "{A} stands guard over {MA}'s hiding place all night.",
+      "{MA} refuses to stay put, and follows {A} to {L}."
+    ]
+  },
+  {
+    "id": "master_dream",
+    "category": "master",
+    "weight": 2,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} sees {MA}'s dream of the Grail while they sleep.",
+      "{A} dreams of {MA}'s wish and wakes up troubled by it.",
+      "{MA} tells {A} what they would ask for, and {A} says nothing."
+    ]
+  },
+  {
+    "id": "master_order_hold",
+    "category": "master",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "heal": true },
+    "text": [
+      "{MA} orders {A} to withdraw and recover instead of fighting.",
+      "{MA} uses a Command Spell to force {A} to retreat and heal.",
+      "{A} wants to fight. {MA} commands them to rest, and {A} obeys."
+    ]
+  },
+
+  {
+    "id": "master_hunt_slip",
+    "category": "master_hunt",
+    "weight": 4,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "masterKill": true },
+    "text": [
+      "{A} slips past {B}'s defenses and comes for {MB}.",
+      "{A} ignores {B} entirely and goes straight for {MB}.",
+      "{A} finds where {MB} is hiding and does not announce themselves."
+    ]
+  },
+  {
+    "id": "master_hunt_exposed",
+    "category": "master_hunt",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "requires": { "targetInjuriesAtLeast": 1 },
+    "effects": { "duel": true, "lethal": true, "masterKill": true },
+    "text": [
+      "{A} uses {B}'s wounds as an opening to reach {MB}.",
+      "{B} is too hurt to guard {MB} properly, and {A} notices.",
+      "{A} waits for {B} to be carried home, and follows."
+    ]
+  },
+  {
+    "id": "master_hunt_quiet",
+    "category": "master_hunt",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "masterKill": true },
+    "text": [
+      "{A} goes looking for {MB} without {B} ever noticing.",
+      "{A} waits on the road back from {L} for {MB}.",
+      "{A} goes for the contract itself, where it is thinnest."
+    ]
+  },
+  {
+    "id": "master_hunt_fail",
+    "category": "master_hunt",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true },
+    "text": [
+      "{A} goes after {MB}, and {B} is waiting for exactly that.",
+      "{A} reaches {MB}'s hiding place and finds {B} standing in the doorway.",
+      "{A} tries to remove {MB} and has to fight {B} instead."
+    ]
+  },
+
+  {
+    "id": "env_gas",
+    "category": "environmental",
+    "weight": 4,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "injury": 1 },
+    "text": [
+      "A gas leak explodes at {L}. {A} is caught in the blast.",
+      "{L} goes up in flames and {A} is closest to it.",
+      "An explosion tears through {L} while {A} is inside."
+    ]
+  },
+  {
+    "id": "env_storm",
+    "category": "environmental",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "A storm hits the city. {A} shelters at {L}.",
+      "The rain turns {L} into a river and {A} waits it out.",
+      "Lightning splits the sky over {L}. {A} keeps moving anyway."
+    ]
+  },
+  {
+    "id": "env_police",
+    "category": "environmental",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "Police seal off {L}. {A} and {B} quietly withdraw in opposite directions.",
+      "{A} and {B} both leave {L} when the sirens start.",
+      "An evacuation closes {L} and interrupts {A} and {B}."
+    ]
+  },
+  {
+    "id": "env_blackout",
+    "category": "environmental",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "The power fails across the district around {L}.",
+      "{L} goes dark and {A} keeps still until it comes back.",
+      "A blackout swallows {L} and something moves in it."
+    ]
+  },
+  {
+    "id": "env_collapse",
+    "category": "environmental",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "injury": 1 },
+    "text": [
+      "{L} partially collapses during a fight nearby and {A} is buried briefly.",
+      "The floor gives way at {L} and {A} goes down with it.",
+      "Cracks spread through {L} and {A} does not get out unscathed."
+    ]
+  },
+  {
+    "id": "env_mana",
+    "category": "environmental",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "manaDelta": -15 },
+    "text": [
+      "The mana in the air over {L} turns corrosive. {A} has to burn their own to push through.",
+      "{A} crosses a dead zone near {L} and pays for it.",
+      "Something has poisoned the leylines under {L}, and {A} feels it."
+    ]
+  },
+  {
+    "id": "env_crowd",
+    "category": "environmental",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "A crowd fills {L}. {A} and {B} pass each other without a word.",
+      "Neither {A} nor {B} can fight with this many people around.",
+      "{A} and {B} both pretend not to recognise each other at {L}."
+    ]
+  },
+  {
+    "id": "env_cathedral",
+    "category": "environmental",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "The Church's boundary field flares over {L} and {A} backs away.",
+      "{A} tests the barrier around {L} and decides against it.",
+      "Something old stirs beneath {L} and {A} leaves quickly."
+    ]
+  },
+
+  {
+    "id": "rest_recover",
+    "category": "rest",
+    "weight": 4,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "rest": true },
+    "text": [
+      "{A} rests at {L} and recovers from their wounds.",
+      "{A} spends the day hidden at {L}, letting their injuries close.",
+      "{A} sits still for once and the pain starts to fade."
+    ]
+  },
+  {
+    "id": "rest_master",
+    "category": "rest",
+    "weight": 3,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "rest": true },
+    "text": [
+      "{MA} tends to {A}'s wounds through the night.",
+      "{MA} patches {A} up and tells them to stop being reckless.",
+      "{A} sleeps while {MA} keeps watch over {L}."
+    ]
+  },
+  {
+    "id": "rest_quiet",
+    "category": "rest",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor"],
+    "effects": { "rest": true },
+    "text": [
+      "{A} takes a night off, for the first time since being summoned.",
+      "{A} does nothing at all at {L} and finds it strange.",
+      "{A} eats a real meal and feels better for it."
+    ]
+  },
+  {
+    "id": "rest_gather",
+    "category": "rest",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "rest": true },
+    "text": [
+      "{A} gathers mana at {L} and steadies themselves for what is coming.",
+      "{A} spends the night drawing power from {L}.",
+      "{A} restores what they can at {L} and gets ready."
+    ]
+  },
+
+  {
+    "id": "flavor_food",
+    "category": "flavor",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} tries convenience-store food and decides the modern world is not so bad.",
+      "{A} discovers vending machines and has strong opinions about them.",
+      "{A} eats something that sounds wrong and enjoys it anyway."
+    ]
+  },
+  {
+    "id": "flavor_cat",
+    "category": "flavor",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "A stray cat follows {A} everywhere.",
+      "{A} acquires a cat at {L} and does not explain it to anyone.",
+      "{A} feeds a stray and it decides they belong to each other now."
+    ]
+  },
+  {
+    "id": "flavor_mismatch",
+    "category": "flavor",
+    "weight": 3,
+    "days": [1, 2, 3],
+    "roles": ["actor"],
+    "requires": { "classMismatch": true },
+    "effects": {},
+    "text": [
+      "{A} wonders why they were summoned as a {cA}.",
+      "{A} is asked why they are a {cA} and has no good answer.",
+      "{A} explains, at length, why the Grail has made a mistake calling them a {cA}."
+    ]
+  },
+  {
+    "id": "flavor_moon",
+    "category": "flavor",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} stares at the moon and thinks of home.",
+      "{A} sits on a roof at {L} and watches the city not care.",
+      "{A} counts the windows that are still lit."
+    ]
+  },
+  {
+    "id": "flavor_practice",
+    "category": "flavor",
+    "weight": 3,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} practises {NP_A} alone at {L} until the move is perfect.",
+      "{A} runs through the motions of {NP_A} and finds something to fix.",
+      "{A} trains at {L} where nobody can see them struggle."
+    ]
+  },
+  {
+    "id": "flavor_doubt",
+    "category": "flavor",
+    "weight": 2,
+    "days": [2, 3, 4],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} wonders whether they actually want the Grail.",
+      "{A} starts to say what they want and stops halfway through.",
+      "{A} decides they will ask for something different than they told their Master."
+    ]
+  },
+  {
+    "id": "flavor_nightmare",
+    "category": "flavor",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} wakes from a dream about the day they died.",
+      "{A} does not sleep at all and watches {L} instead.",
+      "{A} remembers dying and decides not to mention it."
+    ]
+  },
+  {
+    "id": "flavor_shape",
+    "category": "flavor",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} walks the whole of {L} twice, looking for something familiar.",
+      "{A} maps the city in their head and finds it smaller than expected.",
+      "{A} gets lost at {L} and refuses to ask for directions."
+    ]
+  },
+  {
+    "id": "flavor_name",
+    "category": "flavor",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} refuses to give their true name to anyone.",
+      "{A} introduces themselves with a title and nothing else.",
+      "{A} is asked their name and answers with a question."
+    ]
+  },
+  {
+    "id": "flavor_music",
+    "category": "flavor",
+    "weight": 2,
+    "days": [1, 2, 3, 4],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} hears music from a shop at {L} and stands there listening.",
+      "{A} finds a song they like and cannot explain why.",
+      "{A} hums something from another century, badly."
+    ]
+  },
+  {
+    "id": "flavor_master_gift",
+    "category": "flavor",
+    "weight": 2,
+    "days": [1, 2, 3],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{MA} gives {A} something useless and {A} keeps it anyway.",
+      "{A} is given a phone and has questions about all of it.",
+      "{MA} buys {A} clothes that fit this century."
+    ]
+  },
+  {
+    "id": "flavor_pride",
+    "category": "flavor",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} declares that they will not die in a city like this one.",
+      "{A} says that losing is not something they do, and means it.",
+      "{A} looks at {L} and decides it will look better with a monument."
+    ]
+  },
+  {
+    "id": "flavor_kindness",
+    "category": "flavor",
+    "weight": 2,
+    "days": [2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} helps a stranger at {L} and thinks nothing of it.",
+      "{A} carries someone's shopping up four flights of stairs.",
+      "{A} stops a fight that had nothing to do with the Grail."
+    ]
+  },
+  {
+    "id": "flavor_alone",
+    "category": "flavor",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} stands alone at {L} and listens to the war get quieter.",
+      "{A} realises they have stopped expecting company.",
+      "{A} waits at {L} for someone who is not coming."
+    ]
+  },
+
+  {
+    "id": "personal_wish",
+    "category": "personal",
+    "weight": 4,
+    "days": [4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} declares their wish to the moon: only one of them will get to make it.",
+      "{A} says out loud what they want, and the city does not answer.",
+      "{A} writes down their wish, in case they do not survive to say it."
+    ]
+  },
+  {
+    "id": "personal_promise",
+    "category": "personal",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} promises {MA} that they will not lose.",
+      "{A} tells {MA} to leave the city, and {MA} refuses.",
+      "{A} and {MA} agree that only one of them needs to survive this."
+    ]
+  },
+  {
+    "id": "personal_rival",
+    "category": "personal",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} admits, privately, that they will miss this.",
+      "{A} thinks about the Servants already gone and does not feel good about it.",
+      "{A} decides that whoever wins had better deserve it."
+    ]
+  },
+  {
+    "id": "personal_fear",
+    "category": "personal",
+    "weight": 2,
+    "days": [3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} admits to themselves that they are afraid, and continues anyway.",
+      "{A} stands at {L} and works out how they might actually lose.",
+      "{A} prepares for the possibility that they will not come back."
+    ]
+  },
+  {
+    "id": "personal_master",
+    "category": "personal",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{MA} tells {A} to win, and {A} says they will try.",
+      "{A} tells {MA} that if they die, {MA} should run.",
+      "{MA} thanks {A} for answering the summons."
+    ]
+  },
+  {
+    "id": "personal_resolve",
+    "category": "personal",
+    "weight": 3,
+    "days": [4, 5],
+    "roles": ["actor"],
+    "effects": { "buff": true },
+    "text": [
+      "{A} decides, once and for all, that they are going to win this.",
+      "{A} gathers themselves at {L} and lets the doubt go.",
+      "{A} stops thinking about afterwards and starts thinking about now."
+    ]
+  },
+
+  {
+    "id": "global_prologue",
+    "category": "global",
+    "weight": 1,
+    "days": [1],
+    "roles": ["all"],
+    "effects": { "flag": "prologue" },
+    "text": [
+      "Night falls. {n} Servants are summoned and the Holy Grail War begins.",
+      "The circle closes and {n} Servants open their eyes in a city they do not know.",
+      "{n} Masters complete the summons. The Grail accepts them all, and the war starts."
+    ]
+  },
+  {
+    "id": "global_church",
+    "category": "global",
+    "weight": 3,
+    "days": [3, 4],
+    "roles": ["target"],
+    "effects": { "flag": "churchHunt", "grudgeAll": true },
+    "text": [
+      "The Church announces that {B} has broken the rules, and the hunt begins.",
+      "A Church overseer names {B} as a rule-breaker. Everyone hears it.",
+      "The Church declares {B} an enemy of the war, and nobody objects."
+    ]
+  },
+  {
+    "id": "global_calamity",
+    "category": "global",
+    "weight": 3,
+    "days": [4],
+    "roles": ["all"],
+    "effects": { "flag": "calamity", "manaAll": -10 },
+    "text": [
+      "The Grail stirs. Mana bleeds into the city and nothing will heal again tonight.",
+      "Something under {L} wakes up, and every Servant feels it.",
+      "The Grail's mana overflows. The war stops being a game."
+    ]
+  },
+  {
+    "id": "global_remaining",
+    "category": "global",
+    "weight": 3,
+    "days": [2, 3, 4],
+    "roles": ["all"],
+    "effects": {},
+    "text": [
+      "Only {n} Servants remain.",
+      "The war thins. {n} Servants are left standing.",
+      "{n} remain, and the city is running out of places to hide."
+    ]
+  },
+  {
+    "id": "global_awaken",
+    "category": "global",
+    "weight": 2,
+    "days": [4, 5],
+    "roles": ["all"],
+    "effects": {},
+    "text": [
+      "The Grail awakens.",
+      "The Greater Grail opens its eyes and waits for a winner.",
+      "The Grail is ready, and it is not patient."
+    ]
+  },
+
+  {
+    "id": "finale_duel",
+    "category": "finale",
+    "weight": 10,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "finale": true },
+    "text": [
+      "In the final battle at {L}, {W} unleashes {NP_W} and defeats {X}. The Holy Grail answers.",
+      "{W} and {X} meet at {L} with nothing left between them but {NP_W} and {NP_X}. Only {W} walks away.",
+      "Everything ends at {L}. {W} calls on {NP_W}, and the last Servant standing is {W}."
+    ]
+  },
+  {
+    "id": "finale_last_two",
+    "category": "finale",
+    "weight": 6,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "finale": true },
+    "text": [
+      "Two Servants left, one Grail. {W} and {X} settle it at {L}.",
+      "The war comes down to {W} and {X} at {L}. {W} finishes it.",
+      "There is nowhere left to retreat to. {W} ends the war at {L}."
+    ]
+  },
+  {
+    "id": "finale_sacrifice",
+    "category": "finale",
+    "weight": 4,
+    "days": [4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "finale": true },
+    "text": [
+      "{X} throws everything into one last attack at {L}. {W} survives it and ends the war.",
+      "{W} and {X} trade their final blows at {L}. The Grail takes the one who is left.",
+      "{X} knows they have lost and fights anyway. {W} grants them the fight."
+    ]
+  },
+  {
+    "id": "finale_quiet",
+    "category": "finale",
+    "weight": 3,
+    "days": [3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": { "duel": true, "lethal": true, "finale": true },
+    "text": [
+      "It ends without ceremony at {L}. {W} and {X} fight once, and only {W} stands up afterwards.",
+      "{W} and {X} do not speak. The fight at {L} lasts less than a minute.",
+      "{W} ends it at {L} with a single clean strike, and the Grail accepts it."
+    ]
+  },
+
+  {
+    "id": "wish_good",
+    "category": "wish",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "requires": { "alignment": "good" },
+    "effects": { "flag": "wish" },
+    "text": [
+      "{W} stands in the light of the Grail and asks for something for someone else.",
+      "{W} makes their wish, and it is not for themselves.",
+      "{W} is offered anything at all, and chooses to give it away."
+    ]
+  },
+  {
+    "id": "wish_neutral",
+    "category": "wish",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "requires": { "alignment": "neutral" },
+    "effects": { "flag": "wish" },
+    "text": [
+      "{W} looks at the Grail for a long time before deciding what to ask for.",
+      "{W} asks for something small, and the Grail has to make it happen.",
+      "{W} makes their wish with their eyes open."
+    ]
+  },
+  {
+    "id": "wish_evil",
+    "category": "wish",
+    "weight": 3,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "requires": { "alignment": "evil" },
+    "effects": { "flag": "wish" },
+    "text": [
+      "{W} makes their wish, and the city will be a different place for it.",
+      "{W} asks for exactly what they always wanted, and the Grail agrees.",
+      "{W} takes the Grail at its word."
+    ]
+  },
+  {
+    "id": "wish_reluctant",
+    "category": "wish",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "flag": "wish" },
+    "text": [
+      "{W} finds that they no longer want what they came here for.",
+      "{W} stands before the Grail and asks for the one thing they can never have back.",
+      "{W} wishes, and then wishes they had wished for something else."
+    ]
+  },
+  {
+    "id": "wish_empty",
+    "category": "wish",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "flag": "wish" },
+    "text": [
+      "{W} realises they are the only one left to make a wish, and says nothing for a long time.",
+      "{W} won, and now has to decide what winning was for.",
+      "{W} looks at an empty city and decides."
+    ]
+  },
+  {
+    "id": "wish_master",
+    "category": "wish",
+    "weight": 2,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": { "flag": "wish" },
+    "text": [
+      "{W} and {MW} share the wish, which is not how it is supposed to work.",
+      "{W} asks the Grail for their Master's wish instead of their own.",
+      "{MW} makes the wish. {W} does not object."
+    ]
+  },
+
+  {
+    "id": "out_stomp_kill",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} ends it in a single strike of {NP_W}. {X} never stood a chance.",
+      "{W} does not need a second attack. {NP_W} finishes it immediately.",
+      "{W} overwhelms {X} completely. There is no fight here, only a result."
+    ]
+  },
+  {
+    "id": "out_clear_kill",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} is simply stronger, and {X} finds out how much.",
+      "{W} beats {X} down through {NP_W} and ends the fight.",
+      "{X} lands a hit, and it is not enough. {W} finishes it with {NP_W}."
+    ]
+  },
+  {
+    "id": "out_narrow_kill",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} barely wins, and only because of {NP_W}.",
+      "{W} and {X} are close enough that one mistake decides it. {X} makes the mistake.",
+      "{W} takes the win at {L} by the width of a single breath."
+    ]
+  },
+  {
+    "id": "out_razor_kill",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} wins by a hair. It could have gone the other way at {L}.",
+      "Too close to call, and fate picks {W} at {L}.",
+      "Neither should have won. {W} does, by the smallest possible margin."
+    ]
+  },
+  {
+    "id": "out_stomp_retreat",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} overwhelms {X}, who only survives by running.",
+      "{X} recognises the gap immediately and flees {L} alive.",
+      "{W} swats {X} aside. {X} does not come back for a second attempt."
+    ]
+  },
+  {
+    "id": "out_clear_retreat",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{X} is outmatched and withdraws from {L} before it turns fatal.",
+      "{W} wins the exchange at {L}. {X} retreats to fight another day.",
+      "{X} disengages at {L} after {W} gets the better of the exchange."
+    ]
+  },
+  {
+    "id": "out_stalemate",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "Neither {W} nor {X} can land a decisive blow at {L}.",
+      "{W} and {X} fight to a standstill and separate.",
+      "The fight at {L} goes nowhere. Both withdraw."
+    ]
+  },
+  {
+    "id": "out_mutual",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} and {B} kill each other at {L}. The Grail gets nothing from either of them.",
+      "Both fighters land their final blow at {L}. Neither stands up.",
+      "{A} and {B} end together at {L}, and the war continues without them."
+    ]
+  },
+  {
+    "id": "out_mercy",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} spares {X}, who limps away from {L}.",
+      "{W} has {X} beaten and chooses not to finish it.",
+      "{W} lowers {NP_W} and lets {X} live, which may be a mistake."
+    ]
+  },
+  {
+    "id": "out_command_spell",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{ML} spends a Command Spell to pull {X} away from certain death.",
+      "{X} should be dead at {L}. {ML} burns a Command Spell instead.",
+      "The Command Spell tears {X} out of the fight a moment before the end."
+    ]
+  },
+  {
+    "id": "out_master_kill",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{A} finds {MB} and ends the contract. {B} is left without a Master.",
+      "{MB} does not survive the night. {B} feels the connection break.",
+      "{A} kills {MB}, and {B} begins to fade."
+    ]
+  },
+  {
+    "id": "out_masterless_fade",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor"],
+    "effects": {},
+    "text": [
+      "{A} has no Master left, and the world starts to lose its hold on them.",
+      "{A} keeps fighting for as long as the mana lasts, and it is running out.",
+      "{A} cannot sustain themselves without a contract and knows it."
+    ]
+  },
+  {
+    "id": "out_ambush_win",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} strikes from hiding at {L} and {X} never gets to fight back.",
+      "{W} attacks before {X} knows there is a fight, and that decides it.",
+      "{X} is dead before they understand what is happening at {L}."
+    ]
+  },
+  {
+    "id": "out_team_up",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "ally", "target"],
+    "effects": {},
+    "text": [
+      "{A} and {C} take {B} apart together at {L}.",
+      "{B} fights two Servants at {L} and cannot hold both of them.",
+      "{A} and {C} coordinate perfectly, and {B} pays for it."
+    ]
+  },
+  {
+    "id": "out_scouted_advantage",
+    "category": "outcome",
+    "weight": 1,
+    "days": [1, 2, 3, 4, 5],
+    "roles": ["actor", "target"],
+    "effects": {},
+    "text": [
+      "{W} already knew how {NP_X} worked, and {X} finds that out too late.",
+      "{W} has watched {X} before, and uses it.",
+      "{X} has no surprises left. {W} studied them days ago."
+    ]
+  }
+]

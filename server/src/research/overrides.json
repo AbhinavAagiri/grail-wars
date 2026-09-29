@@ -1,0 +1,113 @@
+{
+  "_comment": "Keys are canonical keys: normalize('name|source'). Values are merged into the Profile last, so they win over parsed/LLM data. Use these to fix parser mistakes for well-known characters.",
+  "krillin dragon ball": {
+    "tierPeak": "High 6-A",
+    "speed": "Massively Hypersonic",
+    "durability": "Large Mountain",
+    "abilities": ["Ki Manipulation", "Flight", "Enhanced Senses", "Martial Arts"],
+    "tags": ["loyal", "reckless", "comedic"],
+    "alignment": "good",
+    "archetype": "brawler",
+    "keyAbilityName": "Destructo Disc",
+    "confidence": "high"
+  },
+  "zarbon dragon ball": {
+    "tierPeak": "High 6-A",
+    "speed": "Massively Hypersonic",
+    "durability": "Large Mountain",
+    "abilities": ["Transformation", "Energy Manipulation", "Martial Arts"],
+    "tags": ["prideful", "ruthless", "loyal"],
+    "alignment": "evil",
+    "archetype": "monster",
+    "keyAbilityName": "Monster Form",
+    "confidence": "high"
+  },
+  "john wick john wick": {
+    "tierPeak": "9-C",
+    "speed": "Superhuman",
+    "durability": "Wall",
+    "abilities": ["Weapon Mastery", "Martial Arts", "Expert Combatant", "Stealth Mastery"],
+    "tags": ["stoic", "ruthless", "loyal"],
+    "alignment": "neutral",
+    "archetype": "ranged",
+    "keyAbilityName": "Gun-Fu",
+    "confidence": "high"
+  },
+  "rimuru tempest that time i got reincarnated as a slime": {
+    "tierPeak": "2-A",
+    "speed": "Immeasurable",
+    "durability": "Multiverse",
+    "abilities": ["Reality Warping", "Absorption", "Regeneration (High-Godly)", "Time Manipulation", "Existence Erasure"],
+    "tags": ["loyal", "merciful", "cunning"],
+    "alignment": "good",
+    "archetype": "mage",
+    "keyAbilityName": "Beelzebub",
+    "confidence": "high"
+  },
+  "goku dragon ball": {
+    "tierPeak": "2-C",
+    "speed": "Immeasurable",
+    "durability": "Universe",
+    "abilities": ["Energy Manipulation", "Teleportation", "Flight", "Regeneration", "Enhanced Senses"],
+    "tags": ["reckless", "honorable", "loyal"],
+    "alignment": "good",
+    "archetype": "brawler",
+    "keyAbilityName": "Kamehameha",
+    "confidence": "high"
+  },
+  "superman dc comics": {
+    "tierPeak": "2-C",
+    "speed": "MFTL",
+    "durability": "Universe",
+    "abilities": ["Flight", "Invulnerability", "Enhanced Senses", "Energy Manipulation"],
+    "tags": ["honorable", "merciful", "loyal"],
+    "alignment": "good",
+    "archetype": "brawler",
+    "keyAbilityName": "Heat Vision",
+    "confidence": "high"
+  },
+  "sherlock holmes arthur conan doyle": {
+    "tierPeak": "10-B",
+    "speed": "Athletic Human",
+    "durability": "Human",
+    "abilities": ["Expert Combatant", "Enhanced Senses"],
+    "tags": ["cunning", "stoic", "prideful"],
+    "alignment": "good",
+    "archetype": "fighter",
+    "keyAbilityName": "Deduction",
+    "confidence": "high"
+  },
+  "hercules greek mythology": {
+    "tierPeak": "5-C",
+    "speed": "Hypersonic",
+    "durability": "Moon",
+    "abilities": ["Superhuman Physical Characteristics", "Martial Arts", "Weapon Mastery"],
+    "tags": ["prideful", "reckless", "honorable"],
+    "alignment": "good",
+    "archetype": "brawler",
+    "keyAbilityName": "Nemean Grip",
+    "confidence": "high"
+  },
+  "sung jin woo solo leveling": {
+    "tierPeak": "2-C",
+    "speed": "MFTL",
+    "durability": "Universe",
+    "abilities": ["Summoning", "Regeneration", "Time Manipulation", "Soul Manipulation", "Stealth Mastery"],
+    "tags": ["stoic", "ruthless", "loyal"],
+    "alignment": "neutral",
+    "archetype": "fighter",
+    "keyAbilityName": "Shadow Extraction",
+    "confidence": "high"
+  },
+  "gojo satoru jujutsu kaisen": {
+    "tierPeak": "High 6-A",
+    "speed": "Massively Hypersonic",
+    "durability": "Large Mountain",
+    "abilities": ["Spatial Manipulation", "Existence Erasure", "Barrier Creation", "Regeneration"],
+    "tags": ["prideful", "comedic", "merciful"],
+    "alignment": "good",
+    "archetype": "mage",
+    "keyAbilityName": "Domain Expansion: Unlimited Void",
+    "confidence": "high"
+  }
+}

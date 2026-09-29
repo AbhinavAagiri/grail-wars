@@ -1,0 +1,18 @@
+[
+  { "id": "riverside-bridge", "name": "the riverside bridge" },
+  { "id": "abandoned-warehouse", "name": "the abandoned warehouse" },
+  { "id": "hilltop-shrine", "name": "the hilltop shrine" },
+  { "id": "harbor-docks", "name": "the harbor docks" },
+  { "id": "shopping-arcade", "name": "the shopping arcade" },
+  { "id": "old-church", "name": "the old church" },
+  { "id": "city-park", "name": "the city park at midnight" },
+  { "id": "skyscraper-rooftop", "name": "a skyscraper rooftop" },
+  { "id": "underground-station", "name": "the underground station" },
+  { "id": "forest-outskirts", "name": "the forest outskirts" },
+  { "id": "school-gymnasium", "name": "the school gymnasium" },
+  { "id": "factory-district", "name": "the factory district" },
+  { "id": "ferris-wheel", "name": "the ferris wheel" },
+  { "id": "hospital-ruins", "name": "the hospital ruins" },
+  { "id": "lakeside-road", "name": "the lakeside road" },
+  { "id": "clock-tower-plaza", "name": "the clock tower plaza" }
+]

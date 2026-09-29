@@ -1,0 +1,48 @@
+# Render blueprint — deploys the whole game as one free Node web service.
+#
+# Render supplies PORT; the server reads it from the environment.
+# Every optional key below is blank by default and the game works without them.
+
+services:
+  - type: web
+    name: grail-wars
+    runtime: node
+    plan: free
+    # --include=dev is required: NODE_ENV=production below applies to the build
+    # too, and a production-only install has no vite to build the client with.
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      # Pin the runtime: without this Render uses whatever its current default is,
+      # which is how a free service silently drifts onto an unsupported line.
+      - key: NODE_VERSION
+        value: 24.21.0
+      - key: NODE_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      # Goes into the User-Agent when calling public wikis/APIs. Please set it.
+      - key: CONTACT_EMAIL
+        sync: false
+      # Optional LLM layer. Polishes narration only; it never decides a fight.
+      - key: LLM_PROVIDER
+        value: none
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      # Optional image providers.
+      - key: TMDB_API_KEY
+        sync: false
+      - key: IMAGE_SEARCH_PROVIDER
+        value: none
+      - key: BRAVE_SEARCH_KEY
+        sync: false
+      - key: GOOGLE_CSE_KEY
+        sync: false
+      - key: GOOGLE_CSE_CX
+        sync: false

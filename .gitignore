@@ -1,0 +1,18 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# local portable toolchain (see DECISIONS.md)
+.tools/
+
+# Freebuff's local project id, not part of the project
+.freebuff/
+
+# runtime caches (server/.cache in the repo, ./.cache when scripts run from the root)
+.cache/
+server/.cache/
+*.log
+.DS_Store
+coverage/

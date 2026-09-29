@@ -1,0 +1,72 @@
+[
+  {
+    "id": "intangibility",
+    "if": ["Intangibility", "Incorporeal", "Non-Corporeal"],
+    "andMissingInB": ["Non-Physical Interaction", "Soul Manipulation", "Conceptual Manipulation", "Existence Erasure"],
+    "bonus": 8,
+    "label": "Intangibility vs physical-only opponent"
+  },
+  {
+    "id": "power_null",
+    "if": ["Power Nullification", "Law Manipulation"],
+    "andAnyInB": ["Reality Warping", "Time Manipulation", "Energy Manipulation", "Fire Manipulation"],
+    "bonus": 7,
+    "label": "Power nullification vs magic"
+  },
+  {
+    "id": "time_stop",
+    "if": ["Time Manipulation", "Space-Time Manipulation"],
+    "andMissingInB": ["Time Manipulation", "Space-Time Manipulation", "Danger Perception", "Resurrection"],
+    "bonus": 8,
+    "label": "Time stop vs no counter"
+  },
+  {
+    "id": "poison",
+    "if": ["Poison Manipulation"],
+    "andMissingInB": ["Resistance", "Regeneration", "Immortality"],
+    "bonus": 3,
+    "label": "Poison vs no resistance"
+  },
+  {
+    "id": "soul_vs_regen",
+    "if": ["Soul Manipulation", "Existence Erasure", "Conceptual Manipulation"],
+    "andAnyInB": ["Regeneration", "Regeneration (High-Godly)", "Immortality", "Immortality (Type 4/5)", "Resurrection"],
+    "bonus": 6,
+    "label": "Soul/existence attack vs regeneration"
+  },
+  {
+    "id": "regen_outlast",
+    "if": ["Regeneration (High-Godly)", "Immortality (Type 4/5)", "Resurrection"],
+    "andMissingInB": ["Soul Manipulation", "Existence Erasure", "Conceptual Manipulation", "Reality Warping", "Fate Manipulation"],
+    "bonus": 5,
+    "label": "Regeneration outlasts enemy damage"
+  },
+  {
+    "id": "flight_vs_melee",
+    "if": ["Flight"],
+    "andMissingInB": ["Flight", "Teleportation", "Formidable Ranged Attacks"],
+    "bonus": 3,
+    "label": "Flight vs grounded melee"
+  },
+  {
+    "id": "fate_lock",
+    "if": ["Fate Manipulation", "Causality Manipulation"],
+    "andMissingInB": ["Fate Manipulation", "Causality Manipulation", "Reality Warping"],
+    "bonus": 8,
+    "label": "Fate manipulation vs vulnerable opponent"
+  },
+  {
+    "id": "senses_vs_stealth",
+    "if": ["Danger Perception", "Enhanced Senses"],
+    "andAnyInB": ["Stealth Mastery", "Teleportation"],
+    "bonus": 3,
+    "label": "Instinct reacts to ambush"
+  },
+  {
+    "id": "absorb_nullifies",
+    "if": ["Absorption"],
+    "andAnyInB": ["Energy Manipulation", "Fire Manipulation", "Lightning Manipulation", "Ice Manipulation"],
+    "bonus": 4,
+    "label": "Absorption vs elemental attacker"
+  }
+]
