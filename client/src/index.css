@@ -239,6 +239,28 @@ body {
   content: '';
 }
 
+/* --- single-screen home page --------------------------------------- */
+
+/*
+ * The landing screen is exactly one viewport tall, so its compact footer gets
+ * tightened further on short and narrow windows: the play controls and the
+ * attribution have to share the same screen without either one scrolling.
+ */
+@media (max-width: 640px), (max-height: 720px) {
+  .hgd-footer-compact {
+    font-size: 9px;
+    line-height: 1.35;
+    padding-top: 0.4rem;
+    padding-bottom: 0.3rem;
+  }
+}
+
+@media (max-height: 620px) {
+  .hgd-footer-compact {
+    font-size: 8.5px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hgd-circle,
   .hgd-drawing path,

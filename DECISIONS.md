@@ -491,6 +491,37 @@ in progress, and Always Free is not a guarantee — Oracle may reclaim an instan
 CPU, network and memory all stay under about 20% across a week, so the free tier suits
 a game that is actually played.
 
+## 25. The landing screen is exactly one screen
+
+The home page has one job: start a game. Everything it needs to do that — the menu
+bar, the name field, the play buttons, the two mode cards and the attribution — fits
+on one screen, so it does, and the page never scrolls. A landing page that scrolls to
+reach its own footer reads as unfinished, and on a laptop it puts the play controls
+below the fold for no reason. Interior screens (lobby, draft, war, arena, credits,
+contact) are documents and keep scrolling normally.
+
+Three pieces make that work in [client/src/App.tsx](client/src/App.tsx):
+
+- **The footer is a sibling of the routes inside a viewport-height flex column**, so
+  it is part of the screen rather than something below it. The landing route gets a
+  fixed `h-dvh` (with `overflow-hidden`); every other route keeps `min-h-dvh` and
+  grows past the viewport as before. The fixed height matters: with a *minimum* only,
+  flex items never shrink, so a slightly-too-tall landing page would push the shell
+  past the viewport instead of fitting into it.
+- **The middle column is the only thing that can shrink** (`min-h-0 flex-1`) and it
+  scrolls internally as a last resort — on a very small window the play controls stay
+  reachable rather than being clipped by that `overflow-hidden`. Its content is
+  centred with auto margins rather than `justify-content: center`, which in an
+  overflowing container would push the top of the hero out of reach; auto margins
+  collapse to zero when there is no free space, so the whole column stays scrollable.
+- **The landing gets a compact footer** (`<SiteFooter compact />`) and a heading sized
+  with `clamp()` against viewport height, so the screen adapts to short windows
+  instead of overflowing them.
+
+On the narrowest phones (320×568) the join form is still taller than the space left
+between the nav and the footer; it scrolls inside that column, with the menu bar and
+attribution staying put, which is the intended graceful degradation rather than a bug.
+
 ---
 
 ## Verification status
@@ -507,6 +538,7 @@ a game that is actually played.
 | `npm run smoke -- --mode DEBATE --players 7` | **fails** — "the debate bracket never produced a champion" (7 matches drawn, then it stalls). Reproduced on both Node 20 and Node 24, so it is not an upgrade artifact. The mode is unreachable from the lobby (disabled behind a "Coming soon" badge), so it is deferred rather than fixed |
 | `npm run smoke -- --rooms 12 --players 7` | passes, peak 15 rooms / 96 players, 84 sockets |
 | Name change | grep for the old name, its slug and its PascalCase form returns only this document (the two lines describing the rename); the served page reads `Grail Wars` in the title, `GRAIL WARS` on two lines as the home heading, `GW` and `Grail Wars` in the nav, and "Grail Wars is a fan-made party game" on Credits; the server logs `Grail Wars listening`; a full smoke run passes afterwards |
+| Single-screen home page | `/` reports no document scroll and no inner overflow at 1440×800, 1280×720, 1280×600, 1024×600, 414×896, 375×667 and 360×640, in both the *Create* and the *Join* state (`documentElement.scrollHeight === innerHeight`); nav, hero, play controls, mode cards, footer and the `Early Access V0.1` stamp are all inside the viewport at each size, and the stamp no longer collides with the attribution name on narrow screens. Other routes are untouched: `/credits` still yields a 1698px document with the roomier footer, `/contact` likewise, and `/room/ABCD` keeps its ordinary document scroll at 320×568 with nothing clipped (its container's `scrollHeight` equals its `clientHeight`) |
 | Early-access UI | notice appears on the first load of a session (`z-60`, ending in "click anywhere to close"), is dismissed by a click on the card, a click on the backdrop corner and by Escape — all of which write `hgd:early-access-ack` to `sessionStorage` — and then stays hidden across a reload of both `/` and `/room/JNUA`; clearing session storage (or a new tab) brings it back; landing stamp renders fixed at bottom-right (8px/12px, 10px, `pointer-events: none`); in the lobby the War card is selectable with the `Recommended` badge while the Debate card reports `disabled`, `aria-disabled`, `opacity: .6`, `cursor: not-allowed` and "Coming soon", and clicking it leaves the War settings panel in place |
 | Browser walkthrough | home / credits / contact render; exactly one attribution footer per route (home, credits, contact and a room URL), with the credit linking out to abhinavaagiri.com without an underline; the nav is translucent; all six credit-page logos load from `/brands`; the narration dropdown lists three styles; class toggles persist across two clients; "Let Players Choose" offers three cities and the choice sticks; draft shows one card per enabled class with a working info popup; a VS Battles pick renders real artwork rather than an initials avatar; feedback form posts and logs |
 | `npm run oracle` | 9/9 within expectation against live VS Battles pages |

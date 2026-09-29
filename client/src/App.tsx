@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { Navigate, Route, Routes, useParams } from 'react-router-dom';
+import { clsx } from 'clsx';
+import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { useStore } from './store';
 import { SiteFooter, Toasts } from './components/ui';
 import { EarlyAccessNotice } from './components/EarlyAccessNotice';
@@ -57,6 +58,11 @@ function RoomRouter() {
 export default function App() {
   const connected = useStore((s) => s.connected);
   const pushToast = useStore((s) => s.pushToast);
+  const { pathname } = useLocation();
+  // The landing screen is a single screen — nav, hero, play controls and footer
+  // share one viewport with no page scroll. Every other route is a normal
+  // scrolling document.
+  const singleScreen = pathname === '/';
 
   useEffect(() => {
     if (!connected) return;
@@ -82,15 +88,23 @@ export default function App() {
           Reconnecting to the Grail…
         </div>
       )}
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/credits" element={<Credits />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/room/:code" element={<RoomRouter />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-      {/* Attribution sits under every screen — landing, lobby, draft, war, arena. */}
-      <SiteFooter />
+      {/* A viewport-height column so the footer is part of the screen rather than
+          something below it. The landing screen gets a *fixed* height (so its
+          content shrinks to fit instead of growing the page); every other route
+          keeps a minimum height and scrolls normally. */}
+      <div className={clsx('flex flex-col', singleScreen ? 'h-dvh overflow-hidden' : 'min-h-dvh')}>
+        <div className="flex min-h-0 flex-1 flex-col">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/credits" element={<Credits />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/room/:code" element={<RoomRouter />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+        {/* Attribution sits under every screen — landing, lobby, draft, war, arena. */}
+        <SiteFooter compact={singleScreen} />
+      </div>
       <Toasts />
       {/* Shown once per page load, on every route: the game is an early release. */}
       <EarlyAccessNotice />

@@ -359,9 +359,22 @@ export function StickyHeader({ right }: { right?: React.ReactNode }) {
 /* Attribution                                                         */
 /* ------------------------------------------------------------------ */
 
-export function SiteFooter({ className }: { className?: string }) {
+/**
+ * `compact` is for the landing screen, which is a single viewport: the footer
+ * shrinks to a tight block so it still fits under the play controls without
+ * pushing the page into a scroll. Other routes keep the roomier version.
+ */
+export function SiteFooter({ className, compact }: { className?: string; compact?: boolean }) {
   return (
-    <footer className={clsx('mx-auto max-w-3xl px-4 pb-8 pt-6 text-center text-[10.5px] leading-relaxed text-muted', className)}>
+    <footer
+      className={clsx(
+        'mx-auto w-full max-w-3xl shrink-0 px-4 text-center text-muted',
+        compact
+          ? 'hgd-footer-compact pb-1.5 pt-2 text-[9.5px] leading-[1.4]'
+          : 'pb-8 pt-6 text-[10.5px] leading-relaxed',
+        className,
+      )}
+    >
       <p>
         Power-scaling data courtesy of the{' '}
         <a
@@ -379,12 +392,16 @@ export function SiteFooter({ className }: { className?: string }) {
         Images are shown transiently through a caching proxy and are never stored permanently. Portraits belong to
         their respective owners.
       </p>
-      <p className="mt-2 text-center">
+      {/* Keep the name clear of the fixed "Early Access" stamp in the corner. */}
+      <p className={clsx('text-center', compact ? 'mt-1 pr-20 sm:pr-0' : 'mt-2')}>
         <a
           href="https://abhinavaagiri.com"
           target="_blank"
           rel="noreferrer noopener"
-          className="inline-block font-body text-[11px] tracking-[0.18em] text-gold no-underline transition-opacity hover:opacity-80"
+          className={clsx(
+            'inline-block font-body tracking-[0.18em] text-gold no-underline transition-opacity hover:opacity-80',
+            compact ? 'text-[10px]' : 'text-[11px]',
+          )}
           style={{ textDecoration: 'none' }}
         >
           ~ Abhinav Aagiri ~
