@@ -439,7 +439,7 @@ file by hand is not worth the risk; npm neither reports nor fails on it
 
 ---
 
-## 24. Deployment is one process on one always-on VM
+## 24. Free hosting is one Render service; the VM stack is the optional path
 
 Three properties of the game rule out most free hosts: room state, the war timeline
 and the arena bracket all live in a `Map` inside a single Node process; the war
@@ -448,50 +448,65 @@ connection. Serverless platforms run functions, not a server, so Vercel-shaped h
 would need the state moved to an external store and the timers rebuilt around
 client-driven ticks before they could hold one game.
 
-Render's free tier *can* run it — [render.yaml](render.yaml) remains — but it sleeps
-after 15 minutes without traffic: stored sessions then point at rooms that no longer
-exist, and the first visitor after a quiet spell waits about a minute. That is why the
-documented path is now a VM. Oracle's Always Free tier provides a permanently running
-Arm instance (2 OCPU / 12 GB across the account; the guide asks for 1 OCPU / 6 GB,
-roughly twenty times what the process needs), and Caddy supplies HTTPS.
+What is left after the 2026 free-tier shake-up (verified 30 September 2026) is
+**Render's free web service**, and that is the documented path:
 
-[docker-compose.yml](docker-compose.yml) and [Caddyfile](Caddyfile) keep it
-deliberately small:
+- **No payment method.** Koyeb needs a card plus a $29 pre-authorisation hold,
+  Northflank needs a card for every plan, Fly.io ended free allowances in October
+  2024, Railway's free grant is $1 of credit a month, Heroku / Glitch / Cyclic are
+  gone, Hugging Face made Docker Spaces a paid feature, and SnapDeploy's free tier
+  excludes WebSockets. The previous plan's target, Oracle's Always Free tier, halved
+  its Arm allowance in June 2026 and is no longer available to this project.
+- **The free instance is the shape the game needs.** One instance, 512 MB, 0.1 CPU,
+  750 instance-hours a month and 5 GB of outbound bandwidth, with TLS and WebSockets
+  on the same origin — which is what the client's bare `io()` call, the relative
+  `/api` fetches, the production CSP (`connect-src 'self' ws: wss:`) and the disabled
+  production CORS all already assume. [render.yaml](render.yaml) pins `NODE_VERSION`,
+  so the runtime cannot drift onto a line that no longer exists.
+- **`trust proxy` stays at exactly 1, matching one platform hop.** Render appends the
+  real client address to `X-Forwarded-For` and the server trusts exactly one hop, so
+  per-IP rate limiting sees players rather than the proxy. The same value is correct
+  behind Caddy, which is why the VM path below needs no second setting.
 
-- **One container runs the game; Caddy runs in front.** The app's port is never
-  published on the host, so every request arrives through Caddy and the site stays
-  same-origin — which is what the client's bare `io()` call, the relative `/api`
-  fetches, the production CSP (`img-src 'self'`, `connect-src 'self' ws: wss:`) and
-  the disabled production CORS all already assume.
-- **`trust proxy` stays at exactly 1, matching one proxy hop.** Caddy appends the real
-  client address to `X-Forwarded-For` and the server trusts exactly one hop, so per-IP
-  rate limiting sees players rather than the proxy.
-- **The certificate lives on a named volume.** Throwing `/data` away on every restart
-  would re-request certificates from Let's Encrypt each time and eventually hit their
-  rate limit.
-- **`NODE_ENV=production` is forced in the compose service.** `.env.example` is a
-  development template whose `NODE_ENV` says `development`, and `env_file` would
-  otherwise hand that to the container, quietly switching off the production posture.
-  Values in `environment:` win over `env_file:`, so the template stays honest for
-  local development.
-- **`SITE_ADDRESS` is the only deployment-specific value.** It works with a free
-  `sslip.io` name — the instance's IP with that suffix appended, which resolves back
-  to the address — before a domain exists, and switching to the real domain is one
-  line in `.env` plus `docker compose up -d`.
-- **One instance, never two.** Rooms are in memory, so replicas would each hold half of
-  everybody's games.
+The one real cost is that a free instance **sleeps after 15 minutes without inbound
+traffic**, waking in about a minute, and a sleep wipes the in-memory rooms. Render
+counts "HTTP requests and WebSocket messages from existing connections" as traffic,
+so the fix is a **keepalive**: `App.tsx` emits `C2S.keepalive` every four minutes
+while a room is on screen, and the server answers with a `debug` log and nothing else.
+The timer is deliberately one stable interval that reads the room at fire time —
+re-subscribing on the room object would reset it on every patch, and patches arrive
+far too often for it to ever fire. The payload message is the one part of the traffic
+the app actually controls: because the socket is app-wide, any open tab already
+produces engine-level heartbeats, and Render's edge may or may not count those. With
+no tab open at all the service still sleeps, and stops spending hours. The README also
+documents an optional free uptime pinger for anyone who would rather never see a cold
+start, with its cost stated: an always-warm service spends about 744 of the 750
+monthly instance hours.
 
-Two supporting fixes came out of this. `tsx` moved from `devDependencies` to
-`dependencies`, because it loads the production start command — a production-only
-install previously started a server with no way to execute it. And the Render
-blueprint's build command became `npm ci --include=dev && npm run build`, since
-`NODE_ENV=production` applies to the build as well and a production-only install has
-no `vite` with which to build the client.
+[docker-compose.yml](docker-compose.yml) and [Caddyfile](Caddyfile) stay in the
+repository as the path for a machine someone already owns. They keep that deployment
+deliberately small: one container runs the game with its port unpublished, Caddy
+publishes 80/443 in front of it and terminates TLS, `NODE_ENV=production` is forced in
+the compose service because `.env.example` is a development template whose value would
+otherwise switch off the production posture, `SITE_ADDRESS` is the only
+deployment-specific value (a free `sslip.io` name works before a domain exists), and
+the certificate lives on a named volume so restarts do not re-request it from Let's
+Encrypt. None of it is used by the free path — Render terminates TLS itself — and none
+of it is required to publish the game.
 
-Limits, stated plainly: there is no database, so a restart or redeploy ends every game
-in progress, and Always Free is not a guarantee — Oracle may reclaim an instance whose
-CPU, network and memory all stay under about 20% across a week, so the free tier suits
-a game that is actually played.
+Two supporting fixes came out of the earlier VM work and still matter. `tsx` moved
+from `devDependencies` to `dependencies`, because it loads the production start
+command — a production-only install previously started a server with no way to execute
+it. And the Render blueprint's build command became
+`npm ci --include=dev && npm run build`, since `NODE_ENV=production` applies to the
+build as well and a production-only install has no `vite` with which to build the
+client.
+
+Limits, stated plainly: there is no database, so a sleep, restart or redeploy ends
+every game in progress; Render labels the free workspace "not for production", which
+is the right label for a fan party game; and 5 GB of monthly outbound bandwidth, with
+the portrait proxy as the main consumer, is ample for many game nights but is a cap,
+not an allowance.
 
 ## 25. The landing screen is exactly one screen
 
@@ -720,9 +735,13 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | Early-access UI | notice appears on the first load of a session (`z-60`, ending in "click anywhere to close"), is dismissed by a click on the card, a click on the backdrop corner and by Escape — all of which write `hgd:early-access-ack` to `sessionStorage` — and then stays hidden across a reload of both `/` and `/room/JNUA`; clearing session storage (or a new tab) brings it back; landing stamp renders fixed at bottom-right (8px/12px, 10px, `pointer-events: none`); in the lobby the War card is selectable with the `Recommended` badge while the Debate card reports `disabled`, `aria-disabled`, `opacity: .6`, `cursor: not-allowed` and "Coming soon", and clicking it leaves the War settings panel in place |
 | Browser walkthrough | home / credits / contact render; exactly one attribution footer per route (home, credits, contact and a room URL), with the credit linking out to abhinavaagiri.com without an underline; the nav is translucent; all six credit-page logos load from `/brands`; the narration dropdown lists three styles; class toggles persist across two clients; "Let Players Choose" offers three cities and the choice sticks; draft shows one card per enabled class with a working info popup; a VS Battles pick renders real artwork rather than an initials avatar; feedback form posts and logs |
 | `npm run oracle` | 9/9 within expectation against live VS Battles pages |
-| `Dockerfile` | **not built** — Docker is unavailable in the development environment |
-| Deployment files | `docker-compose.yml` parses as YAML with the intended shape: two services, three named volumes, the app's port **unpublished** (`expose: 3000` only), `NODE_ENV: production` set on the service so `.env`'s development value cannot override it, an exec-form healthcheck, and Caddy publishing 80/443 with `depends_on: app: condition: service_healthy` while mounting `./Caddyfile` read-only and persisting `/data` + `/config` |
-| Production single-process path | `NODE_ENV=production npm start` logs `env: "production"` and `Grail Wars listening`; `/healthz` returns `{"ok":true,...}`; `/` serves `client/dist` with the shipped CSP (`img-src 'self' data: blob:`, `connect-src 'self' ws: wss:`); `/room/ABCD` falls back to `index.html` with 200 while an unknown `/api` path 404s; and a request carrying `Origin: http://evil.example` gets **no** `access-control-*` header — the same-origin posture the Caddy deployment depends on |
+| `Dockerfile` (optional VM path) | **not built** — Docker is unavailable in the development environment; the free Render path builds with Node instead |
+| VM deployment files (unused by the free path) | `docker-compose.yml` parses as YAML with the intended shape: two services, three named volumes, the app's port **unpublished** (`expose: 3000` only), `NODE_ENV: production` set on the service so `.env`'s development value cannot override it, an exec-form healthcheck, and Caddy publishing 80/443 with `depends_on: app: condition: service_healthy` while mounting `./Caddyfile` read-only and persisting `/data` + `/config` |
+| `render.yaml` blueprint | the free path's whole configuration: `runtime: node`, `plan: free`, `buildCommand: npm ci --include=dev && npm run build`, `startCommand: npm start`, `healthCheckPath: /healthz`, `autoDeploy: true`, `NODE_VERSION: 24.21.0`, and the optional keys blank (`sync: false`). Shape checked against Render's blueprint spec here; the live deploy is what proves it (see `## Not done`) |
+| C2S keepalive | instrumenting `WebSocket.prototype.send` on the production build in a browser showed `42["app:keepalive",{}]` leave the page **once per 4-minute interval while a room was on screen** (measured at 228s after the patch, with the interval mounted ~12s before it), and the server's `debug` log recorded the matching `{"playerId":"_uxLwMqeD2vC","msg":"keepalive"}` line; nothing in the room changed and the capture also shows engine-level `3` (pong) frames, the transport heartbeat every open tab already produces |
+| Published site (Render free) | `https://grail-wars.onrender.com` — `/healthz` returns `{"ok":true,...}` (200 in 0.37s for the first request of the session, 0.13s for the next, so the service was already warm), `/` serves the built client with the shipped production CSP (`script-src 'self'`, `connect-src 'self' ws: wss:`) and `/room/ABCD` falls back to `index.html` with 200 |
+| Live multiplayer over WSS | `BASE_URL=https://grail-wars.onrender.com npm run smoke -- --players 5 --days 5` from this machine: 5 Masters created a room over WSS, filled all 10 class slots (the duplicate pick was rejected), locked in, summoned, and the Render instance researched live wikis itself — John Wick 9-C, Aang 5-C, Altair Ibn-La'Ahad 9-A, Jeanne d'Arc 1-C, Eric Bloodaxe Low 6-B, all high confidence — then ran the war to one winner over 37 events with no unresolved tokens |
+| Production single-process path | `NODE_ENV=production npm start` logs `env: "production"` and `Grail Wars listening`; `/healthz` returns `{"ok":true,...}`; `/` serves `client/dist` with the shipped CSP (`img-src 'self' data: blob:`, `connect-src 'self' ws: wss:`); `/room/ABCD` falls back to `index.html` with 200 while an unknown `/api` path 404s; and a request carrying `Origin: http://evil.example` gets **no** `access-control-*` header — the same-origin posture both deployment paths depend on |
 | `npm run smoke -- --players 5 --days 5` against the production server | passes — 5 Servants drafted, 4 deaths, one winner, no unresolved tokens |
 | Production dependency set | `npm ls tsx --omit=dev` resolves `tsx@4.23.15` under `server`, so a production-only install can run `npm start`; `npm ci --dry-run` exits 0, so `package.json` and the lockfile are still in sync — which matters, because the Docker build and the Render build both run `npm ci` |
 | `docker-compose.yml` / `Caddyfile` at runtime | **not run** — Docker is unavailable here; the stack, the image build and the certificate handshake are first exercised on the VM |
@@ -741,9 +760,15 @@ label pushes them over, they wrap to a second line rather than overflowing.
 
 - The `Dockerfile` is written but unbuilt, and so is the compose stack around
   it: `docker compose up`, the image build and Caddy's certificate handshake
-  need their first run on the VM, because Docker is not installed in the
-  development environment. Always Free idle reclamation and a real-domain
-  certificate are untested here for the same reason.
+  need their first run on a machine that has Docker. They are now the optional
+  VM path rather than the published one, and Docker is not installed in the
+  development environment.
+- The keepalive is in the repository but not yet on the running service: the
+  first deploy was built from `e7870b8`, so the live bundle predates it. This
+  commit makes Render rebuild, and the rebuilt bundle is checked for
+  `app:keepalive`.
+- A real cold start (15 idle minutes, then the first request) has not been
+  timed; every request in the checks above found the service already warm.
 - Live research with AI narration (`narration: 'ai'`) has not been exercised
   end-to-end, since no LLM key is configured — and the style is no longer
   reachable from the lobby.

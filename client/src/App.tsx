@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { clsx } from 'clsx';
 import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { C2S } from '@hgd/shared';
 import { useStore } from './store';
+import { socket } from './socket';
 import { SiteFooter, Toasts } from './components/ui';
 import { EarlyAccessNotice } from './components/EarlyAccessNotice';
 import Landing from './pages/Landing';
@@ -56,6 +58,13 @@ function RoomRouter() {
   }
 }
 
+/**
+ * How often a client that is in a room proves the connection is alive. Well
+ * under the 15 silent minutes it takes Render's free plan to spin a service
+ * down, so an active game can never be slept out from under itself.
+ */
+const KEEPALIVE_MS = 4 * 60 * 1000;
+
 export default function App() {
   const connected = useStore((s) => s.connected);
   const pushToast = useStore((s) => s.pushToast);
@@ -67,7 +76,13 @@ export default function App() {
 
   useEffect(() => {
     if (!connected) return;
-    const id = setInterval(() => undefined, 30000);
+    const id = setInterval(() => {
+      // Read the room at fire time rather than through a dependency: room
+      // patches arrive constantly, and re-subscribing on each one would reset
+      // the timer before it ever fired.
+      if (!useStore.getState().room) return;
+      socket.emit(C2S.keepalive, {});
+    }, KEEPALIVE_MS);
     return () => clearInterval(id);
   }, [connected]);
 

@@ -2,6 +2,13 @@
 #
 # Render supplies PORT; the server reads it from the environment.
 # Every optional key below is blank by default and the game works without them.
+#
+# A free instance sleeps after 15 minutes without inbound traffic (and wakes in
+# about a minute). That is safe for a party game because the client emits a
+# keepalive every few minutes while somebody is in a room — see App.tsx and the
+# C2S.keepalive handler — so an active session never goes quiet for long enough.
+# A sleep or restart still ends any game nobody is watching; rooms already end
+# on their own after 4 idle hours.
 
 services:
   - type: web

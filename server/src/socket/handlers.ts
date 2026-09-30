@@ -437,6 +437,25 @@ export function registerHandlers(io: Server, manager: RoomManager): void {
       else room.broadcast();
     });
 
+    /* -------------------------------------------------------------- */
+    /* Connection housekeeping                                         */
+    /* -------------------------------------------------------------- */
+
+    // Sent by clients every few minutes while a room is open (see App.tsx).
+    // Nothing reads its payload and nothing changes because of it — it exists
+    // so that a host which spins idle services down keeps seeing inbound
+    // WebSocket traffic. Render's free plan sleeps a service after 15 minutes
+    // without any, and a sleep would wipe the in-memory rooms mid-game.
+    on(
+      C2S.keepalive,
+      z.object({}),
+      () => {
+        logger.debug({ playerId: data.playerId }, 'keepalive');
+      },
+      // A room may vanish between heartbeats; a keepalive must never toast.
+      { needsRoom: false },
+    );
+
     socket.on('disconnect', () => {
       const room = roomFor();
       if (room && data.playerId) {

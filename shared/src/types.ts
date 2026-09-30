@@ -421,6 +421,13 @@ export const C2S = {
   arenaTiebreak: 'arena:tiebreak',
   gameRematch: 'game:rematch',
   gameToLobby: 'game:toLobby',
+  /**
+   * Sent by a client every few minutes while it is in a room. It carries no
+   * payload and changes no state: it exists so a host that spins idle services
+   * down (Render's free plan, after 15 quiet minutes) keeps seeing inbound
+   * WebSocket traffic, and a live game is never slept out from under itself.
+   */
+  keepalive: 'app:keepalive',
 } as const;
 
 export const S2C = {

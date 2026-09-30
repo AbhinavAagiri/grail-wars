@@ -78,150 +78,74 @@ All of these live in `.env` (see [.env.example](.env.example)).
 
 ---
 
-## Deploy to Oracle Cloud (Always Free)
+## Publish it for free
 
 The whole game is a **single Node process**: it serves the website, the API and the
-websockets on one port. A deployment is therefore one small VM, one container, and
-Caddy in front of it for HTTPS. [docker-compose.yml](docker-compose.yml) and
-[Caddyfile](Caddyfile) are included and do all of that.
+websockets on one port, and it does its research on the way through. Rooms, drafted
+Servants and the war in progress live in its **memory**, so run **exactly one
+instance** — two would each hold half of everybody's games.
 
-Rooms live in memory, so run **exactly one instance** — two would each hold half of
-everybody's games.
+### Render (recommended — free, no credit card)
 
-**What you need:** an Oracle Cloud account (a card is required to verify identity;
-nothing is charged while you stay inside Always Free), a GitHub repository holding
-this code, and — for a nice URL — a domain. You can start without the domain and add
-it later; that is a one-line change.
+[render.yaml](render.yaml) is a Render blueprint that deploys exactly that: one free
+Node web service, with the client built during deploy and served by the same process
+that owns the API and the sockets.
 
-### 1. Get the code onto GitHub
+1. Sign in at [render.com](https://render.com) with GitHub — no payment method is
+   needed for a free instance.
+2. **New → Blueprint**, pick this repository, and apply. Render reads `render.yaml`,
+   installs with the lockfile, builds the client, and starts the server.
+3. It prompts for **`CONTACT_EMAIL`** — your address. It goes into the `User-Agent`
+   sent to public wikis and APIs, so please set it. Every other value in the blueprint
+   is optional and can stay blank.
+4. The first build takes a few minutes. You then have
+   `https://<service-name>.onrender.com` with HTTPS, WebSockets on the same origin,
+   and `/healthz` as the health check.
 
-```bash
-cd path/to/grail-wars
-git init -b main
-git add .
-git commit -m "Grail Wars"
-gh auth login
-gh repo create grail-wars --public --source=. --remote=origin --push
-```
-
-Without the `gh` CLI: create an empty repository on GitHub, then
-`git remote add origin https://github.com/AbhinavAagiri/grail-wars.git && git push -u origin main`
-— a personal access token works as the password.
-
-### 2. Create the instance
-
-Console → **Compute → Instances → Create instance**.
-
-| Setting | Value |
+| Free-plan fact | What it means for a game night |
 |---|---|
-| Image | Ubuntu 24.04 |
-| Shape | Ampere → **`VM.Standard.A1.Flex`** |
-| OCPUs / memory | 1 OCPU / 6 GB — the game uses a few hundred MB, well under the 2 OCPU / 12 GB the free tier allows |
-| Networking | create a new VCN with a **public subnet** |
-| Public IPv4 | assigned |
-| SSH keys | "Generate a key pair", and keep the private key |
-| Boot volume | the ~47 GB default |
+| 512 MB RAM, 0.1 CPU, one instance | Plenty for seven players; the work is waiting on wikis, not crunching numbers. One instance is also what the in-memory design needs. |
+| 750 instance hours a month | One service can run around the clock; a service that sleeps spends no hours. |
+| Sleeps after 15 minutes without inbound traffic, wakes in about a minute | The first visit after a quiet spell waits about a minute, and Render shows that visitor a loading page. |
+| A sleep, restart or deploy wipes memory | A game nobody is watching does not survive it. But the client sends a small keepalive every 4 minutes while a room is open, so an *active* session never goes quiet long enough to sleep. Rooms still end on their own after 4 idle hours. |
+| 5 GB of outbound bandwidth a month | Portraits are proxied through the server; a whole war is a few megabytes. Past the cap, a workspace with no payment method has its free services suspended until the month rolls over. |
 
-Choose your **home region** carefully: it is permanent, and free Arm capacity exists
-only there. Pick the one nearest you.
+**Keeping it warm (optional).** A free uptime pinger — [cron-job.org](https://cron-job.org)
+or [UptimeRobot](https://uptimerobot.com), for example — hitting
+`https://<service-name>.onrender.com/healthz` every 5–10 minutes keeps the service
+awake, so no visitor ever sees a cold start. It spends real hours, though: an
+always-warm service uses about 744 of the 750 free instance hours in a month, leaving
+almost no margin, and the service is suspended until the next month if the allowance
+runs out. Games keep the service warm on their own — do this only if a cold start
+bothers you more than the thin margin.
 
-**"Out of host capacity"** is routine for Arm shapes. Try another Availability Domain,
-try the smaller shape, or retry later. The always-available fallback is the AMD
-`VM.Standard.E2.1.Micro` (1 GB RAM): the game runs on it, but building the client needs
-more memory than that, so add a swap file first.
-
-### 3. Open the firewall — in two places
-
-**1. Oracle's side.** VCN → Security Lists → Default Security List → **Add Ingress
-Rules**: source `0.0.0.0/0`, TCP port `80`, then the same for `443`. Port 22 is already
-open for SSH.
-
-**2. The machine's side.** Oracle Linux images silently reject everything but SSH
-(Ubuntu's do not). Check first, and allow if needed:
+**Verify it like a player.** Point the socket smoke test at the deployed URL:
 
 ```bash
-sudo iptables -L INPUT -n --line-numbers
-# If a `REJECT all` rule is blocking traffic, insert accepts above it:
-sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
-sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
-sudo netfilter-persistent save
+BASE_URL=https://<service-name>.onrender.com npm run smoke -- --players 5 --days 5
+curl -sS https://<service-name>.onrender.com/healthz     # {"ok":true,...}
 ```
 
-### 4. Install Docker
+Then open the site on a phone **on mobile data** (not wifi), create a room, and join
+from a device on a different network. Draft a class, lock in, and let a war run. Reload
+mid-game to confirm the rejoin works. The first request after a quiet spell takes
+about a minute — that is the free tier waking up, not a broken deploy.
+
+### Any Docker host or VM you already own
+
+[docker-compose.yml](docker-compose.yml) and [Caddyfile](Caddyfile) are the recipe for
+a machine you control: one app container, and Caddy in front of it for HTTPS and the
+WebSocket upgrade. Copy `.env.example` to `.env`, set `CONTACT_EMAIL` and
+`SITE_ADDRESS` (the public hostname, no scheme — an IP with `.sslip.io` appended works
+with no domain at all), then:
 
 ```bash
-ssh -i <your-key> ubuntu@<instance-ip>
-sudo apt update && sudo apt upgrade -y
-curl -fsSL https://get.docker.com | sudo sh
-sudo usermod -aG docker $USER     # then disconnect and reconnect to apply
-sudo apt install -y git
-```
-
-### 5. Configure and start
-
-```bash
-git clone https://github.com/AbhinavAagiri/grail-wars.git
-cd grail-wars
-cp .env.example .env
-nano .env
-docker compose up -d --build      # the first build takes a few minutes
+docker compose up -d --build
 docker compose logs -f            # look for "Grail Wars listening"
 ```
 
-Set two values in `.env`:
-
-- **`CONTACT_EMAIL`** — your address. It goes into the `User-Agent` sent to public
-  wikis and APIs, so please do not leave the placeholder.
-- **`SITE_ADDRESS`** — the site's public hostname, no scheme, as described next.
-
-Everything else can stay blank: with no keys at all the game is fully playable.
-
-### 6. Give it a name and a certificate
-
-**With a domain:** at your registrar, add an **A record** for `grail.example.com`
-pointing at the instance's IP, and put that hostname in `SITE_ADDRESS`.
-
-**Without one yet:** use the free `sslip.io` trick — the hostname is the instance's IP
-with `.sslip.io` appended, such as `130.61.12.34.sslip.io`, and it resolves back to
-that address on its own, so Caddy can still issue a real certificate.
-
-Either way Caddy requests and renews the certificate itself. Moving to your domain
-later is `nano .env` followed by `docker compose up -d`.
-
-Reserve the instance's public IP (Networking → **Reserved public IPs**) so a restart
-can never hand you a different address and break DNS.
-
-### 7. Verify it like a player
-
-```bash
-curl -sS https://<your-hostname>/healthz     # {"ok":true,...}
-```
-
-Then actually play it: open the site on your phone **on mobile data** (not wifi), create
-a room, and join from a laptop on a different network. Draft every class, lock in,
-summon, and let a war run. Reload mid-game to confirm the rejoin works.
-
-If `/healthz` never answers, it is almost always step 3 — one of the two firewalls — or
-DNS that has not propagated yet.
-
-### 8. Living with it
-
-| Task | Command |
-|---|---|
-| Update to the latest code | `git pull && docker compose up -d --build` |
-| Watch the server | `docker compose logs app --tail 200` |
-| Resource use | `docker stats`, `df -h` |
-
-The stack comes back on its own after a VM reboot, and the research cache persists on a
-volume so restarts do not re-query every wiki.
-
-Two things to know about the free tier. Oracle may **reclaim** an instance that stays
-idle — the policy looks at CPU, network and memory all sitting under about 20% across a
-week — so a long quiet spell is not guaranteed to survive it; set a billing budget
-alert so nothing can surprise you. And a restart or redeploy ends any game in progress,
-because rooms live in memory.
-
-### Docker elsewhere
+The app's port is deliberately not published on the host; everything arrives through
+Caddy, which also requests and renews the certificate.
 
 ```bash
 docker build -t grail-wars .
@@ -231,22 +155,6 @@ docker run -p 3000:3000 --env-file .env grail-wars
 The image builds the client and serves everything from one process. Uploads live in
 memory only; `.cache` is the one directory worth mounting if you want research to
 survive a restart.
-
-### Render (alternative)
-
-A blueprint is included in [render.yaml](render.yaml): push to GitHub, then **New →
-Blueprint** in Render and pick the repository.
-
-| Setting | Value |
-|---|---|
-| Build command | `npm ci --include=dev && npm run build` |
-| Start command | `npm start` |
-| Health check path | `/healthz` |
-
-Render supplies `PORT`; the server reads it and falls back to `3000`. Note that a free
-Render service **sleeps after 15 minutes** without traffic and holds nothing in memory,
-so games in progress do not survive a sleep — which is why the VM above is the
-recommended host.
 
 ---
 
@@ -275,8 +183,9 @@ server/src/
   data/             event templates, locations, counters, fallbacks
   scripts/          sim, oracle, and smoke CLIs
 client/src/         React app: pages/, components/, store, socket wiring
-docker-compose.yml  single-host deployment: the app container plus Caddy
-Caddyfile           HTTPS termination and the reverse proxy to the app
+render.yaml         the free Render blueprint — the published path
+docker-compose.yml  optional self-hosted path: the app container plus Caddy
+Caddyfile           HTTPS termination and the reverse proxy for that path
 ```
 
 See [DECISIONS.md](DECISIONS.md) for the design choices behind the details.
