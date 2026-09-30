@@ -618,29 +618,51 @@ is cheaper than a spinner on every card.
 and *Contact* on every public page (`SiteNav`) and points at `/roadmap`. The page
 is drawn rather than listed: the road enters from the left edge of the screen,
 bulges right to **v0.5**, bends back left to **v1.0**, and runs out of the bottom
-into an arrowhead under a *Coming soon* sign — with a card clipped to a flag at
+into an arrowhead under a *Coming soon* sign — with a card pinned to a gold coin at
 each stop and a *We are here right now* marker over the stretch the project has
 actually reached.
 
-The road is a single `<path>` on a 0–100 square viewBox with
-`preserveAspectRatio="none"`, and every stroke carries
-`vector-effect: non-scaling-stroke` so the tarmac is a constant 44px wide whatever
-the canvas does. It is five strokes of the same path: a drop shadow, two gold kerbs
-(50px under 44px of tarmac), a lighter centre band and a dashed centre line.
+The road is **driven, not waypointed**. It is a sequence of straight *runs* joined by
+circular *bends* that all share one radius (`r: 11`), and each bend is
+tangent-continuous with the heading the last one left: a run's direction *is* that
+heading, and a bend is an arc of that fixed radius, so a corner is not merely avoided
+but impossible to express. That is the answer to the complaint that the first drafts
+were "harsh drawings" — the version before this one fitted a Catmull-Rom→cubic-Bézier
+curve through hand-placed waypoints, and a spline through unevenly spaced points
+produces exactly the tight, uneven kinks that read as a drawing mistake. One uniform
+radius makes every turn curve the same way, wherever its neighbours sit.
 
-The milestones are **waypoints of that same path**, and the path is generated from
-them by a Catmull-Rom→cubic-Bézier helper rather than drawn by hand. That is the
-whole reason a flag always stands on tarmac: `MILESTONES[i].at` is a literal point
-in the waypoint list, so changing a milestone's position moves the road under it and
-moving the road moves the flag. Measured: every flag lands within 0.1 user units of
-the curve. The cards hang off their flag with a `place: 'above' | 'below' | 'left'
-| 'right'` offset and a `clamp()` on the horizontal position, so a card near the
-canvas edge slides inward instead of overflowing while its flag stays put.
+The path lives in a **150 × 100 grid that matches the 3:2 box it fills**, so the SVG
+needs no stretching (no `preserveAspectRatio="none"`) and every stroke can be given in
+the same units — the whole diagram scales as one piece. One grid unit is 1.5% of the
+width, so a mark's grid `x` is `x / 1.5` percent and its `y` is already a percent.
+
+It is painted back to front as **eight strokes of that one path**, all in grid units:
+a gold haze (9.6), a contact shadow (8.2, pushed down past the slab), the slab's side
+face in two tones (`KERB_W`, the deeper at `EXTRUDE = 1.7` and the lit edge at half
+that), the gold kerb (5.8), the tarmac (4.8), a lighter centre band (2.4) and a dashed
+centre line (0.34). The side face is the same path translated down, which is what turns
+a flat ribbon into a slab with a thickness you can see. The solid strokes are
+**butt-capped**, so the road and the slab under it both end in a clean cut at `ROAD.end`
+for the arrowhead's wide base to sit on — a round cap would bulge past the arrow. The
+dashes keep round caps, because a pill is what a road marking should be.
+
+The marks are **named points *on* that drive**, not coordinates of their own: `v0.1`
+sits 27% along the first run, `v0.5` at the apex of the right-hand bend (`90/155`),
+`current` 80% along the run between the bends, `v1.0` where the left-hand bend crosses
+vertical (`65/90`), and the arrow at the drive's end. That is the whole reason a marker
+can never end up beside the road: move a bend and its milestone moves with it. Measured:
+every pin lands within 0.1 grid units of the drawn path. Each pin is a **gold coin
+centred on its mark** — a point marker rather than a teardrop, so the place it stands
+for is exactly the place it covers — and each card hangs off its pin with a `place:
+'above' | 'below' | 'left' | 'right'` offset plus a `clamp()` on the horizontal position,
+so a card near the canvas edge slides inward instead of overflowing while its pin stays
+put.
 
 **Fitting one screen.** The diagram is not allowed to push the page into a scroll:
 the canvas is a 3:2 box sized by `clamp(300px, min(100cqh, 66.6667cqw), 620px)`, so
 whichever of the height or the width runs out first sets the scale, and everything
-inside it — type, padding, flags, gaps — is measured in `cqw` so the whole diagram
+inside it — type, padding, pins, gaps — is measured in `cqw` so the whole diagram
 scales as one piece. The `100cqw / 1.5` term is what keeps the box from ever being
 wider than the column it sits in.
 
@@ -710,9 +732,10 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | Browser walkthrough (AI Chooses) | fresh room: toggle Off by default with the pool select disabled; On enables it; all three pool values round-trip; every enabled class offers *CHOOSE FROM 25* and the chooser lists 25 mixed-roster cards; a picked card lands on the board; both Masters filled 7/7, locked in, summoned and reached Power Review — Cecilia Alcott **7-C high**, Gustav Steinhauer **9-B high** — and the war started (Budapest, both Servants alive) |
 | `npm run smoke -- --players 5 --days 5` against the production server, after roster regeneration | passes — 5 Servants drafted, 4 deaths, one winner, 44 events, no unresolved tokens |
 | Version stamp and the draft note | a search for `V0.1` / `V0.1` across `client/src`, `server/src`, `shared/src` and this document returns nothing; the served landing page reads `Early Access V.0.5` fixed at the bottom-right and the first-load notice badge reads `Early Access · V.0.5`; a live two-Master draft renders *"I apologize for any delay when selecting characters, I am still trying to optimize the drafter."* italic, one size down, directly under *"The host can begin once every Master has locked in."*; both are centred on the buttons' axis at 1093px and 375px (the note's box centre equals the *Begin Summoning* button's centre), wrapping to two balanced lines at the narrow width with no horizontal overflow |
-| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`; `/roadmap` renders the road with the v0.1, v0.5 and v1.0 flags and their cards on it — every flag measured onto the drawn path within 0.1 user units, every card inside the canvas, each one opening the shared modal with its status and items (v1.0's modal opens with 6 items and fits the viewport) — plus the *We are here right now* label and dot, the arrowhead, the two dot-grid corners and the *Coming soon* sign; the five nav links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state |
-| Roadmap fits one screen | `documentElement.scrollHeight === innerHeight` and `scrollWidth === innerWidth` on `/roadmap` at 1920×1080 (canvas 864×576), 1440×820 (713×475), 1280×720 (563×375), 1024×768 (635×423), 700×800 (668×445) and 360×740 (list) — the canvas measures exactly 1.500 at every one of them, from `min(100cqh, 66.6667cqw)` rather than `100%`, which measured `0px` |
-| Roadmap on a phone | at 360×740 the road canvas is `display: none` and `RoadList` takes over: four rows (v0.1, v0.5, *We are here right now*, v1.0) plus the *Coming soon* sign, a 333px list with the 32px road column, its dashed centre line, all three flags and the marker dot on one column, `documentElement.scrollWidth` inside the viewport, and no document scroll |
+| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`; `/roadmap` renders the road with the v0.1, v0.5 and v1.0 gold pins and their cards on it — every pin's centre measured onto the drawn path within 0.1 grid units, every card inside the canvas, each one opening the shared modal with its status and items (v1.0's modal opens with 6 items and fits the viewport) — plus the *We are here right now* label and dot, the arrowhead, the two dot-grid corners and the *Coming soon* sign; the five nav links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state |
+| The road is smooth and extruded | the road is one `<path>` in the 150×100 grid whose `d` is `M -8 20 L 104 20 A 11 11 0 0 1 108.65 40.97 L 61.52 62.95 A 11 11 0 0 0 56.2 77.56 A 11 11 0 0 1 57.23 82.21 L 57.23 83.21` — three straight runs and three circular bends that **all share `r = 11`**, each bend's start tangent equal to the heading the run before it left, so the curve contains no corner anywhere (the old spline-through-waypoints version is gone); the strokes are eight passes of that one path with the side face struck as the same path translated down by `EXTRUDE = 1.7`, the solid passes butt-capped so the slab ends in a clean cut and the arrowhead's wide base sits on it; and the dashes are the only round-capped pass |
+| Roadmap fits one screen | `documentElement.scrollHeight === innerHeight` and `scrollWidth === innerWidth` on `/roadmap` at 1920×1080 (canvas 864×576), 1440×820 (713×475), 1280×720 (563×375), 1024×768 (635×423), 700×800 (668×445) and 360×740 (list) — the canvas measures exactly 1.500 at every one of them, from `min(100cqh, 66.6667cqw)` rather than `100%`, which measured `0px`. The drawn road never touches a card: sampling the path at 900 points, the nearest approach to v0.1 / v0.5 / v1.0 is **17/11/24px at the worst size (1280×720)** and 21/17/31px at 1440×820, with every card's whole box inside the canvas; the arrowhead's base meets the road's cut end, the *Coming soon* sign clears the arrowhead by 6–11px and the canvas bottom by 11–20px |
+| Roadmap on a phone | at 360×740 the road canvas is `display: none` (its wrapper's `display` reads `none`, its measured width `0`) and `RoadList` takes over: four rows (v0.1, v0.5, *We are here right now*, v1.0) plus the *Coming soon* sign in a 328px list, all three coins and the marker dot centred on the 30px road column at `x = 45`, `documentElement.scrollWidth` inside the viewport, and no document scroll (740/360) |
 
 ## Not done
 
