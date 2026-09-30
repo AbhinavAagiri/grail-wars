@@ -763,10 +763,10 @@ label pushes them over, they wrap to a second line rather than overflowing.
   need their first run on a machine that has Docker. They are now the optional
   VM path rather than the published one, and Docker is not installed in the
   development environment.
-- The keepalive is in the repository but not yet on the running service: the
-  first deploy was built from `e7870b8`, so the live bundle predates it. This
-  commit makes Render rebuild, and the rebuilt bundle is checked for
-  `app:keepalive`.
+- The keepalive reached the live service: the rebuild that followed `2a4c486`
+  serves `assets/index-Bt-l-hcV.js`, and that bundle contains `app:keepalive`
+  (checked straight after the deploy, with `/healthz` back to `{"ok":true,...}`
+  and zero rooms).
 - A real cold start (15 idle minutes, then the first request) has not been
   timed; every request in the checks above found the service already warm.
 - Live research with AI narration (`narration: 'ai'`) has not been exercised
