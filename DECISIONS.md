@@ -616,36 +616,52 @@ is cheaper than a spinner on every card.
 
 **The Roadmap is a road.** A fifth nav item, *Roadmap*, sits between *Credits*
 and *Contact* on every public page (`SiteNav`) and points at `/roadmap`. The page
-is drawn rather than listed: a road enters from the left edge of the screen, winds
-down the page and runs out of the bottom into a *Coming soon* sign, with a flag at
-each version and a *Where we are* sign over the stretch the project has actually
-reached.
+is drawn rather than listed: the road enters from the left edge of the screen,
+bulges right to **v0.5**, bends back left to **v1.0**, and runs out of the bottom
+into an arrowhead under a *Coming soon* sign — with a card clipped to a flag at
+each stop and a *We are here right now* marker over the stretch the project has
+actually reached.
 
-The road is a single `<path>` on a 0–100 square viewBox, stretched over a
-`h-[clamp(880px,118vw,1240px)]` canvas with `preserveAspectRatio="none"` — so the
-canvas stays nearly square in practice and the curve does not distort — and every
-stroke carries `vector-effect: non-scaling-stroke` so the tarmac is a constant 44px
-wide at any size. It is five strokes of the same path: a drop shadow, two gold kerbs
+The road is a single `<path>` on a 0–100 square viewBox with
+`preserveAspectRatio="none"`, and every stroke carries
+`vector-effect: non-scaling-stroke` so the tarmac is a constant 44px wide whatever
+the canvas does. It is five strokes of the same path: a drop shadow, two gold kerbs
 (50px under 44px of tarmac), a lighter centre band and a dashed centre line.
 
 The milestones are **waypoints of that same path**, and the path is generated from
 them by a Catmull-Rom→cubic-Bézier helper rather than drawn by hand. That is the
 whole reason a flag always stands on tarmac: `MILESTONES[i].at` is a literal point
 in the waypoint list, so changing a milestone's position moves the road under it and
-moving the road moves the flag. The cards hang from their flag with a `place: 'above'
-| 'below'` offset, which is why the shelves between bends are long and flat — a card
-can hang off a shelf without the road cutting through it on the way back. Cards are
-positioned by `--x`/`--y` custom properties and a `clamp()` on the horizontal one, so
-a card near the canvas edge slides inward instead of overflowing while its flag stays
-put.
+moving the road moves the flag. Measured: every flag lands within 0.1 user units of
+the curve. The cards hang off their flag with a `place: 'above' | 'below' | 'left'
+| 'right'` offset and a `clamp()` on the horizontal position, so a card near the
+canvas edge slides inward instead of overflowing while its flag stays put.
+
+**Fitting one screen.** The diagram is not allowed to push the page into a scroll:
+the canvas is a 3:2 box sized by `clamp(300px, min(100cqh, 66.6667cqw), 620px)`, so
+whichever of the height or the width runs out first sets the scale, and everything
+inside it — type, padding, flags, gaps — is measured in `cqw` so the whole diagram
+scales as one piece. The `100cqw / 1.5` term is what keeps the box from ever being
+wider than the column it sits in.
+
+The `cqh` half of that is deliberate, and `100%` is the trap: a percentage height
+does not resolve against a flex-sized parent (the probe returned `0px`), so a
+`min(100%, …)` canvas collapses to nothing. The wrapper is given a definite
+`height: calc(100dvh - 345px)` *and* `container-type: size`, and the canvas reads
+`100cqh` off it instead. The 345px is the chrome around the canvas — nav, heading,
+intro, contact line and the roomy footer — which measures 315px at 1440 wide, so the
+page lands 30px short of the fold; that slack is what stops a wrapped intro line or a
+longer footer from putting the scrollbar back.
 
 The version stops are **v0.1**, **v0.5** and **v1.0**, each a `hgd-card` button that
-opens the shared `Modal` with a status badge, a paragraph and a list of items. *Where
-we are* is a sign over the vertical stretch of road between v0.5 and v1.0 — a chip
-naming the spot, an arrow pointing down the road, and a pulsing dot on the tarmac
-itself. Below `sm` the canvas is replaced by `RoadList`: the same milestones as a
-straight vertical road down the left with the cards stacked beside it, because a
-winding road with cards beside it cannot survive a 360px viewport.
+opens the shared `Modal` with a status badge, a paragraph and a list of items — the
+teaser lives in the modal, not on the card, because the card has to fit in the
+diagram. *We are here right now* is a label over the road between v0.5 and v1.0, an
+arrow pointing down the road and a pulsing dot on the tarmac itself, and the road
+finishes on an arrowhead the sign sits under. Below `sm` the canvas is replaced by
+`RoadList`: the same milestones as a straight vertical road down the left with the
+cards stacked beside it, because a 3:2 canvas on a portrait phone would be a strip
+too small to read.
 
 Like the credits, the content is hand-written rather than generated: it is a promise
 to the player, not a changelog, and it is kept in step with this document — v0.5
@@ -694,8 +710,9 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | Browser walkthrough (AI Chooses) | fresh room: toggle Off by default with the pool select disabled; On enables it; all three pool values round-trip; every enabled class offers *CHOOSE FROM 25* and the chooser lists 25 mixed-roster cards; a picked card lands on the board; both Masters filled 7/7, locked in, summoned and reached Power Review — Cecilia Alcott **7-C high**, Gustav Steinhauer **9-B high** — and the war started (Budapest, both Servants alive) |
 | `npm run smoke -- --players 5 --days 5` against the production server, after roster regeneration | passes — 5 Servants drafted, 4 deaths, one winner, 44 events, no unresolved tokens |
 | Version stamp and the draft note | a search for `V0.1` / `V0.1` across `client/src`, `server/src`, `shared/src` and this document returns nothing; the served landing page reads `Early Access V.0.5` fixed at the bottom-right and the first-load notice badge reads `Early Access · V.0.5`; a live two-Master draft renders *"I apologize for any delay when selecting characters, I am still trying to optimize the drafter."* italic, one size down, directly under *"The host can begin once every Master has locked in."*; both are centred on the buttons' axis at 1093px and 375px (the note's box centre equals the *Begin Summoning* button's centre), wrapping to two balanced lines at the narrow width with no horizontal overflow |
-| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`; `/roadmap` renders a 864×1240 road canvas at 1280 wide with the v0.1, v0.5 and v1.0 flags and their cards on it — every card's centre measured to the pixel of its flag's centre (207/207, 397/397, 449/449) and every card inside the canvas — plus the *Where we are* sign, the two dot-grid corners and the *Coming soon* sign the road runs into; each card opens the shared modal with its status and items; the five nav links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state, with the join state's 7px of content overflow absorbed by the inner scroll column rather than the document |
-| Roadmap on a phone | at 360×740 the road canvas is `display: none` and `RoadList` takes over: five rows (v0.1, v0.5, *Where we are*, v1.0, *Coming soon*) with the 32px road column, its dashed centre line, all three flags and the marker dot on one column at x=30 (measured `30 / 30 / 30 / 30`), the road running from the first row to the last, `documentElement.scrollWidth` inside the viewport, and the 1.0 card the widest element at 311px |
+| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`; `/roadmap` renders the road with the v0.1, v0.5 and v1.0 flags and their cards on it — every flag measured onto the drawn path within 0.1 user units, every card inside the canvas, each one opening the shared modal with its status and items (v1.0's modal opens with 6 items and fits the viewport) — plus the *We are here right now* label and dot, the arrowhead, the two dot-grid corners and the *Coming soon* sign; the five nav links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state |
+| Roadmap fits one screen | `documentElement.scrollHeight === innerHeight` and `scrollWidth === innerWidth` on `/roadmap` at 1920×1080 (canvas 864×576), 1440×820 (713×475), 1280×720 (563×375), 1024×768 (635×423), 700×800 (668×445) and 360×740 (list) — the canvas measures exactly 1.500 at every one of them, from `min(100cqh, 66.6667cqw)` rather than `100%`, which measured `0px` |
+| Roadmap on a phone | at 360×740 the road canvas is `display: none` and `RoadList` takes over: four rows (v0.1, v0.5, *We are here right now*, v1.0) plus the *Coming soon* sign, a 333px list with the 32px road column, its dashed centre line, all three flags and the marker dot on one column, `documentElement.scrollWidth` inside the viewport, and no document scroll |
 
 ## Not done
 
