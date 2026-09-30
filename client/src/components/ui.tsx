@@ -386,7 +386,8 @@ export function SiteFooter({ className, compact }: { className?: string; compact
           VS Battles Wiki
         </a>{' '}
         (CC BY-SA). Character data from AniList and Wikipedia. Fan project, not affiliated with Type-Moon or any
-        rights holder of the characters used. Non-commercial.
+        rights holder of the characters used. Non-commercial. If you enjoy the franchises it borrows from, please
+        support the official releases.
       </p>
       <p className="mt-1">
         Images are shown transiently through a caching proxy and are never stored permanently. Portraits belong to

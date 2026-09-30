@@ -17,7 +17,7 @@ const BRANDS: Brand[] = [
     name: 'Type-Moon',
     logo: '/brands/typemoon.svg',
     monogram: 'TM',
-    url: 'https://typemoon.co.jp/',
+    url: 'https://typemoon.com/',
     role: 'The Fate franchise',
     text: 'The creators of Fate/stay night, Fate/Grand Order and the Holy Grail War itself. Every Servant class used here — Saber, Archer, Lancer, Rider, Caster, Assassin, Berserker, Shielder, Ruler and Avenger — along with Command Seals, Noble Phantasms, the Grail and the Throne of Heroes, comes from Type-Moon\'s work. This project is an unaffiliated fan tribute and claims no ownership of any of it.',
   },
