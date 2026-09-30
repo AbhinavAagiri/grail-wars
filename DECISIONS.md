@@ -593,7 +593,7 @@ and spy trees are small), anime 250 except lancer (156), shielder (85), rider (8
 ruler (119). Pools top up from the other bucket and then the fallback list, so a class
 never comes up short of its 25.
 
-## 29. The version stamp, the draft's honesty note, and the Roadmap page
+## 29. The version stamp, the draft's honesty note, and the road that is the Roadmap
 
 **The stamp moves to v0.5.** The shipped early-access stamp reads
 `Early Access V.0.5` in both places it appears — the fixed bottom-right badge on
@@ -614,20 +614,47 @@ note is a deliberate choice over silence: a pick that pauses while the Oracle
 checks it against the class otherwise reads as a hung UI, and a one-line apology
 is cheaper than a spinner on every card.
 
-**The Roadmap is a page, not a modal.** A fifth nav item, *Roadmap*, sits between
-*Credits* and *Contact* on every public page (`SiteNav`) and points at `/roadmap`.
-The page follows the Credits/Contact shape — `SiteNav`, a centred `hgd-heading`, then
-`hgd-card` sections — with three stages, **Shipped · v0.5**, **In progress** and
-**Planned**, each item a title plus a sentence of plain English. Like the credits,
-the content is hand-written rather than generated: it is a promise to the player,
-not a changelog, and it is kept in step with this document — the shipped stage
-mirrors §§26–28, and *in progress* carries the two known defects (the mid-draft
-rejoin dropping a Master to spectator, and the Debate Arena bracket that never
-produces a champion) plus the drafting-latency work the draft note apologises for.
+**The Roadmap is a road.** A fifth nav item, *Roadmap*, sits between *Credits*
+and *Contact* on every public page (`SiteNav`) and points at `/roadmap`. The page
+is drawn rather than listed: a road enters from the left edge of the screen, winds
+down the page and runs out of the bottom into a *Coming soon* sign, with a flag at
+each version and a *Where we are* sign over the stretch the project has actually
+reached.
 
-Coupling *In progress* to the bug list in `## Not done` is intentional: a roadmap
-that only lists features would need a second, hidden list for the things that are
-broken, and the page a player reads is the right place for both.
+The road is a single `<path>` on a 0–100 square viewBox, stretched over a
+`h-[clamp(880px,118vw,1240px)]` canvas with `preserveAspectRatio="none"` — so the
+canvas stays nearly square in practice and the curve does not distort — and every
+stroke carries `vector-effect: non-scaling-stroke` so the tarmac is a constant 44px
+wide at any size. It is five strokes of the same path: a drop shadow, two gold kerbs
+(50px under 44px of tarmac), a lighter centre band and a dashed centre line.
+
+The milestones are **waypoints of that same path**, and the path is generated from
+them by a Catmull-Rom→cubic-Bézier helper rather than drawn by hand. That is the
+whole reason a flag always stands on tarmac: `MILESTONES[i].at` is a literal point
+in the waypoint list, so changing a milestone's position moves the road under it and
+moving the road moves the flag. The cards hang from their flag with a `place: 'above'
+| 'below'` offset, which is why the shelves between bends are long and flat — a card
+can hang off a shelf without the road cutting through it on the way back. Cards are
+positioned by `--x`/`--y` custom properties and a `clamp()` on the horizontal one, so
+a card near the canvas edge slides inward instead of overflowing while its flag stays
+put.
+
+The version stops are **v0.1**, **v0.5** and **v1.0**, each a `hgd-card` button that
+opens the shared `Modal` with a status badge, a paragraph and a list of items. *Where
+we are* is a sign over the vertical stretch of road between v0.5 and v1.0 — a chip
+naming the spot, an arrow pointing down the road, and a pulsing dot on the tarmac
+itself. Below `sm` the canvas is replaced by `RoadList`: the same milestones as a
+straight vertical road down the left with the cards stacked beside it, because a
+winding road with cards beside it cannot survive a 360px viewport.
+
+Like the credits, the content is hand-written rather than generated: it is a promise
+to the player, not a changelog, and it is kept in step with this document — v0.5
+mirrors §§26–28, and v1.0 carries the two known defects (the mid-draft rejoin
+dropping a Master to spectator, and the Debate Arena bracket that never produces a
+champion) plus the drafting-latency work the draft note apologises for. Coupling
+*v1.0* to the bug list in `## Not done` is intentional: a roadmap that only lists
+features would need a second, hidden list for the things that are broken, and the
+page a player reads is the right place for both.
 
 **The nav fits five items.** The nav was tuned for four links inside a
 single-screen landing page (see §25), so the buttons drop to 11px with tighter
@@ -667,7 +694,8 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | Browser walkthrough (AI Chooses) | fresh room: toggle Off by default with the pool select disabled; On enables it; all three pool values round-trip; every enabled class offers *CHOOSE FROM 25* and the chooser lists 25 mixed-roster cards; a picked card lands on the board; both Masters filled 7/7, locked in, summoned and reached Power Review — Cecilia Alcott **7-C high**, Gustav Steinhauer **9-B high** — and the war started (Budapest, both Servants alive) |
 | `npm run smoke -- --players 5 --days 5` against the production server, after roster regeneration | passes — 5 Servants drafted, 4 deaths, one winner, 44 events, no unresolved tokens |
 | Version stamp and the draft note | a search for `V0.1` / `V0.1` across `client/src`, `server/src`, `shared/src` and this document returns nothing; the served landing page reads `Early Access V.0.5` fixed at the bottom-right and the first-load notice badge reads `Early Access · V.0.5`; a live two-Master draft renders *"I apologize for any delay when selecting characters, I am still trying to optimize the drafter."* italic, one size down, directly under *"The host can begin once every Master has locked in."*; both are centred on the buttons' axis at 1093px and 375px (the note's box centre equals the *Begin Summoning* button's centre), wrapping to two balanced lines at the narrow width with no horizontal overflow |
-| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`, and `/roadmap` renders three stages — **Shipped · v0.5**, **In progress**, **Planned** — with 14 cards and a link back to `/contact`; the five links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state, with the join state's 7px of content overflow absorbed by the inner scroll column rather than the document |
+| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`; `/roadmap` renders a 864×1240 road canvas at 1280 wide with the v0.1, v0.5 and v1.0 flags and their cards on it — every card's centre measured to the pixel of its flag's centre (207/207, 397/397, 449/449) and every card inside the canvas — plus the *Where we are* sign, the two dot-grid corners and the *Coming soon* sign the road runs into; each card opens the shared modal with its status and items; the five nav links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state, with the join state's 7px of content overflow absorbed by the inner scroll column rather than the document |
+| Roadmap on a phone | at 360×740 the road canvas is `display: none` and `RoadList` takes over: five rows (v0.1, v0.5, *Where we are*, v1.0, *Coming soon*) with the 32px road column, its dashed centre line, all three flags and the marker dot on one column at x=30 (measured `30 / 30 / 30 / 30`), the road running from the first row to the last, `documentElement.scrollWidth` inside the viewport, and the 1.0 card the widest element at 311px |
 
 ## Not done
 
