@@ -60,7 +60,7 @@ export function EarlyAccessNotice() {
       aria-label="Early access notice"
     >
       <div className="hgd-card hgd-rise w-full max-w-lg p-5 text-center">
-        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">Early Access · V0.1</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">Early Access · V.0.5</p>
         <h2 className="hgd-heading mt-2 text-[19px]">This is an early release</h2>
 
         <p className="mt-3 text-[13px] leading-relaxed text-ink">

@@ -185,7 +185,7 @@ export default function Landing({ presetCode }: { presetCode?: string }) {
 
       {/* Home-page only build stamp. */}
       <p className="pointer-events-none fixed bottom-2 right-3 z-30 font-body text-[10px] uppercase tracking-[0.18em] text-muted">
-        Early Access V0.1
+        Early Access V.0.5
       </p>
     </div>
   );

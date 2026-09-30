@@ -7,6 +7,7 @@ import { EarlyAccessNotice } from './components/EarlyAccessNotice';
 import Landing from './pages/Landing';
 import Credits from './pages/Credits';
 import Contact from './pages/Contact';
+import Roadmap from './pages/Roadmap';
 import Lobby from './pages/Lobby';
 import Draft from './pages/Draft';
 import Summon from './pages/Summon';
@@ -97,6 +98,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/credits" element={<Credits />} />
+            <Route path="/roadmap" element={<Roadmap />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/room/:code" element={<RoomRouter />} />
             <Route path="*" element={<Navigate to="/" replace />} />

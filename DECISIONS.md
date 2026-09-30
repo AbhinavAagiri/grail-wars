@@ -390,9 +390,11 @@ Escape all go through the same `close`). When storage is unavailable — private
 windows, blocked cookies — both the read and the write fail quietly and the
 notice simply shows on every load, which is the safe direction to fall back in.
 
-**The version stamp.** `Early Access V0.1` is fixed to the bottom-right of the
+**The version stamp.** `Early Access V.0.5` is fixed to the bottom-right of the
 landing page only, at 10px, with `pointer-events: none` so a corner badge can
-never swallow a click.
+never swallow a click. The version is part of the shipped feature set, not the
+`package.json` version, so it is bumped by hand in two places — this stamp and
+the early-access notice's badge — and the two must be changed together.
 
 **The Debate Arena hold.** The mode stays in the type union, in
 `DEFAULT_SETTINGS`, in the server and in the bracket engine — only the lobby card
@@ -591,6 +593,45 @@ and spy trees are small), anime 250 except lancer (156), shielder (85), rider (8
 ruler (119). Pools top up from the other bucket and then the fallback list, so a class
 never comes up short of its 25.
 
+## 29. The version stamp, the draft's honesty note, and the Roadmap page
+
+**The stamp moves to v0.5.** The shipped early-access stamp reads
+`Early Access V.0.5` in both places it appears — the fixed bottom-right badge on
+the landing page and the badge on the first-load notice — because the feature set
+behind it (the scaling waterfall, class gating, AI Chooses) is what the number is
+counting. The version is a hand-maintained string, not read from `package.json`,
+so the two copies are the whole source of truth and are changed together.
+
+**The draft says why it is slow.** Under *"The host can begin once every Master
+has locked in"* the draft bar now carries a second, italic line: *"I apologize for
+any delay when selecting characters, I am still trying to optimize the drafter."*
+It lives inside the same `!allLocked` block as the hint it sits under, because
+both vanish once the draft is over and the summoning button takes the space. The
+note is a deliberate choice over silence: a pick that pauses while the Oracle
+checks it against the class otherwise reads as a hung UI, and a one-line apology
+is cheaper than a spinner on every card.
+
+**The Roadmap is a page, not a modal.** A fifth nav item, *Roadmap*, sits between
+*Credits* and *Contact* on every public page (`SiteNav`) and points at `/roadmap`.
+The page follows the Credits/Contact shape — `SiteNav`, a centred `hgd-heading`, then
+`hgd-card` sections — with three stages, **Shipped · v0.5**, **In progress** and
+**Planned**, each item a title plus a sentence of plain English. Like the credits,
+the content is hand-written rather than generated: it is a promise to the player,
+not a changelog, and it is kept in step with this document — the shipped stage
+mirrors §§26–28, and *in progress* carries the two known defects (the mid-draft
+rejoin dropping a Master to spectator, and the Debate Arena bracket that never
+produces a champion) plus the drafting-latency work the draft note apologises for.
+
+Coupling *In progress* to the bug list in `## Not done` is intentional: a roadmap
+that only lists features would need a second, hidden list for the things that are
+broken, and the page a player reads is the right place for both.
+
+**The nav fits five items.** The nav was tuned for four links inside a
+single-screen landing page (see §25), so the buttons drop to 11px with tighter
+padding below the `sm` breakpoint and both the row and the link group are allowed
+to wrap. At 360px the five links now fit one row; if a translation or a longer
+label pushes them over, they wrap to a second line rather than overflowing.
+
 ---
 
 ## Verification status
@@ -607,7 +648,7 @@ never comes up short of its 25.
 | `npm run smoke -- --mode DEBATE --players 7` | **fails** — "the debate bracket never produced a champion" (7 matches drawn, then it stalls). Reproduced on both Node 20 and Node 24, so it is not an upgrade artifact. The mode is unreachable from the lobby (disabled behind a "Coming soon" badge), so it is deferred rather than fixed |
 | `npm run smoke -- --rooms 12 --players 7` | passes, peak 15 rooms / 96 players, 84 sockets |
 | Name change | grep for the old name, its slug and its PascalCase form returns only this document (the two lines describing the rename); the served page reads `Grail Wars` in the title, `GRAIL WARS` on two lines as the home heading, `GW` and `Grail Wars` in the nav, and "Grail Wars is a fan-made party game" on Credits; the server logs `Grail Wars listening`; a full smoke run passes afterwards |
-| Single-screen home page | `/` reports no document scroll and no inner overflow at 1440×800, 1280×720, 1280×600, 1024×600, 414×896, 375×667 and 360×640, in both the *Create* and the *Join* state (`documentElement.scrollHeight === innerHeight`); nav, hero, play controls, mode cards, footer and the `Early Access V0.1` stamp are all inside the viewport at each size, and the stamp no longer collides with the attribution name on narrow screens. Other routes are untouched: `/credits` still yields a 1698px document with the roomier footer, `/contact` likewise, and `/room/ABCD` keeps its ordinary document scroll at 320×568 with nothing clipped (its container's `scrollHeight` equals its `clientHeight`) |
+| Single-screen home page | `/` reports no document scroll and no inner overflow at 1440×800, 1280×720, 1280×600, 1024×600, 414×896, 375×667 and 360×640, in both the *Create* and the *Join* state (`documentElement.scrollHeight === innerHeight`); nav, hero, play controls, mode cards, footer and the `Early Access V.0.5` stamp are all inside the viewport at each size, and the stamp no longer collides with the attribution name on narrow screens. Other routes are untouched: `/credits` still yields a 1698px document with the roomier footer, `/contact` likewise, and `/room/ABCD` keeps its ordinary document scroll at 320×568 with nothing clipped (its container's `scrollHeight` equals its `clientHeight`) |
 | Early-access UI | notice appears on the first load of a session (`z-60`, ending in "click anywhere to close"), is dismissed by a click on the card, a click on the backdrop corner and by Escape — all of which write `hgd:early-access-ack` to `sessionStorage` — and then stays hidden across a reload of both `/` and `/room/JNUA`; clearing session storage (or a new tab) brings it back; landing stamp renders fixed at bottom-right (8px/12px, 10px, `pointer-events: none`); in the lobby the War card is selectable with the `Recommended` badge while the Debate card reports `disabled`, `aria-disabled`, `opacity: .6`, `cursor: not-allowed` and "Coming soon", and clicking it leaves the War settings panel in place |
 | Browser walkthrough | home / credits / contact render; exactly one attribution footer per route (home, credits, contact and a room URL), with the credit linking out to abhinavaagiri.com without an underline; the nav is translucent; all six credit-page logos load from `/brands`; the narration dropdown lists three styles; class toggles persist across two clients; "Let Players Choose" offers three cities and the choice sticks; draft shows one card per enabled class with a working info popup; a VS Battles pick renders real artwork rather than an initials avatar; feedback form posts and logs |
 | `npm run oracle` | 9/9 within expectation against live VS Battles pages |
@@ -622,6 +663,8 @@ never comes up short of its 25.
 | Roster regeneration | Wikidata figure check keeps 4,781/12,058 candidates; the regenerated rosters contain none of the flagged modern figures (heads of state, a serial killer, a suicide bomber, a war criminal, living athletes, non-persons such as *Achilles' heel* — all present in the previous lists' audit set) |
 | Browser walkthrough (AI Chooses) | fresh room: toggle Off by default with the pool select disabled; On enables it; all three pool values round-trip; every enabled class offers *CHOOSE FROM 25* and the chooser lists 25 mixed-roster cards; a picked card lands on the board; both Masters filled 7/7, locked in, summoned and reached Power Review — Cecilia Alcott **7-C high**, Gustav Steinhauer **9-B high** — and the war started (Budapest, both Servants alive) |
 | `npm run smoke -- --players 5 --days 5` against the production server, after roster regeneration | passes — 5 Servants drafted, 4 deaths, one winner, 44 events, no unresolved tokens |
+| Version stamp and the draft note | a search for `V0.1` / `V0.1` across `client/src`, `server/src`, `shared/src` and this document returns nothing; the served landing page reads `Early Access V.0.5` fixed at the bottom-right and the first-load notice badge reads `Early Access · V.0.5`; a live two-Master draft renders *"I apologize for any delay when selecting characters, I am still trying to optimize the drafter."* italic, one size down, directly under *"The host can begin once every Master has locked in."* |
+| Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`, and `/roadmap` renders three stages — **Shipped · v0.5**, **In progress**, **Planned** — with 14 cards and a link back to `/contact`; the five links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state, with the join state's 7px of content overflow absorbed by the inner scroll column rather than the document |
 
 ## Not done
 

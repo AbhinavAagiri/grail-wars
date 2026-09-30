@@ -232,7 +232,14 @@ export default function Draft() {
               Begin Summoning
             </button>
           )}
-          {!allLocked && <p className="text-[11px] text-muted">The host can begin once every Master has locked in.</p>}
+          {!allLocked && (
+            <p className="text-[11px] text-muted">
+              The host can begin once every Master has locked in.
+              <span className="mt-0.5 block text-[10.5px] italic text-muted">
+                I apologize for any delay when selecting characters, I am still trying to optimize the drafter.
+              </span>
+            </p>
+          )}
         </div>
       </div>
 
