@@ -607,6 +607,9 @@ has locked in"* the draft bar now carries a second, italic line: *"I apologize f
 any delay when selecting characters, I am still trying to optimize the drafter."*
 It lives inside the same `!allLocked` block as the hint it sits under, because
 both vanish once the draft is over and the summoning button takes the space. The
+pair is centred under the *Lock In* / *Begin Summoning* buttons with a
+`max-w-md` measure and `text-wrap: pretty`, so the draft bar reads as one column
+rather than a left-hugging paragraph under a centred button. The
 note is a deliberate choice over silence: a pick that pauses while the Oracle
 checks it against the class otherwise reads as a hung UI, and a one-line apology
 is cheaper than a spinner on every card.
@@ -663,7 +666,7 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | Roster regeneration | Wikidata figure check keeps 4,781/12,058 candidates; the regenerated rosters contain none of the flagged modern figures (heads of state, a serial killer, a suicide bomber, a war criminal, living athletes, non-persons such as *Achilles' heel* — all present in the previous lists' audit set) |
 | Browser walkthrough (AI Chooses) | fresh room: toggle Off by default with the pool select disabled; On enables it; all three pool values round-trip; every enabled class offers *CHOOSE FROM 25* and the chooser lists 25 mixed-roster cards; a picked card lands on the board; both Masters filled 7/7, locked in, summoned and reached Power Review — Cecilia Alcott **7-C high**, Gustav Steinhauer **9-B high** — and the war started (Budapest, both Servants alive) |
 | `npm run smoke -- --players 5 --days 5` against the production server, after roster regeneration | passes — 5 Servants drafted, 4 deaths, one winner, 44 events, no unresolved tokens |
-| Version stamp and the draft note | a search for `V0.1` / `V0.1` across `client/src`, `server/src`, `shared/src` and this document returns nothing; the served landing page reads `Early Access V.0.5` fixed at the bottom-right and the first-load notice badge reads `Early Access · V.0.5`; a live two-Master draft renders *"I apologize for any delay when selecting characters, I am still trying to optimize the drafter."* italic, one size down, directly under *"The host can begin once every Master has locked in."* |
+| Version stamp and the draft note | a search for `V0.1` / `V0.1` across `client/src`, `server/src`, `shared/src` and this document returns nothing; the served landing page reads `Early Access V.0.5` fixed at the bottom-right and the first-load notice badge reads `Early Access · V.0.5`; a live two-Master draft renders *"I apologize for any delay when selecting characters, I am still trying to optimize the drafter."* italic, one size down, directly under *"The host can begin once every Master has locked in."*; both are centred on the buttons' axis at 1093px and 375px (the note's box centre equals the *Begin Summoning* button's centre), wrapping to two balanced lines at the narrow width with no horizontal overflow |
 | Roadmap page and the five-item nav | the nav reads `GW / PLAY / CREDITS / ROADMAP / CONTACT` in that order on `/`, `/roadmap`, `/credits` and `/contact`, and `/roadmap` renders three stages — **Shipped · v0.5**, **In progress**, **Planned** — with 14 cards and a link back to `/contact`; the five links share one row at 360px (every link's `top` is equal) and `/` still reports `documentElement.scrollHeight === innerHeight` at 1440×800 and 360×640 in both the create and the join state, with the join state's 7px of content overflow absorbed by the inner scroll column rather than the document |
 
 ## Not done

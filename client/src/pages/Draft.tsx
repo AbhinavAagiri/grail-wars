@@ -233,7 +233,9 @@ export default function Draft() {
             </button>
           )}
           {!allLocked && (
-            <p className="text-[11px] text-muted">
+            // Centred under the buttons, and held to a readable measure so the
+            // two lines sit as a block rather than stretching the bar's width.
+            <p className="mt-1 max-w-md text-center text-pretty text-[11px] text-muted">
               The host can begin once every Master has locked in.
               <span className="mt-0.5 block text-[10.5px] italic text-muted">
                 I apologize for any delay when selecting characters, I am still trying to optimize the drafter.
