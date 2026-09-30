@@ -1,0 +1,7746 @@
+{
+  "saber": [
+    {
+      "name": "Guts",
+      "source": "Berserk"
+    },
+    {
+      "name": "Ichigo Kurosaki",
+      "source": "Bleach"
+    },
+    {
+      "name": "Roronoa Zoro",
+      "source": "One Piece"
+    },
+    {
+      "name": "Tanjiro Kamado",
+      "source": "Demon Slayer"
+    },
+    {
+      "name": "Kenshin Himura",
+      "source": "Rurouni Kenshin"
+    },
+    {
+      "name": "Gen Narumi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Arale Norimaki",
+      "source": "Dr. Slump"
+    },
+    {
+      "name": "Isao Shinomiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Hinata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gogeta",
+      "source": "Super Dragon Ball Heroes"
+    },
+    {
+      "name": "Dante",
+      "source": "Devil May Cry"
+    },
+    {
+      "name": "D",
+      "source": "Vampire Hunter D"
+    },
+    {
+      "name": "Iharu Furuhashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cid Kagenou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Inuyasha",
+      "source": "Character"
+    },
+    {
+      "name": "Ainz Ooal Gown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alovenus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Illness Magic User",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cecilus Segmunt",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aoi Kaguragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dowan Ha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ezio Auditore da Firenze",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haruichi Izumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyrus Albright",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alfyn Greengrass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Durandal",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Boruto Uzumaki",
+      "source": "Two Blue Vortex"
+    },
+    {
+      "name": "H'aanit",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erza Scarlet",
+      "source": "X793"
+    },
+    {
+      "name": "Chihiro Rokuhira",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dorugoramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haimura Moroha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Inglis Eucus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dark Schneider",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bayonetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ceris Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chronoa",
+      "source": "Dragon Ball Heroes"
+    },
+    {
+      "name": "Griffith",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Byakuya Kuchiki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Choi Yoon-seok",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fran",
+      "source": "Tensei Shitara Ken Deshita"
+    },
+    {
+      "name": "Akame",
+      "source": "Akame ga Kill!"
+    },
+    {
+      "name": "Bio Spark",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Flashy Flash",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gray Fullbuster",
+      "source": "X784 to X792"
+    },
+    {
+      "name": "Demon King",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Daruma",
+      "source": "Samurai 8"
+    },
+    {
+      "name": "Index Librorum Prohibitorum",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Acqua of The Back",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eren Yeager",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Black☆Star",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Boy",
+      "source": "Make the Exorcist Fall in Love"
+    },
+    {
+      "name": "Goemon Ishikawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arata Kasuga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ihwa",
+      "source": "Hero Killer"
+    },
+    {
+      "name": "Alita",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alucard",
+      "source": "Hellsing"
+    },
+    {
+      "name": "Gurren Lagann",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hachimaru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Friagne",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Child-Gil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apostles of God",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jeanne",
+      "source": "Bayonetta"
+    },
+    {
+      "name": "Aiba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Genichi Sojo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akemura Soga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aki Hayakawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Big Mom",
+      "source": "Charlotte Linlin"
+    },
+    {
+      "name": "Asuna",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haku",
+      "source": "Naruto"
+    },
+    {
+      "name": "Disaster",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gintoki Sakata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Agunimon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alpha",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Es",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Future Trunks",
+      "source": "Dragon Ball Z"
+    },
+    {
+      "name": "Hiroshi Miwa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Esdeath",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gerard Valkyrie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gabriel",
+      "source": "Toaru"
+    },
+    {
+      "name": "Apollomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gon Freecss",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Artoria Pendragon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "EMIYA",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edward Kenway",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fiamma of the Right",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cutie Honey",
+      "source": "TV"
+    },
+    {
+      "name": "Bardock",
+      "source": "Dragon Ball Heroes"
+    },
+    {
+      "name": "Delta",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Achilles",
+      "source": "Fate"
+    },
+    {
+      "name": "Hiromi Higuruma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fecor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daisuke Jigen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hafuri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hyakkimaru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Kamishiro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fianna Ray Ordesia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Giyu Tomioka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "BanchoLeomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grimmjow Jaegerjaquez",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diana Cavendish",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arthur Pendragon",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Dave Strider",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Blake Belladonna",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Drive Knight",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Coyote Starrk",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Kōgetsu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haru Glory",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hakuryuu",
+      "source": "Inazuma Eleven"
+    },
+    {
+      "name": "Execution Division Master",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guilmon",
+      "source": "Takato Matsuki"
+    },
+    {
+      "name": "Eugeo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alphamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aeos",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gin Ichimaru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gash Bell and Kiyomaru Takamine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arthur Boyle",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brook",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jessie Marcus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alpha Zero",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Akatsuki Zetsu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Inosuke Hashibira",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aramaki",
+      "source": "Ryokugyu"
+    },
+    {
+      "name": "Bambietta Basterbine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Farfetch'd",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gryphomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Amanda O'Neill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ghostmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cirno",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Heinkel Astrea",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Berta Mori Weiggert",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brunch",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apocalymon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chandler",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haunted",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Colorless Little Girl",
+      "source": "Blood Sign"
+    },
+    {
+      "name": "Jeanne d'Arc",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fear Cubrick",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "C.C.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Candice Catnipp",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Imperialdramon",
+      "source": "Digimon Adventure"
+    },
+    {
+      "name": "Diva",
+      "source": "Blood+"
+    },
+    {
+      "name": "Aaroniero Arruruerie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gyeong-soo Kim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hikone Ubuginu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gallantmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gecko Moria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jean Pierre Polnareff",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura",
+      "source": "Senran Kagura"
+    },
+    {
+      "name": "Clock Crack Chrome",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Enkidu",
+      "source": "Fate"
+    },
+    {
+      "name": "Crusch Karsten",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Heracles",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dracule Mihawk",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chi-Chi",
+      "source": "Dragon Ball"
+    },
+    {
+      "name": "Caim",
+      "source": "Drakengard"
+    },
+    {
+      "name": "Astolfo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fu Inubozaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alexia Midgar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chloe von Einzbern",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beatrice",
+      "source": "The Weakness of Beatrice the Level Cap Holy Swordswoman"
+    },
+    {
+      "name": "Apollonia Vaar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bell Cranel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chiron",
+      "source": "Fate"
+    },
+    {
+      "name": "Amakusa-Style Remix Church",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Allen Rodore",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Doryu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Balder",
+      "source": "Bayonetta"
+    },
+    {
+      "name": "Hendrickson",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hades",
+      "source": "Saint Seiya"
+    },
+    {
+      "name": "Heathcliff",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Huang Yueying",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Ibuki-douji",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Janemba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ellis Fahrengart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Izetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dante Zogratis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alibaba Saluja",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fortuna",
+      "source": "Spirit Circle"
+    },
+    {
+      "name": "Evankhell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hideto and Omegamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuka",
+      "source": "Senran Kagura"
+    },
+    {
+      "name": "Fate Averruncus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Androssi Zahard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fried Justine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daemon Spade",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iskandar",
+      "source": "Fate"
+    },
+    {
+      "name": "Donovan Baine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cleopatra",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Annie Leonhart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dark Cutie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Catherine the Great",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Enishi Yukishiro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elizabeth Liones",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Falcomon",
+      "source": "Ikuto Noguchi"
+    },
+    {
+      "name": "Hakuryuu Ren",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Genya Shinazugawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fraudrin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Godzilla",
+      "source": "Monster Warrior Godzilla"
+    },
+    {
+      "name": "Izuru Kira",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiei",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Artoria Pendragon Alter",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elisabeth Le Fanu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ikaruga",
+      "source": "Senran Kagura"
+    },
+    {
+      "name": "Jio Inzagi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Carissa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charlotte Roselei",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gabimaru the Hollow",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Goo Kim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haruka",
+      "source": "Hitoribocchi no Isekai Kouryaku"
+    },
+    {
+      "name": "Execution Division Apprentice",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Boichiro Yamato",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Adam Taurus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Celestial Spirit King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gawain",
+      "source": "Fate"
+    },
+    {
+      "name": "Anna Williams",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brunhild Eiktobel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iaian",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Christiane Friedrich",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gazoth Hell Beast",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cusack",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Clare",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fubuki Shirakami",
+      "source": "Yamato Phantasia"
+    },
+    {
+      "name": "Escavalier",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Feng Ying",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ikkaku Madarame",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charlotte Cracker",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iskandar's Shadow",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Armin Arlert",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ayato Amagiri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hyoudou Shinsuke",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bing Yun",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brain Unglaus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiiragi Seiichi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cang Mo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caerula Sanguis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Choe Neng Poww",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caesar Clown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grimm Fauzen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "El-Wang-Kid-Nichov-Rinho-Emon-III",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hayate Ayasaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Issho",
+      "source": "Fujitora"
+    },
+    {
+      "name": "Bertolt Hoover",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiroto Soga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Emerald Sustrai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chizome Akaguro",
+      "source": "Stain"
+    }
+  ],
+  "archer": [
+    {
+      "name": "Kino",
+      "source": "Kino's Journey"
+    },
+    {
+      "name": "Usopp",
+      "source": "One Piece"
+    },
+    {
+      "name": "Android 18",
+      "source": "Dragon Ball"
+    },
+    {
+      "name": "Yoko Littner",
+      "source": "Gurren Lagann"
+    },
+    {
+      "name": "Riza Hawkeye",
+      "source": "Fullmetal Alchemist"
+    },
+    {
+      "name": "Gen Narumi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kafka Hibino",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Arale Norimaki",
+      "source": "Dr. Slump"
+    },
+    {
+      "name": "Isao Shinomiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Nagumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Hinata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dante",
+      "source": "Devil May Cry"
+    },
+    {
+      "name": "Iharu Furuhashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ainz Ooal Gown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hashirama Senju",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sibyl",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Underworld Lord",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aoi Kaguragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dowan Ha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ezio Auditore da Firenze",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haruichi Izumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Twenty-Fifth Baam",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyrus Albright",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gruagach",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alfyn Greengrass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Therion",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Durandal",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Primrose Azelhart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ophilia Clement",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Olberic Eisenburg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tressa Colzione",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Accelerator",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "H'aanit",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Criminal AO",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Monaca Towa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Atsuko Kagari",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bayonetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alita",
+      "source": "Last Order"
+    },
+    {
+      "name": "Kafma Irulux",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golgo 13",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gray Fullbuster",
+      "source": "X784 to X792"
+    },
+    {
+      "name": "Daruma",
+      "source": "Samurai 8"
+    },
+    {
+      "name": "Guts",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bloody Dancer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Akemi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arata Kasuga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crash Bandicoot",
+      "source": "Character"
+    },
+    {
+      "name": "Todd Fang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuka Langley Sohryu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shirou Emiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alucard",
+      "source": "Hellsing"
+    },
+    {
+      "name": "Gurren Lagann",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lilikiska Sweetmare",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Friagne",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jeanne",
+      "source": "Bayonetta"
+    },
+    {
+      "name": "Aiba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aki Hayakawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charlotte Katakuri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Askin Nakk Le Vaar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akuto Sai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Johngalli A.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angewomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haku",
+      "source": "Naruto"
+    },
+    {
+      "name": "Tatsuya Shiba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hasukawa Yumi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ruby Rose",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shaula",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Athabaskan Rio Grande",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Billy Alfred",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haru Okumura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fūko Izumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eirin Yagokoro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "EMIYA",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edward Kenway",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cutie Honey",
+      "source": "TV"
+    },
+    {
+      "name": "Darkdramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Doctor",
+      "source": "Akudama Drive"
+    },
+    {
+      "name": "Korone",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beta",
+      "source": "Inazuma Eleven"
+    },
+    {
+      "name": "Dr. Robotnik",
+      "source": "OVA"
+    },
+    {
+      "name": "Chun-Li",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daisuke Jigen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Heihachi Mishima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fujiko Mine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Viral",
+      "source": "Tengen Toppa Gurren Lagann"
+    },
+    {
+      "name": "Saya Kisaragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Kamishiro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saya Otonashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kamui",
+      "source": "The Silver Case"
+    },
+    {
+      "name": "Douji Kodama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Death the Kid",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Najimi Ajimu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mimori Togo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Funny Valentine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ijin Yu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Blake Belladonna",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jade Harley",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Coyote Starrk",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Decidueye",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hongou Hina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dandy",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hayato Gokudera",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cutthroat",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Darcia",
+      "source": "The Death Mage that doesn't want a fourth time"
+    },
+    {
+      "name": "Gowther",
+      "source": "Doll"
+    },
+    {
+      "name": "Execution Division Master",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baku Madarame",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lee Ja-in",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eustass Kid",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Motoko Kusanagi",
+      "source": "SAC"
+    },
+    {
+      "name": "Greninja",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alpha Zero",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Atalanta",
+      "source": "Fate"
+    },
+    {
+      "name": "Alcides",
+      "source": "Fate"
+    },
+    {
+      "name": "Aureolus Izzard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bazz-B",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Colorless Little Girl",
+      "source": "Blood Sign"
+    },
+    {
+      "name": "Arle Nadja",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Giselle Gewelle",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gun Devil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "C.C.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Subaru Seraphca",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sinon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lily Shiraishi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Candice Catnipp",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Imperialdramon",
+      "source": "Digimon Adventure"
+    },
+    {
+      "name": "Gyeong-soo Kim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Johan Liebert",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hikone Ubuginu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cross Marian",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haruko Haruhara",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rinslet Laurenfrost",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Konoe Yuuto",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Byeon Hogil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Craig Houjou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Coco",
+      "source": "Toriko"
+    },
+    {
+      "name": "Chloe von Einzbern",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Contessa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apollonia Vaar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kiritsugu Emiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chiron",
+      "source": "Fate"
+    },
+    {
+      "name": "Amakusa-Style Remix Church",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fox McCloud",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aigis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Irina Jelavić",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Impmon",
+      "source": "Ai and Mako"
+    },
+    {
+      "name": "Izetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Émilie du Châtelet",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fortuna",
+      "source": "Spirit Circle"
+    },
+    {
+      "name": "Chris Yukine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hideto and Omegamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baron Gallic",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Doraemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baek Do-Chan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mokutaro Shiroyabu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ao",
+      "source": "Naruto"
+    },
+    {
+      "name": "Dark Cutie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ciel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Catherine the Great",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Kaname Suou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Genya Shinazugawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Embryo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bonnie Parker",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Arash",
+      "source": "Fate"
+    },
+    {
+      "name": "Aura Bella Fiora",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Biondetta Shiroyama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Airi Anri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elisa Celjska",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sagittarius of the Archer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sisters",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Miyako Shiina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Khel Hellam",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Constanze Amalie von Braunschbank-Albrechtsberger",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Execution Division Apprentice",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beelzemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Adam Taurus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chisato Itsushima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Conan Edogawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hayato Kurogane",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anna Williams",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chisato Nishikigi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apollo",
+      "source": "Record of Ragnarok"
+    },
+    {
+      "name": "Eleanor Leywin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lyle Walt",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mjölnir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hookmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tooi Kurosu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Melville",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caesar Clown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "El-Wang-Kid-Nichov-Rinho-Emon-III",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fox Alistair",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hayate Ayasaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Usagi Saionji",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Coco Adel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Emerald Sustrai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Barbatos Bachiko",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Emporio Alniño",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mister X",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kozakura Sobiki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Claire Stanfield",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shin Sun-Il",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guido Mista",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "David Martinez",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bars Robin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Winston Churchill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nirvelphany",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gol D. Roger",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hishigami Yuu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hamazura Shiage",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaina Tsutsumi",
+      "source": "Lady Nagant"
+    },
+    {
+      "name": "Elodie",
+      "source": "Long Live the Queen"
+    },
+    {
+      "name": "Euryale",
+      "source": "Fate"
+    },
+    {
+      "name": "Bulma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ginjiro Nezu",
+      "source": "Summer Time Rendering"
+    },
+    {
+      "name": "Blueno",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Calamity Mary",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ureapaddy Exica",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ichiro Inuyashiki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kyouka Omotesandou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akira",
+      "source": "The Silver Case"
+    },
+    {
+      "name": "Blackmore",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fu Yu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hishigami Mai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Barista",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Combat Agent Six",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aika Sumeragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bara Hanasawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dorothy",
+      "source": "Killer Peter"
+    },
+    {
+      "name": "Gladius",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bo Ya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tot Pop",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyborg 009",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lo Po Bia Lepavuv",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Falco Lombardi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Capone Bege",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haruo Sakaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiro Shishigami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilver",
+      "source": "Devil May Cry"
+    },
+    {
+      "name": "Han Jeong-Ui",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bisca Connell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bai Yi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jordan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Feitan Portor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuka Otori",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiruko Kagetane",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Stephanie Gorgeouspalace",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ikaruga Suginami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alice Bivorio Basskreigh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erika",
+      "source": "Pokémon"
+    }
+  ],
+  "lancer": [
+    {
+      "name": "Leone",
+      "source": "Akame ga Kill"
+    },
+    {
+      "name": "Shinra Kusakabe",
+      "source": "Fire Force"
+    },
+    {
+      "name": "Zhongli",
+      "source": "Genshin Impact"
+    },
+    {
+      "name": "Rangiku",
+      "source": "Bleach"
+    },
+    {
+      "name": "Pyrrha Nikos",
+      "source": "RWBY"
+    },
+    {
+      "name": "Neji Hyuga",
+      "source": "Naruto"
+    },
+    {
+      "name": "Spear of Longinus",
+      "source": "Neon Genesis Evangelion"
+    },
+    {
+      "name": "Xu Jingming",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Ainz Ooal Gown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Underworld Lord",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ezio Auditore da Firenze",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyrus Albright",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alfyn Greengrass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Therion",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Primrose Azelhart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ophilia Clement",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Olberic Eisenburg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tressa Colzione",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "H'aanit",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erza Scarlet",
+      "source": "X793"
+    },
+    {
+      "name": "Waltraute",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golgo 13",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Reject Sky",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arfoire",
+      "source": "Sisters VS Sisters"
+    },
+    {
+      "name": "Lo Po Bia Traumerei",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Child-Gil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Karna",
+      "source": "Fate"
+    },
+    {
+      "name": "Satou",
+      "source": "Death March kara Hajimaru Isekai Kyousoukyoku"
+    },
+    {
+      "name": "Charlotte Katakuri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Othinus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Yu Ilhan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sonoko Nogi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cú Chulainn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ichibē Hyōsube",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hata no Kokoro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hidan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Achilles",
+      "source": "Fate"
+    },
+    {
+      "name": "Shufflin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Odin",
+      "source": "Waltraute"
+    },
+    {
+      "name": "Khun Maschenny Zahard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hinoka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Vlad III",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guilmon",
+      "source": "Takato Matsuki"
+    },
+    {
+      "name": "Nia Teppelin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Snow White",
+      "source": "Magical Girl Raising Project"
+    },
+    {
+      "name": "Koon Eduan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shufflin II",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Colorless Little Girl",
+      "source": "Blood Sign"
+    },
+    {
+      "name": "Koon Aguero Agnis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gallantmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaname Sudo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Enkidu",
+      "source": "Fate"
+    },
+    {
+      "name": "Konoe Yuuto",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caim",
+      "source": "Drakengard"
+    },
+    {
+      "name": "Coco",
+      "source": "Toriko"
+    },
+    {
+      "name": "Chiron",
+      "source": "Fate"
+    },
+    {
+      "name": "Amakusa-Style Remix Church",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Balder",
+      "source": "Bayonetta"
+    },
+    {
+      "name": "Gloxinia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Wrath King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Divine-class Materials",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brynhildr",
+      "source": "Fate"
+    },
+    {
+      "name": "Ellis Fahrengart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jet Jaguar",
+      "source": "Godzilla Singular Point"
+    },
+    {
+      "name": "Izetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Evankhell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kittan Bachika",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lethe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iskandar",
+      "source": "Fate"
+    },
+    {
+      "name": "Dark Cutie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Galand",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Elizabeth Bathory",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Koon Ran",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hakuryuu Ren",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jio Inzagi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rak Wraithraiser",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Swim Swim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brunhild Eiktobel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hades",
+      "source": "Record of Ragnarok"
+    },
+    {
+      "name": "Seiso Hazakura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Clantail",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fubuki Shirakami",
+      "source": "Yamato Phantasia"
+    },
+    {
+      "name": "Tooi Kurosu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ikkaku Madarame",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diarmuid Ua Duibhne",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Melville",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elsie Crimson",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Itsuwa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shin Sun-Il",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cat Eyed Boy",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Craniamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dust",
+      "source": "Konosuba"
+    },
+    {
+      "name": "Armsmaster",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elodie",
+      "source": "Long Live the Queen"
+    },
+    {
+      "name": "Lo Po Bia Elaine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dabura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ellasone",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kuon Glamred Stroheim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shi Jin",
+      "source": "Maji De Watashi Ni Koishinasai!"
+    },
+    {
+      "name": "Hosuke Sharaku",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eris",
+      "source": "Saint Seiya"
+    },
+    {
+      "name": "Phoenix Wright",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lessar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hamrio Musica",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Howzer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Naryun",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bayloupe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "An Incarnation of the Radius",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cynthia Exment",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Novick",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Garm",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caeda",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Poong Sae-Young",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kihara Noukan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kai",
+      "source": "Teogonia"
+    },
+    {
+      "name": "Maximilian Pendragon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erza Knightwalker",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akryung",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Luminaris Saint Leisched",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gaius Julius Caesar",
+      "source": "Petals of Reincarnation"
+    },
+    {
+      "name": "Legion",
+      "source": "Chronicle Legion"
+    },
+    {
+      "name": "Knights of England",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Don Krieg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lancis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Miles Edgeworth",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bulat",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Floris",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gerhilde",
+      "source": "Waltraute"
+    },
+    {
+      "name": "Rossweisse",
+      "source": "Waltraute"
+    },
+    {
+      "name": "Koon Hachuling",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lily Hoegarden",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Llyr",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angol Mois",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hector of Troy",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shimonozo Arisu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Catarina Devon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Galacta Knight",
+      "source": "Kirby of the Stars! Crazy Pupupu Hour!"
+    },
+    {
+      "name": "Gyu Jong-sin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Noda",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aria Lockward",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bayon",
+      "source": "The Promised Neverland"
+    },
+    {
+      "name": "Arden",
+      "source": "Fire Emblem"
+    },
+    {
+      "name": "Crusader",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hyoga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jerome",
+      "source": "Altina the Sword Princess"
+    },
+    {
+      "name": "Hideki Hinata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dan Straight",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hak",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Astolfo Granatum",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bora",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Leysritt",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Den",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Balsa Yonsa",
+      "source": "Anime / Manga"
+    }
+  ],
+  "rider": [
+    {
+      "name": "Aang",
+      "source": "Avatar: The Last Airbender"
+    },
+    {
+      "name": "Wang Ling",
+      "source": "Anime"
+    },
+    {
+      "name": "Nausicaa",
+      "source": "Nausicaa of the Valley of the Wind"
+    },
+    {
+      "name": "Eren Yeager",
+      "source": "Attack on Titan"
+    },
+    {
+      "name": "Reiner Braun",
+      "source": "Attack on Titan"
+    },
+    {
+      "name": "Hajime Hinata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Monaca Towa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hyper Blossom",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golgo 13",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Simon the Digger",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crash Bandicoot",
+      "source": "Character"
+    },
+    {
+      "name": "Asuka Langley Sohryu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anti-Spiral",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gurren Lagann",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fugil Arcadia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lux Arcadia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Future Trunks",
+      "source": "Dragon Ball Z"
+    },
+    {
+      "name": "Franky",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cutie Honey",
+      "source": "TV"
+    },
+    {
+      "name": "Dr. Robotnik",
+      "source": "OVA"
+    },
+    {
+      "name": "Daisuke Jigen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fujiko Mine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Viral",
+      "source": "Tengen Toppa Gurren Lagann"
+    },
+    {
+      "name": "Kirby",
+      "source": "Kirby of the Stars - Mie Takase's novels"
+    },
+    {
+      "name": "Homura Kōgetsu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dandy",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nia Teppelin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lordgenome",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kallen Kōzuki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "C.C.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Singlen Shelbrit",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jung Freud",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fox McCloud",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kittan Bachika",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Constanze Amalie von Braunschbank-Albrechtsberger",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lisesharte Atismata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Philuffy Aingram",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Magialca Zen Vanfrick",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ichika Orimura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Magolor",
+      "source": "Kirby of the Stars - Mie Takase's novels"
+    },
+    {
+      "name": "Celistia Ralgris",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Krulcifer Einfolk",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aika Sumeragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hayes Vi Arcadia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyborg 009",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Falco Lombardi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haruo Sakaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Koichiro Ohta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aeril Vi Arcadia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "General Blue",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mishis V Xfer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Greifer Nest",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Silvercross Alpha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cecilia Alcott",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Konami Man",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rosa Granhide",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mel Gizalut",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Houki Shinonono",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Skuld Silent-Third",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kamina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "El Fajura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dilwy Froias",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "La Krushe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alma Kilzrake",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Oh ho ho",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaneo Takarada",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aikuro Mikisugi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Soffice Xfer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Balzeride Kreutzer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Van Fanel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mariydi Whitewitch",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Blood Falcon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Milinda Brantini",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Drakkhen Megistri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ney Louches",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Triad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anti-Skill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Amy Rose",
+      "source": "Sonic X"
+    },
+    {
+      "name": "Putana Highball",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lu Caria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Re Plica",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Honey",
+      "source": "Space Dandy"
+    },
+    {
+      "name": "Dragonoid Destroyer",
+      "source": "Bakugan"
+    },
+    {
+      "name": "Catherine Blueangel",
+      "source": "Anime / Manga"
+    }
+  ],
+  "caster": [
+    {
+      "name": "Ainz Ooal Gown",
+      "source": "Overlord"
+    },
+    {
+      "name": "Erza Scarlet",
+      "source": "Fairy Tail"
+    },
+    {
+      "name": "Gojo Satoru",
+      "source": "Jujutsu Kaisen"
+    },
+    {
+      "name": "Megumin",
+      "source": "KonoSuba"
+    },
+    {
+      "name": "Li Qiye",
+      "source": "Trinity Epoch"
+    },
+    {
+      "name": "Anos Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "The Princess",
+      "source": "Slay the Princess"
+    },
+    {
+      "name": "Arale Norimaki",
+      "source": "Dr. Slump"
+    },
+    {
+      "name": "Klein Moretti",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Hinata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shin Reglia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dante",
+      "source": "Devil May Cry"
+    },
+    {
+      "name": "D",
+      "source": "Vampire Hunter D"
+    },
+    {
+      "name": "Cid Kagenou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crimson-Masked Saiyan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Master",
+      "source": "Tensei Shitara Ken Deshita"
+    },
+    {
+      "name": "Chun Yeowun",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alovenus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Avos Dilhevia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arceus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaori Shirasaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sunless",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anahem",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ard Meteor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyrus Albright",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Otto Apocalypse",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aleister Crowley",
+      "source": "Toaru Majutsu no Index"
+    },
+    {
+      "name": "Alfyn Greengrass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Melheis Boran",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Abyss",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Durandal",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Accelerator",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Han Jee-Han",
+      "source": "War for The Origin"
+    },
+    {
+      "name": "Cell",
+      "source": "Toei"
+    },
+    {
+      "name": "Welt Yang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chun Ma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aisha Necron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Linka Theorness",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nikola Tesla",
+      "source": "Ourai no Gahkthun"
+    },
+    {
+      "name": "Gerad Azlema",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dorugoramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alva Avan Edison",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Giorno Giovanna",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Atsuko Kagari",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dark Schneider",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bayonetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golden King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ceris Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arcana",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Disaster Rogue",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Roswaal L Mathers",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chronoa",
+      "source": "Dragon Ball Heroes"
+    },
+    {
+      "name": "Griffith",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chef Kawasaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Choi Yoon-seok",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chaos",
+      "source": "Sailor Moon"
+    },
+    {
+      "name": "Jotaro Kujo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Coronzon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fran",
+      "source": "Tensei Shitara Ken Deshita"
+    },
+    {
+      "name": "Fumi Kanno",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daichi Shijima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lukas Trowman",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Airi Ban",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bio Spark",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anguished One",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kang Han Soo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Benetnash",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arfoire",
+      "source": "Sisters VS Sisters"
+    },
+    {
+      "name": "Demon King",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Dio Brando",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anastasia Blast",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "\"Aldebaran\"",
+      "source": "Alter"
+    },
+    {
+      "name": "Elicia Luxverg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kihara Yuiitsu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Allen Walker",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Acqua of The Back",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kabuto Yakushi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arata Kasuga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Demiurge",
+      "source": "11eyes-Tsumi to Batsu to Aganai no Shoujo"
+    },
+    {
+      "name": "Eri Nakamura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Welt Joyce",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arakiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alice Margatroid",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apostles of God",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "August",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Satou",
+      "source": "Death March kara Hajimaru Isekai Kyousoukyoku"
+    },
+    {
+      "name": "Freid Bagwa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuna",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Claire Rouge",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akuto Sai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angewomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Othinus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rubia Elstein",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Agunimon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Yu Ilhan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eugard Vollachia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Athabaskan Rio Grande",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Escanor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alpha",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Aya Shameimaru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Huldra",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Evangeline A.K. McDowell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Relius Clover",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fukurou Tsurubami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Adell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cú Chulainn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aradia",
+      "source": "Toaru"
+    },
+    {
+      "name": "Gabriel",
+      "source": "Toaru"
+    },
+    {
+      "name": "Azumarill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eirin Yagokoro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charlotte Corday",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Gajeel Redfox",
+      "source": "X784 to X792"
+    },
+    {
+      "name": "Artoria Pendragon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "EMIYA",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ashiya Douman",
+      "source": "Fate"
+    },
+    {
+      "name": "Fiamma of the Right",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cutie Honey",
+      "source": "TV"
+    },
+    {
+      "name": "Beelzebub",
+      "source": "Make the Exorcist Fall in Love"
+    },
+    {
+      "name": "Darkdramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nephthys",
+      "source": "Toaru Majutsu no Index"
+    },
+    {
+      "name": "Delta",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Achilles",
+      "source": "Fate"
+    },
+    {
+      "name": "Eleonore Bianca",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arcueid Brunestud",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aiko Hatayama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anthrax",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alvaheit",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Misao Kusakabe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Byakuren Hijiri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dr. Robotnik",
+      "source": "OVA"
+    },
+    {
+      "name": "Cha Yeon-Woo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Legion",
+      "source": "The Death Mage that doesn't want a fourth time"
+    },
+    {
+      "name": "Angra Mainyu",
+      "source": "Fate"
+    },
+    {
+      "name": "Flandre Scarlet",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Antylamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Althena",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daewi Han",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fujiko Mine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Kamishiro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fianna Ray Ordesia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Benben Tsukumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Byouki User",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Death the Kid",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Garlic Jr.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elfman Strauss",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gengar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cana Alberona",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diana Cavendish",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bercouli",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gas",
+      "source": "Dragon Ball"
+    },
+    {
+      "name": "Vlad III",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Algomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Darcia",
+      "source": "The Death Mage that doesn't want a fourth time"
+    },
+    {
+      "name": "Sucy Manbavaran",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eugeo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Celica A. Mercury",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arakune",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kelvin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alphamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Abyss Trinity",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Felmenia Stingray",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aeos",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gash Bell and Kiyomaru Takamine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shalltear Bloodfallen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Leonis Death Magnus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Florence Ameghino Nightingale",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lordgenome",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alpha Zero",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Bakuda",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Michael Roa Valdamjong",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Capella Emerada Lugnica",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eiki Shiki, Yamaxanadu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beta",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Ialda Baoth",
+      "source": "Mahou Sensei Negima!"
+    },
+    {
+      "name": "The High Priest",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Spinner Superior",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alice Zuberg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Frieren",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Father",
+      "source": "Fullmetal Alchemist"
+    },
+    {
+      "name": "Acnologia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Wendy",
+      "source": "Honkai Impact"
+    },
+    {
+      "name": "Amanda O'Neill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ghostmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Croix Meridies",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ban Midou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aureolus Izzard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Estarossa",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Apocalymon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chandler",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haunted",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Naoto Kurogane",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angel",
+      "source": "Sorano Agria"
+    },
+    {
+      "name": "Epsilon",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Arle Nadja",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Giselle Gewelle",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Balleroy Temeglyph",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Night of Wallachia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arkadimon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beetlemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sato Yuu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bang Shishigami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablo",
+      "source": "Isekai Maou to Shoukan Shoujo no Dorei Majutsu"
+    },
+    {
+      "name": "Gallantmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gecko Moria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Balancer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cross Marian",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hibiki Tachibana",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Avicebron",
+      "source": "Fate"
+    },
+    {
+      "name": "Crusch Karsten",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eight Million Gods",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edward Elric",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "The Sage",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Eucliwood Hellscythe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Konoe Yuuto",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Goddess of Dawn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Han Sung-Hyun",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gaomon",
+      "source": "Thoma H. Norstein"
+    },
+    {
+      "name": "Angemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Agatha Christie",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Chimera",
+      "source": "Toaru"
+    },
+    {
+      "name": "Elisabeth",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Carl Clover",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edea Florence",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alexia Midgar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chloe von Einzbern",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Proserpina",
+      "source": "Toaru"
+    },
+    {
+      "name": "Earth Ouroboros",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kischur Zelretch Schweinorg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beatrice",
+      "source": "The Weakness of Beatrice the Level Cap Holy Swordswoman"
+    },
+    {
+      "name": "Gahard D. Hoelscher",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gamma",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Fujiwara no Mokou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apollonia Vaar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bell Cranel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Azazel Ameri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Amakusa-Style Remix Church",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aiwass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aladdin",
+      "source": "Magi"
+    },
+    {
+      "name": "Aigis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Doryu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lilith Asami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fujiko Etou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Felix Argyle",
+      "source": "Anime / Manga"
+    }
+  ],
+  "assassin": [
+    {
+      "name": "Killua Zoldyck",
+      "source": "Hunter x Hunter"
+    },
+    {
+      "name": "Hisoka Morow",
+      "source": "Hunter x Hunter"
+    },
+    {
+      "name": "Zabuza Momochi",
+      "source": "Naruto"
+    },
+    {
+      "name": "Sasuke Uchiha",
+      "source": "Naruto"
+    },
+    {
+      "name": "Yor Forger",
+      "source": "Spy x Family"
+    },
+    {
+      "name": "Hagoromo Ōtsutsuki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anos Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Itachi Uchiha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Han Jee-Han",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Nagumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Klein Moretti",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Hinata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "D",
+      "source": "Vampire Hunter D"
+    },
+    {
+      "name": "Ainz Ooal Gown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jiraiya",
+      "source": "Naruto"
+    },
+    {
+      "name": "Master",
+      "source": "Tensei Shitara Ken Deshita"
+    },
+    {
+      "name": "Hashirama Senju",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kamijou Touma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Avos Dilhevia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arceus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kakashi Hatake",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ezio Auditore da Firenze",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Blanc",
+      "source": "Hyperdimension Neptunia"
+    },
+    {
+      "name": "Haruichi Izumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Halibel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cyrus Albright",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Otto Apocalypse",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alfyn Greengrass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Melheis Boran",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lye Batenkaitos",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ophilia Clement",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Olberic Eisenburg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Boruto Uzumaki",
+      "source": "Two Blue Vortex"
+    },
+    {
+      "name": "H'aanit",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Junko Enoshima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chun Ma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aisha Necron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Linka Theorness",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Monaca Towa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Desuhiko Thunderbolt",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kousuke Endou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gerad Azlema",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dorugoramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kang Han Soo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Neo Hargraves",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Atsuko Kagari",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dark Schneider",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shizuku Yaegashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bayonetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grid",
+      "source": "Overgeared"
+    },
+    {
+      "name": "Ceris Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saiki Kazu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Choi Yoon-seok",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gaara",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chaos",
+      "source": "Sailor Moon"
+    },
+    {
+      "name": "Alita",
+      "source": "Last Order"
+    },
+    {
+      "name": "Akame",
+      "source": "Akame ga Kill!"
+    },
+    {
+      "name": "Daichi Shijima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cooler",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Io Nitta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lukas Trowman",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kakuzu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Airi Ban",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bio Spark",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anguished One",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golgo 13",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hinako Kujou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Flashy Flash",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arfoire",
+      "source": "Sisters VS Sisters"
+    },
+    {
+      "name": "Demon King",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Donquixote Doflamingo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hououmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lloyd de Saloum",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Misha Necron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sid Clouds",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "BlackWarGreymon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dam Wang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Allen Walker",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "A",
+      "source": "Fourth Raikage"
+    },
+    {
+      "name": "Kabuto Yakushi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Black☆Star",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Goemon Ishikawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lo Po Bia Traumerei",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ledriano Azeschen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mononobe Yuu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alice Margatroid",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kamito Kazehaya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jeanne",
+      "source": "Bayonetta"
+    },
+    {
+      "name": "Aiba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Frieza",
+      "source": "Toei"
+    },
+    {
+      "name": "Elsa Granhiert",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Medea",
+      "source": "Fate"
+    },
+    {
+      "name": "Askin Nakk Le Vaar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angewomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haku",
+      "source": "Naruto"
+    },
+    {
+      "name": "Hazama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hasukawa Yumi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Yae Tenzen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Danzō Shimura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaede Kayano",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Es",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Esdeath",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hanzō",
+      "source": "Naruto"
+    },
+    {
+      "name": "Eirin Yagokoro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apollomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charlotte Corday",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Hiruzen Sarutobi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hidan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edward Kenway",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Platinum the Trinity",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Darkdramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Doctor",
+      "source": "Akudama Drive"
+    },
+    {
+      "name": "Lyutillis Haltina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jasdevi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kim",
+      "source": "I Get Stronger the More I Eat"
+    },
+    {
+      "name": "Korone",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Kashimo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Joo Seo Cheon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Antylamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gufadgarn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fujiko Mine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hakumen no Mono",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ozymandias",
+      "source": "Fate"
+    },
+    {
+      "name": "Death-X-mon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kirby",
+      "source": "Kirby of the Stars - Mie Takase's novels"
+    },
+    {
+      "name": "Chrollo Lucilfer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "BanchoLeomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kim Shin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gengar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Drive Knight",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Itona Horibe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Oomukade",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Algomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lawrence Valcua",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hinata Hyūga",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Isaac Netero",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arakune",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Archnemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kirei Kotomine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gin Ichimaru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nia Teppelin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gyutaro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dewgong",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Motoko Kusanagi",
+      "source": "SAC"
+    },
+    {
+      "name": "Choji Akimichi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Greninja",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Blue",
+      "source": "Pokémon"
+    },
+    {
+      "name": "Deidara",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ireena Litz de Olhyde",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guy",
+      "source": "Street Fighter"
+    },
+    {
+      "name": "Ialda Baoth",
+      "source": "Mahou Sensei Negima!"
+    },
+    {
+      "name": "Farfetch'd",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gryphomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Olbart Dunkelkenn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alcides",
+      "source": "Fate"
+    },
+    {
+      "name": "Maple",
+      "source": "BOFURI"
+    },
+    {
+      "name": "Dohwa Cheon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Agumon",
+      "source": "Taichi Yagami"
+    },
+    {
+      "name": "Muir Alenstarl",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arkadimon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Pi Woo-Jin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tsuchimikado Motoharu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bang Shishigami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablo",
+      "source": "Isekai Maou to Shoukan Shoujo no Dorei Majutsu"
+    },
+    {
+      "name": "Diva",
+      "source": "Blood+"
+    },
+    {
+      "name": "Gyeong-soo Kim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Groovy Gumlet",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Johan Liebert",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chōchō Akimichi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura",
+      "source": "Senran Kagura"
+    },
+    {
+      "name": "Shiki Tohno",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Semiramis",
+      "source": "Fate"
+    },
+    {
+      "name": "Goddess of Dawn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nobody",
+      "source": "BlazBlue"
+    },
+    {
+      "name": "Byeon Hogil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crocodile",
+      "source": "One Piece"
+    },
+    {
+      "name": "Coco",
+      "source": "Toriko"
+    },
+    {
+      "name": "Edea Florence",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arbok",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Archfiend Pam",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Contessa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kiritsugu Emiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guzma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fujiko Etou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hendrickson",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Maehwa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Black Maria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ariados",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Giovanni",
+      "source": "Pokémon"
+    },
+    {
+      "name": "Gloxinia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Divine-class Materials",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ghiaccio",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Irina Jelavić",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Impmon",
+      "source": "Ai and Mako"
+    },
+    {
+      "name": "Gengetsu Hōzuki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Levi Kazama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaku",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fū",
+      "source": "Naruto"
+    },
+    {
+      "name": "Genesect",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jirobo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hideto and Omegamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuka",
+      "source": "Senran Kagura"
+    },
+    {
+      "name": "Ripple",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cobra",
+      "source": "Fairy Tail"
+    },
+    {
+      "name": "Hibiki Kohaku",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Azumi Oshitari",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shin Tae-Jin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baek Do-Chan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kankuro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ao",
+      "source": "Naruto"
+    },
+    {
+      "name": "Dark Cutie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ciel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hellfire Flame",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nessie",
+      "source": "Second Life Ranker"
+    },
+    {
+      "name": "Hinata Himezuru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bloodman",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Falcomon",
+      "source": "Ikuto Noguchi"
+    },
+    {
+      "name": "Batista Hoshi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eternatus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ex-Tyranomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Himiko",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Hamura Ōtsutsuki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Juuzou Suzuya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Pucca",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuma Sarutobi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "AncientWisemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Junhyeong Lee",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ikaruga",
+      "source": "Senran Kagura"
+    },
+    {
+      "name": "Junko Hattori",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gale Wind",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Forretress",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jio Inzagi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arata Sanada",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crawdaunt",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gabimaru the Hollow",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Souha Sugiyado",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caturamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hikage",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dan Katō",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beedrill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chiyo",
+      "source": "Naruto"
+    },
+    {
+      "name": "Can Ye",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Maomao",
+      "source": "The Apothecary Diaries"
+    },
+    {
+      "name": "Daidōji",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erigor",
+      "source": "Anime / Manga"
+    }
+  ],
+  "berserker": [
+    {
+      "name": "Broly",
+      "source": "Dragon Ball"
+    },
+    {
+      "name": "Zarbon",
+      "source": "Dragon Ball"
+    },
+    {
+      "name": "Kenpachi Zaraki",
+      "source": "Bleach"
+    },
+    {
+      "name": "Nosferatu Zodd",
+      "source": "Berserk"
+    },
+    {
+      "name": "Titan Eren",
+      "source": "Attack on Titan"
+    },
+    {
+      "name": "Sukuna",
+      "source": "Jujutsu Kaisen"
+    },
+    {
+      "name": "Kafka Hibino",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Garou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Inuyasha",
+      "source": "Character"
+    },
+    {
+      "name": "Ichigo Kurosaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Izuku Midoriya (Deku)",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arceus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daikaiju of the Meireki Era",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Twenty-Fifth Baam",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Issei Hyoudou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dowan Ha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Seth Kang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elder",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Eevee",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Godzilla",
+      "source": "Godzilla Singular Point"
+    },
+    {
+      "name": "Devilman",
+      "source": "Devilman Crybaby"
+    },
+    {
+      "name": "Dorugoramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kang Han Soo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gamin Yoon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "D",
+      "source": "Kumo Desu ga, Nani ka?"
+    },
+    {
+      "name": "Ileana",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iori Yagami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chronoa",
+      "source": "Dragon Ball Heroes"
+    },
+    {
+      "name": "Ragna the Bloodedge",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Garchomp",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Benetnash",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dio Brando",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kallikantzaros",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hououmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guts",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "BlackWarGreymon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dam Wang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Takamine Yuuto",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chiharu Shiba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eren Yeager",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Che Heart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Suchan Jang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Asuka Langley Sohryu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alucard",
+      "source": "Hellsing"
+    },
+    {
+      "name": "Tak Se'Young",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shido Itsuka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rem",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kamito Kazehaya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elsa Granhiert",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Big Mom",
+      "source": "Charlotte Linlin"
+    },
+    {
+      "name": "Claire Rouge",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angewomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Buster Legion",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Disaster",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daniel Park",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mary Regalia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Meiru Melusine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Brent Kang",
+      "source": "The Villain"
+    },
+    {
+      "name": "Evangeline A.K. McDowell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Es",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apollomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guilmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daegun Kwon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Darkdramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arcueid Brunestud",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "AeroVeedramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akaza",
+      "source": "Kimetsu no Yaiba"
+    },
+    {
+      "name": "Godzilla Earth",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hanaki Guriko",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charizard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shinobu Oshino",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Azuma Higashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Flandre Scarlet",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bakko",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saya Kisaragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saya Otonashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hakumen no Mono",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dusknoir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Death-X-mon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kuro",
+      "source": "Isekai Shokudou"
+    },
+    {
+      "name": "Garlic Jr.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edgard C. Garcia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "BanchoLeomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cutie Honey",
+      "source": "Re"
+    },
+    {
+      "name": "Sacred Eclipse",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gengar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Donphan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hariyama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ganishka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gas",
+      "source": "Dragon Ball"
+    },
+    {
+      "name": "Vlad III",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haru Glory",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Godzilla Jr.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lawrence Valcua",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alphamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Archnemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ageha Yoshina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shalltear Bloodfallen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gyutaro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Domino Sutherland",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kang Chan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Greninja",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiroshi Shinanogawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Michael Roa Valdamjong",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sacred Ancestor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Don Slime",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Demiurge",
+      "source": "Overlord"
+    },
+    {
+      "name": "Atalanta",
+      "source": "Fate"
+    },
+    {
+      "name": "Gryphomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Demon Eyes Kyo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Spinner Superior",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Father",
+      "source": "Fullmetal Alchemist"
+    },
+    {
+      "name": "Acnologia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Doma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iron Kiba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ghostmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gomamon",
+      "source": "Jou Kido"
+    },
+    {
+      "name": "Apocalymon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Groudon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haunted",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Delphox",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Absol",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fear Cubrick",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Agumon",
+      "source": "Taichi Yagami"
+    },
+    {
+      "name": "Sophia Keren",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Medusa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fumikage Tokoyami",
+      "source": "Tsukuyomi"
+    },
+    {
+      "name": "Tōya Kagari",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Night of Wallachia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Imperialdramon",
+      "source": "Digimon Adventure"
+    },
+    {
+      "name": "Diva",
+      "source": "Blood+"
+    },
+    {
+      "name": "Aaroniero Arruruerie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gyeong-soo Kim",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gallantmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gecko Moria",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hibiki Tachibana",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Heracles",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Evil Ryu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Vitora Rutarak Daat Waziart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Agni",
+      "source": "Fire Punch"
+    },
+    {
+      "name": "Koyomi Araragi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Biyomon",
+      "source": "Sora Takenouchi"
+    },
+    {
+      "name": "Nobody",
+      "source": "BlazBlue"
+    },
+    {
+      "name": "Josuke Higashikata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gaomon",
+      "source": "Thoma H. Norstein"
+    },
+    {
+      "name": "Behemoth",
+      "source": "Worm"
+    },
+    {
+      "name": "Caim",
+      "source": "Drakengard"
+    },
+    {
+      "name": "Elisabeth",
+      "source": "The Eminence in Shadow"
+    },
+    {
+      "name": "Houndoom",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kischur Zelretch Schweinorg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chosho",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cú Chulainn",
+      "source": "Record of Ragnarok"
+    },
+    {
+      "name": "JumboGamemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cassian",
+      "source": "Villain to Kill"
+    },
+    {
+      "name": "Gyarados",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ariados",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Raquel Alucard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Divine-class Materials",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beelzebub",
+      "source": "Record of Ragnarok"
+    },
+    {
+      "name": "Lancelot",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hody Jones",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ripper",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hantengu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Genesect",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jiu Ji-tae",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anguirus",
+      "source": "Godzilla Singular Point"
+    },
+    {
+      "name": "Ant-type Kaiju",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Adam",
+      "source": "Evangelion"
+    },
+    {
+      "name": "Gamera",
+      "source": "Heisei"
+    },
+    {
+      "name": "Donovan Baine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hood",
+      "source": "My Hero Academia"
+    },
+    {
+      "name": "Galand",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Hellfire Flame",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gabumon",
+      "source": "Yamato Ishida"
+    },
+    {
+      "name": "Articuno",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hinata Himezuru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Demitri Maximoff",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grayroad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Exelio Variable Gravity Well",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aggron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baylord Paul",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Batista Hoshi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ex-Tyranomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Godzilla Filius",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Euben Pemberton",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fraudrin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grovyle",
+      "source": "PMD Explorers"
+    },
+    {
+      "name": "Lain Tendou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rokash Rampersad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bisharp",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nrvnqsr Chaos",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cherubimon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chiyo",
+      "source": "Toriko"
+    },
+    {
+      "name": "Gale Wind",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Forretress",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Deoxys",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Animus",
+      "source": "Lucifer and The Biscuit Hammer"
+    },
+    {
+      "name": "Frankenstein's Monster",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ely Otta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Clavis Alucard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Derieri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crimson Moon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caturamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hoopa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grunbeld",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hachino Shinya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Takahisa Tajima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Freyja",
+      "source": "Toaru Majutsu no Index"
+    },
+    {
+      "name": "En'enra",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beedrill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Godzilla-kun",
+      "source": "Godzilland"
+    },
+    {
+      "name": "Beelzemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crusadermon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Haxorus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Indramon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cure Elim Los Malvar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gigantea",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sion Eltnam Atlasia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grumblemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Spartacus",
+      "source": "Fate"
+    },
+    {
+      "name": "Velsaria Eva Fahrengart",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Carnage Kabuto",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Blastoise",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diggersby",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Scorpius of the Scorpion",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tiamat",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Daki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dana Ananga Jagannatha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Leonora Lancaster",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tatsuko Itagaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Clare",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Abomasnow",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golem",
+      "source": "Pokémon"
+    },
+    {
+      "name": "Azami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Buzzwole",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gayeon Sin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ampharos",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fuyumi Yanagi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ho-Oh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaigaku",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Deep Sea King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Enmu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Juuzou Fujimaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sechs",
+      "source": "XBlaze"
+    },
+    {
+      "name": "Fenrir",
+      "source": "Waltraute"
+    },
+    {
+      "name": "Joe Kido",
+      "source": "Adventure 2020"
+    },
+    {
+      "name": "Crawler",
+      "source": "Worm"
+    }
+  ],
+  "shielder": [
+    {
+      "name": "All Might",
+      "source": "My Hero Academia"
+    },
+    {
+      "name": "Toph Beifong",
+      "source": "Avatar: The Last Airbender"
+    },
+    {
+      "name": "Xu Jingming",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Nagumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hermelina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Twenty-Fifth Baam",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kirito",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erza Scarlet",
+      "source": "X793"
+    },
+    {
+      "name": "Oscar Orcus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Reject Sky",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "BlackWarGreymon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Akemi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shirou Emiya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Child-Gil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sonoko Nogi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Pfle",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gerard Valkyrie",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "EMIYA",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Achilles",
+      "source": "Fate"
+    },
+    {
+      "name": "Cutie Honey",
+      "source": "Re"
+    },
+    {
+      "name": "Hayato Gokudera",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guilmon",
+      "source": "Takato Matsuki"
+    },
+    {
+      "name": "Gash Bell and Kiyomaru Takamine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Farfetch'd",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Monokuma Units",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Maple",
+      "source": "BOFURI"
+    },
+    {
+      "name": "Agumon",
+      "source": "Taichi Yagami"
+    },
+    {
+      "name": "C.C.",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gallantmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaname Sudo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caim",
+      "source": "Drakengard"
+    },
+    {
+      "name": "Heathcliff",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Huang Yueying",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Divine-class Materials",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kittan Bachika",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Athena",
+      "source": "Saint Seiya"
+    },
+    {
+      "name": "Hideto and Omegamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lapis Lazuline",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Godzilla",
+      "source": "Monster Warrior Godzilla"
+    },
+    {
+      "name": "Jio Inzagi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grunbeld",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shadow Gale",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Isamu",
+      "source": "Child Emperor"
+    },
+    {
+      "name": "Pure Knight",
+      "source": "The Weakness of Beatrice"
+    },
+    {
+      "name": "Clantail",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tooi Kurosu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Charlotte Cracker",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nokko",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Melville",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grimm Fauzen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rionetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Galacta Knight",
+      "source": "Kirby of the Stars - Mie Takase's novels"
+    },
+    {
+      "name": "Buddha",
+      "source": "Record of Ragnarok"
+    },
+    {
+      "name": "Craniamon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Detec Bell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rick",
+      "source": "Instant Death"
+    },
+    {
+      "name": "Nonako Miyokata",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tamako Doi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Pechka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tooru Kokonoe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "@Meow-Meow",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fate Graphite",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cynthia Exment",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Touch Me",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aegislash",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Goblin Slayer",
+      "source": "Character"
+    },
+    {
+      "name": "Luminaris Saint Leisched",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gaius Julius Caesar",
+      "source": "Petals of Reincarnation"
+    },
+    {
+      "name": "Imitatia",
+      "source": "Gonzales"
+    },
+    {
+      "name": "Death Knight",
+      "source": "Overlord"
+    },
+    {
+      "name": "Cancer Vertex",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alicia Melchiott",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akoya Seishu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Don Krieg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nowe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chesnaught",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kureo Mado",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Van Fanel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Centorea Shianus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anti-Skill",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crust",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dan Straight",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kobold",
+      "source": "The Gamer"
+    }
+  ],
+  "ruler": [
+    {
+      "name": "Ainz Ooal Gown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kirito",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baby",
+      "source": "Dragon Ball GT"
+    },
+    {
+      "name": "Alva Avan Edison",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golden King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Frieza",
+      "source": "Dragon Ball Xenoverse 2"
+    },
+    {
+      "name": "Kaidou",
+      "source": "One Piece"
+    },
+    {
+      "name": "Demon King",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Donquixote Doflamingo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "M",
+      "source": "Shikkoku no Sharnoth"
+    },
+    {
+      "name": "Zahard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "White",
+      "source": "Hoaqin"
+    },
+    {
+      "name": "Mundus",
+      "source": "Devil May Cry"
+    },
+    {
+      "name": "Okhwang",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anti-Spiral",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Child-Gil",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Julius Novachrono",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Big Mom",
+      "source": "Charlotte Linlin"
+    },
+    {
+      "name": "Asuna",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lux Arcadia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hao Asakura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Artoria Pendragon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lyutillis Haltina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Yamamoto Akari",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baylord Yama",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Edward Newgate",
+      "source": "Whitebeard"
+    },
+    {
+      "name": "Fianna Ray Ordesia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ozymandias",
+      "source": "Fate"
+    },
+    {
+      "name": "Kuro",
+      "source": "Isekai Shokudou"
+    },
+    {
+      "name": "Ganishka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arthur Pendragon",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Vlad III",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Archnemon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gash Bell and Kiyomaru Takamine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lordgenome",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Baraggan Louisenbairn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ban",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Bambina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Acnologia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saika Kuozaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Quinella",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablo",
+      "source": "Isekai Maou to Shoukan Shoujo no Dorei Majutsu"
+    },
+    {
+      "name": "Cronus",
+      "source": "Saint Seiya"
+    },
+    {
+      "name": "Grevillea",
+      "source": "Her Majesty's Swarm"
+    },
+    {
+      "name": "Semiramis",
+      "source": "Fate"
+    },
+    {
+      "name": "Surtr",
+      "source": "Waltraute"
+    },
+    {
+      "name": "Gahard D. Hoelscher",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apollonia Vaar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gloxinia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dante Zogratis",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Evankhell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Buggy the Clown",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Iskandar",
+      "source": "Fate"
+    },
+    {
+      "name": "Cleopatra",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Catherine the Great",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Himiko",
+      "source": "Majo Taisen"
+    },
+    {
+      "name": "Artoria Pendragon Alter",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bartholomew Kuma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Administrators",
+      "source": "Tower of God"
+    },
+    {
+      "name": "Clavis Alucard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Flowing Time Great Emperor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Crimson Moon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Celestial Spirit King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hades",
+      "source": "Record of Ragnarok"
+    },
+    {
+      "name": "Deep Sea King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kkotseorin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sirzechs Lucifer",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kaioh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Phoenix Empress",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shiro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sonia Nevermind",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hell Joe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elodie",
+      "source": "Long Live the Queen"
+    },
+    {
+      "name": "Estir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dabura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Inuarashi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Animus",
+      "source": "Fairy Tail"
+    },
+    {
+      "name": "Sora",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Guinness",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Faust",
+      "source": "Fairy Tail"
+    },
+    {
+      "name": "Jaden Yuki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Emperor Crow",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Azulongmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arthur",
+      "source": "Monster Strike"
+    },
+    {
+      "name": "King Uma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Derous",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Caeda",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kanara Azekura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Koon Royale Elliot",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arawin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jack Atlas",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Richard I",
+      "source": "Chronicle Legion"
+    },
+    {
+      "name": "Gid Lucione Deviluke",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "AZ",
+      "source": "Pokémon"
+    },
+    {
+      "name": "Van Fanel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Redge Ferimento",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angol Mois",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elizabello II",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dark King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grand Kai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Abaddon",
+      "source": "Tatoeba Last Dungeon"
+    },
+    {
+      "name": "Shera L. Greenwood",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Erlking",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Latreille",
+      "source": "Altina the Sword Princess"
+    },
+    {
+      "name": "Daikaku Kokujōji",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anna Kushina",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Daku",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Castellan",
+      "source": "Edens Zero"
+    },
+    {
+      "name": "Canute",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Enki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Liscia Elfrieden",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aisha Udgard",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eliselis Di Mariablaze",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Azudora",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Colorless King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fuuga Haan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gaius Amidonia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Emperor Balbora",
+      "source": "Anime / Manga"
+    }
+  ],
+  "avenger": [
+    {
+      "name": "Itachi Uchiha",
+      "source": "Naruto"
+    },
+    {
+      "name": "Kurapika",
+      "source": "Hunter x Hunter"
+    },
+    {
+      "name": "Ken Kaneki",
+      "source": "Tokyo Ghoul"
+    },
+    {
+      "name": "Alucard",
+      "source": "Hellsing"
+    },
+    {
+      "name": "Muzan Kibutsuji",
+      "source": "Demon Slayer"
+    },
+    {
+      "name": "Anos Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Captain",
+      "source": "Granblue Fantasy"
+    },
+    {
+      "name": "Vandalieu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arale Norimaki",
+      "source": "Dr. Slump"
+    },
+    {
+      "name": "Li Qiye",
+      "source": "Seven Nights Epoch"
+    },
+    {
+      "name": "Mori Dan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shin Reglia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ruphas Mafahl",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kusuo Saiki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gatchan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alovenus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Avos Dilhevia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Illness Magic User",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arceus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ard Meteor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aleister Crowley",
+      "source": "Toaru Majutsu no Index"
+    },
+    {
+      "name": "Melheis Boran",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lye Batenkaitos",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kouki Amanogawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aisha Necron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bobobo-bo Bo-bobo",
+      "source": "Character"
+    },
+    {
+      "name": "Linka Theorness",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Nacht Schatten",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gerad Azlema",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kang Han Soo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dark Schneider",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mephisto Yuu Phegor",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "D",
+      "source": "Kumo Desu ga, Nani ka?"
+    },
+    {
+      "name": "Bayonetta",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Golden King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Diablomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ceris Voldigoad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saiki Kazu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Griffith",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Setoki Nozumu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chaos",
+      "source": "Sailor Moon"
+    },
+    {
+      "name": "Coronzon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Orm",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sasha Necron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akame",
+      "source": "Akame ga Kill!"
+    },
+    {
+      "name": "Daichi Shijima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Airi Ban",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anguished One",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Demon King",
+      "source": "Nanatsu no Taizai"
+    },
+    {
+      "name": "Hououmon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Lloyd de Saloum",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Misha Necron",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Allen Walker",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Homura Akemi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alice Margatroid",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Apostles of God",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Karna",
+      "source": "Fate"
+    },
+    {
+      "name": "Aki Hayakawa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Medea",
+      "source": "Fate"
+    },
+    {
+      "name": "Satou",
+      "source": "Death March kara Hajimaru Isekai Kyousoukyoku"
+    },
+    {
+      "name": "Meili Portroute",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rubia Elstein",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Yu Ilhan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eugard Vollachia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Athabaskan Rio Grande",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hao Asakura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gigalith",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shirou Kotomine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Adell",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cú Chulainn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Liliana Zandyke",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eirin Yagokoro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ultimate Extermination God",
+      "source": "UEG"
+    },
+    {
+      "name": "Hata no Kokoro",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hidan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Anri",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Beelzebub",
+      "source": "Make the Exorcist Fall in Love"
+    },
+    {
+      "name": "Jasdevi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hajime Kashimo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Misao Kusakabe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hiromi Higuruma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Cha Yeon-Woo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Angra Mainyu",
+      "source": "Fate"
+    },
+    {
+      "name": "Hecatia Lapislazuli",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Benben Tsukumo",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hydemary Alzbayne",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Byouki User",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ozymandias",
+      "source": "Fate"
+    },
+    {
+      "name": "Dusknoir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Choso",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gengar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sakura Matou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gabura",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Old Villainous Heaven",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Petra Leyte",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Algomon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sucy Manbavaran",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arakune",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kelvin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kirei Kotomine",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ichirin Kumoi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shalltear Bloodfallen",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Regulation-class Materials",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Leonis Death Magnus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Seol Jihu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Capella Emerada Lugnica",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eiki Shiki, Yamaxanadu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Farfetch'd",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Spinner Superior",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Samuel Liddell MacGregor Mathers",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fear Cubrick",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Medusa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tsuchimikado Motoharu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Groovy Gumlet",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aigokeros of the Goat",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eight Million Gods",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Stride Vollachia",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Void Termina",
+      "source": "Kirby of the Stars - Mie Takase's novels"
+    },
+    {
+      "name": "Konoe Yuuto",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Proserpina",
+      "source": "Toaru"
+    },
+    {
+      "name": "Kischur Zelretch Schweinorg",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Merlin",
+      "source": "Fate"
+    },
+    {
+      "name": "Dabura Karaba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hades",
+      "source": "Saint Seiya"
+    },
+    {
+      "name": "Wrath King",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saijou Ai",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Chang'e",
+      "source": "Touhou Project"
+    },
+    {
+      "name": "Shiroe",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Manaka Sajyou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Pedonar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grayroad",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Bloodman",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rin Tohsaka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elisa Celjska",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Administrators",
+      "source": "Tower of God"
+    },
+    {
+      "name": "Evil Dragon",
+      "source": "Touhou Project"
+    },
+    {
+      "name": "Charlotte Roselei",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aqua",
+      "source": "Konosuba"
+    },
+    {
+      "name": "Aoko Aozaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jack the Ripper",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Touko Aozaki",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "MacGregor Mathers",
+      "source": "Ourai no Gahkthun"
+    },
+    {
+      "name": "Eanru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akihiko Sanada",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Saji Genshirou",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Alma Karma",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dana Ananga Jagannatha",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Paracelsus",
+      "source": "Fate"
+    },
+    {
+      "name": "Fumihiko Takaba",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jackal",
+      "source": "Fairy Tail"
+    },
+    {
+      "name": "Diarmuid Ua Duibhne",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mina Mathers",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Tobio Ikuse",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kkotseorin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Corsola",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gasper Vladi",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mei Amanohokosaka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Houjou Touji",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ginkaku",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Franmalth",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Judar",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Satan",
+      "source": "Puyo Puyo"
+    },
+    {
+      "name": "The Angel of Illusions",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kagami Shouko",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Vanir",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Isuzu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sage",
+      "source": "FFF-Class Trashero"
+    },
+    {
+      "name": "Sera",
+      "source": "Black Summoner"
+    },
+    {
+      "name": "Konoha Muramasa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ezel",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Karma Abyss",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Freadia Strikers",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Froslass",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "God",
+      "source": "Duel Savior"
+    },
+    {
+      "name": "Luviagelita Edelfelt",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kuroe Ningyouhara",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ariel",
+      "source": "KoreZombie"
+    },
+    {
+      "name": "Boris",
+      "source": "FFF-Class Trashero"
+    },
+    {
+      "name": "Gordon Agrippa",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Terminus Est",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Miss Fox",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Latora",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ogam",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Levy",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Jiemma Orland",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sylvia",
+      "source": "FFF-Class Trashero"
+    },
+    {
+      "name": "Kagami Kagami",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dainsleif",
+      "source": "CubexCursedxCurious"
+    },
+    {
+      "name": "Britain",
+      "source": "Arthur Kirkland"
+    },
+    {
+      "name": "Agatha",
+      "source": "Pokémon"
+    },
+    {
+      "name": "Host",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kai",
+      "source": "Teogonia"
+    },
+    {
+      "name": "Duke",
+      "source": "Maou-sama no Machizukuri!"
+    },
+    {
+      "name": "Alka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aria",
+      "source": "Witch Hunter"
+    },
+    {
+      "name": "Miraluka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akemi Nakajima",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Clotho",
+      "source": "Black Summoner"
+    },
+    {
+      "name": "Sovereignty-Perfection-Doll",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Aiko Tateoka",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Hana Kurusu",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Narrow Narrow Abyss",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fourteen Coonsberry",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "The Angel of Blades",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Rushella Daamu Draculea",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Goryou Maya",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Yeon Woon",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Arawn",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Elsie Hunter",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kotetsu Nagasone",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Il Ilah",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Loli Succubus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "The Angel of Shadows",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "The Angel of Fire",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fafnir",
+      "source": "Miss Kobayashi's Dragon Maid"
+    },
+    {
+      "name": "Horinouchi Mitsuru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "The Angel of Pressure",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "The Angel of Wind",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Sanghan Jin",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Mary Sue",
+      "source": "Clash of Hexennacht"
+    },
+    {
+      "name": "Hovernyan",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Shihouin Fleur",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Fay Theo Philus",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Gods",
+      "source": "Magi"
+    },
+    {
+      "name": "The Angel of Water",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Kariya Eruru",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Ashen Shrine Maiden",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Dhruv Lakdawalla",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Grimm Grimoire",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Foxy",
+      "source": "Fazbear Frights"
+    },
+    {
+      "name": "Lisbeth Lueger",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Akane",
+      "source": "Ghost Stories"
+    },
+    {
+      "name": "Nada",
+      "source": "Anime / Manga"
+    },
+    {
+      "name": "Eliselis Di Mariablaze",
+      "source": "Anime / Manga"
+    }
+  ]
+}

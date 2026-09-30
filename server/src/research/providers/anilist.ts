@@ -37,7 +37,7 @@ query ($id: Int) {
     name { full native userPreferred alternative }
     description(asHtml: false)
     image { large }
-    media(perPage: 1) { nodes { title { romaji english } } }
+    media(perPage: 3) { nodes { title { romaji english } } }
   }
 }`;
 
@@ -143,6 +143,10 @@ export interface AniListCharacter {
   source: string;
   description: string;
   imageUrl: string;
+  /** every other name the database holds for the character */
+  aliases: string[];
+  /** every romaji/English title their works are known by */
+  titles: string[];
 }
 
 export async function getAniListCharacter(id: string): Promise<AniListCharacter | null> {
@@ -151,11 +155,14 @@ export async function getAniListCharacter(id: string): Promise<AniListCharacter 
   const payload = await politePostJson<any>(ENDPOINT, { query: DETAIL_QUERY, variables: { id: numeric } });
   const c = payload?.data?.Character;
   if (!c) return null;
+  const full = String(c.name?.full ?? '').trim() || nameVariants(c)[0] || '';
   return {
     providerId: String(c.id),
-    name: String(c.name?.full ?? '').trim() || nameVariants(c)[0] || '',
+    name: full,
     source: mediaTitle(c) || 'Anime / Manga',
     description: stripTags(c.description),
     imageUrl: hasArtwork(String(c.image?.large ?? '')) ? String(c.image.large) : '',
+    aliases: nameVariants(c).filter((variant) => variant !== full),
+    titles: mediaTitles(c),
   };
 }

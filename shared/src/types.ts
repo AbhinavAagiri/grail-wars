@@ -18,13 +18,28 @@ export type Phase =
 
 export type Mode = 'WAR' | 'DEBATE';
 
-export type Provider = 'anilist' | 'vsb' | 'wikipedia' | 'fandom' | 'tmdb' | 'custom' | 'fallback';
+export type Provider =
+  | 'anilist'
+  | 'vsb'
+  | 'wikipedia'
+  | 'fandom'
+  | 'tmdb'
+  | 'custom'
+  | 'fallback'
+  /** built-in draft roster used when the room lets the game choose characters */
+  | 'roster';
 
 /** How the war's narration is written. */
 export type NarrationStyle = 'templated' | 'ai' | 'hunger_games' | 'fate';
 
 /** Who picks the real-world setting of the war. */
 export type LocationMode = 'players' | 'ai';
+
+/**
+ * Which roster the game draws a room's draft pool from when the host turns on
+ * "AI Chooses characters": drawn media only, real history/legend only, or both.
+ */
+export type AiPool = 'anime' | 'history' | 'mixed';
 
 /** A real-world city the Holy Grail War can take place in. */
 export interface WarLocation {
@@ -74,6 +89,10 @@ export interface RoomSettings {
   allowSpectators: boolean;
   /** servant classes taking part in the draft and war (defaults to the seven standard classes) */
   classes: ServantClass[];
+  /** when true the game offers a fixed roster of characters per class instead of free search */
+  aiChooses: boolean;
+  /** which roster AI-Chooses draws from — inert unless aiChooses is on */
+  aiPool: AiPool;
   war: {
     days: number;
     minEventsPerDay: number;
@@ -327,6 +346,11 @@ export interface RoomState {
   serverNow: number;
   /** your own picks by class (only for you) */
   myPicks?: Partial<Record<ServantClass, Character>>;
+  /**
+   * The room's AI-Chooses roster, 25 characters per class, only present during
+   * DRAFT when the setting is on. Shared by every player, never a private pick.
+   */
+  draftPool?: Partial<Record<ServantClass, Character[]>>;
   /** who has locked, without revealing their picks */
   lockedPlayerIds: string[];
   draftEndsAt?: number;

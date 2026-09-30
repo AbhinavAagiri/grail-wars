@@ -271,7 +271,32 @@ function firstClause(text: string | undefined): string | null {
 /* Fallback tier when no wiki page is found                            */
 /* ------------------------------------------------------------------ */
 
-const FALLBACK_TIER_RULES: [RegExp, string][] = [
+/**
+ * Fiction characters need a different ladder from real people: an unresolved
+ * anime fighter is not a "historical human baseline". Missing wiki data used to
+ * drop every failed lookup to 10-C, which is what made drafted Servants read as
+ * ordinary humans. Fictional characters now floor at 9-C (street level) and the
+ * keyword ladder recognises the archetypes that actually turn up in a draft.
+ */
+const FICTION_TIER_RULES: [RegExp, string][] = [
+  [/\b(?:god|deity|goddess|cosmic|omnipotent|primordial|creator|godlike|world\s*eater|planet\s*buster)\b/i, '3-A'],
+  [/\b(?:demon\s*lord|dragon|titan|kaiju|kami|archmage|demon\s*king|supreme\s*being)\b/i, '7-A'],
+  [
+    /\b(?:superhuman|supernatural|vampire|demon|devil|angel|spirit|mutant|alien|cyborg|android|monster|yokai|youkai|oni|shinigami|psychic|esper|immortal|immortality|cursed|regeneration)\b/i,
+    '9-A',
+  ],
+  [
+    /\b(?:wizard|mage|sorcerer|sorceress|witch|samurai|knight|swordsman|swordswoman|swordfighter|shinobi|ninja|martial\s*artist|monster\s*hunter|hero|heroine|champion|warrior\s*princess)\b/i,
+    '9-B',
+  ],
+  [
+    /\b(?:soldier|mercenary|assassin|hitman|gunslinger|sharpshooter|sniper|pirate|warrior|fighter|brawler|boxer|athlete|detective|thief|pilot|sailor|bounty\s*hunter|sword|blade|spear|archer|bowman|marksman|combatant)\b/i,
+    '9-C',
+  ],
+];
+
+/** Real-world figures keep the historic ladder; 10-C is the honest ceiling. */
+const REAL_TIER_RULES: [RegExp, string][] = [
   [/\b(?:god|deity|goddess|cosmic|omnipotent|primordial|creator)\b/i, '3-A'],
   [/\b(?:demon lord|dragon|titan|kaiju|kami|archmage|world|planet)\b/i, '7-A'],
   [/\b(?:superhuman|supernatural|vampire|demon|angel|spirit|mutant|alien|cyborg|android)\b/i, '9-A'],
@@ -285,12 +310,16 @@ export interface FallbackTier {
   reason: string;
 }
 
-export function fallbackTier(text: string): FallbackTier {
-  for (const [re, tier] of FALLBACK_TIER_RULES) {
+export function fallbackTier(text: string, options: { fiction?: boolean } = {}): FallbackTier {
+  const rules = options.fiction ? FICTION_TIER_RULES : REAL_TIER_RULES;
+  for (const [re, tier] of rules) {
     if (re.test(text ?? '')) {
       const index = TIER_INDEX(tier);
       return { tier, tierIndex: index, reason: `keyword match → ${tier}` };
     }
+  }
+  if (options.fiction) {
+    return { tier: '9-C', tierIndex: TIER_INDEX('9-C'), reason: 'fictional fighter baseline → 9-C' };
   }
   return { tier: '10-C', tierIndex: TIER_INDEX('10-C'), reason: 'historical human baseline → 10-C' };
 }

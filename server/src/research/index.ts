@@ -17,10 +17,8 @@ import {
   scalesFromTier,
   topAbilityNames,
 } from './heuristics';
-import { parseVsbPage, type VsBStats } from './parseVsb';
+import type { VsBStats } from './parseVsb';
 import {
-  LEVEL_MAX_INDEX,
-  RANGE_MAX_INDEX,
   SPEED_MAX_INDEX,
   TIERS,
   TIER_MAX_INDEX,
@@ -33,13 +31,29 @@ import {
   parseTier,
   tierLabelFromIndex,
 } from './tiers';
-import { fetchVsbPage, getVsbImage, searchVsb } from './providers/vsbattles';
-import { bareName, searchAniList, type AniListCandidate } from './providers/anilist';
-import { searchFandom, resolveWikiSubdomain } from './providers/fandom';
+import { getVsbImage } from './providers/vsbattles';
+import {
+  bareName,
+  getAniListCharacter,
+  searchAniList,
+  type AniListCandidate,
+  type AniListCharacter,
+} from './providers/anilist';
+import { getFandomPageText, searchFandom } from './providers/fandom';
 import { getTmdbImage } from './providers/tmdb';
 import { searchImages } from './providers/imageSearch';
 import { getWikipediaImage, getWikipediaSummary } from './providers/wikipedia';
 import { titleSimilarity } from '../util/text';
+import {
+  nameMatchScore,
+  nameTokens,
+  namesAreReordered,
+  resolveVsbPage,
+  stripQualifier,
+  withoutQualifier,
+  type NameHints,
+  type ScoredVsbPage,
+} from './vsbLookup';
 
 /* ------------------------------------------------------------------ */
 /* Overrides                                                           */
@@ -63,8 +77,16 @@ interface OverrideEntry {
 const OVERRIDES = overridesRaw as Record<string, OverrideEntry>;
 
 export function overrideFor(character: Character): OverrideEntry | undefined {
+  // Entries are keyed name|source. An entry keyed by name alone applies to every
+  // source, which is how a single Fate entry covers both "Saber / Fate/stay
+  // night" and "Artoria Pendragon / VS Battles Wiki".
   const key = normalize(`${character.name}|${character.source}`);
-  return OVERRIDES[key];
+  if (OVERRIDES[key]) return OVERRIDES[key];
+  for (const name of [withoutQualifier(character.name), stripQualifier(character.name)]) {
+    const bare = normalize(name);
+    if (bare && OVERRIDES[bare]) return OVERRIDES[bare];
+  }
+  return undefined;
 }
 
 function applyOverride(profile: Profile, override: OverrideEntry): Profile {
@@ -162,7 +184,7 @@ interface VsbBuildResult {
   fieldsFound: number;
 }
 
-function buildFromVsb(character: Character, page: VsBStats, pageUrl: string): VsbBuildResult {
+function buildFromVsb(character: Character, page: VsBStats, pageUrl: string, extraText = ''): VsbBuildResult {
   const base = emptyProfile(character);
   const f = page.fields;
 
@@ -178,7 +200,14 @@ function buildFromVsb(character: Character, page: VsBStats, pageUrl: string): Vs
   const abilityText = [f['Powers and Abilities'], f['Notable Attacks/Techniques'], f.Classification]
     .filter(Boolean)
     .join('. ');
-  const { abilities, haxScore } = extractAbilities(abilityText);
+  let { abilities, haxScore } = extractAbilities(abilityText);
+  // Some pages carry stats but no powers list; the gathered bio is the better
+  // source for abilities than an empty list.
+  if (!abilities.length && extraText) {
+    const fromInfo = extractAbilities(extraText);
+    abilities = fromInfo.abilities;
+    haxScore = fromInfo.haxScore;
+  }
 
   const flavourText = [
     f.Classification,
@@ -236,6 +265,8 @@ function buildFromText(
   text: string,
   sources: { label: string; url: string }[],
   llm: LlmExtraction | null,
+  /** fictional characters fall back to a fighter baseline, real people to human */
+  fiction = false,
 ): Profile {
   const base = emptyProfile(character);
   const { abilities, haxScore } = extractAbilities(`${text} ${llm?.abilities?.join(' ') ?? ''}`);
@@ -244,7 +275,7 @@ function buildFromText(
     const tier = llm.tierPeak ? parseTier(llm.tierPeak) : null;
     const speed = llm.speed ? parseSpeed(llm.speed) : null;
     const durability = llm.durability ? parseDurability(llm.durability) : null;
-    const tierIndex = tier && tier.tierPeak !== 'Unknown' ? tier.tierIndex : fallbackTier(text).tierIndex;
+    const tierIndex = tier && tier.tierPeak !== 'Unknown' ? tier.tierIndex : fallbackTier(text, { fiction }).tierIndex;
     return {
       ...base,
       tierPeak: tier?.tierPeak !== 'Unknown' && tier ? tier.tierPeak : tierLabelFromIndex(tierIndex),
@@ -270,7 +301,7 @@ function buildFromText(
   }
 
   // Pure heuristics: no wiki page and no LLM.
-  const fb = fallbackTier(text);
+  const fb = fallbackTier(text, { fiction });
   const scales = scalesFromTier(fb.tierIndex);
   const tags = deriveTags(text, character.key);
   const intel = parseIntelligence(text);
@@ -375,67 +406,54 @@ export async function researchCharacter(character: Character): Promise<Profile> 
 }
 
 async function researchUncached(character: Character): Promise<Profile> {
-  // 1. Best effort VS Battles lookup.
-  const hits = await searchVsb(character.name, character.source);
-  const ranked = rankVsbHits(character, hits);
-  if (ranked.length) {
-    const primary = ranked[0]!;
-    // Long-running characters are split across arc pages on the wiki
-    // ("Naruto Uzumaki (Part II: War Arc)"). When several hits are plainly the
-    // same character, read a few of them and keep the strongest version, since
-    // the spec asks for the character's peak as depicted in their media.
-    // Only era/version qualifiers group together — "Sherlock Holmes (Fate)" is
-    // a different character, not a later form of "Sherlock Holmes".
-    const base = stripQualifier(primary.title).toLowerCase();
-    const sameCharacter = ranked
-      .filter((hit) => stripQualifier(hit.title).toLowerCase() === base && isVersionQualifier(hit.title))
-      .slice(0, MAX_VSB_PAGES_PER_LOOKUP);
-    const titles = sameCharacter.length > 1 ? sameCharacter.map((h) => h.title) : [primary.title];
+  const evidence = await collectCharacterEvidence(character);
 
-    const pages = (await Promise.all(titles.map((title) => fetchVsbPage(title)))).filter(
-      (page): page is NonNullable<typeof page> => Boolean(page && !page.empty),
-    );
-    let best: { profile: Profile; weight: number } | null = null;
-    for (const page of pages) {
-      const built = buildFromVsb(character, page, page.pageUrl);
-      // Peak tier first, then how complete the stat block was.
-      const weight = built.profile.tierIndex * 100 + built.fieldsFound;
-      if (!best || weight > best.weight) best = { profile: built.profile, weight };
-    }
-    if (best) {
-      let profile = best.profile;
-      // A page found but with no tier is not much use — top it up from the wiki summary.
-      if (profile.tierPeak === 'Unknown') {
-        const summary = await safeWikipediaSummary(character.name);
-        if (summary) {
-          const llm = await llmExtract(character.name, character.source, summary.extract);
-          profile = buildFromText(character, summary.extract, profile.sources, llm);
-        }
-      }
-      return profile;
-    }
+  // VS Battles is the scaling authority: tier, speed and durability come from
+  // its stat block whenever the character's page can be found.
+  if (evidence.vsb) {
+    const built = buildFromVsb(character, evidence.vsb.page, evidence.vsb.page.pageUrl, evidence.info.text);
+    const profile = built.profile;
+    if (profile.tierPeak !== 'Unknown') return profile;
+    // A page was found but carried no tier — scale from the gathered bio and
+    // keep whatever the page did provide.
+    const llm = await llmExtract(character.name, character.source, evidence.info.text);
+    const fromInfo = buildFromText(character, evidence.info.text, profile.sources, llm, evidence.fiction);
+    return mergeProfileWithInfo(profile, fromInfo);
   }
 
-  // 2. Wikipedia / Fandom summary text, optionally enriched by the LLM.
-  const summary = await safeWikipediaSummary(character.name);
-  const sources: { label: string; url: string }[] = [];
-  let text = '';
-  if (summary) {
-    text = `${summary.description}. ${summary.extract}`;
-    sources.push({ label: 'Wikipedia', url: summary.url });
-  }
-  if (!text) {
-    const fandom = await searchFandom(character.name, character.source).catch(() => []);
-    const first = fandom[0];
-    if (first) {
-      text = first.extract;
-      sources.push({ label: 'Fandom wiki', url: first.url });
-    }
-  }
-  if (!text) text = `${character.name} — ${character.source}.`;
+  const llm = await llmExtract(character.name, character.source, evidence.info.text);
+  return buildFromText(character, evidence.info.text, evidence.info.sources, llm, evidence.fiction);
+}
 
-  const llm = await llmExtract(character.name, character.source, text);
-  return buildFromText(character, text, sources, llm);
+/**
+ * Keep everything the VS Battles page did provide — tier columns, speed, the
+ * abilities list — while filling its gaps from the character's bio.
+ */
+function mergeProfileWithInfo(vsb: Profile, info: Profile): Profile {
+  return {
+    ...info,
+    speed: vsb.speed !== 'Unknown' ? vsb.speed : info.speed,
+    speedIndex: vsb.speed !== 'Unknown' ? vsb.speedIndex : info.speedIndex,
+    durability: vsb.durability !== 'Unknown' ? vsb.durability : info.durability,
+    durabilityIndex: vsb.durability !== 'Unknown' ? vsb.durabilityIndex : info.durabilityIndex,
+    range: vsb.range !== 'Unknown' ? vsb.range : info.range,
+    rangeIndex: vsb.range !== 'Unknown' ? vsb.rangeIndex : info.rangeIndex,
+    abilities: vsb.abilities.length ? vsb.abilities : info.abilities,
+    haxScore: Math.max(vsb.haxScore, info.haxScore),
+    keyAbilityName:
+      vsb.keyAbilityName !== 'their signature technique' ? vsb.keyAbilityName : info.keyAbilityName,
+    archetype: vsb.archetype !== 'fighter' ? vsb.archetype : info.archetype,
+    sources: dedupeSources([...vsb.sources, ...info.sources]),
+  };
+}
+
+function dedupeSources(sources: { label: string; url: string }[]): { label: string; url: string }[] {
+  const out: { label: string; url: string }[] = [];
+  for (const source of sources) {
+    if (!source.url || out.some((existing) => existing.url === source.url)) continue;
+    out.push(source);
+  }
+  return out;
 }
 
 async function safeWikipediaSummary(name: string) {
@@ -446,84 +464,214 @@ async function safeWikipediaSummary(name: string) {
   }
 }
 
-/** How many arc pages to read when a character is split across several. */
-const MAX_VSB_PAGES_PER_LOOKUP = 3;
+/* ------------------------------------------------------------------ */
+/* Character evidence: known names, info sources, the scaling page     */
+/* ------------------------------------------------------------------ */
 
-/** Drop a wiki disambiguator: "Goku (Toei)" → "Goku". */
-function stripQualifier(title: string): string {
-  return title.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+/** AniList names for the character, used to find their wiki page. */
+export interface AniListHints extends NameHints {
+  match: AniListCandidate;
 }
 
 /**
- * True when a title's parenthetical names an era, arc or release rather than a
- * different continuity. "(Part II: War Arc)" and "(New Era)" are later forms
- * of the same character; "(Fate)" and "(BBC)" are somebody else's version.
+ * Every name AniList knows the character by. Anime databases file characters
+ * under their in-universe name — Fate's "Saber" is "Artoria Pendragon" — so
+ * these names are what actually locates the VS Battles page that the player's
+ * own search term misses.
  */
-const VERSION_QUALIFIER_RE =
-  /\b(?:part|arc|saga|era|chapter|season|episode|movie|film|anime|manga|novel|game|original|canon|classic|current|base|pre|post|new|young|old|prime|full|final|resurrected|eos|timeskip|awakened)\b|\b[IVX]{2,}\b/i;
-
-function isVersionQualifier(title: string): boolean {
-  const match = /\(([^)]*)\)/.exec(title);
-  if (!match) return true; // no qualifier at all: the character page itself
-  return VERSION_QUALIFIER_RE.test(match[1] ?? '');
+function hintNames(name: string, aliases: string[] = []): string[] {
+  return [name, ...aliases]
+    .map((value) => bareName(value))
+    .filter((value, index, all) => value.length >= 3 && all.indexOf(value) === index);
 }
 
-interface RankedVsbHit {
-  title: string;
-  score: number;
+/** AniList answers the same id the same way all afternoon. */
+async function aniListDetail(id: string): Promise<AniListCharacter | null> {
+  const key = `anilist-detail:${id}`;
+  const cached = getCachedSearch<AniListCharacter>(key);
+  if (cached) return cached;
+  const detail = await getAniListCharacter(id).catch(() => null);
+  if (detail) setCachedSearch(key, detail);
+  return detail;
 }
 
-/**
- * Rank VS Battles search results. Titles that are exactly the character, or a
- * version of them, beat generic pages and other continuities.
- */
-function rankVsbHits(
-  character: Character,
-  hits: { title: string; snippet: string }[],
-): RankedVsbHit[] {
-  const name = normalize(character.name);
-  const source = normalize(character.source);
-  // A source that is just the character's name ("Sherlock Holmes") carries no
-  // disambiguating signal, so it must not boost every result equally.
-  const sourceAddsInfo = Boolean(source) && !name.includes(source) && !source.includes(name);
-
-  const ranked: RankedVsbHit[] = [];
-  for (let i = 0; i < hits.length; i++) {
-    const hit = hits[i]!;
-    const similarity = titleSimilarity(character.name, hit.title);
-    const baseMatch = normalize(stripQualifier(hit.title)) === name;
-    const sourceMentioned = sourceAddsInfo && normalize(`${hit.title} ${hit.snippet}`).includes(source);
-    const qualifies = baseMatch || (similarity >= 0.82 && sourceMentioned) || (i === 0 && similarity >= 0.92);
-    if (!qualifies) continue;
-
-    ranked.push({
-      title: hit.title,
-      score:
-        similarity +
-        (baseMatch ? 0.12 : 0) +
-        (sourceMentioned ? 0.15 : 0) -
-        qualifierPenalty(hit.title, character.source) -
-        i * 0.01,
-    });
+export async function anilistHintsFor(character: Character): Promise<AniListHints | null> {
+  // A pick made from AniList carries the exact entry id, and that id is worth
+  // trusting over a name search: Fate's Saber and her Honkai collab namesake
+  // share both the name and the "Artoria/Altria Pendragon" alias.
+  if (character.provider === 'anilist' && character.providerId) {
+    const detail = await withTimeout(aniListDetail(character.providerId), ANILIST_TIMEOUT_MS, null);
+    if (detail) {
+      return {
+        names: hintNames(detail.name, detail.aliases),
+        titles: detail.titles,
+        match: {
+          providerId: detail.providerId,
+          name: detail.name,
+          source: detail.source,
+          thumb: detail.imageUrl,
+          aliases: detail.aliases,
+          titles: detail.titles,
+        },
+      };
+    }
   }
-  ranked.sort((a, b) => b.score - a.score);
-  return ranked;
+
+  const candidates = await withTimeout(
+    anilistCandidates(character),
+    ANILIST_TIMEOUT_MS,
+    [] as AniListCandidate[],
+  );
+  const match = bestAniListMatch(character, candidates, { requireArtwork: false });
+  if (!match) return null;
+  return { names: hintNames(match.name, match.aliases), titles: match.titles ?? [], match };
+}
+
+interface InfoPart {
+  label: string;
+  url: string;
+  text: string;
+}
+
+export interface GatheredInfo {
+  text: string;
+  sources: { label: string; url: string }[];
+  /** the first source in the waterfall that produced text */
+  source: 'anilist' | 'fandom' | 'wikipedia' | 'none';
 }
 
 /**
- * Penalise a disambiguator the caller did not ask for, so a request for
- * "Sherlock Holmes" prefers the plain page over "Sherlock Holmes (Fate)".
+ * Does the text actually say anything about how the character fights? A two-line
+ * stub is not worth stopping the waterfall for.
  */
-function qualifierPenalty(title: string, source: string): number {
-  const match = /\(([^)]+)\)/.exec(title);
-  if (!match) return 0;
-  const qualifier = normalize(match[1] ?? '');
-  if (!qualifier) return 0;
-  const asked = normalize(source);
-  if (asked && (asked.includes(qualifier) || qualifier.includes(asked))) return 0;
-  // "(Original)"/"(Canon)" is usually the primary version of the character.
-  if (/\b(?:original|canon|main)\b/.test(qualifier)) return 0.05;
-  return 0.25;
+const FEAT_SIGNAL_RE =
+  /\b(?:abilit(?:y|ies)|powers?|strength|durab\w*|speed|superhuman|immortal\w*|invulnerab\w*|regenerat\w*|master(?:y|ed)?|skilled|skill|technique|combat|fight\w*|weapon|sword\w*|blade|spear|bow|arrow|gun|magic\w*|energy|ki\b|chakra|reiatsu|curse\w*|enhanced|physical)\b/i;
+
+function infoIsSufficient(text: string): boolean {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length < 220) return false;
+  return clean.length >= 700 || FEAT_SIGNAL_RE.test(clean);
+}
+
+function combineInfo(parts: InfoPart[]): GatheredInfo {
+  const text = parts
+    .map((part) => part.text.trim())
+    .filter(Boolean)
+    .join('\n\n')
+    .slice(0, 8000);
+  if (!text) return { text: '', sources: [], source: 'none' };
+  const first = parts.find((part) => part.text.trim());
+  return {
+    text,
+    sources: dedupeSources(parts.map((part) => ({ label: part.label, url: part.url }))),
+    source: (first?.label === 'AniList'
+      ? 'anilist'
+      : first?.label === 'Wikipedia'
+        ? 'wikipedia'
+        : 'fandom') as GatheredInfo['source'],
+  };
+}
+
+async function anilistInfoPart(character: Character): Promise<InfoPart | null> {
+  const candidates = await withTimeout(
+    anilistCandidates(character),
+    ANILIST_TIMEOUT_MS,
+    [] as AniListCandidate[],
+  );
+  const match = bestAniListMatch(character, candidates, { requireArtwork: false });
+  if (!match) return null;
+  const detail = await withTimeout(
+    getAniListCharacter(match.providerId).catch(() => null),
+    ANILIST_TIMEOUT_MS,
+    null,
+  );
+  const text = detail?.description?.trim() ?? '';
+  if (text.length < 60) return null;
+  return { label: 'AniList', url: `https://anilist.co/character/${match.providerId}`, text };
+}
+
+async function fandomInfoPart(character: Character): Promise<InfoPart | null> {
+  const page = await getFandomPageText(character.name, character.source).catch(() => null);
+  if (!page || page.text.trim().length < 60) return null;
+  return { label: 'Fandom wiki', url: page.url, text: page.text };
+}
+
+async function wikipediaInfoPart(name: string): Promise<InfoPart | null> {
+  const summary = await safeWikipediaSummary(name);
+  if (!summary) return null;
+  const text = [summary.description, summary.extract].filter(Boolean).join('. ').trim();
+  if (!text) return null;
+  return { label: 'Wikipedia', url: summary.url, text };
+}
+
+/**
+ * Gather the character's info in the order their kind of character deserves.
+ *
+ * Anime and manga characters: AniList → Fandom → Wikipedia, stopping as soon as
+ * a source carries enough detail to scale and describe them (Wikipedia is only
+ * ever the last resort). Everyone else — history, films, games — keeps the
+ * encyclopaedia-first order it always had. VS Battles is consulted separately;
+ * it is what actually produces the tier.
+ */
+export async function gatherCharacterInfo(character: Character, anime: boolean): Promise<GatheredInfo> {
+  const steps: (() => Promise<InfoPart | null>)[] = anime
+    ? [
+        () => anilistInfoPart(character),
+        () => fandomInfoPart(character),
+        () => wikipediaInfoPart(character.name),
+      ]
+    : [() => wikipediaInfoPart(character.name), () => fandomInfoPart(character)];
+
+  const parts: InfoPart[] = [];
+  for (const step of steps) {
+    const part = await step();
+    if (part && part.text.trim()) parts.push(part);
+    const combined = combineInfo(parts);
+    if (combined.text && infoIsSufficient(combined.text)) return combined;
+  }
+
+  const combined = combineInfo(parts);
+  if (combined.text) return combined;
+  return { text: `${character.name} — ${character.source}.`, sources: [], source: 'none' };
+}
+
+/** Everything the pipeline knows about a character before it is scaled. */
+export interface CharacterEvidence {
+  hints: AniListHints | null;
+  anime: boolean;
+  /** fictional characters fall back to a fighter baseline, real people to human */
+  fiction: boolean;
+  info: GatheredInfo;
+  vsb: ScoredVsbPage | null;
+}
+
+/**
+ * Collect a character's evidence once and reuse it: the draft gate, the research
+ * phase and the image picker all need the same wiki pages, and a room full of
+ * Masters picking at once should not queue the same request ten times.
+ */
+export async function collectCharacterEvidence(character: Character): Promise<CharacterEvidence> {
+  const cacheKey = `evidence:${character.key}`;
+  const cached = getCachedSearch<CharacterEvidence>(cacheKey);
+  if (cached) return cached;
+
+  const hints = await anilistHintsFor(character);
+  const anime = isAnimeMangaCharacter(character, hints?.match ?? null);
+  const fiction = !REAL_WORLD_SOURCE_RE.test(character.source);
+  const [vsb, info] = await Promise.all([
+    resolveVsbPage(character, hints).catch(() => null),
+    gatherCharacterInfo(character, anime),
+  ]);
+
+  const evidence: CharacterEvidence = {
+    hints: hints ? { names: hints.names, titles: hints.titles, match: hints.match } : null,
+    anime,
+    fiction,
+    info,
+    vsb,
+  };
+  setCachedSearch(cacheKey, evidence);
+  return evidence;
 }
 
 /* ------------------------------------------------------------------ */
@@ -560,51 +708,6 @@ function withTimeout<T>(promise: Promise<T>, ms: number, fallback: T): Promise<T
 /** Clips make poor still portraits; a few wikis serve them as page images. */
 function isAnimated(url: string): boolean {
   return decodeURIComponent(url).toLowerCase().includes('.gif');
-}
-
-/** Drop a trailing disambiguator: "Kirito (Post-Aincrad)" → "Kirito". */
-function withoutQualifier(name: string): string {
-  return name.replace(/\s*\([^)]*\)\s*$/, '').trim() || name;
-}
-
-/** Meaningful words in a name, ignoring particles and single letters. */
-function nameTokens(name: string): string[] {
-  return withoutQualifier(name)
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .split(/\s+/)
-    .filter((token) => token.length >= 3);
-}
-
-/**
- * True when two names are the same name written the other way round or with a
- * different romanisation — "Son Goku" and "Gokuu Son" are one character, while
- * "Son Goku" and "Son Goten" are not.
- */
-function namesAreReordered(a: string, b: string): boolean {
-  const left = nameTokens(a);
-  const pool = nameTokens(b);
-  if (!left.length || left.length !== pool.length) return false;
-  return left.every((token) => {
-    const index = pool.findIndex((other) => other === token || other.startsWith(token) || token.startsWith(other));
-    if (index < 0) return false;
-    pool.splice(index, 1);
-    return true;
-  });
-}
-
-/**
- * How well two names line up: 2 when they are the same name, 1 when they are the
- * same name written the other way round or in another romanisation, 0 when they
- * are simply different people. Similarity scoring is deliberately avoided here:
- * it happily rates "Kirito" and "Kirito Kamui" as one character.
- */
-function nameMatchScore(a: string, b: string): number {
-  const left = normalize(withoutQualifier(a));
-  const right = normalize(withoutQualifier(b));
-  if (!left || !right) return 0;
-  if (left === right) return 2;
-  return namesAreReordered(a, b) ? 1 : 0;
 }
 
 /**
@@ -650,11 +753,13 @@ function sameFranchiseScore(character: Character, match: AniListCandidate): numb
 export function bestAniListMatch(
   character: Character,
   matches: readonly AniListCandidate[],
+  options: { requireArtwork?: boolean } = {},
 ): AniListCandidate | null {
+  const requireArtwork = options.requireArtwork ?? true;
   let best: { match: AniListCandidate; score: number } | null = null;
   let franchise: AniListCandidate | null = null;
   for (const match of matches) {
-    if (!match.thumb) continue;
+    if (requireArtwork && !match.thumb) continue;
     const score = anilistMatchScore(character.name, match);
     if (!best || score > best.score) best = { match, score };
     if (!franchise && sameFranchiseScore(character, match)) franchise = match;

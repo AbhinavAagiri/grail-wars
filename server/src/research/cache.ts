@@ -5,7 +5,12 @@ import type { Profile } from '@hgd/shared';
 import { logger } from '../logger';
 
 const CACHE_DIR = path.resolve(process.cwd(), '.cache');
-const CACHE_FILE = path.join(CACHE_DIR, 'research.json');
+/**
+ * Bump when the research pipeline changes meaningfully: old entries (e.g. every
+ * 10-C profile written before the source waterfall was fixed) must not survive.
+ */
+const CACHE_VERSION = 2;
+const CACHE_FILE = path.join(CACHE_DIR, `research-v${CACHE_VERSION}.json`);
 const TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 const memory = new LRUCache<string, Profile>({ max: 500, ttl: TTL_MS });

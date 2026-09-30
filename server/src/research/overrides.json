@@ -1,5 +1,47 @@
 {
-  "_comment": "Keys are canonical keys: normalize('name|source'). Values are merged into the Profile last, so they win over parsed/LLM data. Use these to fix parser mistakes for well-known characters.",
+  "_comment": "Keys are canonical keys: normalize('name|source'), or normalize('name') alone to apply to every source. Values are merged into the Profile last, so they win over parsed/LLM data. Use these to fix parser mistakes for well-known characters.",
+  "saber": {
+    "tierPeak": "Low 6-B",
+    "speed": "FTL",
+    "durability": "Island",
+    "range": "Kilometers",
+    "abilities": [
+      "Superhuman Physical Characteristics",
+      "Weapon Mastery",
+      "Regeneration",
+      "Immortality",
+      "Precognition",
+      "Invulnerability",
+      "Conceptual Manipulation",
+      "Energy Manipulation"
+    ],
+    "tags": ["honorable", "loyal", "prideful"],
+    "alignment": "good",
+    "archetype": "swordsman",
+    "keyAbilityName": "Excalibur",
+    "confidence": "high"
+  },
+  "artoria pendragon": {
+    "tierPeak": "Low 6-B",
+    "speed": "FTL",
+    "durability": "Island",
+    "range": "Kilometers",
+    "abilities": [
+      "Superhuman Physical Characteristics",
+      "Weapon Mastery",
+      "Regeneration",
+      "Immortality",
+      "Precognition",
+      "Invulnerability",
+      "Conceptual Manipulation",
+      "Energy Manipulation"
+    ],
+    "tags": ["honorable", "loyal", "prideful"],
+    "alignment": "good",
+    "archetype": "swordsman",
+    "keyAbilityName": "Excalibur",
+    "confidence": "high"
+  },
   "krillin dragon ball": {
     "tierPeak": "High 6-A",
     "speed": "Massively Hypersonic",

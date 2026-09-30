@@ -36,6 +36,7 @@ export default function Draft() {
   const slotError = useStore((s) => s.slotError);
   const [imageFor, setImageFor] = useState<ServantClass | null>(null);
   const [infoFor, setInfoFor] = useState<ServantClass | null>(null);
+  const [poolFor, setPoolFor] = useState<ServantClass | null>(null);
 
   const me = room.players.find((p) => p.id === playerId);
   const isHost = room.hostId === playerId;
@@ -43,9 +44,24 @@ export default function Draft() {
   const myPicks = (room.myPicks ?? {}) as Partial<Record<ServantClass, Character>>;
   const filled = classes.filter((cls) => myPicks[cls]).length;
   const allLocked = room.players.filter((p) => !p.isSpectator).every((p) => p.locked);
+  const aiChooses = room.settings.aiChooses;
+  const draftPool = room.draftPool ?? {};
 
   const handleSelect = (cls: ServantClass, candidate: SearchCandidate) => pick(cls, { candidate });
   const handleCustom = (cls: ServantClass, name: string) => pick(cls, { customName: name });
+  // A roster pick is an ordinary candidate, minus the ~2 KB avatar data URI:
+  // the server rebuilds the placeholder from the name.
+  const handlePoolPick = (cls: ServantClass, character: Character) => {
+    pick(cls, {
+      candidate: {
+        key: character.key,
+        name: character.name,
+        source: character.source,
+        provider: character.provider,
+        thumb: '',
+      },
+    });
+  };
 
   return (
     <div className="min-h-screen">
@@ -56,7 +72,9 @@ export default function Draft() {
           <div>
             <h1 className="hgd-heading text-xl">Draft</h1>
             <p className="text-[12px] text-muted">
-              One character for each of the {classes.length} classes in play. Any character can go in any class.
+              {aiChooses
+                ? `The game dealt this room ${classes.length} rosters — one character for each class, from the AI Chooses list.`
+                : `One character for each of the ${classes.length} classes in play. Each class only accepts characters whose fighting style fits it.`}
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -153,12 +171,23 @@ export default function Draft() {
                   </div>
                 ) : (
                   <div className="mt-3">
-                    <CharacterSearch
-                      placeholder={`Search a ${meta.label}…`}
-                      disabled={me?.locked}
-                      onSelect={(candidate) => handleSelect(cls, candidate)}
-                      onCustom={(name) => handleCustom(cls, name)}
-                    />
+                    {aiChooses && (draftPool[cls]?.length ?? 0) > 0 ? (
+                      <button
+                        type="button"
+                        className="hgd-btn hgd-btn-secondary w-full"
+                        disabled={me?.locked}
+                        onClick={() => setPoolFor(cls)}
+                      >
+                        Choose from {draftPool[cls]!.length}
+                      </button>
+                    ) : (
+                      <CharacterSearch
+                        placeholder={`Search a ${meta.label}…`}
+                        disabled={me?.locked}
+                        onSelect={(candidate) => handleSelect(cls, candidate)}
+                        onCustom={(name) => handleCustom(cls, name)}
+                      />
+                    )}
                   </div>
                 )}
 
@@ -211,9 +240,50 @@ export default function Draft() {
         <Modal title={`${CLASS_META[infoFor].icon} ${CLASS_META[infoFor].label}`} onClose={() => setInfoFor(null)}>
           <p className="text-[13px] leading-relaxed text-muted">{CLASS_META[infoFor].flavor}</p>
           <p className="mt-3">{CLASS_META[infoFor].description}</p>
-          <p className="mt-3 text-[11.5px] text-muted">
-            Any character can be drafted into any class — the class decides how they fight, not who they are.
+          <p className="mt-3 rounded-lg border border-border bg-surface-2 px-3 py-2 text-[11.5px] text-muted">
+            <span className="font-bold text-ink">Who qualifies: </span>
+            {CLASS_META[infoFor].qualifies}
           </p>
+        </Modal>
+      )}
+
+      {poolFor && (
+        <Modal
+          title={`${CLASS_META[poolFor].icon} ${CLASS_META[poolFor].label} — choose one`}
+          onClose={() => setPoolFor(null)}
+        >
+          <p className="mb-3 text-[11.5px] text-muted">{CLASS_META[poolFor].qualifies}</p>
+          <div className="grid max-h-[62vh] gap-2 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3">
+            {(draftPool[poolFor] ?? []).map((candidate) => {
+              const chosen = myPicks[poolFor]?.key === candidate.key;
+              return (
+                <button
+                  key={candidate.key}
+                  type="button"
+                  disabled={me?.locked}
+                  onClick={() => {
+                    handlePoolPick(poolFor, candidate);
+                    setPoolFor(null);
+                  }}
+                  className={clsx(
+                    'hgd-card flex items-center gap-2 p-2 text-left',
+                    !me?.locked && 'hgd-card-interactive',
+                    chosen && 'outline outline-1 outline-gold',
+                  )}
+                >
+                  <Portrait src={candidate.imageUrl} name={candidate.name} size={42} showCaption={false} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-[12.5px] font-bold text-ink" title={candidate.name}>
+                      {candidate.name}
+                    </span>
+                    <span className="block truncate text-[10.5px] text-muted" title={candidate.source}>
+                      {candidate.source}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </Modal>
       )}
 

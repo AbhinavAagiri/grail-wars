@@ -1,0 +1,9330 @@
+{
+  "saber": [
+    {
+      "name": "Miyamoto Musashi",
+      "source": "History"
+    },
+    {
+      "name": "Achilles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "King Arthur",
+      "source": "Arthurian legend"
+    },
+    {
+      "name": "Jeanne d'Arc",
+      "source": "History"
+    },
+    {
+      "name": "Sasaki Kojiro",
+      "source": "History"
+    },
+    {
+      "name": "Dionysus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Charles V, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Ferdinand I of Naples",
+      "source": "History"
+    },
+    {
+      "name": "Lady of the Lake",
+      "source": "Legend"
+    },
+    {
+      "name": "Lilith",
+      "source": "Legend"
+    },
+    {
+      "name": "Morgan le Fay",
+      "source": "Legend"
+    },
+    {
+      "name": "Philip II of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Merlin",
+      "source": "Legend"
+    },
+    {
+      "name": "Troilus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Telephus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "John Cokayne",
+      "source": "History"
+    },
+    {
+      "name": "Yellow Emperor",
+      "source": "Legend"
+    },
+    {
+      "name": "Itō Hirobumi",
+      "source": "History"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Charles the Bold",
+      "source": "History"
+    },
+    {
+      "name": "Elizabeth Seymour, Lady Cromwell",
+      "source": "History"
+    },
+    {
+      "name": "Amaterasu",
+      "source": "Legend"
+    },
+    {
+      "name": "Heracles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cybele",
+      "source": "Legend"
+    },
+    {
+      "name": "Indra",
+      "source": "Legend"
+    },
+    {
+      "name": "Frederick II of Denmark",
+      "source": "History"
+    },
+    {
+      "name": "Venus",
+      "source": "Legend"
+    },
+    {
+      "name": "Mikhail Miloradovich",
+      "source": "History"
+    },
+    {
+      "name": "Phaethon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sarah Churchill, Duchess of Marlborough",
+      "source": "History"
+    },
+    {
+      "name": "Princess Louise, Duchess of Argyll",
+      "source": "History"
+    },
+    {
+      "name": "Yahweh",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Diomedes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Honda Tadakatsu",
+      "source": "History"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Legend"
+    },
+    {
+      "name": "Margaret Cavendish, Duchess of Newcastle-upon-Tyne",
+      "source": "History"
+    },
+    {
+      "name": "Peter Paul Rubens",
+      "source": "History"
+    },
+    {
+      "name": "Mizuno Katsushige",
+      "source": "History"
+    },
+    {
+      "name": "Morgause",
+      "source": "Legend"
+    },
+    {
+      "name": "Lady Margaret Beaufort",
+      "source": "History"
+    },
+    {
+      "name": "William Adams",
+      "source": "History"
+    },
+    {
+      "name": "Pacha Kamaq",
+      "source": "Legend"
+    },
+    {
+      "name": "Baphomet",
+      "source": "History"
+    },
+    {
+      "name": "Beatrice of Portugal",
+      "source": "History"
+    },
+    {
+      "name": "Orpheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "John Darras",
+      "source": "History"
+    },
+    {
+      "name": "Dhu'l-Qarnayn",
+      "source": "Legend"
+    },
+    {
+      "name": "Lugh",
+      "source": "Legend"
+    },
+    {
+      "name": "Bernard of Clairvaux",
+      "source": "History"
+    },
+    {
+      "name": "Raynald of Châtillon",
+      "source": "History"
+    },
+    {
+      "name": "John Cornwall",
+      "source": "History"
+    },
+    {
+      "name": "Gudrun",
+      "source": "Legend"
+    },
+    {
+      "name": "El Cid",
+      "source": "History"
+    },
+    {
+      "name": "Sargon of Akkad",
+      "source": "Legend"
+    },
+    {
+      "name": "Vikramaditya",
+      "source": "Legend"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pandora",
+      "source": "Legend"
+    },
+    {
+      "name": "François de Montmorency, 2nd Duke of Montmorency",
+      "source": "History"
+    },
+    {
+      "name": "John Ipstones",
+      "source": "History"
+    },
+    {
+      "name": "Horus",
+      "source": "Legend"
+    },
+    {
+      "name": "Hercules",
+      "source": "Legend"
+    },
+    {
+      "name": "Dido",
+      "source": "Legend"
+    },
+    {
+      "name": "Lycurgus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Miyoshi Nagayoshi",
+      "source": "History"
+    },
+    {
+      "name": "Asmodeus",
+      "source": "Legend"
+    },
+    {
+      "name": "Freyr",
+      "source": "Legend"
+    },
+    {
+      "name": "Lady Gregory",
+      "source": "History"
+    },
+    {
+      "name": "John II of Portugal",
+      "source": "History"
+    },
+    {
+      "name": "Emma, Lady Hamilton",
+      "source": "History"
+    },
+    {
+      "name": "Adam",
+      "source": "Legend"
+    },
+    {
+      "name": "Jacques de Molay",
+      "source": "History"
+    },
+    {
+      "name": "Sakai Tadatsugu",
+      "source": "History"
+    },
+    {
+      "name": "Brunhild",
+      "source": "Legend"
+    },
+    {
+      "name": "Henry III of France",
+      "source": "History"
+    },
+    {
+      "name": "Agamemnon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Caeneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Piers Gaveston, 1st Earl of Cornwall",
+      "source": "History"
+    },
+    {
+      "name": "Eve",
+      "source": "Legend"
+    },
+    {
+      "name": "Ernulf de Hesdin",
+      "source": "History"
+    },
+    {
+      "name": "Cancer",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pope Joan",
+      "source": "Legend"
+    },
+    {
+      "name": "Mordred",
+      "source": "Legend"
+    },
+    {
+      "name": "Matilda of Boulogne",
+      "source": "History"
+    },
+    {
+      "name": "Simon de Montfort, 6th Earl of Leicester",
+      "source": "History"
+    },
+    {
+      "name": "Alice Haute",
+      "source": "History"
+    },
+    {
+      "name": "Theseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Snake-Legged Goddess",
+      "source": "Legend"
+    },
+    {
+      "name": "Ninurta",
+      "source": "Legend"
+    },
+    {
+      "name": "Henry le Despenser",
+      "source": "History"
+    },
+    {
+      "name": "Frederick III, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Ogmios",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nüwa",
+      "source": "Legend"
+    },
+    {
+      "name": "Perseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nauplius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Andrea Doria",
+      "source": "History"
+    },
+    {
+      "name": "Saigō Takamori",
+      "source": "History"
+    },
+    {
+      "name": "Ganymede",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Charles XI of Sweden",
+      "source": "History"
+    },
+    {
+      "name": "Bess of Hardwick",
+      "source": "History"
+    },
+    {
+      "name": "Aeneas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "John Minsterworth",
+      "source": "History"
+    },
+    {
+      "name": "Ōkubo Toshimichi",
+      "source": "History"
+    },
+    {
+      "name": "Osiris",
+      "source": "Legend"
+    },
+    {
+      "name": "Hector",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ravana",
+      "source": "Legend"
+    },
+    {
+      "name": "Cadmus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Kobayakawa Takakage",
+      "source": "History"
+    },
+    {
+      "name": "Ōkuma Shigenobu",
+      "source": "History"
+    },
+    {
+      "name": "Thomas Felton",
+      "source": "History"
+    },
+    {
+      "name": "Lettice Knollys",
+      "source": "History"
+    },
+    {
+      "name": "Empress Jingū",
+      "source": "Legend"
+    },
+    {
+      "name": "Gilbert Denys",
+      "source": "History"
+    },
+    {
+      "name": "Harriet Leveson-Gower, Countess Granville",
+      "source": "History"
+    },
+    {
+      "name": "Oedipus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cecily Bonville, 7th Baroness Harington",
+      "source": "History"
+    },
+    {
+      "name": "John Fastolf",
+      "source": "History"
+    },
+    {
+      "name": "Walter Devereux",
+      "source": "History"
+    },
+    {
+      "name": "Hattori Hanzō",
+      "source": "History"
+    },
+    {
+      "name": "Psyche",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Jimmu",
+      "source": "Legend"
+    },
+    {
+      "name": "Yu the Great",
+      "source": "Legend"
+    },
+    {
+      "name": "Pelops",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Casimir IV Jagiellon",
+      "source": "History"
+    },
+    {
+      "name": "Asclepius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "John Russell",
+      "source": "History"
+    },
+    {
+      "name": "Emperor Sujin",
+      "source": "Legend"
+    },
+    {
+      "name": "Henry II of France",
+      "source": "History"
+    },
+    {
+      "name": "Menelaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Jean de Carrouges",
+      "source": "History"
+    },
+    {
+      "name": "Jason",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Theodosia Ivie",
+      "source": "History"
+    },
+    {
+      "name": "Šanta",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Afonso V of Portugal",
+      "source": "History"
+    },
+    {
+      "name": "Semele",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Memnon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sakamoto Ryōma",
+      "source": "History"
+    },
+    {
+      "name": "Iphigenia",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thracian horseman",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Fisher King",
+      "source": "Legend"
+    },
+    {
+      "name": "Ra",
+      "source": "Legend"
+    },
+    {
+      "name": "Nogi Maresuke",
+      "source": "History"
+    },
+    {
+      "name": "Bellerophon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ii Naotora",
+      "source": "History"
+    },
+    {
+      "name": "Patroclus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Melqart",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "The Morrígan",
+      "source": "Legend"
+    },
+    {
+      "name": "Joan de Geneville, 2nd Baroness Geneville",
+      "source": "History"
+    },
+    {
+      "name": "Calydonian boar hunt",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "John Hawkwood",
+      "source": "History"
+    },
+    {
+      "name": "Thetis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "William de Grenlay",
+      "source": "History"
+    },
+    {
+      "name": "Jacques le Gris",
+      "source": "History"
+    },
+    {
+      "name": "Valdemar IV of Denmark",
+      "source": "History"
+    },
+    {
+      "name": "Ōyama Iwao",
+      "source": "History"
+    },
+    {
+      "name": "Erik of Pomerania",
+      "source": "History"
+    },
+    {
+      "name": "Igraine",
+      "source": "Legend"
+    },
+    {
+      "name": "Tiresias",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Adam in Islam",
+      "source": "Legend"
+    },
+    {
+      "name": "Raymond du Puy",
+      "source": "History"
+    },
+    {
+      "name": "Targitaos",
+      "source": "Legend"
+    },
+    {
+      "name": "Atalanta",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Amphiaraus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Frederick III of Saxony",
+      "source": "History"
+    },
+    {
+      "name": "Minamoto no Yoritomo",
+      "source": "History"
+    },
+    {
+      "name": "Hyacinth",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Elizabeth Gwillim",
+      "source": "History"
+    },
+    {
+      "name": "Geoffroi de Charny",
+      "source": "History"
+    },
+    {
+      "name": "Gwenddydd",
+      "source": "Legend"
+    },
+    {
+      "name": "William Montagu, 1st Earl of Salisbury",
+      "source": "History"
+    },
+    {
+      "name": "Liber",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Kubera",
+      "source": "Legend"
+    },
+    {
+      "name": "Itagaki Taisuke",
+      "source": "History"
+    },
+    {
+      "name": "Kawaji Toshiyoshi",
+      "source": "History"
+    },
+    {
+      "name": "Sarpedon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ishida Mitsunari",
+      "source": "History"
+    },
+    {
+      "name": "Emperor Keikō",
+      "source": "Legend"
+    },
+    {
+      "name": "Hayk",
+      "source": "Legend"
+    },
+    {
+      "name": "Kido Takayoshi",
+      "source": "History"
+    },
+    {
+      "name": "Lady Anne Clifford",
+      "source": "History"
+    },
+    {
+      "name": "Chiba Takusaburō",
+      "source": "History"
+    },
+    {
+      "name": "Okita Sōji",
+      "source": "History"
+    },
+    {
+      "name": "Pazuzu",
+      "source": "Legend"
+    },
+    {
+      "name": "Hippomenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mōri Terumoto",
+      "source": "History"
+    },
+    {
+      "name": "Flora of Beaulieu",
+      "source": "History"
+    },
+    {
+      "name": "Clíodhna",
+      "source": "Legend"
+    },
+    {
+      "name": "Maria Graham",
+      "source": "History"
+    },
+    {
+      "name": "Saitō Hajime",
+      "source": "History"
+    },
+    {
+      "name": "Hayashi Narinaga",
+      "source": "History"
+    },
+    {
+      "name": "Oghuz Khagan",
+      "source": "Legend"
+    },
+    {
+      "name": "Denis of Hungary",
+      "source": "History"
+    },
+    {
+      "name": "John Devereux, 1st Baron Devereux",
+      "source": "History"
+    },
+    {
+      "name": "Ereshkigal",
+      "source": "Legend"
+    },
+    {
+      "name": "Medb",
+      "source": "Legend"
+    },
+    {
+      "name": "Eustace Grenier",
+      "source": "History"
+    },
+    {
+      "name": "Jasper Tudor",
+      "source": "History"
+    },
+    {
+      "name": "Jane Gordon, Duchess of Gordon",
+      "source": "History"
+    },
+    {
+      "name": "Frederick William, the Great Elector",
+      "source": "History"
+    },
+    {
+      "name": "Emperor Suinin",
+      "source": "Legend"
+    },
+    {
+      "name": "Qʼuqʼumatz",
+      "source": "Legend"
+    },
+    {
+      "name": "Queen of Elphame",
+      "source": "Legend"
+    },
+    {
+      "name": "Clinton P. Ferry",
+      "source": "History"
+    },
+    {
+      "name": "Heni Materoa Carroll",
+      "source": "History"
+    },
+    {
+      "name": "Sisyphus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Alfonso II of Naples",
+      "source": "History"
+    },
+    {
+      "name": "Falkes de Bréauté",
+      "source": "History"
+    },
+    {
+      "name": "Elizabeth Maitland, Duchess of Lauderdale",
+      "source": "History"
+    },
+    {
+      "name": "Amelia Douglas",
+      "source": "History"
+    },
+    {
+      "name": "Joan of Kent",
+      "source": "History"
+    },
+    {
+      "name": "Charles IX of France",
+      "source": "History"
+    },
+    {
+      "name": "Ajax the Great",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Catherine of Valois",
+      "source": "History"
+    },
+    {
+      "name": "Jane Dudley, Duchess of Northumberland",
+      "source": "History"
+    },
+    {
+      "name": "Maeda Toshiie",
+      "source": "History"
+    },
+    {
+      "name": "Fernando Yáñez",
+      "source": "History"
+    },
+    {
+      "name": "Manu",
+      "source": "Legend"
+    },
+    {
+      "name": "Minamoto no Yoshitsune",
+      "source": "History"
+    },
+    {
+      "name": "Jane Franklin",
+      "source": "History"
+    },
+    {
+      "name": "Matsukata Masayoshi",
+      "source": "History"
+    },
+    {
+      "name": "Triptolemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Christian V of Denmark",
+      "source": "History"
+    },
+    {
+      "name": "Georgiana Howard, Countess of Carlisle",
+      "source": "History"
+    },
+    {
+      "name": "Gerard Sasso",
+      "source": "History"
+    },
+    {
+      "name": "Rhiannon",
+      "source": "Legend"
+    },
+    {
+      "name": "Ōuchi Yoshioki",
+      "source": "History"
+    },
+    {
+      "name": "Francesco I Sforza",
+      "source": "History"
+    },
+    {
+      "name": "Minamoto no Yoshiie",
+      "source": "History"
+    },
+    {
+      "name": "Akizuki Tanezane",
+      "source": "History"
+    },
+    {
+      "name": "Konishi Yukinaga",
+      "source": "History"
+    },
+    {
+      "name": "Oduduwa",
+      "source": "Legend"
+    },
+    {
+      "name": "William Montagu, 2nd Baron Montagu",
+      "source": "History"
+    },
+    {
+      "name": "Kalevi",
+      "source": "Legend"
+    },
+    {
+      "name": "Katō Kiyomasa",
+      "source": "History"
+    },
+    {
+      "name": "Garin of Montaigu",
+      "source": "History"
+    },
+    {
+      "name": "Orestes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cecrops I",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Oswald von Wolkenstein",
+      "source": "History"
+    },
+    {
+      "name": "Flora Shaw, Baroness Lugard",
+      "source": "History"
+    },
+    {
+      "name": "Bayajidda",
+      "source": "Legend"
+    },
+    {
+      "name": "Duttabaung",
+      "source": "Legend"
+    },
+    {
+      "name": "John Maitland, 1st Duke of Lauderdale",
+      "source": "History"
+    },
+    {
+      "name": "Erechtheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Seinei",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Chūai",
+      "source": "Legend"
+    },
+    {
+      "name": "Lady Katherine Grey",
+      "source": "History"
+    },
+    {
+      "name": "Mildred Cooke",
+      "source": "History"
+    },
+    {
+      "name": "Mary Dudley",
+      "source": "History"
+    },
+    {
+      "name": "Catherine Carey",
+      "source": "History"
+    },
+    {
+      "name": "Lạc Long Quân",
+      "source": "Legend"
+    },
+    {
+      "name": "Saigō Jūdō",
+      "source": "History"
+    }
+  ],
+  "archer": [
+    {
+      "name": "Robin Hood",
+      "source": "English folklore"
+    },
+    {
+      "name": "Simo Hayha",
+      "source": "History"
+    },
+    {
+      "name": "Artemis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "William Tell",
+      "source": "Swiss legend"
+    },
+    {
+      "name": "Dionysus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Grigore Sturdza",
+      "source": "History"
+    },
+    {
+      "name": "Troilus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Telephus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Achilles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Heracles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phaethon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yahweh",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Diomedes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Orpheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Billy Sing",
+      "source": "History"
+    },
+    {
+      "name": "Lycurgus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Annie Oakley",
+      "source": "History"
+    },
+    {
+      "name": "Agamemnon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Caeneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cancer",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Theseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ogmios",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Perseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nauplius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ganymede",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Calamity Jane",
+      "source": "History"
+    },
+    {
+      "name": "Aeneas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hector",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cadmus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Oedipus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Psyche",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pelops",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asclepius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Menelaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Jason",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Šanta",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Semele",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Memnon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphigenia",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thracian horseman",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Bellerophon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Patroclus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Melqart",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aliya Moldagulova",
+      "source": "History"
+    },
+    {
+      "name": "Calydonian boar hunt",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thetis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Samuel Franklin Cody",
+      "source": "History"
+    },
+    {
+      "name": "Tiresias",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Atalanta",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Amphiaraus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hyacinth",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gabriel Dumont",
+      "source": "History"
+    },
+    {
+      "name": "Liber",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "William Frank Carver",
+      "source": "History"
+    },
+    {
+      "name": "Sarpedon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hippomenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sisyphus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ajax the Great",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Triptolemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Orestes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cecrops I",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Erechtheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Clymenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Protesilaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Melanion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thoas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pisidice of Methymna",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Actor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Antilochus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ajax the Lesser",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Peleus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Murata Tsuneyoshi",
+      "source": "History"
+    },
+    {
+      "name": "Aristaeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nestor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Polyxena",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pirithous",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Philoctetes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nonnus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Idas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Palamedes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Euxynthetus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phoroneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cepheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yang Jingyu",
+      "source": "History"
+    },
+    {
+      "name": "Lillian Smith",
+      "source": "History"
+    },
+    {
+      "name": "White Tights",
+      "source": "History"
+    },
+    {
+      "name": "Clytius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Argo",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hylas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Anagyros",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Oeagrus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Frank E. Butler",
+      "source": "History"
+    },
+    {
+      "name": "Telamon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mopsus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Idomeneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Augeas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Rhesus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eurytus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Euphemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Admetus of Pherae",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asterius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tatyana Baramzina",
+      "source": "History"
+    },
+    {
+      "name": "Eurymedon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Jack Hinson",
+      "source": "History"
+    },
+    {
+      "name": "Thomas Plunket",
+      "source": "History"
+    },
+    {
+      "name": "Meleager",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Laertes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Echion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Butes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sugitani Zenjūbō",
+      "source": "History"
+    },
+    {
+      "name": "Euryalus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hermione",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Diana Nemorensis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Boreads",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Amphidamas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pandion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Smicrus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Periclymenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eurytion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tiphys",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Abderus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Noah Adamia",
+      "source": "History"
+    },
+    {
+      "name": "Acastus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphidamas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Trophonius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Alcathous",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphitos",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Natalya Kovshova",
+      "source": "History"
+    },
+    {
+      "name": "Laodocus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Euphorbus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Podalirius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Parthenopaeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Amphion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Oileus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Leitus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iolaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ibragim Suleymanov",
+      "source": "History"
+    },
+    {
+      "name": "Timothy Murphy",
+      "source": "History"
+    },
+    {
+      "name": "Peneleos",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Alcon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tydeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Maksim Passar",
+      "source": "History"
+    },
+    {
+      "name": "Tuleugali Abdybekov",
+      "source": "History"
+    },
+    {
+      "name": "Hercle",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Maron",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Argus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Evander of Pallantium",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Coön",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Staphylus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphiclus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eurydamas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Deucalion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Leos",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hilaeira",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Coronus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phalanthus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mikhail Ivasik",
+      "source": "History"
+    },
+    {
+      "name": "Talthybius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phoebe",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mariya Polivanova",
+      "source": "History"
+    },
+    {
+      "name": "Aegiale",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Polyphemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphitus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tatyana Kostyrina",
+      "source": "History"
+    },
+    {
+      "name": "Nikolai Ilyin",
+      "source": "History"
+    },
+    {
+      "name": "Mandre Nalgiev",
+      "source": "History"
+    },
+    {
+      "name": "Lynceus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Glaucus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tsyrendashi Dorzhiev",
+      "source": "History"
+    },
+    {
+      "name": "Iphicles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Academus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Herman Davis",
+      "source": "History"
+    },
+    {
+      "name": "Vasily Golosov",
+      "source": "History"
+    },
+    {
+      "name": "May Lillie",
+      "source": "History"
+    },
+    {
+      "name": "Erigone",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Argynnus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phocus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Talaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nannacus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Munichus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Penthilus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ancaeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aethalides",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thersanon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Vejovis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ivan Abdulov",
+      "source": "History"
+    },
+    {
+      "name": "Idmon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphianassa",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aleksandra Shlyakhova",
+      "source": "History"
+    },
+    {
+      "name": "Erginus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Menestratus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lion of Cithaeron",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Leucon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mahmud Amayev",
+      "source": "History"
+    },
+    {
+      "name": "Autolycus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Parrhasius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Coroebus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ialmenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Trambelus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Texas Jack Jr.",
+      "source": "History"
+    },
+    {
+      "name": "Mary Champion de Crespigny",
+      "source": "History"
+    },
+    {
+      "name": "Pyotr Goncharov",
+      "source": "History"
+    },
+    {
+      "name": "Tisamenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Konstantin Pankov",
+      "source": "History"
+    },
+    {
+      "name": "Phlias",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asteropaios",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Poeas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ascalaphus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ceryx",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Adam Bogardus",
+      "source": "History"
+    },
+    {
+      "name": "Dionysus-Osiris",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phalerus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Alexanor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pleuron",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hippalcimus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Messene",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Athis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Laocoön",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mesthles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Echemeia",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Molorchus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eurybarus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Darrhon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phrontis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Frank I. Frayne",
+      "source": "History"
+    },
+    {
+      "name": "Zarex",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Electryone",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eunostus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Anaxias",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cometes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mnesileus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hippothoon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Orotalt",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aratus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Norax",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Canthus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eribotes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Zhang Xian",
+      "source": "History"
+    },
+    {
+      "name": "Arizona Charlie",
+      "source": "History"
+    },
+    {
+      "name": "Anogon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Armenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Euphorion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Telemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phanus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thrasymedes",
+      "source": "Greek mythology"
+    }
+  ],
+  "lancer": [
+    {
+      "name": "Hector",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cu Chulainn",
+      "source": "Irish mythology"
+    },
+    {
+      "name": "Odin",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Sasaki Kojiro",
+      "source": "History"
+    },
+    {
+      "name": "Karna",
+      "source": "Mahabharata"
+    },
+    {
+      "name": "Valkyrie",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Dionysus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lady of the Lake",
+      "source": "Legend"
+    },
+    {
+      "name": "Lilith",
+      "source": "Legend"
+    },
+    {
+      "name": "Morgan le Fay",
+      "source": "Legend"
+    },
+    {
+      "name": "Merlin",
+      "source": "Legend"
+    },
+    {
+      "name": "Troilus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Telephus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yellow Emperor",
+      "source": "Legend"
+    },
+    {
+      "name": "Achilles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Amaterasu",
+      "source": "Legend"
+    },
+    {
+      "name": "Heracles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cybele",
+      "source": "Legend"
+    },
+    {
+      "name": "Indra",
+      "source": "Legend"
+    },
+    {
+      "name": "Venus",
+      "source": "Legend"
+    },
+    {
+      "name": "Phaethon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yahweh",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Diomedes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "Legend"
+    },
+    {
+      "name": "Morgause",
+      "source": "Legend"
+    },
+    {
+      "name": "Pacha Kamaq",
+      "source": "Legend"
+    },
+    {
+      "name": "Orpheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Dhu'l-Qarnayn",
+      "source": "Legend"
+    },
+    {
+      "name": "Lugh",
+      "source": "Legend"
+    },
+    {
+      "name": "Gudrun",
+      "source": "Legend"
+    },
+    {
+      "name": "Sargon of Akkad",
+      "source": "Legend"
+    },
+    {
+      "name": "Vikramaditya",
+      "source": "Legend"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pandora",
+      "source": "Legend"
+    },
+    {
+      "name": "Horus",
+      "source": "Legend"
+    },
+    {
+      "name": "Hercules",
+      "source": "Legend"
+    },
+    {
+      "name": "Dido",
+      "source": "Legend"
+    },
+    {
+      "name": "Lycurgus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asmodeus",
+      "source": "Legend"
+    },
+    {
+      "name": "Freyr",
+      "source": "Legend"
+    },
+    {
+      "name": "Adam",
+      "source": "Legend"
+    },
+    {
+      "name": "Brunhild",
+      "source": "Legend"
+    },
+    {
+      "name": "Agamemnon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Caeneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eve",
+      "source": "Legend"
+    },
+    {
+      "name": "Cancer",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pope Joan",
+      "source": "Legend"
+    },
+    {
+      "name": "Mordred",
+      "source": "Legend"
+    },
+    {
+      "name": "Theseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Snake-Legged Goddess",
+      "source": "Legend"
+    },
+    {
+      "name": "Ninurta",
+      "source": "Legend"
+    },
+    {
+      "name": "Ogmios",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nüwa",
+      "source": "Legend"
+    },
+    {
+      "name": "Perseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nauplius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ganymede",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aeneas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Osiris",
+      "source": "Legend"
+    },
+    {
+      "name": "Ravana",
+      "source": "Legend"
+    },
+    {
+      "name": "Cadmus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Empress Jingū",
+      "source": "Legend"
+    },
+    {
+      "name": "Oedipus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Psyche",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Jimmu",
+      "source": "Legend"
+    },
+    {
+      "name": "Yu the Great",
+      "source": "Legend"
+    },
+    {
+      "name": "Pelops",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asclepius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Sujin",
+      "source": "Legend"
+    },
+    {
+      "name": "Menelaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Jason",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Šanta",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Semele",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Memnon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphigenia",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thracian horseman",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Fisher King",
+      "source": "Legend"
+    },
+    {
+      "name": "Ra",
+      "source": "Legend"
+    },
+    {
+      "name": "Bellerophon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Patroclus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Melqart",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "The Morrígan",
+      "source": "Legend"
+    },
+    {
+      "name": "Calydonian boar hunt",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thetis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Igraine",
+      "source": "Legend"
+    },
+    {
+      "name": "Tiresias",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Adam in Islam",
+      "source": "Legend"
+    },
+    {
+      "name": "Targitaos",
+      "source": "Legend"
+    },
+    {
+      "name": "Atalanta",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Amphiaraus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hyacinth",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gwenddydd",
+      "source": "Legend"
+    },
+    {
+      "name": "Liber",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Kubera",
+      "source": "Legend"
+    },
+    {
+      "name": "Sarpedon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Keikō",
+      "source": "Legend"
+    },
+    {
+      "name": "Hayk",
+      "source": "Legend"
+    },
+    {
+      "name": "Pazuzu",
+      "source": "Legend"
+    },
+    {
+      "name": "Hippomenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Clíodhna",
+      "source": "Legend"
+    },
+    {
+      "name": "Oghuz Khagan",
+      "source": "Legend"
+    },
+    {
+      "name": "Ereshkigal",
+      "source": "Legend"
+    },
+    {
+      "name": "Medb",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Suinin",
+      "source": "Legend"
+    },
+    {
+      "name": "Qʼuqʼumatz",
+      "source": "Legend"
+    },
+    {
+      "name": "Queen of Elphame",
+      "source": "Legend"
+    },
+    {
+      "name": "Sisyphus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ajax the Great",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Manu",
+      "source": "Legend"
+    },
+    {
+      "name": "Triptolemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Rhiannon",
+      "source": "Legend"
+    },
+    {
+      "name": "Oduduwa",
+      "source": "Legend"
+    },
+    {
+      "name": "Kalevi",
+      "source": "Legend"
+    },
+    {
+      "name": "Orestes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cecrops I",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Bayajidda",
+      "source": "Legend"
+    },
+    {
+      "name": "Duttabaung",
+      "source": "Legend"
+    },
+    {
+      "name": "Erechtheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Seinei",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Chūai",
+      "source": "Legend"
+    },
+    {
+      "name": "Lạc Long Quân",
+      "source": "Legend"
+    },
+    {
+      "name": "Nongshāba",
+      "source": "Legend"
+    },
+    {
+      "name": "Chiyou",
+      "source": "Legend"
+    },
+    {
+      "name": "Clymenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tan'gun",
+      "source": "Legend"
+    },
+    {
+      "name": "Aram",
+      "source": "Legend"
+    },
+    {
+      "name": "Protesilaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yamuna in Hinduism",
+      "source": "Legend"
+    },
+    {
+      "name": "Harishchandra",
+      "source": "Legend"
+    },
+    {
+      "name": "Melanion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thoas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pisidice of Methymna",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Actor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Antilochus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ajax the Lesser",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mugulü",
+      "source": "Legend"
+    },
+    {
+      "name": "Yayati",
+      "source": "Legend"
+    },
+    {
+      "name": "Peleus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Seimu",
+      "source": "Legend"
+    },
+    {
+      "name": "King Ban",
+      "source": "Legend"
+    },
+    {
+      "name": "Aristaeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nestor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nyikang",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Kōrei",
+      "source": "Legend"
+    },
+    {
+      "name": "Polyxena",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pirithous",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Macha",
+      "source": "Legend"
+    },
+    {
+      "name": "Juho Halme",
+      "source": "History"
+    },
+    {
+      "name": "Philoctetes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nonnus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Kōgen",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Kōan",
+      "source": "Legend"
+    },
+    {
+      "name": "Skjöldr",
+      "source": "Legend"
+    },
+    {
+      "name": "Śakra",
+      "source": "Legend"
+    },
+    {
+      "name": "Iarbas",
+      "source": "Legend"
+    },
+    {
+      "name": "Faunus",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Suizei",
+      "source": "Legend"
+    },
+    {
+      "name": "Idas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Queen Moo",
+      "source": "Legend"
+    },
+    {
+      "name": "Palamedes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Euxynthetus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Kaika",
+      "source": "Legend"
+    },
+    {
+      "name": "Phoroneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eiso",
+      "source": "Legend"
+    },
+    {
+      "name": "Ruha",
+      "source": "Legend"
+    },
+    {
+      "name": "Niamh",
+      "source": "Legend"
+    },
+    {
+      "name": "Tabiti",
+      "source": "Legend"
+    },
+    {
+      "name": "Cepheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Enmerkar",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Annei",
+      "source": "Legend"
+    },
+    {
+      "name": "Goffar the Pict",
+      "source": "Legend"
+    },
+    {
+      "name": "Nyankapon-Nyame-Odomankoma",
+      "source": "Legend"
+    },
+    {
+      "name": "Clytius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emperor Itoku",
+      "source": "Legend"
+    },
+    {
+      "name": "Kubaba",
+      "source": "Legend"
+    },
+    {
+      "name": "Emperor Kōshō",
+      "source": "Legend"
+    },
+    {
+      "name": "Argo",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hylas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yngvi",
+      "source": "Legend"
+    },
+    {
+      "name": "Anagyros",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Keyumars",
+      "source": "Legend"
+    },
+    {
+      "name": "Shunten",
+      "source": "Legend"
+    },
+    {
+      "name": "Beowulf",
+      "source": "Legend"
+    },
+    {
+      "name": "Nicnevin",
+      "source": "Legend"
+    },
+    {
+      "name": "Tuisto",
+      "source": "Legend"
+    },
+    {
+      "name": "Manco Cápac",
+      "source": "Legend"
+    },
+    {
+      "name": "Ninus",
+      "source": "Legend"
+    },
+    {
+      "name": "Kresnik",
+      "source": "Legend"
+    },
+    {
+      "name": "Oeagrus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nambi",
+      "source": "Legend"
+    },
+    {
+      "name": "Vaivasvata Manu",
+      "source": "Legend"
+    },
+    {
+      "name": "Telamon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mopsus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Idomeneus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Augeas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Rhesus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eurytus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lutunasobasoba",
+      "source": "Legend"
+    },
+    {
+      "name": "Gwyn ap Nudd",
+      "source": "Legend"
+    },
+    {
+      "name": "Euphemus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Admetus of Pherae",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asterius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Kintu",
+      "source": "Legend"
+    },
+    {
+      "name": "Eurymedon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Atingkok",
+      "source": "Legend"
+    },
+    {
+      "name": "Abas",
+      "source": "Legend"
+    },
+    {
+      "name": "Nór",
+      "source": "Legend"
+    },
+    {
+      "name": "Etana",
+      "source": "Legend"
+    },
+    {
+      "name": "Arwe",
+      "source": "Legend"
+    },
+    {
+      "name": "Latinus",
+      "source": "Legend"
+    },
+    {
+      "name": "Angul",
+      "source": "Legend"
+    },
+    {
+      "name": "Meleager",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Laertes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Völsung",
+      "source": "Legend"
+    },
+    {
+      "name": "Echion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Titus Tatius",
+      "source": "Legend"
+    },
+    {
+      "name": "Dis Pater",
+      "source": "Legend"
+    },
+    {
+      "name": "Tenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Přemysl the Ploughman",
+      "source": "Legend"
+    },
+    {
+      "name": "Furra",
+      "source": "Legend"
+    },
+    {
+      "name": "Butes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Euryalus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hermione",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Diana Nemorensis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Humber the Hun",
+      "source": "Legend"
+    },
+    {
+      "name": "Pandrasus",
+      "source": "Legend"
+    },
+    {
+      "name": "Boreads",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eri",
+      "source": "Legend"
+    },
+    {
+      "name": "Amphidamas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "King Matjaž",
+      "source": "Legend"
+    },
+    {
+      "name": "Pandion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Smicrus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Periclymenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Al-Walid ibn Mus'ab",
+      "source": "Legend"
+    },
+    {
+      "name": "Eurytion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Benkos Biohó",
+      "source": "Legend"
+    },
+    {
+      "name": "Tiphys",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Abderus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iraj",
+      "source": "Legend"
+    },
+    {
+      "name": "Krakus",
+      "source": "Legend"
+    },
+    {
+      "name": "Acastus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pope Donus II",
+      "source": "Legend"
+    },
+    {
+      "name": "Jewish pope Andreas",
+      "source": "Legend"
+    },
+    {
+      "name": "Iphidamas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aslaug",
+      "source": "Legend"
+    },
+    {
+      "name": "Trophonius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mannus",
+      "source": "Legend"
+    },
+    {
+      "name": "Alcathous",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Iphitos",
+      "source": "Greek mythology"
+    }
+  ],
+  "rider": [
+    {
+      "name": "Alexander the Great",
+      "source": "History"
+    },
+    {
+      "name": "Genghis Khan",
+      "source": "History"
+    },
+    {
+      "name": "Napoleon Bonaparte",
+      "source": "History"
+    },
+    {
+      "name": "Sleipnir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Marcus Aurelius",
+      "source": "History"
+    },
+    {
+      "name": "Boudica",
+      "source": "History"
+    },
+    {
+      "name": "John French, 1st Earl of Ypres",
+      "source": "History"
+    },
+    {
+      "name": "Christopher Columbus",
+      "source": "History"
+    },
+    {
+      "name": "Nathan Bedford Forrest",
+      "source": "History"
+    },
+    {
+      "name": "Grigore Sturdza",
+      "source": "History"
+    },
+    {
+      "name": "Philip Sheridan",
+      "source": "History"
+    },
+    {
+      "name": "Étienne Marie Antoine Champion de Nansouty",
+      "source": "History"
+    },
+    {
+      "name": "Louis H. Carpenter",
+      "source": "History"
+    },
+    {
+      "name": "Itō Hirobumi",
+      "source": "History"
+    },
+    {
+      "name": "Pytheas",
+      "source": "History"
+    },
+    {
+      "name": "Sacagawea",
+      "source": "History"
+    },
+    {
+      "name": "J. E. B. Stuart",
+      "source": "History"
+    },
+    {
+      "name": "Honda Tadakatsu",
+      "source": "History"
+    },
+    {
+      "name": "Earl Van Dorn",
+      "source": "History"
+    },
+    {
+      "name": "Alexander Kolchak",
+      "source": "History"
+    },
+    {
+      "name": "William Adams",
+      "source": "History"
+    },
+    {
+      "name": "Amadeo I of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Jean-Baptiste Bessières",
+      "source": "History"
+    },
+    {
+      "name": "Nicholas M. Nolan",
+      "source": "History"
+    },
+    {
+      "name": "Jean-François de Galaup, comte de Lapérouse",
+      "source": "History"
+    },
+    {
+      "name": "Álvar Núñez Cabeza de Vaca",
+      "source": "History"
+    },
+    {
+      "name": "Grand Duke Dmitri Pavlovich of Russia",
+      "source": "History"
+    },
+    {
+      "name": "John Franklin",
+      "source": "History"
+    },
+    {
+      "name": "Vasco Núñez de Balboa",
+      "source": "History"
+    },
+    {
+      "name": "Diamandi Djuvara",
+      "source": "History"
+    },
+    {
+      "name": "Isabelle Eberhardt",
+      "source": "History"
+    },
+    {
+      "name": "Wade Hampton III",
+      "source": "History"
+    },
+    {
+      "name": "Artemisia I of Caria",
+      "source": "History"
+    },
+    {
+      "name": "Kanhoji Angre",
+      "source": "History"
+    },
+    {
+      "name": "Michel Ney",
+      "source": "History"
+    },
+    {
+      "name": "Ludwig Leichhardt",
+      "source": "History"
+    },
+    {
+      "name": "Andrea Doria",
+      "source": "History"
+    },
+    {
+      "name": "Percy Fawcett",
+      "source": "History"
+    },
+    {
+      "name": "Francisco Hernández de Córdoba",
+      "source": "History"
+    },
+    {
+      "name": "Alexandre-Louis-Robert Girardin d'Ermenonville",
+      "source": "History"
+    },
+    {
+      "name": "Antonio de Erauso",
+      "source": "History"
+    },
+    {
+      "name": "Powell Clayton",
+      "source": "History"
+    },
+    {
+      "name": "Joseph Wheeler",
+      "source": "History"
+    },
+    {
+      "name": "Ida Laura Pfeiffer",
+      "source": "History"
+    },
+    {
+      "name": "Romanos I Lekapenos",
+      "source": "History"
+    },
+    {
+      "name": "Marcellin Marbot",
+      "source": "History"
+    },
+    {
+      "name": "Gail Borden",
+      "source": "History"
+    },
+    {
+      "name": "Hattori Hanzō",
+      "source": "History"
+    },
+    {
+      "name": "Joachim Murat",
+      "source": "History"
+    },
+    {
+      "name": "Samuel H. Starr",
+      "source": "History"
+    },
+    {
+      "name": "Friedrich Wilhelm von Seydlitz",
+      "source": "History"
+    },
+    {
+      "name": "Grand Duke Konstantin Pavlovich of Russia",
+      "source": "History"
+    },
+    {
+      "name": "James Fitzjames",
+      "source": "History"
+    },
+    {
+      "name": "Michael Andreas Barclay de Tolly",
+      "source": "History"
+    },
+    {
+      "name": "Zhang Qian",
+      "source": "History"
+    },
+    {
+      "name": "Sebastian Cabot",
+      "source": "History"
+    },
+    {
+      "name": "John Bigelow Jr.",
+      "source": "History"
+    },
+    {
+      "name": "Ira W. Claflin",
+      "source": "History"
+    },
+    {
+      "name": "Ii Naotora",
+      "source": "History"
+    },
+    {
+      "name": "Andrew Irvine",
+      "source": "History"
+    },
+    {
+      "name": "Vicente Sebastián Pintado",
+      "source": "History"
+    },
+    {
+      "name": "Graham Gore",
+      "source": "History"
+    },
+    {
+      "name": "Laskarina Bouboulina",
+      "source": "History"
+    },
+    {
+      "name": "Hanno the Navigator",
+      "source": "History"
+    },
+    {
+      "name": "Prince Luigi Amedeo, Duke of the Abruzzi",
+      "source": "History"
+    },
+    {
+      "name": "George Stoneman",
+      "source": "History"
+    },
+    {
+      "name": "William Cavendish, 1st Duke of Newcastle",
+      "source": "History"
+    },
+    {
+      "name": "Antoine Charles Louis de Lasalle",
+      "source": "History"
+    },
+    {
+      "name": "Giovanni Andrea Doria",
+      "source": "History"
+    },
+    {
+      "name": "Itagaki Taisuke",
+      "source": "History"
+    },
+    {
+      "name": "Kawaji Toshiyoshi",
+      "source": "History"
+    },
+    {
+      "name": "Ishida Mitsunari",
+      "source": "History"
+    },
+    {
+      "name": "Inés Suárez",
+      "source": "History"
+    },
+    {
+      "name": "Frederick Hinde Zimmerman",
+      "source": "History"
+    },
+    {
+      "name": "Alfred Pleasonton",
+      "source": "History"
+    },
+    {
+      "name": "Chiba Takusaburō",
+      "source": "History"
+    },
+    {
+      "name": "Edmund Kennedy",
+      "source": "History"
+    },
+    {
+      "name": "John Buford",
+      "source": "History"
+    },
+    {
+      "name": "Louis Dartige du Fournet",
+      "source": "History"
+    },
+    {
+      "name": "Tiberius III",
+      "source": "History"
+    },
+    {
+      "name": "Jean-Joseph Ange d'Hautpoul",
+      "source": "History"
+    },
+    {
+      "name": "Hayashi Narinaga",
+      "source": "History"
+    },
+    {
+      "name": "Matei Donici",
+      "source": "History"
+    },
+    {
+      "name": "Francisco de Orellana",
+      "source": "History"
+    },
+    {
+      "name": "Jovan Šević",
+      "source": "History"
+    },
+    {
+      "name": "Georg von der Marwitz",
+      "source": "History"
+    },
+    {
+      "name": "Robert de Montesquiou",
+      "source": "History"
+    },
+    {
+      "name": "Hans Joachim von Zieten",
+      "source": "History"
+    },
+    {
+      "name": "Matthew Brisbane",
+      "source": "History"
+    },
+    {
+      "name": "Gudrid Thorbjarnardóttir",
+      "source": "History"
+    },
+    {
+      "name": "Henry Le Vesconte",
+      "source": "History"
+    },
+    {
+      "name": "Akizuki Tanezane",
+      "source": "History"
+    },
+    {
+      "name": "Jean-Antoine Marbot",
+      "source": "History"
+    },
+    {
+      "name": "Fitzhugh Lee",
+      "source": "History"
+    },
+    {
+      "name": "Katō Kiyomasa",
+      "source": "History"
+    },
+    {
+      "name": "Samuel-François Lhéritier",
+      "source": "History"
+    },
+    {
+      "name": "Jules Garesche Ord",
+      "source": "History"
+    },
+    {
+      "name": "Thomas J. Cram",
+      "source": "History"
+    },
+    {
+      "name": "James Ronald Chalmers",
+      "source": "History"
+    },
+    {
+      "name": "Inoue Yoshika",
+      "source": "History"
+    },
+    {
+      "name": "George Bass",
+      "source": "History"
+    },
+    {
+      "name": "Francis Crozier",
+      "source": "History"
+    },
+    {
+      "name": "John S. Marmaduke",
+      "source": "History"
+    },
+    {
+      "name": "Joseph O. Shelby",
+      "source": "History"
+    },
+    {
+      "name": "Victor de Fay de La Tour-Maubourg",
+      "source": "History"
+    },
+    {
+      "name": "Rose de Freycinet",
+      "source": "History"
+    },
+    {
+      "name": "Alexine Tinne",
+      "source": "History"
+    },
+    {
+      "name": "Bernard Romans",
+      "source": "History"
+    },
+    {
+      "name": "Sofanor Parra",
+      "source": "History"
+    },
+    {
+      "name": "Ugolino della Gherardesca",
+      "source": "History"
+    },
+    {
+      "name": "Peter Tekeli",
+      "source": "History"
+    },
+    {
+      "name": "Solon Borland",
+      "source": "History"
+    },
+    {
+      "name": "Édouard Jean Baptiste Milhaud",
+      "source": "History"
+    },
+    {
+      "name": "Kamiizumi Nobutsuna",
+      "source": "History"
+    },
+    {
+      "name": "Luigi Mascherpa",
+      "source": "History"
+    },
+    {
+      "name": "George of Antioch",
+      "source": "History"
+    },
+    {
+      "name": "M. Jeff Thompson",
+      "source": "History"
+    },
+    {
+      "name": "James H. Wilson",
+      "source": "History"
+    },
+    {
+      "name": "William Dunbar",
+      "source": "History"
+    },
+    {
+      "name": "John R. Baylor",
+      "source": "History"
+    },
+    {
+      "name": "Hirata Atsutane",
+      "source": "History"
+    },
+    {
+      "name": "Tarabai",
+      "source": "History"
+    },
+    {
+      "name": "Gaspar Corte-Real",
+      "source": "History"
+    },
+    {
+      "name": "Manuel Cabral de Alpoim",
+      "source": "History"
+    },
+    {
+      "name": "Juan de la Torre",
+      "source": "History"
+    },
+    {
+      "name": "Keumalahayati",
+      "source": "History"
+    },
+    {
+      "name": "Ulric Dahlgren",
+      "source": "History"
+    },
+    {
+      "name": "Susanna Carson Rijnhart",
+      "source": "History"
+    },
+    {
+      "name": "Moritz von Bissing",
+      "source": "History"
+    },
+    {
+      "name": "John Lloyd Stephens",
+      "source": "History"
+    },
+    {
+      "name": "Juan de la Cosa",
+      "source": "History"
+    },
+    {
+      "name": "Willem Krul",
+      "source": "History"
+    },
+    {
+      "name": "James Walter Fairholme",
+      "source": "History"
+    },
+    {
+      "name": "Pavlos Kountouriotis",
+      "source": "History"
+    },
+    {
+      "name": "William Baffin",
+      "source": "History"
+    },
+    {
+      "name": "Jane Dieulafoy",
+      "source": "History"
+    },
+    {
+      "name": "Adolphe Marbot",
+      "source": "History"
+    },
+    {
+      "name": "Edoardo Tiretta",
+      "source": "History"
+    },
+    {
+      "name": "Frederick Catherwood",
+      "source": "History"
+    },
+    {
+      "name": "Lady Kasuga",
+      "source": "History"
+    },
+    {
+      "name": "François Baucher",
+      "source": "History"
+    },
+    {
+      "name": "Charles Davidson Bell",
+      "source": "History"
+    },
+    {
+      "name": "Guglielmo Grasso",
+      "source": "History"
+    },
+    {
+      "name": "Benjamin Grierson",
+      "source": "History"
+    },
+    {
+      "name": "Hernando Arias de Saavedra",
+      "source": "History"
+    },
+    {
+      "name": "George W. Hayward",
+      "source": "History"
+    },
+    {
+      "name": "Henry L. Muldrow",
+      "source": "History"
+    },
+    {
+      "name": "Katsu Kaishū",
+      "source": "History"
+    },
+    {
+      "name": "Domingo de Basavilbaso",
+      "source": "History"
+    },
+    {
+      "name": "Paul von Werner",
+      "source": "History"
+    },
+    {
+      "name": "Eustace the Monk",
+      "source": "History"
+    },
+    {
+      "name": "Euphemius",
+      "source": "History"
+    },
+    {
+      "name": "Augustus Buchel",
+      "source": "History"
+    },
+    {
+      "name": "Inoue Kaoru",
+      "source": "History"
+    },
+    {
+      "name": "Lajos Wienermann",
+      "source": "History"
+    },
+    {
+      "name": "Ivan Wettengel",
+      "source": "History"
+    },
+    {
+      "name": "Luka Lazarević",
+      "source": "History"
+    },
+    {
+      "name": "Louis Cella",
+      "source": "History"
+    },
+    {
+      "name": "Colton Greene",
+      "source": "History"
+    },
+    {
+      "name": "Tuomas Vohlonen",
+      "source": "History"
+    },
+    {
+      "name": "Eduard von Toll",
+      "source": "History"
+    },
+    {
+      "name": "Hosokawa Tadaoki",
+      "source": "History"
+    },
+    {
+      "name": "Manuel Boutoumites",
+      "source": "History"
+    },
+    {
+      "name": "G. H. Oury",
+      "source": "History"
+    },
+    {
+      "name": "William Parker Snow",
+      "source": "History"
+    },
+    {
+      "name": "Charles-Auguste Bonnamy",
+      "source": "History"
+    },
+    {
+      "name": "Himilco",
+      "source": "History"
+    },
+    {
+      "name": "Nikolai Ottovich von Essen",
+      "source": "History"
+    },
+    {
+      "name": "Megasthenes",
+      "source": "History"
+    },
+    {
+      "name": "Henry Allen",
+      "source": "History"
+    },
+    {
+      "name": "Simon von Stampfer",
+      "source": "History"
+    },
+    {
+      "name": "Charles Frederick Des Voeux",
+      "source": "History"
+    },
+    {
+      "name": "Marie-Anne Gaboury",
+      "source": "History"
+    },
+    {
+      "name": "Ashikaga Tadayoshi",
+      "source": "History"
+    },
+    {
+      "name": "Samuel W. Ferguson",
+      "source": "History"
+    },
+    {
+      "name": "Nicolas-François Roussel d'Hurbal",
+      "source": "History"
+    },
+    {
+      "name": "Matvei Platov",
+      "source": "History"
+    },
+    {
+      "name": "Teoberto Maler",
+      "source": "History"
+    },
+    {
+      "name": "William Wirt Adams",
+      "source": "History"
+    },
+    {
+      "name": "Amador Vaz de Alpoim",
+      "source": "History"
+    },
+    {
+      "name": "Alexander McDonald",
+      "source": "History"
+    },
+    {
+      "name": "Adrian Nepenin",
+      "source": "History"
+    },
+    {
+      "name": "András Hadik",
+      "source": "History"
+    },
+    {
+      "name": "Inō Tadataka",
+      "source": "History"
+    },
+    {
+      "name": "Itagaki Nobukata",
+      "source": "History"
+    },
+    {
+      "name": "Henry Wesley Voysey",
+      "source": "History"
+    },
+    {
+      "name": "Thomas Pleasant Dockery",
+      "source": "History"
+    },
+    {
+      "name": "Harry Goodsir",
+      "source": "History"
+    },
+    {
+      "name": "Constantine Angelos",
+      "source": "History"
+    },
+    {
+      "name": "Hisamatsu Sadakatsu",
+      "source": "History"
+    },
+    {
+      "name": "Eberhard Graf von Schmettow",
+      "source": "History"
+    },
+    {
+      "name": "Michael Kovats de Fabriczy",
+      "source": "History"
+    },
+    {
+      "name": "Kawajiri Hidetaka",
+      "source": "History"
+    },
+    {
+      "name": "Itō Sukeyuki",
+      "source": "History"
+    },
+    {
+      "name": "Jan Dołęga-Zakrzewski",
+      "source": "History"
+    },
+    {
+      "name": "Christopher Tancred",
+      "source": "History"
+    },
+    {
+      "name": "Honda Masazumi",
+      "source": "History"
+    },
+    {
+      "name": "Eudoxus of Cyzicus",
+      "source": "History"
+    },
+    {
+      "name": "Alamanno da Costa",
+      "source": "History"
+    },
+    {
+      "name": "Hans Ulrich von Schaffgotsch",
+      "source": "History"
+    },
+    {
+      "name": "Hosokawa Fujitaka",
+      "source": "History"
+    },
+    {
+      "name": "Yakut Khan",
+      "source": "History"
+    },
+    {
+      "name": "Pietari Hannikainen",
+      "source": "History"
+    },
+    {
+      "name": "Yakov Kulnev",
+      "source": "History"
+    },
+    {
+      "name": "John Frederick Hilly",
+      "source": "History"
+    },
+    {
+      "name": "Asano Yoshinaga",
+      "source": "History"
+    },
+    {
+      "name": "Ulrich Jasper Seetzen",
+      "source": "History"
+    },
+    {
+      "name": "José Prudencio Padilla",
+      "source": "History"
+    },
+    {
+      "name": "Ijuin Gorō",
+      "source": "History"
+    },
+    {
+      "name": "Pedro de Mendoza",
+      "source": "History"
+    },
+    {
+      "name": "Kabayama Sukenori",
+      "source": "History"
+    },
+    {
+      "name": "Demetrios Laskaris Leontares",
+      "source": "History"
+    },
+    {
+      "name": "François Étienne de Kellermann",
+      "source": "History"
+    },
+    {
+      "name": "James Edward Carpenter",
+      "source": "History"
+    },
+    {
+      "name": "Juan Galindo",
+      "source": "History"
+    },
+    {
+      "name": "Ivan Grigorovich",
+      "source": "History"
+    },
+    {
+      "name": "Wilhelm Mier",
+      "source": "History"
+    },
+    {
+      "name": "Anjirō",
+      "source": "History"
+    },
+    {
+      "name": "Joseph Cornelius O'Rourke",
+      "source": "History"
+    },
+    {
+      "name": "Taqulittuq",
+      "source": "History"
+    },
+    {
+      "name": "Baba Tatsui",
+      "source": "History"
+    },
+    {
+      "name": "Roger of Lauria",
+      "source": "History"
+    },
+    {
+      "name": "Kawakami Gensai",
+      "source": "History"
+    },
+    {
+      "name": "Katō Yoshiaki",
+      "source": "History"
+    },
+    {
+      "name": "John Charles Darke",
+      "source": "History"
+    },
+    {
+      "name": "Kamimura Hikonojō",
+      "source": "History"
+    },
+    {
+      "name": "Harvey Otis Young",
+      "source": "History"
+    },
+    {
+      "name": "Asakura Yoshikage",
+      "source": "History"
+    },
+    {
+      "name": "Harada Sanosuke",
+      "source": "History"
+    },
+    {
+      "name": "Jean-Toussaint Arrighi de Casanova",
+      "source": "History"
+    },
+    {
+      "name": "Gonzalo Carbajal",
+      "source": "History"
+    },
+    {
+      "name": "Ernest Rouquaud",
+      "source": "History"
+    },
+    {
+      "name": "James Fillis",
+      "source": "History"
+    },
+    {
+      "name": "Federico Grisone",
+      "source": "History"
+    },
+    {
+      "name": "Abel Buell",
+      "source": "History"
+    },
+    {
+      "name": "Antón Higueras de Santana",
+      "source": "History"
+    },
+    {
+      "name": "Alexander Gordon Laing",
+      "source": "History"
+    },
+    {
+      "name": "Marinus",
+      "source": "History"
+    },
+    {
+      "name": "Valerio de la Cruz",
+      "source": "History"
+    },
+    {
+      "name": "Gotō Shōjirō",
+      "source": "History"
+    },
+    {
+      "name": "Margaritus of Brindisi",
+      "source": "History"
+    },
+    {
+      "name": "Robert Anderson",
+      "source": "History"
+    },
+    {
+      "name": "G. E. Ferguson",
+      "source": "History"
+    },
+    {
+      "name": "Arichi Shinanojō",
+      "source": "History"
+    },
+    {
+      "name": "Red Ghost",
+      "source": "History"
+    },
+    {
+      "name": "Claude-Étienne Guyot",
+      "source": "History"
+    },
+    {
+      "name": "Diego García de Moguer",
+      "source": "History"
+    },
+    {
+      "name": "Honda Shigetsugu",
+      "source": "History"
+    },
+    {
+      "name": "John Hotaling",
+      "source": "History"
+    },
+    {
+      "name": "Valerian Madatov",
+      "source": "History"
+    }
+  ],
+  "caster": [
+    {
+      "name": "Merlin",
+      "source": "Arthurian legend"
+    },
+    {
+      "name": "Circe",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Medea",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Baba Yaga",
+      "source": "Slavic folklore"
+    },
+    {
+      "name": "Nicolas Flamel",
+      "source": "History"
+    },
+    {
+      "name": "Faust",
+      "source": "German legend"
+    },
+    {
+      "name": "Thomas Jefferson",
+      "source": "History"
+    },
+    {
+      "name": "Isaac Newton",
+      "source": "History"
+    },
+    {
+      "name": "Benjamin Franklin",
+      "source": "History"
+    },
+    {
+      "name": "Gottfried Wilhelm Leibniz",
+      "source": "History"
+    },
+    {
+      "name": "Alexander von Humboldt",
+      "source": "History"
+    },
+    {
+      "name": "Alberto Santos-Dumont",
+      "source": "History"
+    },
+    {
+      "name": "Charles Darwin",
+      "source": "History"
+    },
+    {
+      "name": "Poseidon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aristotle",
+      "source": "History"
+    },
+    {
+      "name": "James A. Garfield",
+      "source": "History"
+    },
+    {
+      "name": "Galileo Galilei",
+      "source": "History"
+    },
+    {
+      "name": "Christiaan Huygens",
+      "source": "History"
+    },
+    {
+      "name": "Grigore Sturdza",
+      "source": "History"
+    },
+    {
+      "name": "Louis Pasteur",
+      "source": "History"
+    },
+    {
+      "name": "René Descartes",
+      "source": "History"
+    },
+    {
+      "name": "Santa Claus",
+      "source": "History"
+    },
+    {
+      "name": "Otto Jespersen",
+      "source": "History"
+    },
+    {
+      "name": "Marie Curie",
+      "source": "History"
+    },
+    {
+      "name": "James Braid",
+      "source": "History"
+    },
+    {
+      "name": "Thomas Edison",
+      "source": "History"
+    },
+    {
+      "name": "Leonhard Euler",
+      "source": "History"
+    },
+    {
+      "name": "Lord Kelvin",
+      "source": "History"
+    },
+    {
+      "name": "Magnus Hirschfeld",
+      "source": "History"
+    },
+    {
+      "name": "Tycho Brahe",
+      "source": "History"
+    },
+    {
+      "name": "King Arthur",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hypatia",
+      "source": "History"
+    },
+    {
+      "name": "Ada Lovelace",
+      "source": "History"
+    },
+    {
+      "name": "Francis Bacon",
+      "source": "History"
+    },
+    {
+      "name": "William James",
+      "source": "History"
+    },
+    {
+      "name": "Robert Hooke",
+      "source": "History"
+    },
+    {
+      "name": "Peter Kropotkin",
+      "source": "History"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Mary Anning",
+      "source": "History"
+    },
+    {
+      "name": "Hipparchus",
+      "source": "History"
+    },
+    {
+      "name": "Claudius",
+      "source": "History"
+    },
+    {
+      "name": "Gustave Whitehead",
+      "source": "History"
+    },
+    {
+      "name": "Antoine Lavoisier",
+      "source": "History"
+    },
+    {
+      "name": "William Herschel",
+      "source": "History"
+    },
+    {
+      "name": "Francis Galton",
+      "source": "History"
+    },
+    {
+      "name": "Ptolemy",
+      "source": "History"
+    },
+    {
+      "name": "Indra",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hades",
+      "source": "Mythology"
+    },
+    {
+      "name": "Golding Bird",
+      "source": "History"
+    },
+    {
+      "name": "Marquis de Sade",
+      "source": "History"
+    },
+    {
+      "name": "John Dee",
+      "source": "History"
+    },
+    {
+      "name": "Diomedes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Agnes Giberne",
+      "source": "History"
+    },
+    {
+      "name": "Christopher Wren",
+      "source": "History"
+    },
+    {
+      "name": "Darius the Great",
+      "source": "Mythology"
+    },
+    {
+      "name": "Henri Désiré Landru",
+      "source": "History"
+    },
+    {
+      "name": "Heraclius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Dhu'l-Qarnayn",
+      "source": "Mythology"
+    },
+    {
+      "name": "Samuel Colt",
+      "source": "History"
+    },
+    {
+      "name": "Lugh",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pavel Schilling",
+      "source": "History"
+    },
+    {
+      "name": "Goldsworthy Gurney",
+      "source": "History"
+    },
+    {
+      "name": "Arthur Eddington",
+      "source": "History"
+    },
+    {
+      "name": "Vera Gedroits",
+      "source": "History"
+    },
+    {
+      "name": "John Joseph Montgomery",
+      "source": "History"
+    },
+    {
+      "name": "Nasir al-Din al-Tusi",
+      "source": "History"
+    },
+    {
+      "name": "Robert Todd Lincoln",
+      "source": "History"
+    },
+    {
+      "name": "Gregor Mendel",
+      "source": "History"
+    },
+    {
+      "name": "Mary Somerville",
+      "source": "History"
+    },
+    {
+      "name": "Wilhelm Ostwald",
+      "source": "History"
+    },
+    {
+      "name": "Edmond Halley",
+      "source": "History"
+    },
+    {
+      "name": "Horus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Asmodeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Freyr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Josiah Wedgwood",
+      "source": "History"
+    },
+    {
+      "name": "Robert Boyle",
+      "source": "History"
+    },
+    {
+      "name": "L. L. Zamenhof",
+      "source": "History"
+    },
+    {
+      "name": "Charles Wheatstone",
+      "source": "History"
+    },
+    {
+      "name": "William Rowan Hamilton",
+      "source": "History"
+    },
+    {
+      "name": "Cronus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Ole Rømer",
+      "source": "History"
+    },
+    {
+      "name": "Francisc Rainer",
+      "source": "History"
+    },
+    {
+      "name": "John Herschel",
+      "source": "History"
+    },
+    {
+      "name": "Tomáš Masaryk",
+      "source": "History"
+    },
+    {
+      "name": "Thomas Young",
+      "source": "History"
+    },
+    {
+      "name": "John Cyril Porte",
+      "source": "History"
+    },
+    {
+      "name": "Mordred",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oliver Heaviside",
+      "source": "History"
+    },
+    {
+      "name": "Johnny Gruelle",
+      "source": "History"
+    },
+    {
+      "name": "Preston Watson",
+      "source": "History"
+    },
+    {
+      "name": "Alexander Bogdanov",
+      "source": "History"
+    },
+    {
+      "name": "Konstantin Tsiolkovsky",
+      "source": "History"
+    },
+    {
+      "name": "Caroline Herschel",
+      "source": "History"
+    },
+    {
+      "name": "Bartolomeo Cristofori",
+      "source": "History"
+    },
+    {
+      "name": "Johan Rudolph Thorbecke",
+      "source": "History"
+    },
+    {
+      "name": "Nauplius",
+      "source": "Mythology"
+    },
+    {
+      "name": "G. Stanley Hall",
+      "source": "History"
+    },
+    {
+      "name": "David Brewster",
+      "source": "History"
+    },
+    {
+      "name": "Osiris",
+      "source": "Mythology"
+    },
+    {
+      "name": "Bernard Bolzano",
+      "source": "History"
+    },
+    {
+      "name": "William Jackson Hooker",
+      "source": "History"
+    },
+    {
+      "name": "Ulugh Beg",
+      "source": "History"
+    },
+    {
+      "name": "Otto Lilienthal",
+      "source": "History"
+    },
+    {
+      "name": "Cadmus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Atlas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Fred Duesenberg",
+      "source": "History"
+    },
+    {
+      "name": "Louis Braille",
+      "source": "History"
+    },
+    {
+      "name": "Oedipus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Makedon",
+      "source": "Mythology"
+    },
+    {
+      "name": "John Wilkins",
+      "source": "History"
+    },
+    {
+      "name": "Karl Schwarzschild",
+      "source": "History"
+    },
+    {
+      "name": "James Bowdoin",
+      "source": "History"
+    },
+    {
+      "name": "William Armstrong, 1st Baron Armstrong",
+      "source": "History"
+    },
+    {
+      "name": "Cyaxares II",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hans Christian Ørsted",
+      "source": "History"
+    },
+    {
+      "name": "Agenor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Thomas Midgley Jr.",
+      "source": "History"
+    },
+    {
+      "name": "Anthony Fokker",
+      "source": "History"
+    },
+    {
+      "name": "Henry Sutton",
+      "source": "History"
+    },
+    {
+      "name": "Franz Reichelt",
+      "source": "History"
+    },
+    {
+      "name": "John Greaves",
+      "source": "History"
+    },
+    {
+      "name": "Henry Fox Talbot",
+      "source": "History"
+    },
+    {
+      "name": "James Douglas, 4th Earl of Morton",
+      "source": "History"
+    },
+    {
+      "name": "John Eliot",
+      "source": "History"
+    },
+    {
+      "name": "Nathan Stubblefield",
+      "source": "History"
+    },
+    {
+      "name": "Ashutosh Mukherjee",
+      "source": "History"
+    },
+    {
+      "name": "Memnon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Constantine",
+      "source": "Mythology"
+    },
+    {
+      "name": "Fisher King",
+      "source": "Mythology"
+    },
+    {
+      "name": "Heinrich Cornelius Agrippa",
+      "source": "History"
+    },
+    {
+      "name": "Edward Charles Pickering",
+      "source": "History"
+    },
+    {
+      "name": "William Henry Smyth",
+      "source": "History"
+    },
+    {
+      "name": "Bellerophon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Johannes Hevelius",
+      "source": "History"
+    },
+    {
+      "name": "David Edward Hughes",
+      "source": "History"
+    },
+    {
+      "name": "George Frederick Kunz",
+      "source": "History"
+    },
+    {
+      "name": "Mulla Effendi",
+      "source": "History"
+    },
+    {
+      "name": "Alessandro Volta",
+      "source": "History"
+    },
+    {
+      "name": "Samuel Langley",
+      "source": "History"
+    },
+    {
+      "name": "Midas",
+      "source": "Mythology"
+    },
+    {
+      "name": "John Browning",
+      "source": "History"
+    },
+    {
+      "name": "Amphiaraus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Abraham ibn Ezra",
+      "source": "History"
+    },
+    {
+      "name": "Addison Brown",
+      "source": "History"
+    },
+    {
+      "name": "Elena Cornaro Piscopia",
+      "source": "History"
+    },
+    {
+      "name": "Walther Nernst",
+      "source": "History"
+    },
+    {
+      "name": "François Huber",
+      "source": "History"
+    },
+    {
+      "name": "John Flamsteed",
+      "source": "History"
+    },
+    {
+      "name": "Franz Brentano",
+      "source": "History"
+    },
+    {
+      "name": "George Cayley",
+      "source": "History"
+    },
+    {
+      "name": "Gersonides",
+      "source": "History"
+    },
+    {
+      "name": "Kubera",
+      "source": "Mythology"
+    },
+    {
+      "name": "André-Marie Ampère",
+      "source": "History"
+    },
+    {
+      "name": "William Robert Grove",
+      "source": "History"
+    },
+    {
+      "name": "Hayk",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eudoxus of Cnidus",
+      "source": "History"
+    },
+    {
+      "name": "Aeolus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Frances Power Cobbe",
+      "source": "History"
+    },
+    {
+      "name": "W. J. M. Rankine",
+      "source": "History"
+    },
+    {
+      "name": "Wang Zhen",
+      "source": "History"
+    },
+    {
+      "name": "Granville Woods",
+      "source": "History"
+    },
+    {
+      "name": "Hiraga Gennai",
+      "source": "History"
+    },
+    {
+      "name": "Sophia Brahe",
+      "source": "History"
+    },
+    {
+      "name": "Robert Hope-Jones",
+      "source": "History"
+    },
+    {
+      "name": "Pazuzu",
+      "source": "Mythology"
+    },
+    {
+      "name": "William Hyde Wollaston",
+      "source": "History"
+    },
+    {
+      "name": "Williamina Fleming",
+      "source": "History"
+    },
+    {
+      "name": "Alexius Meinong",
+      "source": "History"
+    },
+    {
+      "name": "Giovanni Schiaparelli",
+      "source": "History"
+    },
+    {
+      "name": "Oghuz Khagan",
+      "source": "Mythology"
+    },
+    {
+      "name": "Clement of Ohrid",
+      "source": "History"
+    },
+    {
+      "name": "David Schwarz",
+      "source": "History"
+    },
+    {
+      "name": "Sir Edmund Backhouse, 2nd Baronet",
+      "source": "History"
+    },
+    {
+      "name": "Nicolas-Louis de Lacaille",
+      "source": "History"
+    },
+    {
+      "name": "Gerðr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lycurgus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Thomas David Morrison",
+      "source": "History"
+    },
+    {
+      "name": "Octave Chanute",
+      "source": "History"
+    },
+    {
+      "name": "Peter Mark Roget",
+      "source": "History"
+    },
+    {
+      "name": "Manu",
+      "source": "Mythology"
+    },
+    {
+      "name": "Agnes Mary Clerke",
+      "source": "History"
+    },
+    {
+      "name": "Russell Bencraft",
+      "source": "History"
+    },
+    {
+      "name": "Mark of Cornwall",
+      "source": "Mythology"
+    },
+    {
+      "name": "Zeami Motokiyo",
+      "source": "History"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aurel Vlaicu",
+      "source": "History"
+    },
+    {
+      "name": "Kalevi",
+      "source": "Mythology"
+    },
+    {
+      "name": "Atreus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Mary Everest Boole",
+      "source": "History"
+    },
+    {
+      "name": "Cinyras",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gildas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Daniel Gabriel Fahrenheit",
+      "source": "History"
+    },
+    {
+      "name": "Giuseppe Peano",
+      "source": "History"
+    },
+    {
+      "name": "Margaret Lindsay Huggins",
+      "source": "History"
+    },
+    {
+      "name": "Robert Bunsen",
+      "source": "History"
+    },
+    {
+      "name": "Duttabaung",
+      "source": "Mythology"
+    },
+    {
+      "name": "Anchises",
+      "source": "Mythology"
+    },
+    {
+      "name": "George Psalmanazar",
+      "source": "History"
+    },
+    {
+      "name": "William Wallace Campbell",
+      "source": "History"
+    },
+    {
+      "name": "Luís Cruls",
+      "source": "History"
+    },
+    {
+      "name": "Abd al-Rahman al-Sufi",
+      "source": "History"
+    },
+    {
+      "name": "James Paris Lee",
+      "source": "History"
+    },
+    {
+      "name": "Al-Farghani",
+      "source": "History"
+    },
+    {
+      "name": "Dwijendranath Tagore",
+      "source": "History"
+    },
+    {
+      "name": "Philipp Johann Heinrich Fauth",
+      "source": "History"
+    },
+    {
+      "name": "Timothy Brosnahan",
+      "source": "History"
+    },
+    {
+      "name": "Nongshāba",
+      "source": "Mythology"
+    },
+    {
+      "name": "Rabia Basri",
+      "source": "History"
+    },
+    {
+      "name": "Juraj Križanić",
+      "source": "History"
+    },
+    {
+      "name": "Danaus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Chiyou",
+      "source": "Mythology"
+    },
+    {
+      "name": "Clymenus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Mary Ward",
+      "source": "History"
+    },
+    {
+      "name": "Sergey Ulyanin",
+      "source": "History"
+    },
+    {
+      "name": "James Young",
+      "source": "History"
+    },
+    {
+      "name": "Janet Taylor",
+      "source": "History"
+    },
+    {
+      "name": "Aeacus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eurystheus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Adolphe Sax",
+      "source": "History"
+    },
+    {
+      "name": "Luigi Galvani",
+      "source": "History"
+    },
+    {
+      "name": "Charles Spalding",
+      "source": "History"
+    },
+    {
+      "name": "King Pellinore",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cerdic of Wessex",
+      "source": "Mythology"
+    },
+    {
+      "name": "Giuseppe Piazzi",
+      "source": "History"
+    },
+    {
+      "name": "Yayati",
+      "source": "Mythology"
+    },
+    {
+      "name": "Laomedon",
+      "source": "Mythology"
+    },
+    {
+      "name": "James Dunlop",
+      "source": "History"
+    },
+    {
+      "name": "Brutus of Troy",
+      "source": "Mythology"
+    },
+    {
+      "name": "William Henry Chamberlin",
+      "source": "History"
+    },
+    {
+      "name": "Edward Digges",
+      "source": "History"
+    },
+    {
+      "name": "James Bradley",
+      "source": "History"
+    },
+    {
+      "name": "Edward A. Wild",
+      "source": "History"
+    },
+    {
+      "name": "Ernst Troeltsch",
+      "source": "History"
+    },
+    {
+      "name": "Leopold Kronecker",
+      "source": "History"
+    },
+    {
+      "name": "Proetus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Peleus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Jérôme Lalande",
+      "source": "History"
+    },
+    {
+      "name": "Spiridon Gopčević",
+      "source": "History"
+    },
+    {
+      "name": "Percy Pilcher",
+      "source": "History"
+    },
+    {
+      "name": "Richard Pockrich",
+      "source": "History"
+    },
+    {
+      "name": "King Ban",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pelasgus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Antaeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Carlo Fornasini",
+      "source": "History"
+    },
+    {
+      "name": "Ormsby M. Mitchel",
+      "source": "History"
+    },
+    {
+      "name": "Hugo Junkers",
+      "source": "History"
+    },
+    {
+      "name": "Angelo Secchi",
+      "source": "History"
+    },
+    {
+      "name": "Joseph-Nicolas Delisle",
+      "source": "History"
+    },
+    {
+      "name": "Alice H. Parker",
+      "source": "History"
+    },
+    {
+      "name": "Charles Messier",
+      "source": "History"
+    }
+  ],
+  "assassin": [
+    {
+      "name": "Hattori Hanzo",
+      "source": "History"
+    },
+    {
+      "name": "George Washington",
+      "source": "History"
+    },
+    {
+      "name": "Sidney Reilly",
+      "source": "History"
+    },
+    {
+      "name": "Carl Hans Lody",
+      "source": "History"
+    },
+    {
+      "name": "Ramón de Carranza y Fernández Reguera",
+      "source": "History"
+    },
+    {
+      "name": "Mata Hari",
+      "source": "History"
+    },
+    {
+      "name": "Francis Walsingham",
+      "source": "History"
+    },
+    {
+      "name": "Chevalière d'Éon",
+      "source": "History"
+    },
+    {
+      "name": "Walter Krivitsky",
+      "source": "History"
+    },
+    {
+      "name": "Tarrare",
+      "source": "History"
+    },
+    {
+      "name": "Lev Zadov",
+      "source": "History"
+    },
+    {
+      "name": "Louise de Bettignies",
+      "source": "History"
+    },
+    {
+      "name": "Margarita Ortega",
+      "source": "History"
+    },
+    {
+      "name": "William Wickham",
+      "source": "History"
+    },
+    {
+      "name": "Theroigne de Mericourt",
+      "source": "History"
+    },
+    {
+      "name": "Leonard Morris",
+      "source": "History"
+    },
+    {
+      "name": "Edward Bancroft",
+      "source": "History"
+    },
+    {
+      "name": "Nikolay Pavlovich Ignatyev",
+      "source": "History"
+    },
+    {
+      "name": "Benjamin Tallmadge",
+      "source": "History"
+    },
+    {
+      "name": "Bolo Pasha",
+      "source": "History"
+    },
+    {
+      "name": "Paul von Mitesser",
+      "source": "History"
+    },
+    {
+      "name": "John Thurloe",
+      "source": "History"
+    },
+    {
+      "name": "Andrea Gritti",
+      "source": "History"
+    },
+    {
+      "name": "Robert Poley",
+      "source": "History"
+    },
+    {
+      "name": "Antonio Crutta",
+      "source": "History"
+    },
+    {
+      "name": "Benoît Chassériau",
+      "source": "History"
+    },
+    {
+      "name": "James Armistead Lafayette",
+      "source": "History"
+    },
+    {
+      "name": "Marie Lourdais",
+      "source": "History"
+    },
+    {
+      "name": "Jerzy Sosnowski",
+      "source": "History"
+    },
+    {
+      "name": "Yevno Azef",
+      "source": "History"
+    },
+    {
+      "name": "Șerban Cantacuzino",
+      "source": "History"
+    },
+    {
+      "name": "Pyotr Rachkovsky",
+      "source": "History"
+    },
+    {
+      "name": "Auguste Charlotte von Kielmannsegge",
+      "source": "History"
+    },
+    {
+      "name": "Ishikawa Goemon",
+      "source": "History"
+    },
+    {
+      "name": "Wilhelm Wassmuss",
+      "source": "History"
+    },
+    {
+      "name": "François Jaupain",
+      "source": "History"
+    },
+    {
+      "name": "Mykhailo Polonsky",
+      "source": "History"
+    },
+    {
+      "name": "Elizabeth Mordaunt, Viscountess Mordaunt",
+      "source": "History"
+    },
+    {
+      "name": "Susan Hyde",
+      "source": "History"
+    },
+    {
+      "name": "Gaston Delasalle",
+      "source": "History"
+    },
+    {
+      "name": "William Martin Leake",
+      "source": "History"
+    },
+    {
+      "name": "Sugitani Zenjūbō",
+      "source": "History"
+    },
+    {
+      "name": "Antonio Bruni",
+      "source": "History"
+    },
+    {
+      "name": "Katharina Franziska von Wattenwyl",
+      "source": "History"
+    },
+    {
+      "name": "Karl Schulmeister",
+      "source": "History"
+    },
+    {
+      "name": "Pierre Alamire",
+      "source": "History"
+    },
+    {
+      "name": "Kanuksusy",
+      "source": "History"
+    },
+    {
+      "name": "Bertrand Stewart",
+      "source": "History"
+    },
+    {
+      "name": "André Grandclément",
+      "source": "History"
+    },
+    {
+      "name": "Li Shiqun",
+      "source": "History"
+    },
+    {
+      "name": "Anna McClarmonde Chase",
+      "source": "History"
+    },
+    {
+      "name": "Nezumi Kozō",
+      "source": "History"
+    },
+    {
+      "name": "Hino Kunimitsu",
+      "source": "History"
+    },
+    {
+      "name": "Pietro Bizzarri",
+      "source": "History"
+    },
+    {
+      "name": "Elsbeth Schragmüller",
+      "source": "History"
+    },
+    {
+      "name": "Fūma Kotarō",
+      "source": "History"
+    },
+    {
+      "name": "Richard Kingston",
+      "source": "History"
+    },
+    {
+      "name": "Giovanni Francesco Biondi",
+      "source": "History"
+    },
+    {
+      "name": "Patrick Curtis",
+      "source": "History"
+    },
+    {
+      "name": "Dimitrije Bratoglić",
+      "source": "History"
+    },
+    {
+      "name": "Evgeniya Shakhovskaya",
+      "source": "History"
+    },
+    {
+      "name": "Candelaria Pérez",
+      "source": "History"
+    },
+    {
+      "name": "Katō Danzō",
+      "source": "History"
+    },
+    {
+      "name": "Gustav Steinhauer",
+      "source": "History"
+    },
+    {
+      "name": "Alexander Mervart",
+      "source": "History"
+    },
+    {
+      "name": "Emanuel Sueyro",
+      "source": "History"
+    },
+    {
+      "name": "Cecil Aylmer Cameron",
+      "source": "History"
+    },
+    {
+      "name": "Karl Moor",
+      "source": "History"
+    },
+    {
+      "name": "Hattori Masanari",
+      "source": "History"
+    },
+    {
+      "name": "Momochi Tanba",
+      "source": "History"
+    },
+    {
+      "name": "Albertine-Elisabeth Pater",
+      "source": "History"
+    },
+    {
+      "name": "Luisa Zeni",
+      "source": "History"
+    },
+    {
+      "name": "Natori Masatake",
+      "source": "History"
+    },
+    {
+      "name": "Hattori Masashige",
+      "source": "History"
+    },
+    {
+      "name": "Wada Koremasa",
+      "source": "History"
+    },
+    {
+      "name": "Henri Devillers",
+      "source": "History"
+    },
+    {
+      "name": "Umemura Sawano",
+      "source": "History"
+    }
+  ],
+  "berserker": [
+    {
+      "name": "Thor",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Heracles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Fenrir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Athena",
+      "source": "History"
+    },
+    {
+      "name": "Aphrodite",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sigurd",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Odin",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Valkyrie",
+      "source": "History"
+    },
+    {
+      "name": "Oceanus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gudrun",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Rentap",
+      "source": "History"
+    },
+    {
+      "name": "Ragnar Lodbrok",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Odoacer",
+      "source": "History"
+    },
+    {
+      "name": "Philomela",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aurvandill",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Brunhild",
+      "source": "History"
+    },
+    {
+      "name": "Fáfnir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Boudica",
+      "source": "History"
+    },
+    {
+      "name": "Iara",
+      "source": "History"
+    },
+    {
+      "name": "Smaug",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Rhea",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Marcu Cercel",
+      "source": "History"
+    },
+    {
+      "name": "Penelope",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gunther",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Adonis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Europa",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Týr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Höðr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Hafgufa",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Ouroboros",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hua Mulan",
+      "source": "History"
+    },
+    {
+      "name": "Minerva",
+      "source": "History"
+    },
+    {
+      "name": "Heimdall",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Daedalus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asclepius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nibelung",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Ariadne",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aëdon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hermaphroditus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pasiphaë",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Starkad",
+      "source": "History"
+    },
+    {
+      "name": "Pattimura",
+      "source": "History"
+    },
+    {
+      "name": "Wayland the Smith",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Ertuğrul",
+      "source": "History"
+    },
+    {
+      "name": "Lindworm",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Brunhilda of Austrasia",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Baldr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Pleisthenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Calypso",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yrsa",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Kahina",
+      "source": "History"
+    },
+    {
+      "name": "Minoan snake goddess figurines",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Arachne",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Jörmungandr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Greek hero cult",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Troll",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Pong Tiku",
+      "source": "History"
+    },
+    {
+      "name": "Palaephatus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Einherjar",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Agapenor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Helgi Hundingsbane",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Andromache",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Juan de la Torre",
+      "source": "History"
+    },
+    {
+      "name": "Pelasgus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Norse cosmology",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Arcadia",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hippocampus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Georg von Frundsberg",
+      "source": "History"
+    },
+    {
+      "name": "Dione",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Nidhogg",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Skjöldr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Metis",
+      "source": "History"
+    },
+    {
+      "name": "Örvar-Oddr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Fendi Al-Fayez",
+      "source": "History"
+    },
+    {
+      "name": "Víðarr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Echetus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aphroditus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yngvi",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Martha Christina Tiahahu",
+      "source": "History"
+    },
+    {
+      "name": "Helenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Dorus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Teungku Chik di Tiro",
+      "source": "History"
+    },
+    {
+      "name": "Mopsus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lagertha",
+      "source": "History"
+    },
+    {
+      "name": "Asteria",
+      "source": "History"
+    },
+    {
+      "name": "Váli",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Euhemerus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sattam Al-Fayez",
+      "source": "History"
+    },
+    {
+      "name": "Camilla",
+      "source": "History"
+    },
+    {
+      "name": "Franz von Sickingen",
+      "source": "History"
+    },
+    {
+      "name": "Edeko",
+      "source": "History"
+    },
+    {
+      "name": "Völsung",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Orthanes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cicones",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Theano",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Teucer",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sigmund",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Zinaida Portnova",
+      "source": "History"
+    },
+    {
+      "name": "Humber the Hun",
+      "source": "History"
+    },
+    {
+      "name": "Arethusa",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hlöd",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Tomoe Gozen",
+      "source": "History"
+    },
+    {
+      "name": "Myrkviðr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Huld",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Smicrus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Valerio de la Cruz",
+      "source": "History"
+    },
+    {
+      "name": "Alcinoë",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phoebe",
+      "source": "History"
+    },
+    {
+      "name": "Alcippe",
+      "source": "History"
+    },
+    {
+      "name": "Aslaug",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Hecataeus of Miletus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Polydora",
+      "source": "History"
+    },
+    {
+      "name": "Cia Ordelaffi",
+      "source": "History"
+    },
+    {
+      "name": "Phaon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lysippe",
+      "source": "History"
+    },
+    {
+      "name": "Parthenius of Nicaea",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Leucippe",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Enno Brandrøk",
+      "source": "History"
+    },
+    {
+      "name": "Vígríðr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Onoulphus",
+      "source": "History"
+    },
+    {
+      "name": "Gullveig",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Velchanos",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Karpos",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Martina Chapanay",
+      "source": "History"
+    },
+    {
+      "name": "Phlegon of Tralles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gargareans",
+      "source": "History"
+    },
+    {
+      "name": "Praxidice",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eurytion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Oenopion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Callidice",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Heidrek",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Hydaspes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Regin",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Aborigines",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Philo of Byblos",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Harpalyce",
+      "source": "History"
+    },
+    {
+      "name": "Gaboimilla",
+      "source": "History"
+    },
+    {
+      "name": "Granmar",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Temenus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mardylas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aegimius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cretheus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Melanippe",
+      "source": "History"
+    },
+    {
+      "name": "Scáthach",
+      "source": "History"
+    },
+    {
+      "name": "Skírnir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Hippothous",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Macris",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Grimhild",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Gjúki",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Agave",
+      "source": "History"
+    },
+    {
+      "name": "Yim Wing-chun",
+      "source": "History"
+    },
+    {
+      "name": "Heiðr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Ascum",
+      "source": "History"
+    },
+    {
+      "name": "Bouzyges",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Opheltes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Basich",
+      "source": "History"
+    },
+    {
+      "name": "Arngrim",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Ocypete",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hemithea",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Apis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Enorches",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Menippe",
+      "source": "History"
+    },
+    {
+      "name": "Dymas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Sinfjötli",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Myrtilus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Grani",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Ocnus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Dvalinn",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Creusa",
+      "source": "History"
+    },
+    {
+      "name": "Libanus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Thersander",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Anethus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Munichus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cephalus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gróa",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Fatma Tazoughert",
+      "source": "History"
+    },
+    {
+      "name": "Evenius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pheres",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gestumblindi",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Onomacritus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Johann Heinrich Koch",
+      "source": "History"
+    },
+    {
+      "name": "Rhoeo",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Penthilus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phineus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mecionice",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Arcesilaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pamphylus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Keve",
+      "source": "History"
+    },
+    {
+      "name": "Thersanon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hermóðr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Dias",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aífe",
+      "source": "History"
+    },
+    {
+      "name": "Svanhildr",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Efkleidis Kourtidis",
+      "source": "History"
+    },
+    {
+      "name": "Sopater",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hippocoon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Alcimede",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mentor",
+      "source": "History"
+    },
+    {
+      "name": "Euryale",
+      "source": "History"
+    },
+    {
+      "name": "Aegeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ornytus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Eetion",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Byggvir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Meili",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Layla bint Tarif",
+      "source": "History"
+    },
+    {
+      "name": "Pylaeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Tectamus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Valamir",
+      "source": "History"
+    },
+    {
+      "name": "Pallas",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mytilene",
+      "source": "History"
+    },
+    {
+      "name": "Arnao Esterlin",
+      "source": "History"
+    },
+    {
+      "name": "Euxippe",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Deianira",
+      "source": "History"
+    },
+    {
+      "name": "Alabandus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Siggeir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Vasilisa Kozhina",
+      "source": "History"
+    },
+    {
+      "name": "Eusorus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cerambus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lyrcus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Elli",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Tragasus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Borghild",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Polypoetes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Aepytus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Laelaps",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Autonoe",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hyperippe",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Clinis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Calliste",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Glæsisvellir",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Molpadia",
+      "source": "History"
+    },
+    {
+      "name": "Alke",
+      "source": "History"
+    },
+    {
+      "name": "Veborg",
+      "source": "History"
+    },
+    {
+      "name": "Epopeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Xanthe",
+      "source": "History"
+    },
+    {
+      "name": "Phthius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Mermerus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Phlogius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Emathus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cychreides",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Alcander",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Rüdiger von Bechelaren",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Alcimedonte",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Danaus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Laonome",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Cercaphus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ida",
+      "source": "Greek mythology"
+    }
+  ],
+  "shielder": [
+    {
+      "name": "Galahad",
+      "source": "Arthurian legend"
+    },
+    {
+      "name": "Leonidas I",
+      "source": "History"
+    },
+    {
+      "name": "Ajax the Great",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Achilles",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Perceval",
+      "source": "Arthurian legend"
+    },
+    {
+      "name": "Bedivere",
+      "source": "Arthurian legend"
+    },
+    {
+      "name": "Heimdall",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Xu Chu",
+      "source": "History"
+    },
+    {
+      "name": "Poseidon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Merlin",
+      "source": "Mythology"
+    },
+    {
+      "name": "King Arthur",
+      "source": "Mythology"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Indra",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hades",
+      "source": "Mythology"
+    },
+    {
+      "name": "Diomedes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Darius the Great",
+      "source": "Mythology"
+    },
+    {
+      "name": "Heraclius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Dhu'l-Qarnayn",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lugh",
+      "source": "Mythology"
+    },
+    {
+      "name": "Horus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Asmodeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Freyr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cronus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Mordred",
+      "source": "Mythology"
+    },
+    {
+      "name": "Diamandi Djuvara",
+      "source": "History"
+    },
+    {
+      "name": "Nauplius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Osiris",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cadmus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Atlas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gyges of Lydia",
+      "source": "History"
+    },
+    {
+      "name": "Oedipus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Basil I",
+      "source": "History"
+    },
+    {
+      "name": "Makedon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cyaxares II",
+      "source": "Mythology"
+    },
+    {
+      "name": "Agenor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Memnon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Constantine",
+      "source": "Mythology"
+    },
+    {
+      "name": "Fisher King",
+      "source": "Mythology"
+    },
+    {
+      "name": "Porter Rockwell",
+      "source": "History"
+    },
+    {
+      "name": "Bellerophon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Midas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Ward Hill Lamon",
+      "source": "History"
+    },
+    {
+      "name": "Amphiaraus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Kubera",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hayk",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aeolus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pazuzu",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oghuz Khagan",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gerðr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lycurgus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Manu",
+      "source": "Mythology"
+    },
+    {
+      "name": "Mark of Cornwall",
+      "source": "Mythology"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Mythology"
+    },
+    {
+      "name": "Kalevi",
+      "source": "Mythology"
+    },
+    {
+      "name": "Atreus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cinyras",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gildas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Duttabaung",
+      "source": "Mythology"
+    },
+    {
+      "name": "Anchises",
+      "source": "Mythology"
+    },
+    {
+      "name": "Nongshāba",
+      "source": "Mythology"
+    },
+    {
+      "name": "Danaus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Chiyou",
+      "source": "Mythology"
+    },
+    {
+      "name": "Clymenus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aeacus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eurystheus",
+      "source": "Mythology"
+    },
+    {
+      "name": "King Pellinore",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cerdic of Wessex",
+      "source": "Mythology"
+    },
+    {
+      "name": "Yayati",
+      "source": "Mythology"
+    },
+    {
+      "name": "Laomedon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Brutus of Troy",
+      "source": "Mythology"
+    },
+    {
+      "name": "Proetus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Peleus",
+      "source": "Mythology"
+    },
+    {
+      "name": "King Ban",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pelasgus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Antaeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Nestor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Nyikang",
+      "source": "Mythology"
+    },
+    {
+      "name": "Horns of Alexander",
+      "source": "Mythology"
+    },
+    {
+      "name": "Bladud",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lycus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lóðurr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Śakra",
+      "source": "Mythology"
+    },
+    {
+      "name": "Iarbas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Abas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Priam",
+      "source": "Mythology"
+    },
+    {
+      "name": "Belus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Faunus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oeneus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Phoroneus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Creon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Albert P. Rockwood",
+      "source": "History"
+    },
+    {
+      "name": "Goffar the Pict",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pryderi",
+      "source": "Mythology"
+    },
+    {
+      "name": "Iphis",
+      "source": "Mythology"
+    },
+    {
+      "name": "Echetus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Iasion",
+      "source": "Mythology"
+    },
+    {
+      "name": "Amyntor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Glaucus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Erysichthon of Thessaly",
+      "source": "Mythology"
+    },
+    {
+      "name": "Kubaba",
+      "source": "Mythology"
+    },
+    {
+      "name": "Minyas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Yngvi",
+      "source": "Mythology"
+    },
+    {
+      "name": "Keyumars",
+      "source": "Mythology"
+    },
+    {
+      "name": "Dardanus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Shunten",
+      "source": "Mythology"
+    },
+    {
+      "name": "Adrastus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Beowulf",
+      "source": "Mythology"
+    },
+    {
+      "name": "Manco Cápac",
+      "source": "Mythology"
+    },
+    {
+      "name": "Broteas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oicles",
+      "source": "Mythology"
+    },
+    {
+      "name": "Kresnik",
+      "source": "Mythology"
+    },
+    {
+      "name": "Merops",
+      "source": "Mythology"
+    },
+    {
+      "name": "Epaphus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cepheus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Melampus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aeson",
+      "source": "Mythology"
+    },
+    {
+      "name": "Augeas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Polynices",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eurytus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gwyn ap Nudd",
+      "source": "Mythology"
+    },
+    {
+      "name": "Admetus of Pherae",
+      "source": "Mythology"
+    },
+    {
+      "name": "Leucippus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Laodamas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Athamas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eurymedon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oenomaus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Beli Mawr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Arwe",
+      "source": "Mythology"
+    },
+    {
+      "name": "Neleus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Laertes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cilix",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cycnus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cercyon of Eleusis",
+      "source": "Mythology"
+    },
+    {
+      "name": "Titus Tatius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Nireus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pentheus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pwyll",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pittheus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Leir of Britain",
+      "source": "Mythology"
+    },
+    {
+      "name": "Charles Henry Wilcken",
+      "source": "History"
+    },
+    {
+      "name": "Shadrach Roundy",
+      "source": "History"
+    },
+    {
+      "name": "Pandrasus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Palman",
+      "source": "History"
+    },
+    {
+      "name": "Iasus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Bias",
+      "source": "Mythology"
+    },
+    {
+      "name": "Thomas Grover",
+      "source": "History"
+    },
+    {
+      "name": "Assaracus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Walter Map",
+      "source": "Mythology"
+    },
+    {
+      "name": "King Matjaž",
+      "source": "Mythology"
+    },
+    {
+      "name": "Al-Walid ibn Mus'ab",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eurytion",
+      "source": "Mythology"
+    },
+    {
+      "name": "Deioneus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Iraj",
+      "source": "Mythology"
+    },
+    {
+      "name": "Macareus of Lesbos",
+      "source": "Mythology"
+    },
+    {
+      "name": "Israel Barlow",
+      "source": "History"
+    },
+    {
+      "name": "Busiris",
+      "source": "Mythology"
+    },
+    {
+      "name": "Iphitos",
+      "source": "Mythology"
+    },
+    {
+      "name": "Roustam Raza",
+      "source": "History"
+    },
+    {
+      "name": "Ascanius",
+      "source": "Mythology"
+    },
+    {
+      "name": "William H. Crook",
+      "source": "History"
+    },
+    {
+      "name": "Math fab Mathonwy",
+      "source": "Mythology"
+    },
+    {
+      "name": "Alector",
+      "source": "Mythology"
+    },
+    {
+      "name": "Anius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Erichthonius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hyrieus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aethlius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Perieres",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cyzicus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Polydectes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Tryphine",
+      "source": "Mythology"
+    },
+    {
+      "name": "Vortimer",
+      "source": "Mythology"
+    },
+    {
+      "name": "Argus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Afanc",
+      "source": "Mythology"
+    },
+    {
+      "name": "Piras",
+      "source": "Mythology"
+    },
+    {
+      "name": "Otreus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Maung Pauk Kyaing",
+      "source": "Mythology"
+    },
+    {
+      "name": "Sempronius Densus",
+      "source": "History"
+    },
+    {
+      "name": "Aneirin",
+      "source": "Mythology"
+    },
+    {
+      "name": "Erginus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Magnes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Amphion",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oileus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aegyptus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Alcaeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Maeon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Kay Kāvus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Alcinous",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cychreus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oenopion",
+      "source": "Mythology"
+    },
+    {
+      "name": "Blóðughófi",
+      "source": "Mythology"
+    },
+    {
+      "name": "Ngataba Min",
+      "source": "Mythology"
+    },
+    {
+      "name": "Capys",
+      "source": "Mythology"
+    },
+    {
+      "name": "Chalcodon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aetolus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Polybus of Corinth",
+      "source": "Mythology"
+    },
+    {
+      "name": "Breogán",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pierus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Perses",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cretheus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Bucolion",
+      "source": "Mythology"
+    },
+    {
+      "name": "Celeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Stotzas",
+      "source": "History"
+    },
+    {
+      "name": "Skírnir",
+      "source": "Mythology"
+    },
+    {
+      "name": "Megareus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Chrysaor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Agrius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Phyleus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Polyxenus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Electryon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Amr ibn Adi",
+      "source": "Mythology"
+    },
+    {
+      "name": "Oxylus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Itonus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Álfheimr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Arvirargus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Caucon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Dexamenus",
+      "source": "Mythology"
+    },
+    {
+      "name": "King Leodegrance",
+      "source": "Mythology"
+    },
+    {
+      "name": "Byzas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Megapenthes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Apis",
+      "source": "Mythology"
+    },
+    {
+      "name": "Bulmer de Sales La Terriere",
+      "source": "History"
+    },
+    {
+      "name": "Imru al-Qays I ibn Amr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Locrinus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Elephenor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eteocles",
+      "source": "Mythology"
+    },
+    {
+      "name": "Chryses",
+      "source": "Mythology"
+    },
+    {
+      "name": "Antiphates",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pheres",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cyanippus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Manes of Lydia",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gullinbursti",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lycomedes of Scyros",
+      "source": "Mythology"
+    },
+    {
+      "name": "Mygdon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Dymas of Phrygia",
+      "source": "Mythology"
+    },
+    {
+      "name": "Licymnius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aphareus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Ormenus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Dictys",
+      "source": "Mythology"
+    },
+    {
+      "name": "Corythus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Iardanus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Amarynceus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aegialeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cephalus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Deïmachus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cercaphus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Cadwallon Lawhir",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gorboduc",
+      "source": "Mythology"
+    },
+    {
+      "name": "Eurybius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Emathion",
+      "source": "Mythology"
+    },
+    {
+      "name": "Aletes",
+      "source": "Mythology"
+    }
+  ],
+  "ruler": [
+    {
+      "name": "Merlin",
+      "source": "Arthurian legend"
+    },
+    {
+      "name": "Jeanne d'Arc",
+      "source": "History"
+    },
+    {
+      "name": "Qin Shi Huang",
+      "source": "History"
+    },
+    {
+      "name": "Zeus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Odin",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Athena",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Themis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Charlemagne",
+      "source": "History"
+    },
+    {
+      "name": "Ashoka",
+      "source": "History"
+    },
+    {
+      "name": "Nicholas II",
+      "source": "History"
+    },
+    {
+      "name": "Alexander the Great",
+      "source": "History"
+    },
+    {
+      "name": "Cleopatra",
+      "source": "History"
+    },
+    {
+      "name": "Nezahualcoyotl",
+      "source": "History"
+    },
+    {
+      "name": "Charles V, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Frederick II, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Napoleon III",
+      "source": "History"
+    },
+    {
+      "name": "Napoleon",
+      "source": "History"
+    },
+    {
+      "name": "Joan of Arc",
+      "source": "History"
+    },
+    {
+      "name": "Constantine the Great",
+      "source": "History"
+    },
+    {
+      "name": "Poseidon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Liliʻuokalani",
+      "source": "History"
+    },
+    {
+      "name": "Tughril I",
+      "source": "History"
+    },
+    {
+      "name": "Ahmad Shah Durrani",
+      "source": "History"
+    },
+    {
+      "name": "Wilhelm II",
+      "source": "History"
+    },
+    {
+      "name": "Christina, Queen of Sweden",
+      "source": "History"
+    },
+    {
+      "name": "Diocletian",
+      "source": "History"
+    },
+    {
+      "name": "Moctezuma II",
+      "source": "History"
+    },
+    {
+      "name": "Sigismund III Vasa",
+      "source": "History"
+    },
+    {
+      "name": "Hussein, King of Hejaz",
+      "source": "History"
+    },
+    {
+      "name": "Pepi I Meryre",
+      "source": "History"
+    },
+    {
+      "name": "Charles I of England",
+      "source": "History"
+    },
+    {
+      "name": "Genghis Khan",
+      "source": "History"
+    },
+    {
+      "name": "Empress Myeongseong",
+      "source": "History"
+    },
+    {
+      "name": "Sobekneferu",
+      "source": "History"
+    },
+    {
+      "name": "Theodosius I",
+      "source": "History"
+    },
+    {
+      "name": "Otto the Great",
+      "source": "History"
+    },
+    {
+      "name": "Mehmed VI",
+      "source": "History"
+    },
+    {
+      "name": "Sahure",
+      "source": "History"
+    },
+    {
+      "name": "Alp Arslan",
+      "source": "History"
+    },
+    {
+      "name": "Charles III of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Reza Shah",
+      "source": "History"
+    },
+    {
+      "name": "Nyuserre Ini",
+      "source": "History"
+    },
+    {
+      "name": "Pedro I of Brazil",
+      "source": "History"
+    },
+    {
+      "name": "Matthias Corvinus",
+      "source": "History"
+    },
+    {
+      "name": "King Arthur",
+      "source": "Mythology"
+    },
+    {
+      "name": "Merenre Nemtyemsaf I",
+      "source": "History"
+    },
+    {
+      "name": "Abdul Hamid II",
+      "source": "History"
+    },
+    {
+      "name": "Maximilian I of Mexico",
+      "source": "History"
+    },
+    {
+      "name": "Santa Muerte",
+      "source": "History"
+    },
+    {
+      "name": "Maria Leopoldina of Austria",
+      "source": "History"
+    },
+    {
+      "name": "Pedro II of Brazil",
+      "source": "History"
+    },
+    {
+      "name": "Mary, Queen of Scots",
+      "source": "History"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Mythology"
+    },
+    {
+      "name": "James II of England",
+      "source": "History"
+    },
+    {
+      "name": "Louis XVI",
+      "source": "History"
+    },
+    {
+      "name": "Narmer",
+      "source": "History"
+    },
+    {
+      "name": "Djedkare Isesi",
+      "source": "History"
+    },
+    {
+      "name": "Henry IV, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Charles Albert of Sardinia",
+      "source": "History"
+    },
+    {
+      "name": "Stanisław August Poniatowski",
+      "source": "History"
+    },
+    {
+      "name": "Shepseskaf",
+      "source": "History"
+    },
+    {
+      "name": "Nabonidus",
+      "source": "History"
+    },
+    {
+      "name": "Userkaf",
+      "source": "History"
+    },
+    {
+      "name": "Ovonramwen",
+      "source": "History"
+    },
+    {
+      "name": "Neferneferuaten",
+      "source": "History"
+    },
+    {
+      "name": "Khufu",
+      "source": "History"
+    },
+    {
+      "name": "Nynetjer",
+      "source": "History"
+    },
+    {
+      "name": "Agustín de Iturbide",
+      "source": "History"
+    },
+    {
+      "name": "Indra",
+      "source": "Mythology"
+    },
+    {
+      "name": "Taksin",
+      "source": "History"
+    },
+    {
+      "name": "Hades",
+      "source": "Mythology"
+    },
+    {
+      "name": "Neferirkare Kakai",
+      "source": "History"
+    },
+    {
+      "name": "Yuan Shikai",
+      "source": "History"
+    },
+    {
+      "name": "Lady Jane Grey",
+      "source": "History"
+    },
+    {
+      "name": "Joanna I of Naples",
+      "source": "History"
+    },
+    {
+      "name": "Diomedes",
+      "source": "Mythology"
+    },
+    {
+      "name": "Richard II of England",
+      "source": "History"
+    },
+    {
+      "name": "Gilgamesh",
+      "source": "History"
+    },
+    {
+      "name": "Melisende of Jerusalem",
+      "source": "History"
+    },
+    {
+      "name": "Darius the Great",
+      "source": "Mythology"
+    },
+    {
+      "name": "Alfonso XIII",
+      "source": "History"
+    },
+    {
+      "name": "Louis Philippe I",
+      "source": "History"
+    },
+    {
+      "name": "Abdullahi dan Fodio",
+      "source": "History"
+    },
+    {
+      "name": "Heraclius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Maximian",
+      "source": "History"
+    },
+    {
+      "name": "Charles X of France",
+      "source": "History"
+    },
+    {
+      "name": "Amadeo I of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Cleopatra Selene of Syria",
+      "source": "History"
+    },
+    {
+      "name": "Unas",
+      "source": "History"
+    },
+    {
+      "name": "Charles I of Austria",
+      "source": "History"
+    },
+    {
+      "name": "Hatshepsut",
+      "source": "History"
+    },
+    {
+      "name": "Dhu'l-Qarnayn",
+      "source": "Mythology"
+    },
+    {
+      "name": "Lugh",
+      "source": "Mythology"
+    },
+    {
+      "name": "Neferefre",
+      "source": "History"
+    },
+    {
+      "name": "Gojong of Korea",
+      "source": "History"
+    },
+    {
+      "name": "Nefertiti",
+      "source": "History"
+    },
+    {
+      "name": "Isabella II",
+      "source": "History"
+    },
+    {
+      "name": "Alexandra of Denmark",
+      "source": "History"
+    },
+    {
+      "name": "Koxinga",
+      "source": "History"
+    },
+    {
+      "name": "Constantine II of Scotland",
+      "source": "History"
+    },
+    {
+      "name": "Nikephoros III Botaneiates",
+      "source": "History"
+    },
+    {
+      "name": "Tabinshwehti",
+      "source": "History"
+    },
+    {
+      "name": "Seth-Peribsen",
+      "source": "History"
+    },
+    {
+      "name": "Constantine I of Greece",
+      "source": "History"
+    },
+    {
+      "name": "Userkare",
+      "source": "History"
+    },
+    {
+      "name": "Manuel II of Portugal",
+      "source": "History"
+    },
+    {
+      "name": "Menkauhor Kaiu",
+      "source": "History"
+    },
+    {
+      "name": "Carlota Joaquina of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Horus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Asmodeus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Freyr",
+      "source": "Mythology"
+    },
+    {
+      "name": "Irene of Athens",
+      "source": "History"
+    },
+    {
+      "name": "Ranavalona III",
+      "source": "History"
+    },
+    {
+      "name": "Maurice",
+      "source": "History"
+    },
+    {
+      "name": "Taharqa",
+      "source": "History"
+    },
+    {
+      "name": "Stefan Nemanja",
+      "source": "History"
+    },
+    {
+      "name": "Fulk V of Anjou",
+      "source": "History"
+    },
+    {
+      "name": "Aelia Eudocia",
+      "source": "History"
+    },
+    {
+      "name": "Atahualpa",
+      "source": "History"
+    },
+    {
+      "name": "Cronus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Galerius",
+      "source": "History"
+    },
+    {
+      "name": "Artaxerxes II",
+      "source": "History"
+    },
+    {
+      "name": "Alexandru Coconul",
+      "source": "History"
+    },
+    {
+      "name": "Mordred",
+      "source": "Mythology"
+    },
+    {
+      "name": "Marie Louise, Duchess of Parma",
+      "source": "History"
+    },
+    {
+      "name": "Purandar Singha",
+      "source": "History"
+    },
+    {
+      "name": "William I of the Netherlands",
+      "source": "History"
+    },
+    {
+      "name": "Philip V of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Prajadhipok",
+      "source": "History"
+    },
+    {
+      "name": "Abdulaziz",
+      "source": "History"
+    },
+    {
+      "name": "Shulgi",
+      "source": "History"
+    },
+    {
+      "name": "Oscar II",
+      "source": "History"
+    },
+    {
+      "name": "Charles IV, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Constantius Chlorus",
+      "source": "History"
+    },
+    {
+      "name": "Nauplius",
+      "source": "Mythology"
+    },
+    {
+      "name": "Atlanersa",
+      "source": "History"
+    },
+    {
+      "name": "Romulus",
+      "source": "History"
+    },
+    {
+      "name": "Shepseskare",
+      "source": "History"
+    },
+    {
+      "name": "Frederick VI of Denmark",
+      "source": "History"
+    },
+    {
+      "name": "Sun Liang",
+      "source": "History"
+    },
+    {
+      "name": "Staurakios",
+      "source": "History"
+    },
+    {
+      "name": "Osiris",
+      "source": "Mythology"
+    },
+    {
+      "name": "Joseph Bonaparte",
+      "source": "History"
+    },
+    {
+      "name": "Abd al-Hafid of Morocco",
+      "source": "History"
+    },
+    {
+      "name": "Muhammad III of Granada",
+      "source": "History"
+    },
+    {
+      "name": "Alfonso X of Castile",
+      "source": "History"
+    },
+    {
+      "name": "Ahmed III",
+      "source": "History"
+    },
+    {
+      "name": "Huni",
+      "source": "History"
+    },
+    {
+      "name": "Charles II of Parma",
+      "source": "History"
+    },
+    {
+      "name": "Cadmus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Milan I of Serbia",
+      "source": "History"
+    },
+    {
+      "name": "Atlas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Uzun-Hajji",
+      "source": "History"
+    },
+    {
+      "name": "Songtsen Gampo",
+      "source": "History"
+    },
+    {
+      "name": "Bayezid II",
+      "source": "History"
+    },
+    {
+      "name": "Ludwig III of Bavaria",
+      "source": "History"
+    },
+    {
+      "name": "Victor Amadeus II",
+      "source": "History"
+    },
+    {
+      "name": "Oedipus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Antiochus IV Epiphanes",
+      "source": "History"
+    },
+    {
+      "name": "Mary, Queen of Hungary",
+      "source": "History"
+    },
+    {
+      "name": "Hor-Aha",
+      "source": "History"
+    },
+    {
+      "name": "Maxentius",
+      "source": "History"
+    },
+    {
+      "name": "Makedon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Charles IV of Spain",
+      "source": "History"
+    },
+    {
+      "name": "Cyaxares II",
+      "source": "Mythology"
+    },
+    {
+      "name": "Romulus Augustulus",
+      "source": "History"
+    },
+    {
+      "name": "Selim III",
+      "source": "History"
+    },
+    {
+      "name": "Agenor",
+      "source": "Mythology"
+    },
+    {
+      "name": "Stephen Tomašević of Bosnia",
+      "source": "History"
+    },
+    {
+      "name": "'Adud al-Dawla",
+      "source": "History"
+    },
+    {
+      "name": "Charles, Count of Valois",
+      "source": "History"
+    },
+    {
+      "name": "Olof Skötkonung",
+      "source": "History"
+    },
+    {
+      "name": "Peter III of Russia",
+      "source": "History"
+    },
+    {
+      "name": "Ahmose-Nefertari",
+      "source": "History"
+    },
+    {
+      "name": "Djoser",
+      "source": "History"
+    },
+    {
+      "name": "Abbas II of Egypt",
+      "source": "History"
+    },
+    {
+      "name": "Pepi II Neferkare",
+      "source": "History"
+    },
+    {
+      "name": "Yazdegerd III",
+      "source": "History"
+    },
+    {
+      "name": "Tausret",
+      "source": "History"
+    },
+    {
+      "name": "Maria I of Portugal",
+      "source": "History"
+    },
+    {
+      "name": "Ludwig I of Bavaria",
+      "source": "History"
+    },
+    {
+      "name": "Ulrika Eleonora of Sweden",
+      "source": "History"
+    },
+    {
+      "name": "Æthelred of Mercia",
+      "source": "History"
+    },
+    {
+      "name": "Ernest Louis, Grand Duke of Hesse",
+      "source": "History"
+    },
+    {
+      "name": "Shoshenq I",
+      "source": "History"
+    },
+    {
+      "name": "Jeconiah",
+      "source": "History"
+    },
+    {
+      "name": "Jingtai Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Kale Kye-Taung Nyo",
+      "source": "History"
+    },
+    {
+      "name": "Kʼinich Janaabʼ Pakal",
+      "source": "History"
+    },
+    {
+      "name": "Justinian II",
+      "source": "History"
+    },
+    {
+      "name": "Psamtik I",
+      "source": "History"
+    },
+    {
+      "name": "Menes",
+      "source": "History"
+    },
+    {
+      "name": "Christian VIII",
+      "source": "History"
+    },
+    {
+      "name": "Stefan Vladislav",
+      "source": "History"
+    },
+    {
+      "name": "Memnon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Arnulf of Carinthia",
+      "source": "History"
+    },
+    {
+      "name": "Constantine",
+      "source": "Mythology"
+    },
+    {
+      "name": "Fisher King",
+      "source": "Mythology"
+    },
+    {
+      "name": "Alexander of Battenberg",
+      "source": "History"
+    },
+    {
+      "name": "Darius III",
+      "source": "History"
+    },
+    {
+      "name": "Bellerophon",
+      "source": "Mythology"
+    },
+    {
+      "name": "Al-Muti'",
+      "source": "History"
+    },
+    {
+      "name": "Alfonso the Battler",
+      "source": "History"
+    },
+    {
+      "name": "Letizia Bonaparte",
+      "source": "History"
+    },
+    {
+      "name": "Thecla",
+      "source": "History"
+    },
+    {
+      "name": "Yeonsangun of Joseon",
+      "source": "History"
+    },
+    {
+      "name": "Giyorgis of Segla",
+      "source": "History"
+    },
+    {
+      "name": "John II Casimir Vasa",
+      "source": "History"
+    },
+    {
+      "name": "Midas",
+      "source": "Mythology"
+    },
+    {
+      "name": "Sebele II",
+      "source": "History"
+    },
+    {
+      "name": "Tvrtko II of Bosnia",
+      "source": "History"
+    },
+    {
+      "name": "Władysław III Spindleshanks",
+      "source": "History"
+    },
+    {
+      "name": "Pharnavaz I",
+      "source": "History"
+    },
+    {
+      "name": "Zimri",
+      "source": "History"
+    },
+    {
+      "name": "Erik of Pomerania",
+      "source": "History"
+    },
+    {
+      "name": "Charles VII, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Ferdinand I of Austria",
+      "source": "History"
+    },
+    {
+      "name": "Amphiaraus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Frederick Augustus II of Oldenburg",
+      "source": "History"
+    },
+    {
+      "name": "Murad V",
+      "source": "History"
+    },
+    {
+      "name": "Amasis II",
+      "source": "History"
+    },
+    {
+      "name": "Kubera",
+      "source": "Mythology"
+    },
+    {
+      "name": "Necho II",
+      "source": "History"
+    },
+    {
+      "name": "Francis I, Holy Roman Emperor",
+      "source": "History"
+    },
+    {
+      "name": "Djedefre",
+      "source": "History"
+    },
+    {
+      "name": "Petar of Serbia",
+      "source": "History"
+    },
+    {
+      "name": "Sneferu",
+      "source": "History"
+    },
+    {
+      "name": "Al-Ta'i'",
+      "source": "History"
+    },
+    {
+      "name": "Leopold II of Tuscany",
+      "source": "History"
+    },
+    {
+      "name": "Hayk",
+      "source": "Mythology"
+    },
+    {
+      "name": "Gwanghaegun of Joseon",
+      "source": "History"
+    },
+    {
+      "name": "Hortense de Beauharnais",
+      "source": "History"
+    },
+    {
+      "name": "Zewditu",
+      "source": "History"
+    },
+    {
+      "name": "Aeolus",
+      "source": "Mythology"
+    },
+    {
+      "name": "Töregene Khatun",
+      "source": "History"
+    },
+    {
+      "name": "Kyawswa I of Pinya",
+      "source": "History"
+    },
+    {
+      "name": "Pazuzu",
+      "source": "Mythology"
+    },
+    {
+      "name": "Walatta Petros",
+      "source": "History"
+    },
+    {
+      "name": "Cuauhtémoc",
+      "source": "History"
+    },
+    {
+      "name": "Amadeus VIII of Savoy",
+      "source": "History"
+    },
+    {
+      "name": "Oghuz Khagan",
+      "source": "Mythology"
+    },
+    {
+      "name": "Pōmare I",
+      "source": "History"
+    },
+    {
+      "name": "Osorkon IV",
+      "source": "History"
+    },
+    {
+      "name": "Arsinoe IV",
+      "source": "History"
+    },
+    {
+      "name": "Olivia of Palermo",
+      "source": "History"
+    },
+    {
+      "name": "Khasekhemwy",
+      "source": "History"
+    },
+    {
+      "name": "Cædwalla",
+      "source": "History"
+    },
+    {
+      "name": "Hö'elün",
+      "source": "History"
+    },
+    {
+      "name": "Faustin Soulouque",
+      "source": "History"
+    },
+    {
+      "name": "Diarmait Mac Murchada",
+      "source": "History"
+    }
+  ],
+  "avenger": [
+    {
+      "name": "Hassan-i Sabbah",
+      "source": "History"
+    },
+    {
+      "name": "Eric Bloodaxe",
+      "source": "History"
+    },
+    {
+      "name": "Satan",
+      "source": "Mythology"
+    },
+    {
+      "name": "Hades",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Hela",
+      "source": "Norse mythology"
+    },
+    {
+      "name": "Nicolae Iorga",
+      "source": "History"
+    },
+    {
+      "name": "Napoleon",
+      "source": "History"
+    },
+    {
+      "name": "Sima Yi",
+      "source": "History"
+    },
+    {
+      "name": "Ion Luca Caragiale",
+      "source": "History"
+    },
+    {
+      "name": "Mark Twain",
+      "source": "History"
+    },
+    {
+      "name": "Petre P. Carp",
+      "source": "History"
+    },
+    {
+      "name": "Trajan",
+      "source": "History"
+    },
+    {
+      "name": "Catherine the Great",
+      "source": "History"
+    },
+    {
+      "name": "Józef Piłsudski",
+      "source": "History"
+    },
+    {
+      "name": "Sun Yat-sen",
+      "source": "History"
+    },
+    {
+      "name": "Grigore Sturdza",
+      "source": "History"
+    },
+    {
+      "name": "Athena",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Klemens von Metternich",
+      "source": "History"
+    },
+    {
+      "name": "Aphrodite",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Edward III",
+      "source": "History"
+    },
+    {
+      "name": "Voltairine de Cleyre",
+      "source": "History"
+    },
+    {
+      "name": "Emma Goldman",
+      "source": "History"
+    },
+    {
+      "name": "Leopold I of Belgium",
+      "source": "History"
+    },
+    {
+      "name": "Mihail Kogălniceanu",
+      "source": "History"
+    },
+    {
+      "name": "Rosa Luxemburg",
+      "source": "History"
+    },
+    {
+      "name": "Reza Shah",
+      "source": "History"
+    },
+    {
+      "name": "Mateiu Caragiale",
+      "source": "History"
+    },
+    {
+      "name": "Franz Joseph I",
+      "source": "History"
+    },
+    {
+      "name": "Germán Busch",
+      "source": "History"
+    },
+    {
+      "name": "Somerled",
+      "source": "History"
+    },
+    {
+      "name": "Sulla",
+      "source": "History"
+    },
+    {
+      "name": "Antonio López de Santa Anna",
+      "source": "History"
+    },
+    {
+      "name": "Giuseppe Garibaldi",
+      "source": "History"
+    },
+    {
+      "name": "Odysseus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Christian Rakovsky",
+      "source": "History"
+    },
+    {
+      "name": "Talaat Pasha",
+      "source": "History"
+    },
+    {
+      "name": "Adam Mickiewicz",
+      "source": "History"
+    },
+    {
+      "name": "Stephan Ludwig Roth",
+      "source": "History"
+    },
+    {
+      "name": "Nabonidus",
+      "source": "History"
+    },
+    {
+      "name": "William Herschel",
+      "source": "History"
+    },
+    {
+      "name": "Nicholas I of Russia",
+      "source": "History"
+    },
+    {
+      "name": "Yuan Shikai",
+      "source": "History"
+    },
+    {
+      "name": "Radu Rosetti",
+      "source": "History"
+    },
+    {
+      "name": "Gabriele D'Annunzio",
+      "source": "History"
+    },
+    {
+      "name": "George Barbu Știrbei",
+      "source": "History"
+    },
+    {
+      "name": "Karađorđe",
+      "source": "History"
+    },
+    {
+      "name": "Take Ionescu",
+      "source": "History"
+    },
+    {
+      "name": "Arthur Rimbaud",
+      "source": "History"
+    },
+    {
+      "name": "Elisabeth Dmitrieff",
+      "source": "History"
+    },
+    {
+      "name": "George Diamandy",
+      "source": "History"
+    },
+    {
+      "name": "Marcus Junius Brutus",
+      "source": "History"
+    },
+    {
+      "name": "Jean-Paul Marat",
+      "source": "History"
+    },
+    {
+      "name": "Matei Millo",
+      "source": "History"
+    },
+    {
+      "name": "Dimitrie Ralet",
+      "source": "History"
+    },
+    {
+      "name": "Louis Philippe I",
+      "source": "History"
+    },
+    {
+      "name": "Heraclius",
+      "source": "History"
+    },
+    {
+      "name": "Wang Mang",
+      "source": "History"
+    },
+    {
+      "name": "Symon Petliura",
+      "source": "History"
+    },
+    {
+      "name": "Selim I",
+      "source": "History"
+    },
+    {
+      "name": "Charles Maurice de Talleyrand-Périgord",
+      "source": "History"
+    },
+    {
+      "name": "Ioannis Metaxas",
+      "source": "History"
+    },
+    {
+      "name": "Karl Liebknecht",
+      "source": "History"
+    },
+    {
+      "name": "Gheorghe Asachi",
+      "source": "History"
+    },
+    {
+      "name": "Maria Nikiforova",
+      "source": "History"
+    },
+    {
+      "name": "Oceanus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "John Dillinger",
+      "source": "History"
+    },
+    {
+      "name": "Gheorghe Becescu-Silvan",
+      "source": "History"
+    },
+    {
+      "name": "Scarlat Vârnav",
+      "source": "History"
+    },
+    {
+      "name": "Constantin Stere",
+      "source": "History"
+    },
+    {
+      "name": "Horace François Bastien Sébastiani de La Porta",
+      "source": "History"
+    },
+    {
+      "name": "Mikhail Bakunin",
+      "source": "History"
+    },
+    {
+      "name": "George Ranetti",
+      "source": "History"
+    },
+    {
+      "name": "Margaret Tudor",
+      "source": "History"
+    },
+    {
+      "name": "Alexandru Averescu",
+      "source": "History"
+    },
+    {
+      "name": "Andrei Mocioni",
+      "source": "History"
+    },
+    {
+      "name": "Ioan Kalinderu",
+      "source": "History"
+    },
+    {
+      "name": "Lucy Parsons",
+      "source": "History"
+    },
+    {
+      "name": "Constance Markievicz",
+      "source": "History"
+    },
+    {
+      "name": "Elizabeth of Russia",
+      "source": "History"
+    },
+    {
+      "name": "Giuseppe Mazzini",
+      "source": "History"
+    },
+    {
+      "name": "Horst Wessel",
+      "source": "History"
+    },
+    {
+      "name": "Philomela",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Gregor Strasser",
+      "source": "History"
+    },
+    {
+      "name": "Empress Dowager Ci'an",
+      "source": "History"
+    },
+    {
+      "name": "Victoriano Huerta",
+      "source": "History"
+    },
+    {
+      "name": "Mahmud II",
+      "source": "History"
+    },
+    {
+      "name": "Tang Shouqian",
+      "source": "History"
+    },
+    {
+      "name": "Pietro Maestri",
+      "source": "History"
+    },
+    {
+      "name": "José María Linares",
+      "source": "History"
+    },
+    {
+      "name": "Maria Spiridonova",
+      "source": "History"
+    },
+    {
+      "name": "Antanas Smetona",
+      "source": "History"
+    },
+    {
+      "name": "Caton Theodorian",
+      "source": "History"
+    },
+    {
+      "name": "Boudica",
+      "source": "History"
+    },
+    {
+      "name": "István Türr",
+      "source": "History"
+    },
+    {
+      "name": "William I of the Netherlands",
+      "source": "History"
+    },
+    {
+      "name": "Mariano Melgarejo",
+      "source": "History"
+    },
+    {
+      "name": "Clara Zetkin",
+      "source": "History"
+    },
+    {
+      "name": "Axinte Frunză",
+      "source": "History"
+    },
+    {
+      "name": "Abdülmecid I",
+      "source": "History"
+    },
+    {
+      "name": "Anastasio Bustamante",
+      "source": "History"
+    },
+    {
+      "name": "Akechi Mitsuhide",
+      "source": "History"
+    },
+    {
+      "name": "Taejo of Joseon",
+      "source": "History"
+    },
+    {
+      "name": "Rhea",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ernst Thälmann",
+      "source": "History"
+    },
+    {
+      "name": "Octavian Smigelschi",
+      "source": "History"
+    },
+    {
+      "name": "Ōkubo Toshimichi",
+      "source": "History"
+    },
+    {
+      "name": "Nadezhda Krupskaya",
+      "source": "History"
+    },
+    {
+      "name": "Tacfarinas",
+      "source": "History"
+    },
+    {
+      "name": "Penelope",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Adonis",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Jean-Jacques Dessalines",
+      "source": "History"
+    },
+    {
+      "name": "Constantin Banu",
+      "source": "History"
+    },
+    {
+      "name": "Europa",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ouroboros",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Lola Montez",
+      "source": "History"
+    },
+    {
+      "name": "John Chilembwe",
+      "source": "History"
+    },
+    {
+      "name": "Feargus O'Connor",
+      "source": "History"
+    },
+    {
+      "name": "Uzun Hasan",
+      "source": "History"
+    },
+    {
+      "name": "Joseph Radetzky von Radetz",
+      "source": "History"
+    },
+    {
+      "name": "Li Zicheng",
+      "source": "History"
+    },
+    {
+      "name": "Charlotte Corday",
+      "source": "History"
+    },
+    {
+      "name": "Dong Zhuo",
+      "source": "History"
+    },
+    {
+      "name": "Sophie Kropotkin",
+      "source": "History"
+    },
+    {
+      "name": "Deodoro da Fonseca",
+      "source": "History"
+    },
+    {
+      "name": "Hedd Wyn",
+      "source": "History"
+    },
+    {
+      "name": "William II of the Netherlands",
+      "source": "History"
+    },
+    {
+      "name": "Daedalus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Kavad II",
+      "source": "History"
+    },
+    {
+      "name": "Phoenix",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Asclepius",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ariadne",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Ludwig I of Bavaria",
+      "source": "History"
+    },
+    {
+      "name": "Victor Emmanuel II",
+      "source": "History"
+    },
+    {
+      "name": "Ch'oe Ch'unghŏn",
+      "source": "History"
+    },
+    {
+      "name": "Yinchang",
+      "source": "History"
+    },
+    {
+      "name": "Constantin Mille",
+      "source": "History"
+    },
+    {
+      "name": "Galba",
+      "source": "History"
+    },
+    {
+      "name": "Archduke John of Austria",
+      "source": "History"
+    },
+    {
+      "name": "Panait Cerna",
+      "source": "History"
+    },
+    {
+      "name": "Nanny of the Maroons",
+      "source": "History"
+    },
+    {
+      "name": "Duan Qirui",
+      "source": "History"
+    },
+    {
+      "name": "Taejong of Joseon",
+      "source": "History"
+    },
+    {
+      "name": "Sakamoto Ryōma",
+      "source": "History"
+    },
+    {
+      "name": "Tom Mix",
+      "source": "History"
+    },
+    {
+      "name": "Aëdon",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Christian III of Denmark",
+      "source": "History"
+    },
+    {
+      "name": "Hermaphroditus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Pasiphaë",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Francisco Dueñas",
+      "source": "History"
+    },
+    {
+      "name": "Pattimura",
+      "source": "History"
+    },
+    {
+      "name": "Charles Anderson Dana",
+      "source": "History"
+    },
+    {
+      "name": "Leo Jogiches",
+      "source": "History"
+    },
+    {
+      "name": "Pritilata Waddedar",
+      "source": "History"
+    },
+    {
+      "name": "Lorenz Cantador",
+      "source": "History"
+    },
+    {
+      "name": "Eleanor Marx",
+      "source": "History"
+    },
+    {
+      "name": "Hilarión Daza",
+      "source": "History"
+    },
+    {
+      "name": "Avram Iancu",
+      "source": "History"
+    },
+    {
+      "name": "María Pacheco",
+      "source": "History"
+    },
+    {
+      "name": "Modu Chanyu",
+      "source": "History"
+    },
+    {
+      "name": "Ferdinand I of Austria",
+      "source": "History"
+    },
+    {
+      "name": "Phetracha",
+      "source": "History"
+    },
+    {
+      "name": "Zhang Binglin",
+      "source": "History"
+    },
+    {
+      "name": "Mathos",
+      "source": "History"
+    },
+    {
+      "name": "Carlota",
+      "source": "History"
+    },
+    {
+      "name": "Thomas D. Carr",
+      "source": "History"
+    },
+    {
+      "name": "Rigas Feraios",
+      "source": "History"
+    },
+    {
+      "name": "José Félix Uriburu",
+      "source": "History"
+    },
+    {
+      "name": "Varvara Yakovleva",
+      "source": "History"
+    },
+    {
+      "name": "Inessa Armand",
+      "source": "History"
+    },
+    {
+      "name": "Leopold II of Tuscany",
+      "source": "History"
+    },
+    {
+      "name": "Phocas",
+      "source": "History"
+    },
+    {
+      "name": "Kyŏng Taesŭng",
+      "source": "History"
+    },
+    {
+      "name": "Pleisthenes",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Otho",
+      "source": "History"
+    },
+    {
+      "name": "Lucius Junius Brutus",
+      "source": "History"
+    },
+    {
+      "name": "Svetozar Miletić",
+      "source": "History"
+    },
+    {
+      "name": "Cleisthenes",
+      "source": "History"
+    },
+    {
+      "name": "Calypso",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Rafael Antonio Gutiérrez",
+      "source": "History"
+    },
+    {
+      "name": "Jungjong of Joseon",
+      "source": "History"
+    },
+    {
+      "name": "José María Orellana",
+      "source": "History"
+    },
+    {
+      "name": "Alexandru Ioan Cuza",
+      "source": "History"
+    },
+    {
+      "name": "Domingo de Goicouria",
+      "source": "History"
+    },
+    {
+      "name": "Ferdinand II of the Two Sicilies",
+      "source": "History"
+    },
+    {
+      "name": "Bumin Qaghan",
+      "source": "History"
+    },
+    {
+      "name": "Minoan snake goddess figurines",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Fanny Kaplan",
+      "source": "History"
+    },
+    {
+      "name": "Larissa Reissner",
+      "source": "History"
+    },
+    {
+      "name": "Xia Chao",
+      "source": "History"
+    },
+    {
+      "name": "Jan Janszoon",
+      "source": "History"
+    },
+    {
+      "name": "José Luis Tejada Sorzano",
+      "source": "History"
+    },
+    {
+      "name": "Emperor Huan of Han",
+      "source": "History"
+    },
+    {
+      "name": "Dora Brilliant",
+      "source": "History"
+    },
+    {
+      "name": "Arachne",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "C. I. Scofield",
+      "source": "History"
+    },
+    {
+      "name": "Leon Narwicz",
+      "source": "History"
+    },
+    {
+      "name": "False Dmitry I",
+      "source": "History"
+    },
+    {
+      "name": "Greek hero cult",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Yevgenia Bosch",
+      "source": "History"
+    },
+    {
+      "name": "Augusto B. Leguía",
+      "source": "History"
+    },
+    {
+      "name": "Charles de Schwartzenberg",
+      "source": "History"
+    },
+    {
+      "name": "David Hendrik Chassé",
+      "source": "History"
+    },
+    {
+      "name": "Armand Charles Guilleminot",
+      "source": "History"
+    },
+    {
+      "name": "Kurt Eisner",
+      "source": "History"
+    },
+    {
+      "name": "Vera Figner",
+      "source": "History"
+    },
+    {
+      "name": "Pong Tiku",
+      "source": "History"
+    },
+    {
+      "name": "Alexios V Doukas",
+      "source": "History"
+    },
+    {
+      "name": "Francisco Menéndez",
+      "source": "History"
+    },
+    {
+      "name": "Feng Guozhang",
+      "source": "History"
+    },
+    {
+      "name": "José Miguel Carrera",
+      "source": "History"
+    },
+    {
+      "name": "Dimo Hadzhidimov",
+      "source": "History"
+    },
+    {
+      "name": "Georgy Lvov",
+      "source": "History"
+    },
+    {
+      "name": "Gottfried Semper",
+      "source": "History"
+    },
+    {
+      "name": "Palaephatus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Anna Kuliscioff",
+      "source": "History"
+    },
+    {
+      "name": "Sebastián Lemba",
+      "source": "History"
+    },
+    {
+      "name": "Itō Noe",
+      "source": "History"
+    },
+    {
+      "name": "José María de Achá",
+      "source": "History"
+    },
+    {
+      "name": "Cécile Fatiman",
+      "source": "History"
+    },
+    {
+      "name": "Gongmin of Goryeo",
+      "source": "History"
+    },
+    {
+      "name": "Seqenenre Tao",
+      "source": "History"
+    },
+    {
+      "name": "Catherine Breshkovsky",
+      "source": "History"
+    },
+    {
+      "name": "Micko Krstić",
+      "source": "History"
+    },
+    {
+      "name": "Charlie Soong",
+      "source": "History"
+    },
+    {
+      "name": "Lola Rodríguez de Tió",
+      "source": "History"
+    },
+    {
+      "name": "Ivan Paskevich",
+      "source": "History"
+    },
+    {
+      "name": "José Manuel Pando",
+      "source": "History"
+    },
+    {
+      "name": "Étienne Maurice Gérard",
+      "source": "History"
+    },
+    {
+      "name": "Wong Nai Siong",
+      "source": "History"
+    },
+    {
+      "name": "Vasile Alecsandri",
+      "source": "History"
+    },
+    {
+      "name": "Agapenor",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Claire Lacombe",
+      "source": "History"
+    },
+    {
+      "name": "Hendrik Conscience",
+      "source": "History"
+    },
+    {
+      "name": "Friedrich Wilhelm Ritschl",
+      "source": "History"
+    },
+    {
+      "name": "Rose Cohen",
+      "source": "History"
+    },
+    {
+      "name": "Leopold, Grand Duke of Baden",
+      "source": "History"
+    },
+    {
+      "name": "Andromache",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Quintus Labienus",
+      "source": "History"
+    },
+    {
+      "name": "Prince Adalbert of Prussia",
+      "source": "History"
+    },
+    {
+      "name": "Romolo Griffini",
+      "source": "History"
+    },
+    {
+      "name": "Jehu",
+      "source": "History"
+    },
+    {
+      "name": "Francesco Nullo",
+      "source": "History"
+    },
+    {
+      "name": "Ion I. C. Brătianu",
+      "source": "History"
+    },
+    {
+      "name": "Georgios Kondylis",
+      "source": "History"
+    },
+    {
+      "name": "João de Deus Mena Barreto",
+      "source": "History"
+    },
+    {
+      "name": "Ughurlu Muhammad",
+      "source": "History"
+    },
+    {
+      "name": "Walther von Lüttwitz",
+      "source": "History"
+    },
+    {
+      "name": "Ioan Pușcariu",
+      "source": "History"
+    },
+    {
+      "name": "Pelasgus",
+      "source": "Greek mythology"
+    },
+    {
+      "name": "Adrienne Chailliey",
+      "source": "History"
+    }
+  ]
+}

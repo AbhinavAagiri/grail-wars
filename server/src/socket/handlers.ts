@@ -17,7 +17,7 @@ const candidateSchema = z.object({
   key: z.string().max(200),
   name: z.string().max(LIMITS.CHARACTER_NAME_MAX),
   source: z.string().max(120),
-  provider: z.enum(['anilist', 'vsb', 'wikipedia', 'fandom', 'tmdb', 'custom', 'fallback']),
+  provider: z.enum(['anilist', 'vsb', 'wikipedia', 'fandom', 'tmdb', 'custom', 'fallback', 'roster']),
   providerId: z.string().max(120).optional(),
   thumb: z.string().max(2000).optional().default(''),
   blurb: z.string().max(400).optional(),
@@ -42,6 +42,8 @@ const settingsSchema = z.object({
   avoidOwnPick: z.boolean().optional(),
   allowSpectators: z.boolean().optional(),
   classes: z.array(z.enum(CLASSES)).max(CLASSES.length).optional(),
+  aiChooses: z.boolean().optional(),
+  aiPool: z.enum(['anime', 'history', 'mixed']).optional(),
   war: z
     .object({
       days: z.number().int().min(3).max(7).optional(),
@@ -283,7 +285,7 @@ export function registerHandlers(io: Server, manager: RoomManager): void {
       else room.broadcast();
     });
 
-    on(C2S.draftPick, pickSchema, (payload, room) => {
+    on(C2S.draftPick, pickSchema, async (payload, room) => {
       if (!data.playerId) return;
       const playerId = data.playerId;
       let character = payload.candidate
@@ -293,7 +295,7 @@ export function registerHandlers(io: Server, manager: RoomManager): void {
         fail('That name is empty.');
         return;
       }
-      const result = room.setPick(playerId, payload.cls as ServantClass, character);
+      const result = await room.setPick(playerId, payload.cls as ServantClass, character);
       if (!result.ok) {
         socket.emit('error', { kind: 'error', message: result.error ?? 'Pick rejected.', slot: payload.cls });
         return;

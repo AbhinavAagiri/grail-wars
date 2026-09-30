@@ -1,6 +1,7 @@
 import wikiMap from '../../data/fandom-wikis.json';
 import { politeJson } from '../../util/http';
-import { normalize } from '../../util/text';
+import { normalize, titleSimilarity } from '../../util/text';
+import { htmlToLines } from '../parseVsb';
 
 const WIKIS = wikiMap as Record<string, string>;
 
@@ -64,6 +65,52 @@ export async function searchFandom(name: string, source: string): Promise<Fandom
   } catch {
     return [];
   }
+}
+
+export interface FandomPageText {
+  title: string;
+  text: string;
+  url: string;
+}
+
+/** Ability/feat prose is what the power pipeline wants; the lead section is not. */
+const FANDOM_SECTION_RE =
+  /^(?:powers(?: and abilities)?|abilities(?: and powers)?|skills(?: and abilities)?|powers and stats|techniques|feats|equipment|fighting style)$/i;
+const FANDOM_TEXT_MAX = 4000;
+
+/** Prefer the article's powers/abilities section; otherwise the page lead. */
+function pickPageText(lines: string[]): string {
+  const sectionIndex = lines.findIndex((line) => FANDOM_SECTION_RE.test(line.trim()));
+  const start = sectionIndex >= 0 ? sectionIndex + 1 : 0;
+  return lines.slice(start, start + 90).join('\n').slice(0, FANDOM_TEXT_MAX).trim();
+}
+
+/**
+ * Read a character's Fandom article rather than its three-sentence intro: the
+ * powers, abilities and feats live deeper in the page, and they are what the
+ * power pipeline actually needs.
+ */
+export async function getFandomPageText(name: string, source: string): Promise<FandomPageText | null> {
+  const subdomain = resolveWikiSubdomain(name, source);
+  if (!subdomain) return null;
+  const results = await searchFandom(name, source).catch(() => []);
+  if (!results.length) return null;
+  const page = [...results].sort(
+    (a, b) => titleSimilarity(name, b.title) - titleSimilarity(name, a.title),
+  )[0]!;
+
+  try {
+    const url = apiUrl(subdomain, { action: 'parse', page: page.title, prop: 'text', formatversion: 2, redirects: 1 });
+    const payload = await politeJson<any>(url);
+    const html: string = payload?.parse?.text ?? '';
+    if (html) {
+      const text = pickPageText(htmlToLines(html));
+      if (text.length >= 60) return { title: page.title, text, url: page.url };
+    }
+  } catch {
+    // Fall through to the intro extract below.
+  }
+  return page.extract.trim().length >= 60 ? { title: page.title, text: page.extract, url: page.url } : null;
 }
 
 export async function getFandomPageImage(title: string, subdomain: string): Promise<string | null> {

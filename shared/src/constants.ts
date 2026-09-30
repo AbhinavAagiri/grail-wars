@@ -32,12 +32,13 @@ export const DEFAULT_CLASSES: ServantClass[] = [
   'assassin',
   'berserker',
 ];
-
 interface ClassMeta {
   label: string;
   color: string;
   icon: string;
   flavor: string;
+  /** who the class accepts, shown in the draft so picks are not a guess */
+  qualifies: string;
   /** shown in the in-draft info popup */
   description: string;
 }
@@ -48,6 +49,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#4f8cff',
     icon: '⚔️',
     flavor: 'The knight. Balanced, honorable, or just really good with a sword.',
+    qualifies: 'Swordsmen and swordswomen — anyone whose legend is built on a blade.',
     description:
       'The knight class, and usually the strongest in a straight fight. Sabers are heroes whose legend is built on swordplay, with high stats across the board and a famous blade as their Noble Phantasm.',
   },
@@ -56,6 +58,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#ef6a3c',
     icon: '🏹',
     flavor: 'Range is power. Marksmen, gunslingers, and arrogant heroes.',
+    qualifies: 'Marksmen, archers, snipers and gunslingers — anyone who fights at range.',
     description:
       'Marksmen, snipers and projectile legends. Archery is not required — anything that strikes from a distance counts. They can attack from anywhere, but tend to be prideful and fragile up close.',
   },
@@ -64,6 +67,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#2fbf71',
     icon: '🔱',
     flavor: 'Speed and reach. Spears, polearms, and fast fighters.',
+    qualifies: 'Spear and polearm wielders — and the legends written about them.',
     description:
       'Spear-wielders with the best speed and reach in the war. Lancers strike first, strike fast, and are famously unlucky — a running joke in the Fate franchise.',
   },
@@ -72,6 +76,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#f5b301',
     icon: '🐎',
     flavor: 'Mounts, vehicles, conquerors, and legends who never walk.',
+    qualifies: 'Riders, cavalry, sailors, pilots and conquerors who command a mount or army.',
     description:
       'Riders command a mount, vehicle or army no one else can. Their Noble Phantasm is whatever they ride. They win through mobility and battlefield control rather than raw power.',
   },
@@ -80,6 +85,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#a855f7',
     icon: '🔮',
     flavor: 'Magic, science, tricks. The brains of the war.',
+    qualifies: 'Mages, sorcerers and scientists — anyone whose power is knowledge or magic.',
     description:
       'Magicians, scientists and schemers. Physically the weakest class, Casters win by preparing the battlefield — territory creation, traps, and reality-bending magecraft.',
   },
@@ -88,6 +94,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#7c8aa0',
     icon: '🗡️',
     flavor: 'Stealth, poison, and surprise. Cowards or professionals.',
+    qualifies: 'Assassins, ninja, spies and poisoners — anyone who kills from the shadows.',
     description:
       'The class of stealth and murder. Assassins excel at killing Masters and striking from the shadows, but they almost never win an open, honest duel.',
   },
@@ -96,6 +103,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#b3283d',
     icon: '💢',
     flavor: 'Rage, monsters, and raw power. Sanity optional.',
+    qualifies: 'Monsters, brawlers and warriors who fight with rage or raw strength.',
     description:
       'Heroes driven mad in exchange for power. Berserkers have enormous strength and endurance but cannot be reasoned with, controlled, or persuaded to retreat.',
   },
@@ -104,6 +112,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#4aa3df',
     icon: '🛡️',
     flavor: 'The guardian. Nothing gets past the shield.',
+    qualifies: 'Shield-bearers, guardians and bodyguards — anyone defined by defence.',
     description:
       'A guardian class defined entirely by defence. Shielders protect their Master and their allies, absorbing blows that would kill anyone else — but they struggle to finish a fight.',
   },
@@ -112,6 +121,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#d9c27a',
     icon: '⚖️',
     flavor: 'The overseer. Neutral, absolute, and above the rules.',
+    qualifies: 'Kings, queens, judges and saints — figures of authority placed above the war.',
     description:
       'An impartial overseer summoned to keep the Grail War honest. Rulers are neutral, extremely powerful, and hold authority over the aberrant classes themselves.',
   },
@@ -120,6 +130,7 @@ export const CLASS_META: Record<ServantClass, ClassMeta> = {
     color: '#8e3b6e',
     icon: '😈',
     flavor: 'Born from grudges. The more you hurt them, the stronger they get.',
+    qualifies: 'The wronged, the vengeful and the cursed — anyone fuelled by a grudge.',
     description:
       'Servants born from hatred and resentment. Avengers grow more dangerous the more they are wronged — vengeance itself is their fuel, and the Grail loves to grant it.',
   },
@@ -131,6 +142,9 @@ export function enabledClasses(classes?: readonly ServantClass[]): ServantClass[
   const ordered = CLASSES.filter((cls) => enabled.has(cls));
   return ordered.length ? ordered : [...DEFAULT_CLASSES];
 }
+
+/** The roster buckets the AI-Chooses dropdown offers, in display order. */
+export const AI_POOLS = ['anime', 'history', 'mixed'] as const;
 
 export const LIMITS = {
   MIN_PLAYERS: 2,
@@ -175,6 +189,10 @@ export const DEFAULT_SETTINGS = {
   allowSpectators: true,
   /** which servant classes take part in the draft and war */
   classes: DEFAULT_CLASSES,
+  /** when on, the game deals 25 characters per class instead of free search */
+  aiChooses: false,
+  /** which roster AI-Chooses draws from; ignored while aiChooses is off */
+  aiPool: 'mixed',
   war: {
     days: 5,
     minEventsPerDay: 5,

@@ -532,6 +532,38 @@ export default function Lobby() {
               </p>
             </div>
 
+            {/* How the draft is dealt: free search, or the game's own rosters. */}
+            <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
+              <SettingRow
+                label="AI Chooses characters"
+                hint="The game deals 25 characters per class instead of free search"
+              >
+                <Toggle
+                  label="AI Chooses characters"
+                  checked={settings.aiChooses}
+                  disabled={!isHost}
+                  onChange={(v) => patch({ aiChooses: v })}
+                />
+              </SettingRow>
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                <Select
+                  value={settings.aiPool}
+                  disabled={!isHost || !settings.aiChooses}
+                  onChange={(v) => patch({ aiPool: v as RoomSettings['aiPool'] })}
+                  options={[
+                    { value: 'anime', label: 'Anime only' },
+                    { value: 'history', label: 'History only' },
+                    { value: 'mixed', label: 'Mixed' },
+                  ]}
+                />
+                <span className="text-[11px] text-muted">
+                  {settings.aiChooses
+                    ? 'Each class is dealt 25 random characters from that roster.'
+                    : 'Off — Masters search for anyone they like (class rules still apply).'}
+                </span>
+              </div>
+            </div>
+
             {/* The Grail War's real-world location. */}
             <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
               <p className="text-[11px] uppercase tracking-wide text-muted">War location</p>

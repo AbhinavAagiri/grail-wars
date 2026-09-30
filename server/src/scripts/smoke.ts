@@ -22,10 +22,13 @@ import {
   S2C,
   type ArenaPhase,
   type RoomState,
+  type SearchCandidate,
   type Servant,
+  type ServantClass,
   type Token,
   type WarEvent,
 } from '@hgd/shared';
+import fallbackCharacters from '../data/fallback-characters.json';
 
 const BASE = process.env.BASE_URL ?? 'http://127.0.0.1:3000';
 const LOOP_MS = 40;
@@ -225,10 +228,22 @@ async function setUpGame(playerCount: number, mode: 'WAR' | 'DEBATE', days: numb
   host.emit(C2S.draftStart);
   await until('the DRAFT phase', () => host.state?.phase === 'DRAFT', 10_000);
 
-  for (const client of clients) {
+  // The draft only accepts characters whose fighting style fits the class, so the
+  // smoke test drafts from the game's own curated class lists. Keys are unique
+  // per player (the server would otherwise reject the second identical pick).
+  const fallbacks = fallbackCharacters as unknown as Record<
+    ServantClass,
+    { name: string; source: string }[]
+  >;
+  const candidateFor = (cls: ServantClass, index: number): SearchCandidate => {
+    const list = fallbacks[cls] ?? [];
+    const entry = list[index % Math.max(1, list.length)]!;
+    return { key: `smoke:${cls}:${index}`, name: entry.name, source: entry.source, provider: 'fallback', thumb: '' };
+  };
+
+  for (const [index, client] of clients.entries()) {
     for (const cls of CLASSES) {
-      // Custom names keep the draft fully offline and deterministic.
-      client.emit(C2S.draftPick, { cls, customName: `${client.nickname} ${cls}` });
+      client.emit(C2S.draftPick, { cls, candidate: candidateFor(cls, index) });
     }
   }
   await until(
@@ -240,7 +255,7 @@ async function setUpGame(playerCount: number, mode: 'WAR' | 'DEBATE', days: numb
 
   // The uniqueness rule: one canonical character may only exist once per room.
   const poacher = clients[clients.length - 1]!;
-  poacher.emit(C2S.draftPick, { cls: 'lancer', customName: `${host.nickname} saber` });
+  poacher.emit(C2S.draftPick, { cls: 'saber', candidate: candidateFor('saber', 0) });
   await until(
     'the duplicate pick to be rejected',
     () => poacher.errors.some((message) => /already/i.test(message)),

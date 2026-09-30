@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import {
   CLASSES,
+  CLASS_META,
   DEFAULT_SETTINGS,
   enabledClasses,
   LIMITS,
@@ -25,6 +26,7 @@ import {
 } from '@hgd/shared';
 import { logger } from '../logger';
 import { buildImageCandidates, researchCharacter } from '../research';
+import { classRefusal, classVerdictFor, type ClassVerdict } from '../research/classAffinity';
 import { generate as llmGenerate, llmEnabled } from '../llm';
 import { generatedAvatar, isPlaceholderImage, proxyUrl } from '../util/imageUrl';
 import { sanitizeText } from '../util/text';
@@ -45,6 +47,7 @@ import {
   totalRoundsFor,
 } from '../arena/bracket';
 import { newSeed, runDraw, type PickTable } from './draw';
+import { POOL_SIZE, buildDraftPools } from './draftPool';
 
 export type EmitAll = (event: string, payload: unknown) => void;
 export type EmitOne = (playerId: string, event: string, payload: unknown) => void;
@@ -94,6 +97,9 @@ export class Room {
   warLocation?: WarLocation;
   /** set while a Master is choosing the location from three options */
   locationChoice?: { chooserId: string; options: WarLocation[] };
+
+  /** AI-Chooses roster for the current draft, up to POOL_SIZE per enabled class. */
+  draftPool = new Map<ServantClass, Character[]>();
 
   research = new Map<string, ResearchRow>();
   timeline?: WarTimeline;
@@ -271,7 +277,13 @@ export class Room {
     // An "ai" narration setting is meaningless without a key.
     if (next.war.narration === 'ai' && !llmEnabled()) next.war.narration = 'templated';
     const locationModeChanged = patch.war?.locationMode !== undefined && patch.war.locationMode !== this.settings.war.locationMode;
+    const aiChoosesChanged =
+      (patch.aiChooses !== undefined && patch.aiChooses !== this.settings.aiChooses) ||
+      (patch.aiPool !== undefined && patch.aiPool !== this.settings.aiPool);
     this.settings = next;
+    // Switching the AI-Chooses mode mid-draft must re-deal immediately; the
+    // pool is what the room is drafting from.
+    if (aiChoosesChanged && this.phase === 'DRAFT') this.refreshDraftPool();
     this.syncLocation(locationModeChanged);
     this.touch();
     return true;
@@ -371,6 +383,7 @@ export class Room {
     this.research.clear();
     this.timeline = undefined;
     this.researchStarted = false;
+    this.refreshDraftPool();
     for (const p of this.players.values()) {
       p.locked = false;
       if (!p.isSpectator && !this.picks.has(p.id)) this.picks.set(p.id, {});
@@ -382,6 +395,20 @@ export class Room {
     }
     this.touch();
     return { ok: true };
+  }
+
+  /**
+   * Deal (or clear) the AI-Chooses roster for this draft. Only ever runs while
+   * the draft is open — a lobby always has an empty pool.
+   */
+  private refreshDraftPool(): void {
+    this.draftPool.clear();
+    if (this.phase !== 'DRAFT' || !this.settings.aiChooses) return;
+    const pools = buildDraftPools(this.classes(), this.settings.aiPool);
+    for (const cls of this.classes()) {
+      const characters = pools[cls];
+      if (characters?.length) this.draftPool.set(cls, characters.slice(0, POOL_SIZE));
+    }
   }
 
   private onDraftTimerEnd(): void {
@@ -401,8 +428,12 @@ export class Room {
       for (const cls of classes) {
         if (table[cls]) continue;
         const used = this.allKeys();
-        const options = (fallbacks[cls] ?? []).filter((c) => !used.has(c.key));
-        const choice = options[Math.floor(Math.random() * Math.max(1, options.length))] ?? fallbacks[cls]?.[0];
+        // An AI-Chooses room fills from its own roster first, so auto-filled
+        // Servants still respect the mode and are always class-legal.
+        const pool = this.draftPool.get(cls) ?? [];
+        const source = pool.length ? pool : (fallbacks[cls] ?? []);
+        const options = source.filter((c) => !used.has(c.key));
+        const choice = options[Math.floor(Math.random() * Math.max(1, options.length))] ?? source[0];
         if (!choice) continue;
         table[cls] = { ...choice, submittedBy: player.id };
         // Auto-filled Servants deserve real artwork too, not just initials.
@@ -423,12 +454,30 @@ export class Room {
     return keys;
   }
 
-  setPick(playerId: string, cls: ServantClass, character: Character): { ok: boolean; error?: string } {
+  async setPick(playerId: string, cls: ServantClass, character: Character): Promise<{ ok: boolean; error?: string }> {
     if (this.phase !== 'DRAFT') return { ok: false, error: 'The draft is not open.' };
     const player = this.players.get(playerId);
     if (!player || player.isSpectator) return { ok: false, error: 'Spectators cannot draft.' };
     if (player.locked) return { ok: false, error: 'Unlock your picks to edit them.' };
     if (!this.classes().includes(cls)) return { ok: false, error: 'That class is not part of this war.' };
+
+    // An AI-Chooses room drafts strictly from the roster the game dealt it.
+    const pool = this.draftPool.get(cls);
+    if (pool && !pool.some((entry) => entry.key === character.key)) {
+      return { ok: false, error: `That character is not on this room's ${CLASS_META[cls].label} roster.` };
+    }
+
+    // A free draft must fit the class: Saber is a swordsman, Archer fights at
+    // range, and a character the game cannot place at all is refused rather
+    // than seated in a class that makes no sense.
+    if (!pool) {
+      const verdict = await classVerdictFor(character).catch(
+        (): ClassVerdict => ({ classes: [], verified: false, evidence: 'none' }),
+      );
+      if (!verdict.verified || !verdict.classes.includes(cls)) {
+        return { ok: false, error: classRefusal(character, verdict) };
+      }
+    }
 
     const duplicate = [...this.picks.entries()].find(([otherId, table]) => {
       if (otherId === playerId) return false;
@@ -1162,6 +1211,7 @@ export class Room {
     this.arena = { bracket: [], phase: 'IDLE' };
     this.chat = [];
     this.researchStarted = false;
+    this.draftPool.clear();
     for (const p of this.players.values()) {
       p.locked = false;
       this.picks.set(p.id, {});
@@ -1206,6 +1256,11 @@ export class Room {
     };
     state.myPicks = mine;
     state.draftEndsAt = this.draftEndsAt;
+    if (this.phase === 'DRAFT' && this.draftPool.size) {
+      const pool: Partial<Record<ServantClass, Character[]>> = {};
+      for (const [cls, characters] of this.draftPool) pool[cls] = characters;
+      state.draftPool = pool;
+    }
     state.warLocation = this.warLocation;
     if (this.phase === 'LOBBY') state.locationChoice = this.locationChoice;
 
