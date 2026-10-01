@@ -74,14 +74,17 @@ All of these live in `.env` (see [.env.example](.env.example)).
 
 **`CONTACT_EMAIL`** is the public contact address: it is placed in the `User-Agent` when the server calls public wikis and APIs, and it is the address this README names for takedown requests. Set it if you deploy publicly.
 
-**Feedback form (optional).** The **Contact** page posts to `POST /api/feedback`. Set `FEEDBACK_TO` to the inbox messages should reach — a dedicated address, not your personal one — and `FEEDBACK_WEBHOOK_URL` to any endpoint that turns a JSON POST into an email. Both live only in the server environment; neither is ever sent to the browser. With no webhook configured, submissions are logged and kept in memory so the form still gives the visitor a clean success state, but no email is sent. A free [Google Apps Script](https://script.google.com) web app is the zero-dependency option: create it in the `FEEDBACK_TO` account, deploy it with **Execute as: Me** and **Who has access: Anyone**, and use the URL ending in `/exec` as `FEEDBACK_WEBHOOK_URL`. Keep the recipient hardcoded so the URL cannot be used as a relay:
+**Feedback form (optional).** The **Contact** page posts to `POST /api/feedback`. Set `FEEDBACK_TO` to the inbox messages should reach — a dedicated address, not your personal one — and `FEEDBACK_WEBHOOK_URL` to any endpoint that turns a JSON POST into an email. Both live only in the server environment; neither is ever sent to the browser. With no webhook configured, submissions are logged and kept in memory so the form still gives the visitor a clean success state, but no email is sent. A free [Google Apps Script](https://script.google.com) web app is the zero-dependency option: create it in the `FEEDBACK_TO` account, put that same address on its `INBOX` line — the script decides the recipient, the payload's `to` is only a label — deploy it with **Execute as: Me** and **Who has access: Anyone**, and use the URL ending in `/exec` as `FEEDBACK_WEBHOOK_URL`. Keep the recipient hardcoded so the URL cannot be used as a relay:
 
 ```js
+// Set this to the FEEDBACK_TO address — the one place the inbox is written.
+const INBOX = 'your-inbox@gmail.com';
+
 function doPost(e) {
   const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
   const from = data.name ? `${data.name}${data.email ? ` <${data.email}>` : ''}` : 'Anonymous';
   MailApp.sendEmail({
-    to: 'FEEDBACK_TO@gmail.com', // fixed — never taken from the request
+    to: INBOX, // fixed — never taken from the request
     subject: `Grail Wars feedback (${data.topic || 'other'})`,
     body: `From: ${from}\n\n${data.message || '(empty)'}`,
     replyTo: data.email || undefined,
@@ -90,6 +93,8 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 ```
+
+After you edit the script, deploy a new version — **Deploy → Manage deployments → Edit → New version** — or that URL keeps running the old code. If a message never arrives, open the project's **Executions** page: *Completed* means Google did run `doPost` (so check where `INBOX` points, and the inbox's spam folder), while a failed entry carries the error it threw.
 
 A free [Formspree](https://formspree.io) form works too — it emails the form's owner.
 
