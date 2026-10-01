@@ -32,8 +32,19 @@ services:
         value: production
       - key: LOG_LEVEL
         value: info
-      # Goes into the User-Agent when calling public wikis/APIs. Please set it.
+      # The public contact address: it goes into the User-Agent when calling
+      # public wikis/APIs and is the address the README names for takedowns.
+      # Please set it.
       - key: CONTACT_EMAIL
+        sync: false
+      # Where site feedback is delivered. Server-side only — it never reaches
+      # the browser. Use a dedicated inbox, not your personal address.
+      - key: FEEDBACK_TO
+        sync: false
+      # Any endpoint that turns the feedback POST into an email: a Google Apps
+      # Script web app or a free Formspree form. Blank means feedback is only
+      # logged, never emailed.
+      - key: FEEDBACK_WEBHOOK_URL
         sync: false
       # Optional LLM layer. Polishes narration only; it never decides a fight.
       - key: LLM_PROVIDER

@@ -227,9 +227,16 @@ Sending mail directly would mean an SMTP dependency plus credentials the project
 does not have, so `POST /api/feedback` posts JSON to `FEEDBACK_WEBHOOK_URL`
 (Formspree, Google Apps Script, Zapier — all with free tiers) and falls back to
 an in-memory inbox plus a log line. `FEEDBACK_TO` lives only in the server
-environment; the browser never learns the address. Verified end-to-end in a real
-browser: the form posts, the server records it, and the visitor sees a clean
-success state.
+environment; the browser never learns the address. It defaults to the
+placeholder `you@example.com`: the repo ships no real inbox, and a deployment
+supplies it through its environment (`render.yaml` prompts for it). `CONTACT_EMAIL`
+is a different role on purpose — the public address carried in the `User-Agent`
+when the server calls public wikis, and the one the README names for takedowns —
+while `FEEDBACK_TO` is a private, dedicated inbox. Verified end-to-end: in a real
+browser the form posts, the server records it, and the visitor sees the clean
+success state; against a local mock webhook the delivery path posted the exact
+JSON payload (`to`, `subject`, `replyTo`, `message`, topic in the subject) and
+logged `feedback delivered`.
 
 ## 14. Credits page bundles the real logos, not monograms
 
@@ -762,6 +769,7 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | The road is smooth and extruded | the road is one `<path>` in the 150×100 grid whose `d` is `M -8 20 L 104 20 A 11 11 0 0 1 108.65 40.97 L 61.52 62.95 A 11 11 0 0 0 56.2 77.56 A 11 11 0 0 1 57.23 82.21 L 57.23 83.21` — three straight runs and three circular bends that **all share `r = 11`**, each bend's start tangent equal to the heading the run before it left, so the curve contains no corner anywhere (the old spline-through-waypoints version is gone); the strokes are eight passes of that one path with the side face struck as the same path translated down by `EXTRUDE = 1.7`, the solid passes butt-capped so the slab ends in a clean cut and the arrowhead's wide base sits on it; and the dashes are the only round-capped pass |
 | Roadmap fits one screen | `documentElement.scrollHeight === innerHeight` and `scrollWidth === innerWidth` on `/roadmap` at 1920×1080 (canvas 864×576), 1440×820 (713×475), 1280×720 (563×375), 1024×768 (635×423), 700×800 (668×445) and 360×740 (list) — the canvas measures exactly 1.500 at every one of them, from `min(100cqh, 66.6667cqw)` rather than `100%`, which measured `0px`. The drawn road never touches a card: sampling the path at 900 points, the nearest approach to v0.1 / v0.5 / v1.0 is **17/11/24px at the worst size (1280×720)** and 21/17/31px at 1440×820, with every card's whole box inside the canvas; the arrowhead's base meets the road's cut end, the *Coming soon* sign clears the arrowhead by 6–11px and the canvas bottom by 11–20px |
 | Roadmap on a phone | at 360×740 the road canvas is `display: none` (its wrapper's `display` reads `none`, its measured width `0`) and `RoadList` takes over: four rows (v0.1, v0.5, *We are here right now*, v1.0) plus the *Coming soon* sign in a 328px list, all three coins and the marker dot centred on the 30px road column at `x = 45`, `documentElement.scrollWidth` inside the viewport, and no document scroll (740/360) |
+| Feedback delivery path (local mock webhook) | with `FEEDBACK_TO` and `FEEDBACK_WEBHOOK_URL` set, `POST /api/feedback` answered `{"ok":true}` in **0.26 s**, the server logged `feedback delivered`, and a local mock webhook received the exact payload the Apps Script recipe consumes — `to`, `subject` (`Grail Wars feedback (bug)`), `name`, `replyTo`, `message`, `site`; with the webhook unset the same request answered `{"ok":true}` in **0.018 s** and logged `feedback received but no FEEDBACK_WEBHOOK_URL is configured — stored in memory only`; after the default change, grep finds no real inbox address anywhere in the working tree |
 
 ## Not done
 
@@ -775,3 +783,7 @@ label pushes them over, they wrap to a second line rather than overflowing.
   reachable from the lobby.
 - M9 polish beyond the attribution footer (sound effects, a dedicated
   accessibility pass, a recap-image export) is still open.
+- Live feedback delivery through an Apps Script inbox is locally verified but not
+  yet exercised on the deployed service: its Render environment still needs
+  `FEEDBACK_TO` and `FEEDBACK_WEBHOOK_URL`, and the script is created by the
+  inbox's owner. The first real submission is the acceptance test.

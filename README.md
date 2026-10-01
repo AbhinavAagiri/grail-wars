@@ -72,9 +72,26 @@ All of these live in `.env` (see [.env.example](.env.example)).
 
 **Images (optional).** `TMDB_API_KEY` improves movie/TV portraits; `IMAGE_SEARCH_PROVIDER=brave` (or `google_cse`) adds a general image search to the fallback chain. Without them the waterfall still works from AniList, VS Battles, Wikipedia, and Fandom, and always ends in a generated avatar.
 
-**`CONTACT_EMAIL`** is placed in the `User-Agent` when the server calls public wikis and APIs. Set it to your address if you deploy publicly.
+**`CONTACT_EMAIL`** is the public contact address: it is placed in the `User-Agent` when the server calls public wikis and APIs, and it is the address this README names for takedown requests. Set it if you deploy publicly.
 
-**Feedback form (optional).** The home page's **Contact** tab posts to `POST /api/feedback`. Set `FEEDBACK_WEBHOOK_URL` to any endpoint that turns a JSON POST into an email (a free [Formspree](https://formspree.io) form or a Google Apps Script web app both work) and messages arrive at `FEEDBACK_TO` (default `aagiriabhinav2@gmail.com`). The address itself lives only in the server environment — it is never sent to the browser. With no webhook configured, submissions are logged and kept in memory so the form still gives the visitor a clean success state.
+**Feedback form (optional).** The **Contact** page posts to `POST /api/feedback`. Set `FEEDBACK_TO` to the inbox messages should reach — a dedicated address, not your personal one — and `FEEDBACK_WEBHOOK_URL` to any endpoint that turns a JSON POST into an email. Both live only in the server environment; neither is ever sent to the browser. With no webhook configured, submissions are logged and kept in memory so the form still gives the visitor a clean success state, but no email is sent. A free [Google Apps Script](https://script.google.com) web app is the zero-dependency option: create it in the `FEEDBACK_TO` account, deploy it with **Execute as: Me** and **Who has access: Anyone**, and use the URL ending in `/exec` as `FEEDBACK_WEBHOOK_URL`. Keep the recipient hardcoded so the URL cannot be used as a relay:
+
+```js
+function doPost(e) {
+  const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+  const from = data.name ? `${data.name}${data.email ? ` <${data.email}>` : ''}` : 'Anonymous';
+  MailApp.sendEmail({
+    to: 'FEEDBACK_TO@gmail.com', // fixed — never taken from the request
+    subject: `Grail Wars feedback (${data.topic || 'other'})`,
+    body: `From: ${from}\n\n${data.message || '(empty)'}`,
+    replyTo: data.email || undefined,
+  });
+  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+```
+
+A free [Formspree](https://formspree.io) form works too — it emails the form's owner.
 
 ---
 
@@ -95,9 +112,11 @@ that owns the API and the sockets.
    needed for a free instance.
 2. **New → Blueprint**, pick this repository, and apply. Render reads `render.yaml`,
    installs with the lockfile, builds the client, and starts the server.
-3. It prompts for **`CONTACT_EMAIL`** — your address. It goes into the `User-Agent`
-   sent to public wikis and APIs, so please set it. Every other value in the blueprint
-   is optional and can stay blank.
+3. It prompts for the addresses the blueprint cannot know: **`CONTACT_EMAIL`** —
+   your public contact address, sent in the `User-Agent` to public wikis and APIs —
+   and optionally **`FEEDBACK_TO`** / **`FEEDBACK_WEBHOOK_URL`** if you want the
+   Contact form to email you (see *Optional configuration*). Every other value in
+   the blueprint can stay blank.
 4. The first build takes a few minutes. You then have
    `https://<service-name>.onrender.com` with HTTPS, WebSockets on the same origin,
    and `/healthz` as the health check.
@@ -142,7 +161,8 @@ Then open the site on a phone **on mobile data** (not wifi), create a room, and 
 from a device on a different network. Draft a class, lock in, and let a war run. Reload
 mid-game to confirm the rejoin works. The first request after a quiet spell takes
 about half a minute (we measured 32 seconds after 18 idle minutes) — that is the free
-tier waking up, not a broken deploy.
+tier waking up, not a broken deploy. If you configured the feedback form, post it
+once and confirm the email lands in `FEEDBACK_TO`.
 
 ### Any Docker host or VM you already own
 

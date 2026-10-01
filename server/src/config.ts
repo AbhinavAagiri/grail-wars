@@ -21,12 +21,13 @@ const EnvSchema = z.object({
   CLIENT_ORIGIN: z.string().default('http://localhost:5173'),
   LOG_LEVEL: z.string().default('info'),
   /**
-   * Where site feedback is delivered. FEEDBACK_TO is never exposed to clients;
-   * FEEDBACK_WEBHOOK_URL accepts any endpoint that turns a JSON POST into an
-   * email (Formspree, a Google Apps Script, Zapier, …) so no paid service or
-   * SMTP credentials are required.
+   * The inbox site feedback is delivered to. Never exposed to clients — use a
+   * dedicated address, not a personal one. FEEDBACK_WEBHOOK_URL accepts any
+   * endpoint that turns a JSON POST into an email (a Google Apps Script web
+   * app, Formspree, Zapier, …) so no paid service or SMTP credentials are
+   * required. The real address lives in the deployment's environment, not here.
    */
-  FEEDBACK_TO: z.string().default('aagiriabhinav2@gmail.com'),
+  FEEDBACK_TO: z.string().default('you@example.com'),
   FEEDBACK_WEBHOOK_URL: z.string().default(''),
 });
 
