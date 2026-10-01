@@ -42,6 +42,41 @@ export function recentFeedback(): readonly StoredFeedback[] {
   return inbox;
 }
 
+export interface WebhookPayload {
+  to: string;
+  subject: string;
+  name: string;
+  /** the visitor's address, when they gave one */
+  email?: string;
+  /** the same address, under the conventional key mail recipes read */
+  replyTo?: string;
+  topic: string;
+  message: string;
+  site: string;
+}
+
+/**
+ * The JSON a webhook receives. The visitor's address goes out under both keys a
+ * recipe might read — `replyTo`, which mail clients understand, and `email`,
+ * which the published Apps Script recipe reads to put the address in the body.
+ * Without it the owner sees a message "from themselves" and cannot reply.
+ */
+export function buildWebhookPayload(
+  entry: { topic: string; name: string; email: string; message: string },
+  to: string,
+): WebhookPayload {
+  return {
+    to,
+    subject: `Grail Wars feedback (${entry.topic})`,
+    name: entry.name || 'Anonymous',
+    email: entry.email || undefined,
+    replyTo: entry.email || undefined,
+    topic: entry.topic,
+    message: entry.message,
+    site: 'Grail Wars',
+  };
+}
+
 async function deliver(entry: Omit<StoredFeedback, 'delivered' | 'at'>): Promise<boolean> {
   const url = config.FEEDBACK_WEBHOOK_URL;
   if (!url) return false;
@@ -49,14 +84,7 @@ async function deliver(entry: Omit<StoredFeedback, 'delivered' | 'at'>): Promise
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'content-type': 'application/json', accept: 'application/json' },
-      body: JSON.stringify({
-        to: config.FEEDBACK_TO,
-        subject: `Grail Wars feedback (${entry.topic})`,
-        name: entry.name || 'Anonymous',
-        replyTo: entry.email || undefined,
-        message: entry.message,
-        site: 'Grail Wars',
-      }),
+      body: JSON.stringify(buildWebhookPayload(entry, config.FEEDBACK_TO)),
       signal: AbortSignal.timeout(8000),
     });
     return res.ok;

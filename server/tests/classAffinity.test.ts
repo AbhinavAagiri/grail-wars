@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { CLASS_TRAITS, classRefusal, curatedClasses, verdictFromEvidence } from '../src/research/classAffinity';
+import {
+  CLASS_TRAITS,
+  classRefusal,
+  classVerdictFor,
+  combineClassVerdicts,
+  curatedClasses,
+  verdictFromEvidence,
+} from '../src/research/classAffinity';
+import { canonClasses } from '../src/data/canon';
 import type { Character } from '@hgd/shared';
 
 /*
@@ -89,6 +97,54 @@ describe('classRefusal', () => {
       evidence: 'none',
     });
     expect(message).toContain("couldn't confirm");
+  });
+});
+
+describe('the hand-curated canon', () => {
+  it('reads the names wikis and databases actually use', () => {
+    expect(canonClasses('Kirito')).toEqual(['saber']);
+    expect(canonClasses('Kirito (Post-Aincrad)')).toEqual(['saber']);
+    expect(canonClasses('Kazuto Kirigaya')).toEqual(['saber']);
+    expect(canonClasses('Hiccup Horrendous Haddock III')).toEqual(['rider']);
+    expect(canonClasses('Vegeta')).toContain('avenger');
+    expect(canonClasses('Artoria Pendragon')).toEqual([]);
+  });
+
+  it('settles the three reported misfires without a wiki lookup', async () => {
+    const kirito = await classVerdictFor(character('Kirito'), 'saber');
+    expect(kirito.classes).toEqual(['saber']);
+    expect(kirito.verified).toBe(true);
+
+    const hiccup = await classVerdictFor(character('Hiccup Horrendous Haddock III'), 'rider');
+    expect(hiccup.classes).toContain('rider');
+
+    const vegeta = await classVerdictFor(character('Vegeta'), 'avenger');
+    expect(vegeta.classes).toContain('avenger');
+    expect(vegeta.classes).toContain('berserker');
+  });
+
+  it('removes the classes a scrape mis-filed the character in', async () => {
+    const asShielder = await classVerdictFor(character('Kirito'), 'shielder');
+    expect(asShielder.classes).not.toContain('shielder');
+    expect(classRefusal(character('Kirito'), asShielder)).toContain('Saber');
+
+    const rin = await classVerdictFor(character('Rin Tohsaka'), 'avenger');
+    expect(rin.classes).toEqual(['caster']);
+  });
+
+  it('keeps the curated rosters as a floor when the wiki proves another class', () => {
+    const merged = combineClassVerdicts(['shielder', 'ruler'], {
+      classes: ['saber'],
+      verified: true,
+      evidence: 'wiki',
+    });
+    expect(merged.classes).toEqual(['saber', 'shielder', 'ruler']);
+    expect(merged.verified).toBe(true);
+    expect(merged.evidence).toBe('curated');
+
+    const nothing = combineClassVerdicts([], { classes: [], verified: false, evidence: 'none' });
+    expect(nothing.verified).toBe(false);
+    expect(nothing.classes).toEqual([]);
   });
 });
 

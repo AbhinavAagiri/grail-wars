@@ -5,6 +5,7 @@ import {
   CLASS_META,
   enabledClasses,
   LIMITS,
+  POWER_CAPS,
   type Mode,
   type RoomSettings,
   type ServantClass,
@@ -135,7 +136,7 @@ export default function Lobby() {
     icon: string,
     title: string,
     blurb: string,
-    options?: { badge?: string; comingSoon?: boolean },
+    options?: { badge?: string; comingSoon?: boolean; note?: string },
   ) => (
     <button
       type="button"
@@ -163,6 +164,11 @@ export default function Lobby() {
       <div className="text-[20px]">{icon}</div>
       <div className="mt-1 font-bold text-ink">{title}</div>
       <p className="mt-1 text-[11.5px] leading-snug text-muted">{blurb}</p>
+      {options?.note && (
+        <p className="mt-2 rounded border border-border bg-surface-2 px-2 py-1.5 text-[10.5px] leading-snug text-muted">
+          {options.note}
+        </p>
+      )}
       {options?.comingSoon && (
         <p className="mt-1 text-[11px] font-bold uppercase tracking-wider text-gold">Not playable yet</p>
       )}
@@ -444,7 +450,10 @@ export default function Lobby() {
                   onChange={(v) => patch({ avoidOwnPick: v })}
                 />
               </SettingRow>
-              <SettingRow label="Extended War" hint={`Up to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters`}>
+              <SettingRow
+                label={settings.mode === 'WAR' ? 'Extended War' : 'Extended Arena'}
+                hint={`Up to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters`}
+              >
                 <Toggle
                   label="Extended war"
                   checked={settings.extendedWar}
@@ -492,7 +501,9 @@ export default function Lobby() {
             {/* Which classes take part. Toggle any of them in or out. */}
             <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-[13px] text-ink">Classes in this war</span>
+                <span className="text-[13px] text-ink">
+                  {settings.mode === 'WAR' ? 'Classes in this war' : 'Classes in this Arena'}
+                </span>
                 <span className="text-[11px] text-muted">
                   {enabledClassList.length} of {CLASSES.length} selected · one character each
                 </span>
@@ -528,7 +539,8 @@ export default function Lobby() {
                 })}
               </div>
               <p className="mt-2 text-[11px] text-muted">
-                Shielder, Ruler and Avenger are optional — switch them on for a bigger, stranger war.
+                Shielder, Ruler and Avenger are optional — switch them on for a bigger, stranger{' '}
+                {settings.mode === 'WAR' ? 'war' : 'arena'}.
               </p>
             </div>
 
@@ -564,66 +576,68 @@ export default function Lobby() {
               </div>
             </div>
 
-            {/* The Grail War's real-world location. */}
-            <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
-              <p className="text-[11px] uppercase tracking-wide text-muted">War location</p>
-              {room.warLocation ? (
-                <div className="mt-1 flex flex-wrap items-center justify-between gap-2">
-                  <div>
-                    <p className="font-display text-[16px] font-bold text-gold">{room.warLocation.name}</p>
-                    <p className="text-[11.5px] text-muted">{room.warLocation.country}</p>
+            {/* The Grail War's real-world location — it has no meaning in the arena. */}
+            {settings.mode === 'WAR' && (
+              <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
+                <p className="text-[11px] uppercase tracking-wide text-muted">War location</p>
+                {room.warLocation ? (
+                  <div className="mt-1 flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <p className="font-display text-[16px] font-bold text-gold">{room.warLocation.name}</p>
+                      <p className="text-[11.5px] text-muted">{room.warLocation.country}</p>
+                    </div>
+                    {isHost && (
+                      <button
+                        type="button"
+                        className="hgd-btn hgd-btn-ghost !min-h-[30px] !px-2 !text-[11px]"
+                        onClick={rerollLocation}
+                      >
+                        Re-roll
+                      </button>
+                    )}
                   </div>
-                  {isHost && (
-                    <button
-                      type="button"
-                      className="hgd-btn hgd-btn-ghost !min-h-[30px] !px-2 !text-[11px]"
-                      onClick={rerollLocation}
-                    >
-                      Re-roll
-                    </button>
-                  )}
-                </div>
-              ) : room.locationChoice ? (
-                <div className="mt-1">
-                  {room.locationChoice.chooserId === playerId ? (
-                    <p className="text-[12px] text-ink">
-                      You choose where the war happens. Pick one of these three:
-                    </p>
-                  ) : (
-                    <p className="text-[12px] text-ink">
-                      <span className="text-gold">
-                        {room.players.find((p) => p.id === room.locationChoice?.chooserId)?.nickname ?? 'A Master'}
-                      </span>{' '}
-                      is choosing where the war happens.
-                    </p>
-                  )}
-                  <div className="mt-2 grid gap-2 sm:grid-cols-3">
-                    {room.locationChoice.options.map((option) => {
-                      const canPick = room.locationChoice?.chooserId === playerId;
-                      return (
-                        <button
-                          key={option.id}
-                          type="button"
-                          disabled={!canPick}
-                          onClick={() => pickLocation(option.id)}
-                          className={clsx(
-                            'hgd-card p-2 text-left',
-                            canPick ? 'hgd-card-interactive' : 'opacity-70',
-                          )}
-                        >
-                          <span className="block text-[13px] font-bold text-ink">{option.name}</span>
-                          <span className="block text-[11px] text-muted">{option.country}</span>
-                        </button>
-                      );
-                    })}
+                ) : room.locationChoice ? (
+                  <div className="mt-1">
+                    {room.locationChoice.chooserId === playerId ? (
+                      <p className="text-[12px] text-ink">
+                        You choose where the war happens. Pick one of these three:
+                      </p>
+                    ) : (
+                      <p className="text-[12px] text-ink">
+                        <span className="text-gold">
+                          {room.players.find((p) => p.id === room.locationChoice?.chooserId)?.nickname ?? 'A Master'}
+                        </span>{' '}
+                        is choosing where the war happens.
+                      </p>
+                    )}
+                    <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                      {room.locationChoice.options.map((option) => {
+                        const canPick = room.locationChoice?.chooserId === playerId;
+                        return (
+                          <button
+                            key={option.id}
+                            type="button"
+                            disabled={!canPick}
+                            onClick={() => pickLocation(option.id)}
+                            className={clsx(
+                              'hgd-card p-2 text-left',
+                              canPick ? 'hgd-card-interactive' : 'opacity-70',
+                            )}
+                          >
+                            <span className="block text-[13px] font-bold text-ink">{option.name}</span>
+                            <span className="block text-[11px] text-muted">{option.country}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <p className="mt-1 text-[12px] text-muted">
-                  None chosen yet — the Grail will decide when the war starts.
-                </p>
-              )}
-            </div>
+                ) : (
+                  <p className="mt-1 text-[12px] text-muted">
+                    None chosen yet — the Grail will decide when the war starts.
+                  </p>
+                )}
+              </div>
+            )}
           </section>
         </div>
       </div>

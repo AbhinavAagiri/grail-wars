@@ -6,8 +6,14 @@
  * and manga characters only, historical and legendary figures only, or a mix of
  * the two. The pool is shared by the whole room, sampled per draft so rematches
  * feel different.
+ *
+ * The hand-curated canon (server/src/data/class-canon.json) rides along: it is
+ * always dealt into the classes it names, and it removes a character from the
+ * classes the scrapes mis-filed them in, so a Saber-class pick like Kirito
+ * cannot be seated as a Shielder just because a wiki category said so.
  */
 import { CLASSES, type AiPool, type Character, type ServantClass } from '@hgd/shared';
+import { canonEntriesFor, canonEntryFor } from '../data/canon';
 import { canonicalKey } from '../util/text';
 import rosterAnime from '../data/roster-anime.json';
 import rosterHistory from '../data/roster-history.json';
@@ -82,6 +88,15 @@ function fallbackFor(cls: ServantClass): RosterEntry[] {
   return FALLBACKS[cls] ?? [];
 }
 
+/**
+ * Whether the canon lets this name into this class. Characters the canon does
+ * not mention pass; characters it does mention are held to it exactly.
+ */
+function canonAllows(name: string, cls: ServantClass): boolean {
+  const canon = canonEntryFor(name);
+  return !canon || canon.classes.includes(cls);
+}
+
 function dedupe(entries: RosterEntry[], fallbackSource: string): Character[] {
   const byKey = new Map<string, Character>();
   for (const entry of entries) {
@@ -107,14 +122,32 @@ export function buildDraftPools(
   const order = classes.length ? CLASSES.filter((cls) => classes.includes(cls)) : [...CLASSES];
 
   for (const cls of order) {
-    const anime = pool === 'history' ? [] : candidatesFor('anime', cls).slice(0, SAMPLING_WINDOW);
-    const history = pool === 'anime' ? [] : candidatesFor('history', cls).slice(0, SAMPLING_WINDOW);
+    const label = pool === 'history' ? 'History' : 'Anime / Manga';
+    const anime =
+      pool === 'history'
+        ? []
+        : candidatesFor('anime', cls)
+            .filter((entry) => canonAllows(entry.name, cls))
+            .slice(0, SAMPLING_WINDOW);
+    const history =
+      pool === 'anime'
+        ? []
+        : candidatesFor('history', cls)
+            .filter((entry) => canonAllows(entry.name, cls))
+            .slice(0, SAMPLING_WINDOW);
     // "Mixed" alternates the two rosters so the sample is genuinely mixed
     // instead of eating through the anime list first.
     const primary = pool === 'mixed' ? interleave(anime, history) : [...anime, ...history];
 
-    const sampled = shuffle(primary, rng).slice(0, POOL_SIZE);
-    const chosen = dedupe(sampled, pool === 'history' ? 'History' : 'Anime / Manga');
+    // The canon leads the class: a famous character the scrape missed (Kirito
+    // was not in Sword Users' first pages) is still always draftable in the
+    // class their legend is built on.
+    const lead = canonEntriesFor(cls)
+      .filter((entry) => pool === 'mixed' || entry.bucket === pool)
+      .map((entry) => rosterEntryToCharacter({ name: entry.name, source: entry.source }, label));
+
+    const sampled = shuffle(primary, rng);
+    const chosen = dedupe([...lead, ...sampled], label).slice(0, POOL_SIZE);
 
     if (chosen.length < POOL_SIZE) {
       // Top up from the same bucket first (a pool that is short still keeps its
@@ -130,7 +163,8 @@ export function buildDraftPools(
       const seen = new Set(chosen.map((character) => character.key));
       for (const entry of [...spare, ...fallbackFor(cls)]) {
         if (chosen.length >= POOL_SIZE) break;
-        const character = rosterEntryToCharacter(entry, pool === 'history' ? 'History' : 'Anime / Manga');
+        if (!canonAllows(entry.name, cls)) continue;
+        const character = rosterEntryToCharacter(entry, label);
         if (!character.name || seen.has(character.key)) continue;
         seen.add(character.key);
         chosen.push(character);

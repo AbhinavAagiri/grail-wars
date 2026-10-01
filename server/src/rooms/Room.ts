@@ -2,9 +2,11 @@ import { nanoid } from 'nanoid';
 import {
   CLASSES,
   CLASS_META,
+  DEFAULT_POWER_CAP,
   DEFAULT_SETTINGS,
   enabledClasses,
   LIMITS,
+  roundName,
   type Assignment,
   type ArenaMatch,
   type ArenaPhase,
@@ -27,6 +29,8 @@ import {
 import { logger } from '../logger';
 import { buildImageCandidates, researchCharacter } from '../research';
 import { classRefusal, classVerdictFor, type ClassVerdict } from '../research/classAffinity';
+import { politicalRefusal } from '../research/politicalFigures';
+import { applyPowerCap, parsePowerCap } from '../research/powerCap';
 import { generate as llmGenerate, llmEnabled } from '../llm';
 import { generatedAvatar, isPlaceholderImage, proxyUrl } from '../util/imageUrl';
 import { sanitizeText } from '../util/text';
@@ -276,11 +280,18 @@ export class Room {
     next.classes = enabledClasses(next.classes);
     // An "ai" narration setting is meaningless without a key.
     if (next.war.narration === 'ai' && !llmEnabled()) next.war.narration = 'templated';
+    // An unknown Max Power level (a stale client, a hand-edited room) falls back
+    // to the default rather than silently disabling the cap.
+    if (!parsePowerCap(next.war.maxPowerLevel)) next.war.maxPowerLevel = DEFAULT_POWER_CAP;
     const locationModeChanged = patch.war?.locationMode !== undefined && patch.war.locationMode !== this.settings.war.locationMode;
     const aiChoosesChanged =
       (patch.aiChooses !== undefined && patch.aiChooses !== this.settings.aiChooses) ||
       (patch.aiPool !== undefined && patch.aiPool !== this.settings.aiPool);
+    const powerCapChanged = next.war.maxPowerLevel !== this.settings.war.maxPowerLevel;
     this.settings = next;
+    // Lowering the cap mid-review scales the Servants already researched; the
+    // uncapped profiles are kept, so raising it again restores them.
+    if (powerCapChanged) this.reapplyPowerCap();
     // Switching the AI-Chooses mode mid-draft must re-deal immediately; the
     // pool is what the room is drafting from.
     if (aiChoosesChanged && this.phase === 'DRAFT') this.refreshDraftPool();
@@ -469,9 +480,12 @@ export class Room {
 
     // A free draft must fit the class: Saber is a swordsman, Archer fights at
     // range, and a character the game cannot place at all is refused rather
-    // than seated in a class that makes no sense.
+    // than seated in a class that makes no sense. The requested class is passed
+    // in so the canon and the curated rosters can answer without a wiki lookup.
     if (!pool) {
-      const verdict = await classVerdictFor(character).catch(
+      const refused = await politicalRefusal(character);
+      if (refused) return { ok: false, error: refused };
+      const verdict = await classVerdictFor(character, cls).catch(
         (): ClassVerdict => ({ classes: [], verified: false, evidence: 'none' }),
       );
       if (!verdict.verified || !verdict.classes.includes(cls)) {
@@ -644,8 +658,10 @@ export class Room {
         this.broadcastResearch();
         try {
           const profile: Profile = await researchCharacter(servant.character);
-          servant.profile = profile;
-          this.research.set(servant.id, { status: 'done', confidence: profile.confidence });
+          const capped = this.applyCap(profile);
+          this.researchProfiles.set(servant.id, profile);
+          servant.profile = capped;
+          this.research.set(servant.id, { status: 'done', confidence: capped.confidence });
         } catch (err) {
           logger.warn({ err, key: servant.character.key }, 'research failed');
           this.research.set(servant.id, { status: 'failed', confidence: 'low' });
@@ -712,10 +728,26 @@ export class Room {
     }
     if (patch.abilities?.length) profile.abilities = patch.abilities.slice(0, 8);
     profile.baseScore = baseScore(profile);
-    servant.profile = profile;
+    // A manual edit is still bound by the war's Max Power level.
+    this.researchProfiles.set(servant.id, profile);
+    servant.profile = this.applyCap(profile);
     this.touch();
     this.broadcast();
     return true;
+  }
+
+  /** The room's Max Power level applied to a freshly researched profile. */
+  private applyCap(profile: Profile): Profile {
+    return applyPowerCap(profile, this.settings.war.maxPowerLevel);
+  }
+
+  /** Re-apply the cap after the host changes it, without re-researching. */
+  private reapplyPowerCap(): void {
+    for (const servant of this.servants) {
+      const raw = this.researchProfiles.get(servant.id);
+      if (!raw || !servant.profile) continue;
+      servant.profile = applyPowerCap(raw, this.settings.war.maxPowerLevel);
+    }
   }
 
   async reresearch(actorId: string, servantId: string): Promise<boolean> {
@@ -726,8 +758,10 @@ export class Room {
     this.broadcastResearch();
     try {
       const profile = await researchCharacter(servant.character);
-      servant.profile = profile;
-      this.research.set(servant.id, { status: 'done', confidence: profile.confidence });
+      const capped = this.applyCap(profile);
+      this.researchProfiles.set(servant.id, profile);
+      servant.profile = capped;
+      this.research.set(servant.id, { status: 'done', confidence: capped.confidence });
     } catch {
       this.research.set(servant.id, { status: 'failed', confidence: 'low' });
     }
@@ -907,11 +941,21 @@ export class Room {
         break;
       case 'next': {
         const moved = this.moveCursor(1);
-        if (!moved) this.emitFinal();
+        if (!moved) {
+          // The war is over; nothing left to play.
+          this.cursor.playing = false;
+          this.emitFinal();
+        } else if (this.cursor.playing) {
+          // A manual step restarts the interval. Without this, the pending tick
+          // would still fire at its old deadline and cut the event the host had
+          // just revealed short.
+          this.scheduleWarTick();
+        }
         break;
       }
       case 'prev':
         this.moveCursor(-1);
+        if (this.cursor.playing) this.scheduleWarTick();
         break;
       case 'speed':
         this.cursor.speedMs = Math.max(0, value ?? 7000);
@@ -924,6 +968,7 @@ export class Room {
           this.cursor.dayIndex = flat[index].dayIndex;
           this.cursor.eventIndex = flat[index].eventIndex;
           this.emitCurrentEvent();
+          if (this.cursor.playing) this.scheduleWarTick();
         }
         break;
       }
@@ -1253,6 +1298,9 @@ export class Room {
       serverNow: Date.now(),
       lockedPlayerIds: [...this.players.values()].filter((p) => p.locked).map((p) => p.id),
       round: this.round,
+      // Chat lives on the server so a rematch (or a page reload) can never
+      // resurrect the last game's conversation.
+      chat: this.chat,
     };
     state.myPicks = mine;
     state.draftEndsAt = this.draftEndsAt;

@@ -58,17 +58,34 @@ export function TypewriterTokens({
   speedMs = 20,
   enabled = true,
   className,
+  onRevealChange,
 }: {
   tokens: Token[];
   onNameClick?: (servantId: string) => void;
   speedMs?: number;
   enabled?: boolean;
   className?: string;
+  /**
+   * Called with true while the line is still typing and false once it is fully
+   * revealed (or unmounted). The war uses it so the Space key finishes a line
+   * instead of also toggling playback — both actions used to fire on one press.
+   */
+  onRevealChange?: (revealing: boolean) => void;
 }) {
   const full = useMemo(() => tokens.map((t) => t.v).join(''), [tokens]);
   const [shown, setShown] = useState(enabled ? 0 : full.length);
   const done = shown >= full.length;
   const skipRef = useRef(() => setShown(full.length));
+  const revealRef = useRef(onRevealChange);
+  revealRef.current = onRevealChange;
+
+  useEffect(() => {
+    revealRef.current?.(enabled && !done);
+  }, [enabled, done]);
+
+  // A skipped or replaced line must not leave the Space key "held" by a
+  // typewriter that is no longer on screen.
+  useEffect(() => () => revealRef.current?.(false), []);
 
   useEffect(() => {
     if (!enabled) {

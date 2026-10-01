@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { clsx } from 'clsx';
 import type { Servant, WarEvent } from '@hgd/shared';
 import { StickyHeader, TopBanner } from '../components/ui';
@@ -27,6 +27,13 @@ export default function War() {
   const [logOpen, setLogOpen] = useState(false);
   const [typingId, setTypingId] = useState<string | null>(null);
   const lastIdRef = useRef<string | null>(null);
+  // True while the event's line is still being typed out. The typewriter owns
+  // the Space key until it is done, so one press never skips the text *and*
+  // toggles playback at the same time.
+  const revealingRef = useRef(false);
+  const handleRevealChange = useCallback((revealing: boolean) => {
+    revealingRef.current = revealing;
+  }, []);
 
   const timeline = room.timeline;
   const cursor = room.cursor;
@@ -62,6 +69,7 @@ export default function War() {
     if (!event) return;
     if (lastIdRef.current !== event.id) {
       lastIdRef.current = event.id;
+      revealingRef.current = false;
       setTypingId(event.id);
     }
   }, [event]);
@@ -82,6 +90,9 @@ export default function War() {
       else if (e.code === 'ArrowLeft') warControl('prev');
       else if (e.code === 'Space') {
         e.preventDefault();
+        // Space finishes the line while it is typing; only once the whole line
+        // is on screen does it mean play/pause.
+        if (revealingRef.current) return;
         warControl(cursor?.playing ? 'pause' : 'play');
       }
     };
@@ -174,6 +185,7 @@ export default function War() {
               statuses={statusesWithDays}
               onSelectServant={setSelected}
               typing={typingId === event.id}
+              onRevealChange={handleRevealChange}
             />
           </div>
 

@@ -1,0 +1,29 @@
+{
+  "_comment": "Hand-curated class assignments for well-known characters, used when the scraped rosters and the wiki categories disagree with what the character obviously is. These ARE authoritative: a name listed here is drafted only as the classes below, and is dropped from every other class in the AI-Chooses rosters. Keep entries to characters whose fighting style is not in dispute — Saber means the character's legend is built on a blade, Rider means they command a mount or a crew, Avenger means the class's own flavour (born from grudges, the more you hurt them the stronger they get) applies.",
+  "characters": [
+    { "name": "Kirito", "classes": ["saber"], "source": "Sword Art Online", "bucket": "anime" },
+    { "name": "Kazuto Kirigaya", "classes": ["saber"], "source": "Sword Art Online", "bucket": "anime" },
+    { "name": "Asuna", "classes": ["saber"], "source": "Sword Art Online", "bucket": "anime" },
+    { "name": "Asuna Yuuki", "classes": ["saber"], "source": "Sword Art Online", "bucket": "anime" },
+    { "name": "Roronoa Zoro", "classes": ["saber"], "source": "One Piece", "bucket": "anime" },
+    { "name": "Ichigo Kurosaki", "classes": ["saber"], "source": "Bleach", "bucket": "anime" },
+    { "name": "Levi Ackerman", "classes": ["saber"], "source": "Attack on Titan", "bucket": "anime" },
+    { "name": "Mikasa Ackerman", "classes": ["saber"], "source": "Attack on Titan", "bucket": "anime" },
+    { "name": "Himura Kenshin", "classes": ["saber"], "source": "Rurouni Kenshin", "bucket": "anime" },
+    { "name": "Tanjiro Kamado", "classes": ["saber"], "source": "Demon Slayer", "bucket": "anime" },
+    { "name": "Erza Scarlet", "classes": ["saber", "caster"], "source": "Fairy Tail", "bucket": "anime" },
+    {
+      "name": "Hiccup",
+      "classes": ["rider"],
+      "source": "How to Train Your Dragon",
+      "bucket": "anime",
+      "aliases": ["Hiccup Haddock", "Hiccup Horrendous Haddock III"]
+    },
+    { "name": "Vegeta", "classes": ["berserker", "avenger"], "source": "Dragon Ball", "bucket": "anime" },
+    { "name": "Sasuke Uchiha", "classes": ["saber", "assassin", "avenger"], "source": "Naruto", "bucket": "anime" },
+    { "name": "Rin Tohsaka", "classes": ["caster"], "source": "Fate/stay night", "bucket": "anime" },
+    { "name": "Lelouch", "classes": ["caster", "ruler"], "source": "Code Geass", "bucket": "anime" },
+    { "name": "Lelouch Lamperouge", "classes": ["caster", "ruler"], "source": "Code Geass", "bucket": "anime" },
+    { "name": "Frieza", "classes": ["ruler", "berserker"], "source": "Dragon Ball", "bucket": "anime" }
+  ]
+}

@@ -412,9 +412,8 @@ is disabled, with a `Coming soon` badge, a `Not playable yet` line, dimming and 
 The gate is deliberately UI-only: the server still accepts
 `mode: 'DEBATE'`, so `npm run smoke -- --mode DEBATE` and any future work can
 drive the mode directly, and a room that already came back in that mode still
-runs. Rooms are created in War by default (`DEFAULT_SETTINGS.mode`), and a
-disabled button cannot fire `onClick`, so there is no path to select it by
-accident.
+runs. Rooms are created in War by default (`DEFAULT_SETTINGS.mode`), anda disabled button cannot fire `onClick`, so there is no path to select it by
+accident. **The hold was lifted** when the mode was built out — see §31.
 
 ## 23. The project is called Grail Wars
 

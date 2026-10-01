@@ -263,6 +263,28 @@ async function setUpGame(playerCount: number, mode: 'WAR' | 'DEBATE', days: numb
   );
   log('✓ duplicate character across Masters was rejected');
 
+  // The two rules the reported bugs were about: a hand-curated class the
+  // scraped rosters had mis-filed (Kirito was a Shielder there), and the ban on
+  // real-world political figures. Both settle without a wiki lookup.
+  const arbiter = clients[0]!;
+  arbiter.emit(C2S.draftPick, { cls: 'ruler', customName: 'JD Vance' });
+  await until(
+    'the political figure to be refused',
+    () => arbiter.errors.some((message) => /political figure/i.test(message)),
+    10_000,
+  );
+  log('✓ a real-world political figure was refused');
+
+  arbiter.emit(C2S.draftPick, { cls: 'saber', customName: 'Kirito' });
+  await until('the canon Saber to be accepted', () => Boolean(arbiter.state?.myPicks?.saber), 10_000);
+  arbiter.emit(C2S.draftPick, { cls: 'shielder', customName: 'Kirito' });
+  await until(
+    'the canon Saber to be refused as Shielder',
+    () => arbiter.errors.some((message) => /Kirito can only be drafted as Saber/i.test(message)),
+    10_000,
+  );
+  log('✓ the class canon settles Kirito as Saber and refuses him as Shielder');
+
   for (const client of clients) client.emit(C2S.draftLock);
   await until(
     'every Master to lock in',

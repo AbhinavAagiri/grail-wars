@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { clsx } from 'clsx';
-import { CLASS_META, type Servant } from '@hgd/shared';
+import { CLASS_META, LIMITS, POWER_CAPS, type Servant } from '@hgd/shared';
 import { TIER_OPTIONS, SPEED_OPTIONS, DURABILITY_OPTIONS } from '../lib/scales';
 import { ClassBadge, ConfidenceDot, Portrait, StickyHeader, SummoningCircle, TierBadge } from '../components/ui';
 import { useStore } from '../store';
@@ -200,6 +200,14 @@ function ReviewScreen({ servants }: { servants: Servant[] }) {
                     <span className="font-bold text-gold">{servant.character.name}</span>
                     <ClassBadge cls={servant.cls} />
                     {profile && <TierBadge tier={profile.tierPeak} />}
+                    {profile?.capped && (
+                      <span
+                        className="rounded border border-[var(--gold)] px-1.5 py-[2px] text-[10px] font-bold uppercase tracking-wide text-gold"
+                        title={`Scaled down from ${profile.capped.from} by this room's Max Power level`}
+                      >
+                        capped from {profile.capped.from}
+                      </span>
+                    )}
                     {profile && <ConfidenceDot confidence={profile.confidence} />}
                   </div>
                   <p className="truncate text-[11.5px] text-muted">
@@ -274,8 +282,17 @@ function ReviewScreen({ servants }: { servants: Servant[] }) {
       </div>
 
       <p className="mt-4 text-center text-[11.5px] text-muted">
-        These scores decide fights. Randomness only appears when two Servants are within 3 points of each other, and
-        every result is explained in the war's “Why?” panel.
+        {room.settings.mode === 'WAR'
+          ? "These scores decide fights. Randomness only appears when two Servants are within 3 points of each other, and every result is explained in the war's “Why?” panel."
+          : 'These scores are the Oracle numbers voters see beside each Servant. Every matchup is still decided by the room’s vote.'}
+      </p>
+      <p className="mt-1 text-center text-[11px] text-muted">
+        This room's Max Power level is{' '}
+        <span className="text-gold">
+          {POWER_CAPS.find((cap) => cap.value === room.settings.war.maxPowerLevel)?.label ??
+            room.settings.war.maxPowerLevel}
+        </span>
+        . Servants researched above it are scaled down to it.
       </p>
     </div>
   );

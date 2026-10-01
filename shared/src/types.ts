@@ -178,6 +178,11 @@ export interface Profile {
   sources: { label: string; url: string }[];
   /** 0..100 */
   baseScore: number;
+  /**
+   * Set when the room's Max Power Level scaled this Servant down: the cap they
+   * were held to, and the peak tier they would have had.
+   */
+  capped?: { level: string; from: string };
 }
 
 export interface Servant {
@@ -361,6 +366,8 @@ export interface RoomState {
   /** events up to and including the cursor — never the future */
   timeline?: WarTimeline;
   arena?: ArenaState;
+  /** arena-party chat, cleared whenever a game is reset (rematch / back to lobby) */
+  chat?: ChatMessage[];
   winnerId?: string;
   wish?: string;
   unsummoned?: Character[];

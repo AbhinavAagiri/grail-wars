@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { CLASS_META, enabledClasses, type Servant } from '@hgd/shared';
+import { CLASS_META, LIMITS, enabledClasses, type Servant } from '@hgd/shared';
 import { ClassBadge, Portrait, StickyHeader, SummoningCircle, TierBadge } from '../components/ui';
 import { ServantCard } from '../components/ServantCard';
 import { useStore } from '../store';

@@ -47,6 +47,7 @@ export function EventStage({
   prevEvent,
   onSelectServant,
   typing,
+  onRevealChange,
 }: {
   day: WarDay;
   event: WarEvent;
@@ -55,6 +56,8 @@ export function EventStage({
   prevEvent?: WarEvent;
   onSelectServant: (servant: Servant) => void;
   typing: boolean;
+  /** forwards the typewriter's state, so Space only toggles playback once the line is shown */
+  onRevealChange?: (revealing: boolean) => void;
 }) {
   const [showWhy, setShowWhy] = useState(false);
 
@@ -128,6 +131,7 @@ export function EventStage({
           {typing ? (
             <TypewriterTokens
               tokens={event.tokens}
+              onRevealChange={onRevealChange}
               onNameClick={(id) => {
                 const servant = byId.get(id);
                 if (servant) onSelectServant(servant);

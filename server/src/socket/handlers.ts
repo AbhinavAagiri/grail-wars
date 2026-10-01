@@ -55,6 +55,7 @@ const settingsSchema = z.object({
       classAdvantage: z.boolean().optional(),
       commandSpellRescues: z.boolean().optional(),
       goreLevel: z.enum(['standard', 'mild']).optional(),
+      maxPowerLevel: z.string().max(20).optional(),
     })
     .optional(),
   debate: z

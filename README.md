@@ -74,7 +74,7 @@ All of these live in `.env` (see [.env.example](.env.example)).
 
 **`CONTACT_EMAIL`** is the public contact address: it is placed in the `User-Agent` when the server calls public wikis and APIs, and it is the address this README names for takedown requests. Set it if you deploy publicly.
 
-**Feedback form (optional).** The **Contact** page posts to `POST /api/feedback`. Set `FEEDBACK_TO` to the inbox messages should reach — a dedicated address, not your personal one — and `FEEDBACK_WEBHOOK_URL` to any endpoint that turns a JSON POST into an email. Both live only in the server environment; neither is ever sent to the browser. With no webhook configured, submissions are logged and kept in memory so the form still gives the visitor a clean success state, but no email is sent. A free [Google Apps Script](https://script.google.com) web app is the zero-dependency option: create it in the `FEEDBACK_TO` account, put that same address on its `INBOX` line — the script decides the recipient, the payload's `to` is only a label — deploy it with **Execute as: Me** and **Who has access: Anyone**, and use the URL ending in `/exec` as `FEEDBACK_WEBHOOK_URL`. Keep the recipient hardcoded so the URL cannot be used as a relay:
+**Feedback form (optional).** The **Contact** page posts to `POST /api/feedback`. Set `FEEDBACK_TO` to the inbox messages should reach — a dedicated address, not your personal one — and `FEEDBACK_WEBHOOK_URL` to any endpoint that turns a JSON POST into an email. Both live only in the server environment; neither is ever sent to the browser. With no webhook configured, submissions are logged and kept in memory so the form still gives the visitor a clean success state, but no email is sent. A free [Google Apps Script](https://script.google.com) web app is the zero-dependency option: create it in the `FEEDBACK_TO` account, put that same address on its `INBOX` line — the script decides the recipient, the payload's `to` is only a label — deploy it with **Execute as: Me** and **Who has access: Anyone**, and use the URL ending in `/exec` as `FEEDBACK_WEBHOOK_URL`. Keep the recipient hardcoded so the URL cannot be used as a relay. Gmail always sends from the account that owns the script, so a message *looks* like it came from you; the recipe below prints the visitor's own address at the top of the body and sets `Reply-To`, which is how you write back. The payload carries that address as both `email` and `replyTo` (the field is optional, so it can be blank):
 
 ```js
 // Set this to the FEEDBACK_TO address — the one place the inbox is written.
@@ -82,12 +82,24 @@ const INBOX = 'your-inbox@gmail.com';
 
 function doPost(e) {
   const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
-  const from = data.name ? `${data.name}${data.email ? ` <${data.email}>` : ''}` : 'Anonymous';
+  const name = data.name || 'Anonymous';
+  // The server sends both keys; accept either.
+  const email = data.email || data.replyTo || '';
+  const lines = [
+    `Name:  ${name}`,
+    `Email: ${email || '(not given)'}`,
+    `Topic: ${data.topic || 'other'}`,
+    '',
+    data.message || '(empty)',
+    '',
+    `Sent from the Grail Wars contact form.`,
+  ];
   MailApp.sendEmail({
     to: INBOX, // fixed — never taken from the request
-    subject: `Grail Wars feedback (${data.topic || 'other'})`,
-    body: `From: ${from}\n\n${data.message || '(empty)'}`,
-    replyTo: data.email || undefined,
+    subject: `Grail Wars feedback (${data.topic || 'other'}) — ${name}`,
+    body: lines.join('\n'),
+    replyTo: email || undefined,
+    name: 'Grail Wars Feedback',
   });
   return ContentService.createTextOutput(JSON.stringify({ ok: true }))
     .setMimeType(ContentService.MimeType.JSON);

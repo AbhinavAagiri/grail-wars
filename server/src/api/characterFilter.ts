@@ -7,6 +7,7 @@
  * classify each candidate before it reaches the client.
  */
 import type { Provider, SearchCandidate } from '@hgd/shared';
+import { looksLikePoliticalCandidate } from '../research/politicalFigures';
 import { normalize, titleSimilarity } from '../util/text';
 
 /** Databases that only ever contain characters or people. */
@@ -96,6 +97,14 @@ function isMultiWordProperNoun(name: string): boolean {
  * concept, work, place or product.
  */
 export function isCharacterCandidate(candidate: SearchCandidate, _query: string): boolean {
+  // Living politics is not Grail War material: a real office-holder is not a
+  // hero, a legend or a character, and the scaling engine has no profile for
+  // them anyway. Checked before every provider shortcut — a typed-out name
+  // arrives as a custom candidate, and that must not be offered either. (The
+  // rosters are screened when they are built; the draft gate enforces this
+  // again, so a candidate that slips through still cannot be picked.)
+  if (looksLikePoliticalCandidate(candidate.name, candidate.blurb)) return false;
+
   if (candidate.provider === 'custom' || candidate.provider === 'fallback') return true;
   if (TRUSTED_PROVIDERS.has(candidate.provider)) return true;
 

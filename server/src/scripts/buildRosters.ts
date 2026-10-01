@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { CLASSES, type ServantClass } from '@hgd/shared';
+import { CANON } from '../data/canon';
 import fallbackCharacters from '../data/fallback-characters.json';
 
 const OUT_DIR = path.resolve(process.cwd(), 'src/data');
@@ -238,6 +239,14 @@ function coreEntries(kind: 'anime' | 'history'): Record<ServantClass, Entry[]> {
       // Above any wiki page length, so the hand-picked core always leads the
       // class list (and the pool samples from the head of that list).
       out[cls].push({ name: entry.name, source: entry.source, weight: 10_000_000 });
+    }
+  }
+  // The hand-curated canon seeds the same way, so re-running this script never
+  // throws away a correction made in class-canon.json.
+  for (const entry of CANON) {
+    if (entry.bucket !== kind) continue;
+    for (const cls of entry.classes) {
+      out[cls]?.push({ name: entry.name, source: entry.source, weight: 10_000_000 });
     }
   }
   return out;

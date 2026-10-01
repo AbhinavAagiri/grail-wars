@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { clsx } from 'clsx';
-import { CLASS_META, enabledClasses, type Character, type SearchCandidate, type ServantClass } from '@hgd/shared';
+import { CLASS_META, enabledClasses, POWER_CAPS, type Character, type SearchCandidate, type ServantClass } from '@hgd/shared';
 import { ClassBadge, Modal, Portrait, StickyHeader } from '../components/ui';
 import { CharacterSearch } from '../components/CharacterSearch';
 import { ImagePickerModal } from '../components/ImagePickerModal';
@@ -46,6 +46,9 @@ export default function Draft() {
   const allLocked = room.players.filter((p) => !p.isSpectator).every((p) => p.locked);
   const aiChooses = room.settings.aiChooses;
   const draftPool = room.draftPool ?? {};
+  const capLabel =
+    POWER_CAPS.find((cap) => cap.value === room.settings.war.maxPowerLevel)?.label ??
+    room.settings.war.maxPowerLevel;
 
   const handleSelect = (cls: ServantClass, candidate: SearchCandidate) => pick(cls, { candidate });
   const handleCustom = (cls: ServantClass, name: string) => pick(cls, { customName: name });
@@ -75,6 +78,10 @@ export default function Draft() {
               {aiChooses
                 ? `The game dealt this room ${classes.length} rosters — one character for each class, from the AI Chooses list.`
                 : `One character for each of the ${classes.length} classes in play. Each class only accepts characters whose fighting style fits it.`}
+            </p>
+            <p className="mt-1 text-[11px] text-muted">
+              Max Power level: <span className="text-gold">{capLabel}</span> — anything above it is scaled down when the
+              Servants are researched.
             </p>
           </div>
           <div className="flex items-center gap-3">

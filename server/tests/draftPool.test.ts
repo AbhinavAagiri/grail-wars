@@ -60,6 +60,24 @@ describe('buildDraftPools', () => {
     expect(a.saber?.map((c) => c.key)).toEqual(b.saber?.map((c) => c.key));
   });
 
+  it('always deals the hand-curated canon in its own class, and nowhere else', () => {
+    // Kirito was filed as a Shielder by a scrape and never reached the Saber
+    // list; the canon is dealt into Saber and removed from Shielder/Ruler.
+    const pools = buildDraftPools(CLASSES, 'anime', seeded(23));
+    const blade = (cls: (typeof CLASSES)[number]) => (pools[cls] ?? []).map((c) => c.name);
+    expect(blade('saber')).toContain('Kirito');
+    expect(blade('saber')).toContain('Asuna');
+    expect(blade('rider')).toContain('Hiccup');
+    expect(blade('shielder')).not.toContain('Kirito');
+    expect(blade('ruler')).not.toContain('Kirito');
+    expect(blade('avenger')).not.toContain('Rin Tohsaka');
+  });
+
+  it('respects the roster the host chose when it deals the canon', () => {
+    const anime = buildDraftPools(['rider'], 'anime', seeded(29));
+    expect((anime.rider ?? []).map((c) => c.name)).toContain('Hiccup');
+  });
+
   it('leaves pool characters without images so room snapshots stay small', () => {
     const pools = buildDraftPools(['saber'], 'mixed' satisfies AiPool, seeded(5));
     expect(pools.saber?.every((c) => c.imageUrl === '')).toBe(true);

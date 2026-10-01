@@ -146,8 +146,39 @@ export function enabledClasses(classes?: readonly ServantClass[]): ServantClass[
 /** The roster buckets the AI-Chooses dropdown offers, in display order. */
 export const AI_POOLS = ['anime', 'history', 'mixed'] as const;
 
+/**
+ * The Max Power level options a host can set in the rules of the war, as VS
+ * Battles Attack Potency tiers. Anything researched above the chosen level is
+ * scaled down to it; `4-B` (Solar System) is the default because it keeps
+ * planet-busters in the war without letting a universal character win by
+ * existing.
+ */
+export const POWER_CAPS = [
+  { value: '9-B', label: '9-B Wall' },
+  { value: '8-C', label: '8-C Building' },
+  { value: '7-B', label: '7-B City' },
+  { value: '7-A', label: '7-A Mountain' },
+  { value: '6-C', label: '6-C Island' },
+  { value: '6-A', label: '6-A Continent' },
+  { value: '5-B', label: '5-B Planet' },
+  { value: '5-A', label: '5-A Large Planet' },
+  { value: '4-C', label: '4-C Star' },
+  { value: '4-B', label: '4-B Solar System' },
+  { value: '3-C', label: '3-C Galaxy' },
+  { value: '3-A', label: '3-A Universe' },
+] as const;
+
+/** The default Max Power level: Solar System. */
+export const DEFAULT_POWER_CAP = '4-B';
+
 export const LIMITS = {
   MIN_PLAYERS: 2,
+  /**
+   * The Debate Arena's floor. With two Masters every match is a fight between
+   * the only two people in the room, so a single ballot can never break a tie
+   * and the whole round collapses into the host's pick.
+   */
+  DEBATE_MIN_PLAYERS: 3,
   MAX_PLAYERS_DEFAULT: 7,
   MAX_PLAYERS_EXTENDED: 14,
   NAME_MAX: 24,
