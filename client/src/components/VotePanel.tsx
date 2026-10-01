@@ -12,6 +12,7 @@ export function VotePanel({
   canVote,
   reveal,
   myPlayerId,
+  isOwner,
 }: {
   match: ArenaMatch;
   servants: Servant[];
@@ -21,6 +22,8 @@ export function VotePanel({
   canVote: boolean;
   reveal?: { a: number; b: number };
   myPlayerId?: string | null;
+  /** the viewer's own Servant is one of the two fighting this match */
+  isOwner?: boolean;
 }) {
   const a = servants.find((s) => s.id === match.a);
   const b = servants.find((s) => s.id === match.b);
@@ -70,7 +73,10 @@ export function VotePanel({
             </p>
           )}
           {voting && canVote && <p className="mt-2 text-[11px] text-gold">{mine ? 'Your vote' : 'Vote for this Servant'}</p>}
-          {!canVote && voting && <p className="mt-2 text-[11px] text-muted">You cannot vote in this match</p>}
+          {voting && canVote && isOwner && servant.playerId === myPlayerId && (
+            <p className="mt-1 text-[10.5px] text-muted">Your Servant is fighting — your vote still counts.</p>
+          )}
+          {voting && !canVote && <p className="mt-2 text-[11px] text-muted">Spectators watch this one.</p>}
         </button>
 
         {revealed && (

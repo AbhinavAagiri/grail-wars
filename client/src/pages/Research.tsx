@@ -159,6 +159,10 @@ function ReviewScreen({ servants }: { servants: Servant[] }) {
   const sorted = [...servants].sort(
     (a, b) => (b.profile?.baseScore ?? 0) - (a.profile?.baseScore ?? 0),
   );
+  // The Arena's floor: two Masters cannot produce a third ballot, so the
+  // server refuses to start it and the button says why up front.
+  const arenaNeedsMasters =
+    room.settings.mode === 'DEBATE' && servants.length < LIMITS.DEBATE_MIN_PLAYERS;
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-6">
@@ -166,13 +170,25 @@ function ReviewScreen({ servants }: { servants: Servant[] }) {
         <div>
           <h1 className="hgd-heading text-2xl">Power Review</h1>
           <p className="text-[12px] text-muted">
-            Sorted strongest → weakest. {isHost ? 'Fix any mistakes before the war begins.' : 'The host can edit these.'}
+            Sorted strongest → weakest.{' '}
+            {isHost
+              ? `Fix any mistakes before the ${room.settings.mode === 'WAR' ? 'war begins' : 'arena opens'}.`
+              : 'The host can edit these.'}
+            {arenaNeedsMasters && (
+              <>
+                {' '}
+                <span className="text-gold">
+                  The Arena needs at least {LIMITS.DEBATE_MIN_PLAYERS} Masters — invite one more.
+                </span>
+              </>
+            )}
           </p>
         </div>
         {isHost && (
           <button
             type="button"
             className="hgd-btn hgd-btn-primary"
+            disabled={arenaNeedsMasters}
             onClick={() => (room.settings.mode === 'WAR' ? startWar() : startArena())}
           >
             {room.settings.mode === 'WAR' ? 'Start the War' : 'Start the Arena'}

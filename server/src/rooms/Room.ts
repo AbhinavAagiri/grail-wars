@@ -399,6 +399,12 @@ export class Room {
     if (this.humanCount() < LIMITS.MIN_PLAYERS) {
       return { ok: false, error: `You need at least ${LIMITS.MIN_PLAYERS} Masters.` };
     }
+    if (this.settings.mode === 'DEBATE' && this.humanCount() < LIMITS.DEBATE_MIN_PLAYERS) {
+      return {
+        ok: false,
+        error: `The Debate Arena needs at least ${LIMITS.DEBATE_MIN_PLAYERS} Masters — with two, every match is a duel between the only two voters.`,
+      };
+    }
     this.phase = 'DRAFT';
     this.winnerId = undefined;
     this.wish = undefined;
@@ -1099,14 +1105,15 @@ export class Room {
       serverNow: Date.now(),
       matchId: this.arena.currentMatchId,
       round: this.arena.bracket.find((m) => m.id === this.arena.currentMatchId)?.round ?? 1,
+      ...extra,
     });
     if (durationMs > 0) {
-      this.arenaTimer = setTimeout(() => this.arenaAdvancePhase(), durationMs);
+      this.arenaTimer = setTimeout(() => this.arenaAdvancePhase({ fromTimer: true }), durationMs);
       this.arenaTimer.unref?.();
     }
   }
 
-  private arenaAdvancePhase(): void {
+  private arenaAdvancePhase(options: { fromTimer?: boolean } = {}): void {
     switch (this.arena.phase) {
       case 'INTRO':
         this.arenaSetPhase('ARGUE', this.settings.debate.argueSec * 1000);
@@ -1114,9 +1121,21 @@ export class Room {
       case 'ARGUE':
         this.arenaSetPhase('VOTE', this.settings.debate.voteSec * 1000);
         break;
-      case 'VOTE':
+      case 'VOTE': {
+        // Nobody voted in the first window: the clock gives the room exactly
+        // one more before the host has to decide alone. A host who presses
+        // "Skip phase" means "resolve this now", so only the timer re-opens.
+        const match = matchById(this.arena.bracket, this.arena.currentMatchId);
+        if (options.fromTimer && match && match.voters.length === 0 && (match.voteWindow ?? 0) === 0) {
+          match.voteWindow = 1;
+          this.touch();
+          this.broadcast();
+          this.arenaSetPhase('VOTE', this.settings.debate.voteSec * 1000, { extra: true });
+          break;
+        }
         this.resolveArenaVote();
         break;
+      }
       case 'REVEAL':
         this.beginNextArenaMatch();
         break;
@@ -1146,17 +1165,18 @@ export class Room {
     if (!player) return { ok: false, error: 'Unknown player.' };
     if (player.isSpectator) return { ok: false, error: 'Spectators cannot vote here.' };
 
-    const owners = [match.a, match.b].map((id) => this.servants.find((s) => s.id === id)?.playerId);
-    if (!this.settings.debate.ownersVote && owners.includes(playerId)) {
-      return { ok: false, error: 'You are in this match and cannot vote in it.' };
-    }
-
+    // Every Master holds a ballot in every match, including the two whose
+    // Servants are fighting. The old owner gate made a two-Master room
+    // unwinnable — neither could vote, so every match ended 0-0 and fell to
+    // the host — and it disagreed with what the client showed.
     match.voters = match.voters.filter((v) => v.voterId !== playerId);
     match.voters.push({ voterId: playerId, nickname: player.nickname, choice });
     const counts = countVotes(this.arena.bracket, match.id);
     match.votesA = counts.a;
     match.votesB = counts.b;
     this.touch();
+    // The bracket view reads its tallies from the snapshot, not the event.
+    this.broadcast();
     this.emitAll('arena:votes', {
       matchId: match.id,
       votedCount: match.voters.length,
@@ -1196,24 +1216,21 @@ export class Room {
           break;
         }
         default: {
-          // Host decides — fall through to a wait state if we do not have one.
+          // Host decides: hold the reveal open with no winner until the host
+          // picks from the bracket. Going through `arenaSetPhase` (rather than
+          // setting the phase by hand) clears the vote timer, so the clock can
+          // never restart this undecided match and wipe the ballots.
           match.tieBroken = 'host';
           match.winner = undefined;
+          this.touch();
+          this.broadcast();
           this.emitAll('arena:votes', {
             matchId: match.id,
             votedCount: match.voters.length,
             eligibleCount: this.eligibleVoters().length,
             tie: true,
           });
-          this.arena.phase = 'REVEAL';
-          this.arena.endsAt = undefined;
-          this.emitAll('arena:phase', {
-            phase: 'REVEAL',
-            endsAt: undefined,
-            serverNow: Date.now(),
-            matchId: match.id,
-            tie: true,
-          });
+          this.arenaSetPhase('REVEAL', 0, { tie: true });
           return;
         }
       }
@@ -1234,8 +1251,8 @@ export class Room {
     if (winnerServantId !== match.a && winnerServantId !== match.b) return false;
     match.winner = winnerServantId;
     match.tieBroken = 'host';
-    setMatchWinner(this.arena.bracket, match.id, winnerServantId, this.arenaTotalRounds());
     this.touch();
+    this.broadcast();
     this.emitAll('arena:result', { match, counts: countVotes(this.arena.bracket, match.id) });
     this.arenaSetPhase('REVEAL', 6000);
     return true;

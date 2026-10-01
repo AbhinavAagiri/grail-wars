@@ -226,7 +226,6 @@ async function setUpGame(playerCount: number, mode: 'WAR' | 'DEBATE', days: numb
         argueSec: 10,
         voteSec: 5,
         tieBreak: 'random',
-        ownersVote: true,
         showOracleCards: false,
       },
     },
@@ -427,10 +426,18 @@ async function runDebate(playerCount: number): Promise<void> {
       seen.add(signature);
       if (phase === 'VOTE') {
         await sleep(120);
+        // Every Master votes in every match — the two fighting it included.
         for (const [index, client] of clients.entries()) {
           client.emit(C2S.arenaVote, { choice: index % 2 === 0 ? 'a' : 'b' });
         }
-        await sleep(120);
+        // Wait for the server to acknowledge the whole room before moving on:
+        // a ballot dropped here is exactly the bug this run guards against.
+        await until(
+          `every Master's ballot (${matchId})`,
+          () => host.votedCount >= clients.length,
+          5_000,
+        );
+        await sleep(60);
       }
       host.emit(C2S.arenaSkip);
     }
@@ -580,7 +587,11 @@ async function main(): Promise<void> {
 
   log(`▶ smoke test: ${mode}, ${players} Masters, ${days} days against ${BASE}`);
   if (mode === 'WAR') await runWar(players, days);
-  else await runDebate(players);
+  else {
+    assert(players >= 3, `the Debate Arena needs at least 3 Masters, got ${players}`);
+    await runDebate(players);
+    await runDebateMinimum();
+  }
   log('✅ smoke test passed');
 }
 

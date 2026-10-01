@@ -32,6 +32,10 @@ export default function Summon() {
     else startArena();
   };
 
+  // The Arena's floor: with two Masters every match is fought by the only two
+  // voters, so there is no third ballot to break a tie.
+  const arenaBlocked = room.settings.mode === 'DEBATE' && servants.length < LIMITS.DEBATE_MIN_PLAYERS;
+
   return (
     <div className="relative min-h-screen">
       <StickyHeader />
@@ -113,11 +117,22 @@ export default function Summon() {
 
             <div className="mt-4">
               {isHost ? (
-                <button type="button" className="hgd-btn hgd-btn-primary" onClick={continueTo}>
+                <button
+                  type="button"
+                  className="hgd-btn hgd-btn-primary"
+                  onClick={continueTo}
+                  disabled={arenaBlocked}
+                >
                   Continue
                 </button>
               ) : (
                 <p className="text-[13px] text-muted">Waiting for the host…</p>
+              )}
+              {arenaBlocked && (
+                <p className="mt-2 text-[12px] text-gold">
+                  The Debate Arena needs at least {LIMITS.DEBATE_MIN_PLAYERS} Masters — this room has{' '}
+                  {servants.length}.
+                </p>
               )}
             </div>
           </motion.div>

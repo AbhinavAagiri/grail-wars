@@ -56,23 +56,46 @@ export default function Arena() {
   const endsAt = arenaPhaseInfo?.endsAt ?? arena?.endsAt;
   const remaining = useCountdown(endsAt);
 
-  const match = arenaResult?.match ?? arenaMatch;
-  const current = match && (!arenaMatch || arenaMatch.id === match.id) ? match : arenaMatch;
-
-  useEffect(() => {
-    if (phase === 'VOTE') setMyVote(undefined);
-  }, [phase, current?.id]);
+  // The snapshot is the source of truth: it survives a reload, it carries the
+  // viewer's own ballot while the votes are secret, and at the reveal it holds
+  // every ballot and the winner.
+  const bracket = arena?.bracket ?? [];
+  const snapshotMatch = arena?.currentMatchId ? bracket.find((m) => m.id === arena.currentMatchId) : undefined;
+  const current = snapshotMatch ?? arenaResult?.match ?? arenaMatch;
+  const totalRounds = arena?.totalRounds ?? 0;
+  const currentRound = arenaPhaseInfo?.round ?? current?.round ?? arena?.round ?? 0;
+  const roundByes = bracket.filter((m) => m.round === currentRound && m.bye);
+  const nameOf = (id?: string) => servants.find((s) => s.id === id)?.character.name ?? 'TBD';
 
   // The server flips the phase to RESULTS once a champion exists.
   useEffect(() => {
     if (room.phase === 'RESULTS') navigate(`/room/${room.code}`, { replace: true });
   }, [room.phase, room.code, navigate]);
 
-  const meInMatch = current ? servants.find((s) => s.id === current.a || s.id === current.b)?.playerId === playerId : false;
-  const canVote = Boolean(current) && !(meInMatch && !room.settings.debate.ownersVote) && !room.players.find((p) => p.id === playerId)?.isSpectator;
+  // Your own ballot comes from the server, so a vote is never shown unless the
+  // room actually holds it.
+  const myVote = current && playerId ? current.voters.find((v) => v.voterId === playerId)?.choice : undefined;
+  const isSpectator = Boolean(room.players.find((p) => p.id === playerId)?.isSpectator);
+  const ownsFighter = Boolean(
+    current && servants.some((s) => (s.id === current.a || s.id === current.b) && s.playerId === playerId),
+  );
+  // Every Master votes in every match — including the two whose Servants are
+  // fighting it. The old owner gate was what made votes silently vanish.
+  const canVote = Boolean(current) && !isSpectator;
 
   const openingStatements = phase === 'ARGUE' && remaining > Math.max(0, (room.settings.debate.argueSec - 20) * 1000);
-  const canSpeak = !openingStatements || meInMatch;
+  const canSpeak = !openingStatements || ownsFighter;
+
+  // A host tie-break is part of the match itself, so it is read from the
+  // snapshot: a reload in the middle of a tie still hands the host the picker.
+  const pendingTie = Boolean(current && phase === 'REVEAL' && !current.winner && current.tieBroken === 'host');
+  const nobodyVoted = pendingTie && (current?.voters.length ?? 0) === 0;
+  const extraWindow = phase === 'VOTE' && Boolean(arenaPhaseInfo?.extra);
+  // The reveal event carries the tallies; the snapshot has them too once the
+  // match is decided, so either can draw the bars.
+  const revealCounts =
+    arenaResult?.counts ??
+    (phase === 'REVEAL' ? { a: current?.votesA ?? 0, b: current?.votesB ?? 0 } : undefined);
 
   const champion = championId ? servants.find((s) => s.id === championId) : undefined;
 
@@ -149,11 +172,9 @@ export default function Arena() {
                 myVote={myVote}
                 myPlayerId={playerId}
                 canVote={canVote}
-                reveal={arenaResult ? arenaResult.counts : undefined}
-                onVote={(choice) => {
-                  setMyVote(choice);
-                  vote(choice);
-                }}
+                isOwner={ownsFighter}
+                reveal={revealCounts}
+                onVote={vote}
               />
             ) : (
               <p className="text-[13px] text-muted">Waiting for the next matchup…</p>
@@ -161,12 +182,15 @@ export default function Arena() {
 
             {phase === 'VOTE' && (
               <p className="mt-3 text-center text-[12px] text-muted">
+                {extraWindow && <span className="text-gold">Nobody voted — the clock restarted. </span>}
                 {arenaVotes ? `${arenaVotes.votedCount} / ${arenaVotes.eligibleCount} voted` : 'Votes are hidden until the reveal.'}
               </p>
             )}
-            {arenaVotes?.tie && isHost && (
+            {pendingTie && (
               <p className="mt-2 text-center text-[12px] text-gold">
-                It's a tie — pick the winner from the bracket above.
+                {nobodyVoted
+                  ? `Nobody voted — ${isHost ? 'pick the winner from the bracket above.' : 'the host picks the winner.'}`
+                  : `It's tied ${current?.votesA}–${current?.votesB} — ${isHost ? 'pick the winner from the bracket above.' : 'the host picks the winner.'}`}
               </p>
             )}
             {arenaResult && current?.winner && (
@@ -178,13 +202,56 @@ export default function Arena() {
           </section>
 
           <section className="min-h-[320px]">
-            <ChatPanel
-              messages={chat}
-              onSend={sendChat}
-              openingStatements={openingStatements}
-              canSpeak={canSpeak}
-              disabled={phase === 'CHAMPION'}
-            />
+            {showChat ? (
+              <>
+                <div className="mb-2 flex justify-end">
+                  <button
+                    type="button"
+                    className="hgd-btn hgd-btn-ghost !min-h-[30px] !px-2 !text-[11px]"
+                    onClick={() => setShowChat(false)}
+                  >
+                    Hide chat
+                  </button>
+                </div>
+                <ChatPanel
+                  messages={chat}
+                  onSend={sendChat}
+                  openingStatements={openingStatements}
+                  canSpeak={canSpeak}
+                  disabled={phase === 'CHAMPION'}
+                />
+              </>
+            ) : (
+              <div className="hgd-card flex h-full min-h-[280px] flex-col items-center justify-center p-4 text-center">
+                {phase === 'ARGUE' ? (
+                  <>
+                    <p className="hgd-heading text-[15px]">Argue it out</p>
+                    <p className="mt-1 text-[12.5px] text-muted">
+                      {Math.ceil(remaining / 1000)}s on the clock — make the case for your Servant.
+                    </p>
+                  </>
+                ) : phase === 'VOTE' ? (
+                  <>
+                    <p className="hgd-heading text-[15px]">Vote for the winner</p>
+                    <p className="mt-1 text-[12.5px] text-muted">
+                      {extraWindow ? 'Nobody voted — the clock restarted. ' : ''}
+                      Every Master votes here, even the two in this match. Votes stay hidden until the reveal.
+                    </p>
+                  </>
+                ) : (
+                  <p className="max-w-[260px] text-[12.5px] text-muted">
+                    Make your case out loud — this room plays in a call, and the votes land here.
+                  </p>
+                )}
+                <button
+                  type="button"
+                  className="hgd-btn hgd-btn-ghost mt-3 !min-h-[30px] !px-3 !text-[11px]"
+                  onClick={() => setShowChat(true)}
+                >
+                  Show chat
+                </button>
+              </div>
+            )}
           </section>
         </div>
       </div>

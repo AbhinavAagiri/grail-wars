@@ -315,6 +315,11 @@ export interface ArenaMatch {
   voters: { voterId: string; nickname: string; choice: 'a' | 'b' }[];
   oracleAgrees?: string;
   tieBroken?: 'host' | 'random' | 'oracle';
+  /**
+   * 0 for the first VOTE window of a match, 1 once the room has been given a
+   * single extra window because nobody voted in the first one. Never higher.
+   */
+  voteWindow?: number;
 }
 
 export type ArenaPhase = 'INTRO' | 'ARGUE' | 'VOTE' | 'REVEAL' | 'CHAMPION' | 'IDLE';

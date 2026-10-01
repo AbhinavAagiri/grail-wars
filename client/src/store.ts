@@ -39,7 +39,10 @@ export interface ArenaPhaseInfo {
   endsAt?: number;
   matchId?: string;
   round?: number;
+  /** the host has to pick the winner of a tied match */
   tie?: boolean;
+  /** nobody voted in the first window; this is the one extra one */
+  extra?: boolean;
 }
 
 interface AppState {

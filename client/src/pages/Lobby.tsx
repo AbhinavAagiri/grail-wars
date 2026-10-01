@@ -107,6 +107,8 @@ export default function Lobby() {
   const isHost = room.hostId === playerId;
   const masters = room.players.filter((p) => !p.isSpectator);
   const settings = room.settings;
+  // The Arena needs a third ballot to break a tie between the two fighters.
+  const minMasters = settings.mode === 'DEBATE' ? LIMITS.DEBATE_MIN_PLAYERS : LIMITS.MIN_PLAYERS;
   const patch = (value: SettingsPatch) => updateSettings(value);
   const patchWar = (value: Partial<RoomSettings['war']>) => updateSettings({ war: value });
   const patchDebate = (value: Partial<RoomSettings['debate']>) => updateSettings({ debate: value });
@@ -431,13 +433,8 @@ export default function Lobby() {
                       ]}
                     />
                   </SettingRow>
-                  <SettingRow label="Owners can vote in their own match">
-                    <Toggle
-                      label="Owners vote"
-                      checked={settings.debate.ownersVote}
-                      disabled={!isHost}
-                      onChange={(v) => patchDebate({ ownersVote: v })}
-                    />
+                  <SettingRow label="Ballots" hint="Every Master votes in every match — including the two whose Servants are fighting.">
+                    <span className="text-[12px] text-muted">Everyone votes</span>
                   </SettingRow>
                   <SettingRow label="Show Oracle stat cards">
                     <Toggle
@@ -566,7 +563,7 @@ export default function Lobby() {
               <button
                 type="button"
                 className="hgd-btn hgd-btn-primary mt-4 w-full"
-                disabled={masters.length < LIMITS.MIN_PLAYERS}
+                disabled={masters.length < minMasters}
                 onClick={startDraft}
               >
                 Start Draft
