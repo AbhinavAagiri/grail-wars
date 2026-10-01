@@ -4,9 +4,11 @@
 # Every optional key below is blank by default and the game works without them.
 #
 # A free instance sleeps after 15 minutes without inbound traffic (and wakes in
-# about a minute). That is safe for a party game because the client emits a
+# about half a minute; 32 s measured). That is safe for a party game because the client emits a
 # keepalive every few minutes while somebody is in a room — see App.tsx and the
 # C2S.keepalive handler — so an active session never goes quiet for long enough.
+# With nobody in a room the service is meant to sleep and spend no instance hours;
+# the README explains that idle lifecycle and the optional warm pinger.
 # A sleep or restart still ends any game nobody is watching; rooms already end
 # on their own after 4 idle hours.
 

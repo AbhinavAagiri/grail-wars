@@ -106,9 +106,17 @@ that owns the API and the sockets.
 |---|---|
 | 512 MB RAM, 0.1 CPU, one instance | Plenty for seven players; the work is waiting on wikis, not crunching numbers. One instance is also what the in-memory design needs. |
 | 750 instance hours a month | One service can run around the clock; a service that sleeps spends no hours. |
-| Sleeps after 15 minutes without inbound traffic, wakes in about a minute | The first visit after a quiet spell waits about a minute, and Render shows that visitor a loading page. |
+| Sleeps after 15 minutes without inbound traffic, wakes in about half a minute (32 s measured) | Sleeping is the idle state: with nobody in a room the service goes quiet, Render spins it down, and the next request wakes it while that visitor sees a loading page. |
 | A sleep, restart or deploy wipes memory | A game nobody is watching does not survive it. But the client sends a small keepalive every 4 minutes while a room is open, so an *active* session never goes quiet long enough to sleep. Rooms still end on their own after 4 idle hours. |
 | 5 GB of outbound bandwidth a month | Portraits are proxied through the server; a whole war is a few megabytes. Past the cap, a workspace with no payment method has its free services suspended until the month rolls over. |
+
+**When it sleeps — and why that is normal.** A deploy counts as traffic, and so does
+every visitor; fifteen quiet minutes after the last one the service sleeps, and
+nothing about that is a fault. The client's keepalive protects a *game in progress*,
+not the site: it fires every four minutes while a room is on screen, and when nothing
+is open there is nothing to send. So a site left alone is asleep when the next visitor
+arrives, and their first request holds the loading page for about half a minute before
+the game appears — unless a pinger below is keeping it warm.
 
 **Keeping it warm (optional).** A free uptime pinger — [cron-job.org](https://cron-job.org)
 or [UptimeRobot](https://uptimerobot.com), for example — hitting
@@ -118,6 +126,10 @@ always-warm service uses about 744 of the 750 free instance hours in a month, le
 almost no margin, and the service is suspended until the next month if the allowance
 runs out. Games keep the service warm on their own — do this only if a cold start
 bothers you more than the thin margin.
+
+**Watching the heartbeat (optional).** Set the service's `LOG_LEVEL` to `debug` and
+the server logs a `keepalive` line every time a player's client checks in from inside
+a room; set it back to `info` afterwards.
 
 **Verify it like a player.** Point the socket smoke test at the deployed URL:
 
@@ -129,7 +141,8 @@ curl -sS https://<service-name>.onrender.com/healthz     # {"ok":true,...}
 Then open the site on a phone **on mobile data** (not wifi), create a room, and join
 from a device on a different network. Draft a class, lock in, and let a war run. Reload
 mid-game to confirm the rejoin works. The first request after a quiet spell takes
-about a minute — that is the free tier waking up, not a broken deploy.
+about half a minute (we measured 32 seconds after 18 idle minutes) — that is the free
+tier waking up, not a broken deploy.
 
 ### Any Docker host or VM you already own
 

@@ -469,8 +469,9 @@ What is left after the 2026 free-tier shake-up (verified 30 September 2026) is
   behind Caddy, which is why the VM path below needs no second setting.
 
 The one real cost is that a free instance **sleeps after 15 minutes without inbound
-traffic**, waking in about a minute, and a sleep wipes the in-memory rooms. Render
-counts "HTTP requests and WebSocket messages from existing connections" as traffic,
+traffic**, waking in about half a minute (32 s measured), and a sleep wipes the
+in-memory rooms. Render counts "HTTP requests and WebSocket messages from existing
+connections" as traffic,
 so the fix is a **keepalive**: `App.tsx` emits `C2S.keepalive` every four minutes
 while a room is on screen, and the server answers with a `debug` log and nothing else.
 The timer is deliberately one stable interval that reads the room at fire time —
@@ -478,7 +479,11 @@ re-subscribing on the room object would reset it on every patch, and patches arr
 far too often for it to ever fire. The payload message is the one part of the traffic
 the app actually controls: because the socket is app-wide, any open tab already
 produces engine-level heartbeats, and Render's edge may or may not count those. With
-no tab open at all the service still sleeps, and stops spending hours. The README also
+no tab open at all the service still sleeps, and stops spending hours. That is exactly
+what the first report from the published site looked like: nothing was open, so nothing
+sent a heartbeat, the service slept about fifteen minutes after the deploy's own checks
+stopped, and the next visit woke it in about 32 seconds. A room left open through a quiet
+window kept it awake instead, which the results table records. The README also
 documents an optional free uptime pinger for anyone who would rather never see a cold
 start, with its cost stated: an always-warm service spends about 744 of the 750
 monthly instance hours.
@@ -741,6 +746,8 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | C2S keepalive | instrumenting `WebSocket.prototype.send` on the production build in a browser showed `42["app:keepalive",{}]` leave the page **once per 4-minute interval while a room was on screen** (measured at 228s after the patch, with the interval mounted ~12s before it), and the server's `debug` log recorded the matching `{"playerId":"_uxLwMqeD2vC","msg":"keepalive"}` line; nothing in the room changed and the capture also shows engine-level `3` (pong) frames, the transport heartbeat every open tab already produces |
 | Published site (Render free) | `https://grail-wars.onrender.com` — `/healthz` returns `{"ok":true,...}` (200 in 0.37s for the first request of the session, 0.13s for the next, so the service was already warm), `/` serves the built client with the shipped production CSP (`script-src 'self'`, `connect-src 'self' ws: wss:`) and `/room/ABCD` falls back to `index.html` with 200 |
 | Live multiplayer over WSS | `BASE_URL=https://grail-wars.onrender.com npm run smoke -- --players 5 --days 5` from this machine: 5 Masters created a room over WSS, filled all 10 class slots (the duplicate pick was rejected), locked in, summoned, and the Render instance researched live wikis itself — John Wick 9-C, Aang 5-C, Altair Ibn-La'Ahad 9-A, Jeanne d'Arc 1-C, Eric Bloodaxe Low 6-B, all high confidence — then ran the war to one winner over 37 events with no unresolved tokens |
+| Live keepalive over a quiet window | a room (`MCHP`) was created on the deployed site and left open in the lobby — nothing else touched the service — for 18 minutes: the deployed bundle carries `app:keepalive`, `/healthz` answered in 0.21 s and still reported `rooms: 1` (the same process still held the room — a restart would have wiped it), the lobby was still on screen with the socket connected, and the tab never reconnected, so an open room's heartbeat kept the free instance from sleeping end-to-end |
+| Cold start (free plan) | after 18.5 minutes of deliberate silence the first `/healthz` request returned `200` in **32.26 s** (TCP connect in 0.06 s, transfer at 32.26 s — the edge answers at once, the instance is what is slow) and the next in 0.11 s, with the body reporting `rooms: 0` because the sleep had wiped the test room above. That is the wake-up the user saw as "30 to 40 seconds"; the sleep before it follows the documented 15-minute idle rule, and a deploy's own traffic counts, which is why the service slept roughly twenty minutes after a push |
 | Production single-process path | `NODE_ENV=production npm start` logs `env: "production"` and `Grail Wars listening`; `/healthz` returns `{"ok":true,...}`; `/` serves `client/dist` with the shipped CSP (`img-src 'self' data: blob:`, `connect-src 'self' ws: wss:`); `/room/ABCD` falls back to `index.html` with 200 while an unknown `/api` path 404s; and a request carrying `Origin: http://evil.example` gets **no** `access-control-*` header — the same-origin posture both deployment paths depend on |
 | `npm run smoke -- --players 5 --days 5` against the production server | passes — 5 Servants drafted, 4 deaths, one winner, no unresolved tokens |
 | Production dependency set | `npm ls tsx --omit=dev` resolves `tsx@4.23.15` under `server`, so a production-only install can run `npm start`; `npm ci --dry-run` exits 0, so `package.json` and the lockfile are still in sync — which matters, because the Docker build and the Render build both run `npm ci` |
@@ -763,12 +770,6 @@ label pushes them over, they wrap to a second line rather than overflowing.
   need their first run on a machine that has Docker. They are now the optional
   VM path rather than the published one, and Docker is not installed in the
   development environment.
-- The keepalive reached the live service: the rebuild that followed `2a4c486`
-  serves `assets/index-Bt-l-hcV.js`, and that bundle contains `app:keepalive`
-  (checked straight after the deploy, with `/healthz` back to `{"ok":true,...}`
-  and zero rooms).
-- A real cold start (15 idle minutes, then the first request) has not been
-  timed; every request in the checks above found the service already warm.
 - Live research with AI narration (`narration: 'ai'`) has not been exercised
   end-to-end, since no LLM key is configured — and the style is no longer
   reachable from the lobby.
