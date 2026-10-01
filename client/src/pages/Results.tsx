@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { CLASSES, CLASS_META, type Servant } from '@hgd/shared';
 import { ClassBadge, Portrait, StickyHeader, SummoningCircle } from '../components/ui';
+import { BracketView } from '../components/BracketView';
 import { ServantCard, computeStatuses } from '../components/ServantCard';
 import { useStore } from '../store';
 
@@ -51,6 +52,10 @@ export default function Results() {
   const winner = servants.find((s) => s.id === room.winnerId);
   const isWar = room.settings.mode === 'WAR';
   const mostDangerous = [...standings].sort((a, b) => b.kills - a.kills)[0];
+  const arena = room.arena;
+  const arenaMatches = arena?.bracket ?? [];
+  const arenaFights = arenaMatches.filter((match) => !match.bye).length;
+  const arenaVotes = arenaMatches.reduce((total, match) => total + match.voters.length, 0);
 
   const downloadRecap = async () => {
     try {
@@ -74,7 +79,9 @@ export default function Results() {
       <div ref={recapRef} className="relative mx-auto max-w-3xl px-4 py-8">
         {winner ? (
           <div className="text-center">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-muted">Victor of the Grail</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-muted">
+              {isWar ? 'Victor of the Grail' : 'Champion of the Arena'}
+            </p>
             <img
               src={winner.character.imageUrl}
               alt={`Portrait of ${winner.character.name}`}
@@ -92,9 +99,12 @@ export default function Results() {
             {room.wish && <p className="mx-auto mt-4 max-w-md text-[14px] italic text-ink">{room.wish}</p>}
           </div>
         ) : (
-          <h1 className="hgd-heading text-center text-2xl">The war is over</h1>
+          <h1 className="hgd-heading text-center text-2xl">
+            {isWar ? 'The war is over' : 'The arena has no champion yet'}
+          </h1>
         )}
 
+        {isWar ? (
         <section className="mt-8">
           <h2 className="hgd-heading mb-2 text-[13px] uppercase tracking-wide">Final standings</h2>
           <ul className="space-y-1.5">
@@ -132,24 +142,43 @@ export default function Results() {
             ))}
           </ul>
         </section>
+        ) : (
+          <section className="mt-8">
+            <h2 className="hgd-heading mb-2 text-[13px] uppercase tracking-wide">The bracket</h2>
+            <BracketView bracket={arenaMatches} servants={servants} totalRounds={arena?.totalRounds} />
+          </section>
+        )}
 
         <section className="mt-6 grid gap-3 sm:grid-cols-3">
           <div className="hgd-card p-3 text-center">
-            <p className="text-[10.5px] uppercase tracking-wide text-muted">Most dangerous</p>
-            <p className="mt-1 truncate text-[13px] text-gold">{mostDangerous?.servant.character.name ?? '—'}</p>
-            <p className="text-[11px] text-muted">{mostDangerous?.kills ?? 0} kills</p>
+            <p className="text-[10.5px] uppercase tracking-wide text-muted">
+              {isWar ? 'Most dangerous' : 'Fights'}
+            </p>
+            {isWar ? (
+              <>
+                <p className="mt-1 truncate text-[13px] text-gold">{mostDangerous?.servant.character.name ?? '—'}</p>
+                <p className="text-[11px] text-muted">{mostDangerous?.kills ?? 0} kills</p>
+              </>
+            ) : (
+              <>
+                <p className="mt-1 text-[13px] text-gold">{arenaFights}</p>
+                <p className="text-[11px] text-muted">decided by vote</p>
+              </>
+            )}
           </div>
           <div className="hgd-card p-3 text-center">
-            <p className="text-[10.5px] uppercase tracking-wide text-muted">Days</p>
-            <p className="mt-1 text-[13px] text-gold">{timeline?.days.length ?? 0}</p>
+            <p className="text-[10.5px] uppercase tracking-wide text-muted">{isWar ? 'Days' : 'Rounds'}</p>
+            <p className="mt-1 text-[13px] text-gold">
+              {isWar ? (timeline?.days.length ?? 0) : (arena?.totalRounds ?? 0)}
+            </p>
             <p className="text-[11px] text-muted">{isWar ? 'war length' : 'arena rounds'}</p>
           </div>
           <div className="hgd-card p-3 text-center">
-            <p className="text-[10.5px] uppercase tracking-wide text-muted">War seed</p>
+            <p className="text-[10.5px] uppercase tracking-wide text-muted">{isWar ? 'War seed' : 'Votes cast'}</p>
             <p className="mt-1 text-[13px] text-gold">
-              {timeline ? timeline.seed.toString(16).toUpperCase() : '—'}
+              {isWar ? (timeline ? timeline.seed.toString(16).toUpperCase() : '—') : arenaVotes}
             </p>
-            <p className="text-[11px] text-muted">reproducible</p>
+            <p className="text-[11px] text-muted">{isWar ? 'reproducible' : 'across the bracket'}</p>
           </div>
         </section>
 

@@ -18,6 +18,13 @@ export type Phase =
 
 export type Mode = 'WAR' | 'DEBATE';
 
+/**
+ * How a team-up round would be paired, once the team-up mechanic exists.
+ * `weaker` pits two underdogs against a favourite, `canonical` pairs allies or
+ * characters from the same source, `random` pairs anyone.
+ */
+export type TeamUpMode = 'weaker' | 'canonical' | 'random';
+
 export type Provider =
   | 'anilist'
   | 'vsb'
@@ -104,13 +111,24 @@ export interface RoomSettings {
     classAdvantage: boolean;
     commandSpellRescues: boolean;
     goreLevel: 'standard' | 'mild';
+    /**
+     * The war's hard power cap, as a tier code. Any Servant researched above it
+     * is scaled down to it; `4-B` (Solar System) is the default.
+     */
+    maxPowerLevel: string;
   };
   debate: {
     argueSec: number;
     voteSec: number;
     tieBreak: 'host' | 'random' | 'oracle';
-    ownersVote: boolean;
     showOracleCards: boolean;
+    /**
+     * Whether a round can become a 2v1 team-up instead of a straight 1v1.
+     * Inert for now — the lobby shows the control greyed as "coming soon".
+     */
+    teamUps: boolean;
+    /** how the teams are chosen, once team-ups exist; ignored while teamUps is off */
+    teamMode: TeamUpMode;
   };
 }
 
@@ -305,6 +323,8 @@ export interface ArenaState {
   phase: ArenaPhase;
   currentMatchId?: string;
   round: number;
+  /** how many rounds this bracket will take — the rounds after the current one do not exist yet */
+  totalRounds: number;
   endsAt?: number;
   serverNow: number;
   bracket: ArenaMatch[];

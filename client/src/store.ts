@@ -257,11 +257,21 @@ export function initSocket(): void {
 
   socket.on('room:state', (state: RoomState) => {
     const skew = state.serverNow ? state.serverNow - Date.now() : 0;
+    // The server owns the arena: when the snapshot has no live bracket the
+    // previous game's match, votes and champion are over and must be dropped
+    // (a rematch or a trip back to the lobby starts from a blank screen).
+    const arenaLive = Boolean(state.arena && state.arena.phase !== 'IDLE');
     store.setState((s) => ({
       room: state,
       playerId: s.playerId,
       serverSkewMs: skew,
       research: state.research ?? s.research,
+      // Chat is server-owned too: rematch / back-to-lobby clear it, and a
+      // reload mid-arena restores it.
+      chat: state.chat ?? s.chat,
+      ...(arenaLive
+        ? {}
+        : { arenaMatch: null, arenaResult: null, arenaVotes: null, arenaPhaseInfo: null, championId: null }),
       // A new draft clears any stale per-slot error.
       slotError: state.phase === 'DRAFT' ? s.slotError : null,
     }));

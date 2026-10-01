@@ -88,6 +88,9 @@ class Client {
   errors: string[] = [];
   final: { winnerId: string; wish: string } | null = null;
   arenaPhase: ArenaPhase | null = null;
+  /** ballots the server says are in for the current match */
+  votedCount = 0;
+  eligibleCount = 0;
   championId?: string;
 
   constructor(readonly nickname: string) {
@@ -106,6 +109,15 @@ class Client {
     });
     this.socket.on(S2C.arenaPhase, (payload: { phase: ArenaPhase }) => {
       this.arenaPhase = payload.phase;
+    });
+    // The ballot count resets with every match, so a stale high-water mark can
+    // never make the run look like everyone voted when they did not.
+    this.socket.on(S2C.arenaMatchStart, () => {
+      this.votedCount = 0;
+    });
+    this.socket.on(S2C.arenaVotes, (payload: { votedCount: number; eligibleCount: number }) => {
+      this.votedCount = payload.votedCount;
+      this.eligibleCount = payload.eligibleCount;
     });
     this.socket.on(S2C.arenaChampion, (payload: { championId: string }) => {
       this.championId = payload.championId;
@@ -435,7 +447,68 @@ async function runDebate(playerCount: number): Promise<void> {
     assert(client.championId === championId, 'every client must agree on the champion');
   }
   assert(host.state?.phase === 'RESULTS', `expected RESULTS after the bracket, got ${host.state?.phase}`);
+
+  // The bracket must always end: every match decided, no empty match, one real
+  // match per eliminated Servant, and never more than one bye in a round.
+  const bracket = host.state!.arena!.bracket;
+  assert(bracket.every((m) => Boolean(m.winner)), 'every bracket match must be decided');
+  assert(bracket.every((m) => Boolean(m.a)), 'no bracket match may be left without fighters');
+  assert(
+    bracket.filter((m) => m.a && m.b && !m.bye).length === servants.length - 1,
+    'a single-elimination bracket plays one match per eliminated Servant',
+  );
+  const rounds = [...new Set(bracket.map((m) => m.round))];
+  for (const round of rounds) {
+    assert(
+      bracket.filter((m) => m.round === round && m.bye).length <= 1,
+      `round ${round} must never hand out more than one bye`,
+    );
+  }
+  const realMatches = bracket.filter((m) => m.a && m.b && !m.bye);
+  assert(
+    realMatches.every((m) => m.voters.length === playerCount && m.votesA + m.votesB === playerCount),
+    'every Master must hold a ballot in every match, and every ballot must count',
+  );
+  assert(
+    realMatches.some((m) => m.votesA > 0 && m.votesB > 0) || playerCount < 3,
+    'an odd field must scatter votes across both fighters',
+  );
+  const expectedRounds = Math.ceil(Math.log2(servants.length));
+  assert(host.state!.arena!.totalRounds === expectedRounds, `expected ${expectedRounds} rounds`);
+  assert(host.state!.arena!.championId === championId, 'the snapshot must name the champion');
+  assert(host.state!.winnerId === championId, 'the Results screen crowns whoever winnerId names');
+  log(
+    `✓ debate bracket resolved in ${rounds.length} round(s) — ${bracket.length} matches, ${bracket.filter((m) => m.bye).length} bye(s)`,
+  );
   log(`✓ debate complete — champion: ${champion.character.name} (${champion.cls})`);
+
+  for (const client of clients) client.close();
+}
+
+/**
+ * The Arena's floor: two Masters cannot produce a third ballot, so the server
+ * refuses the draft outright instead of letting a room draft into a dead end.
+ */
+async function runDebateMinimum(): Promise<void> {
+  const clients = Array.from({ length: 2 }, (_, i) => new Client(`Pair${i + 1}`));
+  await Promise.all(clients.map((c) => c.connect()));
+  const host = clients[0]!;
+  const other = clients[1]!;
+  host.emit(C2S.roomCreate, { nickname: host.nickname });
+  await until('a two-Master room', () => Boolean(host.state), 15_000);
+  other.emit(C2S.roomJoin, { code: host.state!.code, nickname: other.nickname });
+  await until('both Masters', () => clients.every((c) => c.playerId), 15_000);
+  host.emit(C2S.settingsUpdate, { patch: { mode: 'DEBATE' } });
+  await until('DEBATE settings', () => host.state?.settings.mode === 'DEBATE', 10_000);
+
+  host.emit(C2S.draftStart);
+  await until(
+    'the two-Master refusal',
+    () => host.errors.some((e) => e.includes('at least 3 Masters')),
+    10_000,
+  );
+  assert(host.state?.phase === 'LOBBY', 'a two-Master Arena must stay in the lobby');
+  log('✓ a two-Master Debate Arena is refused — it needs 3+');
 
   for (const client of clients) client.close();
 }

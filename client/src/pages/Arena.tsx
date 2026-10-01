@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { roundName } from '@hgd/shared';
 import { StickyHeader, TopBanner } from '../components/ui';
 import { BracketView } from '../components/BracketView';
 import { ChatPanel } from '../components/ChatPanel';
@@ -46,7 +47,7 @@ export default function Arena() {
   const arenaSkip = useStore((s) => s.arenaSkip);
   const arenaTiebreak = useStore((s) => s.arenaTiebreak);
 
-  const [myVote, setMyVote] = useState<'a' | 'b' | undefined>(undefined);
+  const [showChat, setShowChat] = useState(false);
 
   const arena = room.arena;
   const servants = room.servants ?? [];
@@ -96,7 +97,8 @@ export default function Arena() {
             bracket={arena?.bracket ?? []}
             servants={servants}
             currentMatchId={arena?.currentMatchId}
-            canPick={isHost && Boolean(arenaVotes?.tie)}
+            totalRounds={totalRounds}
+            canPick={isHost && pendingTie}
             onPick={arenaTiebreak}
           />
         </section>
@@ -121,11 +123,9 @@ export default function Arena() {
           <section className="hgd-card p-3">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="hgd-heading text-[13px] uppercase tracking-wide">
-                {arenaPhaseInfo?.round
-                  ? `Round ${arenaPhaseInfo.round}`
-                  : current
-                    ? `Round ${current.round}`
-                    : 'Waiting for the bracket'}
+                {currentRound
+                  ? `Round ${currentRound}${totalRounds ? ` of ${totalRounds} · ${roundName(currentRound, totalRounds)}` : ''}`
+                  : 'Waiting for the bracket'}
               </h2>
               {isHost && (
                 <button type="button" className="hgd-btn hgd-btn-ghost !min-h-[32px] !px-3 !text-[11px]" onClick={arenaSkip}>
@@ -133,6 +133,13 @@ export default function Arena() {
                 </button>
               )}
             </div>
+
+            {roundByes.length > 0 && (
+              <p className="mb-3 rounded border border-border bg-surface-2 px-2 py-1.5 text-[11.5px] text-muted">
+                <span className="text-gold">{roundByes.map((m) => nameOf(m.bye)).join(', ')}</span>{' '}
+                {roundByes.length === 1 ? 'draws' : 'draw'} a bye into the next round.
+              </p>
+            )}
 
             {current ? (
               <VotePanel

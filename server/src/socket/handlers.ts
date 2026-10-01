@@ -63,8 +63,9 @@ const settingsSchema = z.object({
       argueSec: z.number().int().min(10).max(600).optional(),
       voteSec: z.number().int().min(5).max(300).optional(),
       tieBreak: z.enum(['host', 'random', 'oracle']).optional(),
-      ownersVote: z.boolean().optional(),
       showOracleCards: z.boolean().optional(),
+      teamUps: z.boolean().optional(),
+      teamMode: z.enum(['weaker', 'canonical', 'random']).optional(),
     })
     .optional(),
 });

@@ -235,15 +235,32 @@ export const DEFAULT_SETTINGS = {
     classAdvantage: true,
     commandSpellRescues: true,
     goreLevel: 'standard',
+    /** hard cap on researched power; anything above it is scaled down to it */
+    maxPowerLevel: DEFAULT_POWER_CAP,
   },
   debate: {
     argueSec: 90,
     voteSec: 20,
     tieBreak: 'host',
-    ownersVote: false,
     showOracleCards: true,
+    /** parked until the team-up mechanic ships — the lobby control is greyed */
+    teamUps: false,
+    teamMode: 'weaker',
   },
 } as const;
+
+/**
+ * The name of a bracket round given how many rounds the whole bracket takes:
+ * the last one is the Final, the two before it are the Semifinals and the
+ * Quarterfinals, and everything left over is numbered.
+ */
+export function roundName(round: number, totalRounds: number): string {
+  const fromEnd = totalRounds - round;
+  if (fromEnd <= 0) return 'Final';
+  if (fromEnd === 1) return 'Semifinals';
+  if (fromEnd === 2) return 'Quarterfinals';
+  return `Round ${round}`;
+}
 
 export const WISH_TEMPLATES: Record<'good' | 'neutral' | 'evil', string[]> = {
   good: [

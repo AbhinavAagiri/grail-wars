@@ -201,6 +201,10 @@ const MILESTONES: Milestone[] = [
         body: '25 characters dealt per class from committed anime and history rosters, generated and filtered from public wiki data.',
       },
       {
+        title: 'The Debate Arena',
+        body: 'A second mode: every Master drafts for every class, the Grail hands them one character, and random 1v1 matchups are argued and voted down to a champion. An odd field sends one random character through on a bye.',
+      },
+      {
         title: 'Still rough',
         body: 'Selecting a character can pause while the Oracle checks it, and refreshing mid-draft can drop a Master to spectator. Both are on the list for v1.0.',
       },
@@ -222,10 +226,6 @@ const MILESTONES: Milestone[] = [
       {
         title: 'Rejoining a war mid-draft',
         body: 'Refreshing during the draft should put a Master back in their seat instead of the spectator list.',
-      },
-      {
-        title: 'The Debate Arena',
-        body: 'Get the bracket to produce a champion, then take the mode out from behind "Coming soon".',
       },
       {
         title: 'A real deployment',

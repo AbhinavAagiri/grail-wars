@@ -279,21 +279,42 @@ export default function Lobby() {
             {room.spectators > 0 && (
               <p className="mt-2 text-[11.5px] text-muted">{room.spectators} spectating</p>
             )}
-            {masters.length < LIMITS.MIN_PLAYERS && (
+            {masters.length < minMasters && (
               <p className="mt-3 text-[12px] text-gold">
-                Waiting for at least {LIMITS.MIN_PLAYERS} Masters — share the code above.
+                {settings.mode === 'DEBATE'
+                  ? `Waiting for at least ${minMasters} Masters — the Arena needs a third ballot to break a tie between the two fighters.`
+                  : `Waiting for at least ${minMasters} Masters — share the code above.`}
               </p>
             )}
           </section>
 
           {/* Settings */}
           <section className="hgd-card p-4">
-            <h2 className="hgd-heading mb-2 text-lg">Rules of the War</h2>
+            <h2 className="hgd-heading mb-2 text-lg">
+              {settings.mode === 'WAR' ? 'Rules of the War' : 'Rules of the Arena'}
+            </h2>
             {!isHost && <p className="mb-2 text-[11.5px] text-muted">Only the host can change these.</p>}
 
             <div className="grid gap-2 sm:grid-cols-2">
-              {modeCard('WAR', '⚔️', 'Web-Driven War', 'The AI researches every Servant, power-scales them, and plays out a five-day Holy Grail War.', { badge: 'Recommended' })}
-              {modeCard('DEBATE', '🗣️', 'Debate Arena', 'Random matchups. You argue. You vote. Winners advance.', { comingSoon: true })}
+              {modeCard(
+                'WAR',
+                '⚔️',
+                'Web-Driven War',
+                'The AI researches every Servant, power-scales them, and plays out a five-day Holy Grail War.',
+                {
+                  badge: 'Recommended',
+                  note: 'Heads up: this mode is powered by AI, and it scales every Servant against the VS Battles Wiki. Characters with higher tiers also scale higher here, so the stronger ones will usually win — set the Max Power level below if you want a closer war.',
+                },
+              )}
+              {modeCard(
+                'DEBATE',
+                '🗣️',
+                'Debate Arena',
+                'One random 1v1 at a time. Every Master argues their Servant, everyone votes, winners advance.',
+                {
+                  note: `Three to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters, and every Master votes in every match — even the one they are fighting. Each Master drafts a character for every class, then the Grail hands them one to debate for; an uneven field sends one random character through on a bye.`,
+                },
+              )}
             </div>
 
             <div className="mt-3 divide-y divide-[var(--border)]">
@@ -426,8 +447,62 @@ export default function Lobby() {
                       onChange={(v) => patchDebate({ showOracleCards: v })}
                     />
                   </SettingRow>
+
+                  {/* Team-ups are designed but not built yet: the row is shown
+                      greyed so hosts can see what is coming, and neither control
+                      is wired to the server. */}
+                  <div className="mt-3 rounded-lg border border-border bg-surface-2 p-3 opacity-70">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="text-[13px] text-ink">Team-ups</span>
+                          <span className="rounded border border-[var(--gold)] px-1.5 py-[2px] text-[9px] font-black uppercase tracking-wider text-gold">
+                            Coming soon
+                          </span>
+                        </div>
+                        <div className="text-[11px] text-muted">
+                          Off, every round is a straight 1v1. On, some rounds become a 2v1 team-up.
+                        </div>
+                      </div>
+                      <div className="shrink-0">
+                        <Toggle label="Team-ups" checked={false} disabled onChange={() => {}} />
+                      </div>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-[10.5px] uppercase tracking-wide text-muted">How teams are chosen</p>
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
+                        <Select
+                          value={settings.debate.teamMode}
+                          disabled
+                          onChange={() => {}}
+                          options={[
+                            { value: 'weaker', label: 'Weaker characters team up' },
+                            { value: 'canonical', label: 'Canonical allies' },
+                            { value: 'random', label: 'Random pairings' },
+                          ]}
+                        />
+                        <span className="text-[11px] text-muted">
+                          Two underdogs against a favourite · allies from the same story · anyone at all.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </>
               )}
+
+              {/* The cap applies to both modes: it is what the Oracle profiles
+                  are clamped to before the arena shows them. */}
+              <SettingRow
+                label="Max Power level"
+                hint="A hard cap: any Servant researched above this level is scaled down to it. Default 4-B Solar System."
+              >
+                <Select
+                  value={settings.war.maxPowerLevel}
+                  disabled={!isHost}
+                  onChange={(v) => patchWar({ maxPowerLevel: v })}
+                  options={POWER_CAPS.map((cap) => ({ value: cap.value as string, label: cap.label }))}
+                />
+              </SettingRow>
 
               <SettingRow label="Draft timer">
                 <Select

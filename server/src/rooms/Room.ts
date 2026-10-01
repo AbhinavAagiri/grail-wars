@@ -41,14 +41,13 @@ import { parseDurability, parseSpeed, parseTier } from '../research/tiers';
 import fallbackCharacters from '../data/fallback-characters.json';
 import seedrandom from 'seedrandom';
 import {
-  buildBracket,
+  buildRound,
   countVotes,
-  isChampion,
+  lastRound,
   matchById,
   nextPlayableMatch,
-  roundName,
-  setMatchWinner,
-  totalRoundsFor,
+  roundAdvancers,
+  totalRoundsForCount,
 } from '../arena/bracket';
 import { newSeed, runDraw, type PickTable } from './draw';
 import { POOL_SIZE, buildDraftPools } from './draftPool';
@@ -106,14 +105,29 @@ export class Room {
   draftPool = new Map<ServantClass, Character[]>();
 
   research = new Map<string, ResearchRow>();
+  /**
+   * The profiles as research found them, before the room's Max Power level
+   * clamped them — kept so the cap can be re-applied (and raised) without
+   * re-researching anyone.
+   */
+  private researchProfiles = new Map<string, Profile>();
   timeline?: WarTimeline;
   cursor = { dayIndex: 0, eventIndex: 0, playing: false, speedMs: 7000 };
   winnerId?: string;
   wish?: string;
 
-  arena: { bracket: ArenaMatch[]; phase: ArenaPhase; currentMatchId?: string; endsAt?: number; championId?: string } = {
+  arena: {
+    bracket: ArenaMatch[];
+    phase: ArenaPhase;
+    currentMatchId?: string;
+    endsAt?: number;
+    championId?: string;
+    /** how many rounds the whole bracket takes, for the round labels */
+    totalRounds: number;
+  } = {
     bracket: [],
     phase: 'IDLE',
+    totalRounds: 0,
   };
   chat: ChatMessage[] = [];
 
@@ -984,63 +998,95 @@ export class Room {
 
   startArena(actorId: string): { ok: boolean; error?: string } {
     if (actorId !== this.hostId) return { ok: false, error: 'Only the host can start the arena.' };
+    if (this.settings.mode === 'DEBATE' && this.humanCount() < LIMITS.DEBATE_MIN_PLAYERS) {
+      return {
+        ok: false,
+        error: `The Debate Arena needs at least ${LIMITS.DEBATE_MIN_PLAYERS} Masters — with two, every match is a duel between the only two voters.`,
+      };
+    }
     if (this.servants.length < 2) return { ok: false, error: 'Not enough Servants.' };
-    const seed = newSeed();
-    this.arena.bracket = buildBracket(this.servants.map((s) => s.id), seed);
+    const entrantIds = this.servants.map((s) => s.id);
+    this.arena.bracket = buildRound(entrantIds, 1, this.arenaSeed(1));
+    this.arena.totalRounds = totalRoundsForCount(entrantIds.length);
     this.arena.phase = 'INTRO';
+    this.arena.currentMatchId = undefined;
     this.arena.championId = undefined;
     this.phase = 'ARENA';
     this.touch();
+    // The client's router follows the room snapshot, so the phase change (and
+    // the fresh bracket) has to reach it before the first match is announced.
+    this.broadcast();
     this.beginNextArenaMatch();
     return { ok: true };
   }
 
-  private arenaTotalRounds(): number {
-    return totalRoundsFor(this.arena.bracket);
+  /**
+   * Each round is shuffled from the room code, the rematch round and the
+   * bracket round, so a given room replays the same bracket twice.
+   */
+  private arenaSeed(round: number): string {
+    return `${this.code}:${this.round}:arena:${round}`;
   }
 
   private beginNextArenaMatch(): void {
-    const total = this.arenaTotalRounds();
-    const champion = isChampion(this.arena.bracket, total);
-    if (champion && this.arena.bracket.every((m) => m.winner || m.bye)) {
-      this.arena.phase = 'CHAMPION';
-      this.arena.championId = champion;
-      this.phase = 'RESULTS';
-      this.touch();
-      this.emitAll('arena:champion', { championId: champion });
-      this.broadcast();
-      return;
+    let match = nextPlayableMatch(this.arena.bracket);
+    if (!match && this.advanceArenaRound()) {
+      match = nextPlayableMatch(this.arena.bracket);
     }
-    const match = nextPlayableMatch(this.arena.bracket, total);
-    if (!match) {
-      // Everything decided: resolve the champion from the final.
-      const final = this.arena.bracket.find((m) => m.round === total);
-      if (final?.winner) {
-        this.arena.phase = 'CHAMPION';
-        this.arena.championId = final.winner;
-        this.phase = 'RESULTS';
-        this.touch();
-        this.emitAll('arena:champion', { championId: final.winner });
-        this.broadcast();
-      }
-      return;
-    }
+    if (!match) return;
     this.arena.currentMatchId = match.id;
     this.arena.phase = 'INTRO';
     match.voters = [];
     match.votesA = 0;
     match.votesB = 0;
     match.tieBroken = undefined;
+    match.voteWindow = 0;
     this.touch();
+    // A new round only exists in the snapshot, so the bracket view needs it.
+    this.broadcast();
     this.emitAll('arena:matchStart', {
       match,
       round: match.round,
-      roundName: roundName(match.round, total),
+      roundName: roundName(match.round, this.arena.totalRounds),
     });
     this.arenaSetPhase('INTRO', 4000);
   }
 
-  private arenaSetPhase(phase: ArenaPhase, durationMs: number): void {
+  /**
+   * Close the round that just finished and open the next one. The survivors are
+   * shuffled again and, when there is an odd number of them, one of them takes
+   * the bye — so the field halves every round, no match is ever left with an
+   * empty side, and the bracket always ends. Returns true when a round was added.
+   */
+  private advanceArenaRound(): boolean {
+    const round = lastRound(this.arena.bracket);
+    if (round === 0) return false;
+    const advancers = roundAdvancers(this.arena.bracket, round);
+    if (advancers.length <= 1) {
+      if (advancers.length === 1) this.crownArenaChampion(advancers[0]!);
+      return false;
+    }
+    this.arena.bracket.push(...buildRound(advancers, round + 1, this.arenaSeed(round + 1)));
+    this.touch();
+    return true;
+  }
+
+  private crownArenaChampion(championId: string): void {
+    this.arena.phase = 'CHAMPION';
+    this.arena.championId = championId;
+    // The Results screen crowns whoever `winnerId` names, exactly as a war does.
+    this.winnerId = championId;
+    this.phase = 'RESULTS';
+    this.touch();
+    this.emitAll('arena:champion', { championId });
+    this.broadcast();
+  }
+
+  private arenaSetPhase(
+    phase: ArenaPhase,
+    durationMs: number,
+    extra: { tie?: boolean; extra?: boolean } = {},
+  ): void {
     if (this.arenaTimer) {
       clearTimeout(this.arenaTimer);
       this.arenaTimer = null;
@@ -1175,8 +1221,8 @@ export class Room {
       match.winner = counts.a > counts.b ? match.a : match.b;
     }
 
-    setMatchWinner(this.arena.bracket, match.id, match.winner, this.arenaTotalRounds());
     this.touch();
+    this.broadcast();
     this.emitAll('arena:result', { match, counts });
     this.arenaSetPhase('REVEAL', 6000);
   }
@@ -1235,7 +1281,9 @@ export class Room {
     this.winnerId = undefined;
     this.wish = undefined;
     this.researchStarted = false;
-    this.arena = { bracket: [], phase: 'IDLE' };
+    if (this.arenaTimer) clearTimeout(this.arenaTimer);
+    this.arenaTimer = null;
+    this.arena = { bracket: [], phase: 'IDLE', totalRounds: 0 };
     this.chat = [];
     for (const p of this.players.values()) p.locked = false;
     this.touch();
@@ -1253,7 +1301,7 @@ export class Room {
     this.timeline = undefined;
     this.winnerId = undefined;
     this.wish = undefined;
-    this.arena = { bracket: [], phase: 'IDLE' };
+    this.arena = { bracket: [], phase: 'IDLE', totalRounds: 0 };
     this.chat = [];
     this.researchStarted = false;
     this.draftPool.clear();
@@ -1357,13 +1405,25 @@ export class Room {
       }
     }
     if (this.phase === 'ARENA' || this.phase === 'RESULTS') {
+      // Ballots stay secret until the match is decided: while it is open a
+      // snapshot carries only the viewer's own vote (and no tally at all).
+      // Keying this on the match — not the phase — means the moment a winner
+      // or a tie is recorded, the very next broadcast shows the whole room
+      // what the votes were.
+      const secret = (m: ArenaMatch) =>
+        m.id === this.arena.currentMatchId && !m.winner && !m.tieBroken;
       state.arena = {
         phase: this.arena.phase,
         currentMatchId: this.arena.currentMatchId,
         round: this.arena.bracket.find((m) => m.id === this.arena.currentMatchId)?.round ?? 1,
+        totalRounds: this.arena.totalRounds,
         endsAt: this.arena.endsAt,
         serverNow: Date.now(),
-        bracket: this.arena.bracket,
+        bracket: this.arena.bracket.map((m) =>
+          secret(m)
+            ? { ...m, votesA: 0, votesB: 0, voters: m.voters.filter((v) => v.voterId === viewerId) }
+            : m,
+        ),
         championId: this.arena.championId,
       };
     }

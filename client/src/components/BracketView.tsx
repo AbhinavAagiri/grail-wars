@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import type { ArenaMatch, Servant } from '@hgd/shared';
-import { CLASS_META } from '@hgd/shared';
+import { CLASS_META, roundName } from '@hgd/shared';
 import { portraitFor } from '../lib/portrait';
 
 function MatchCard({
@@ -73,22 +73,24 @@ export function BracketView({
   currentMatchId,
   onPick,
   canPick,
+  totalRounds,
 }: {
   bracket: ArenaMatch[];
   servants: Servant[];
   currentMatchId?: string;
   onPick?: (servantId: string) => void;
   canPick?: boolean;
+  /** the whole bracket's round count — later rounds do not exist yet */
+  totalRounds?: number;
 }) {
   const rounds = [...new Set(bracket.map((m) => m.round))].sort((a, b) => a - b);
-  const total = rounds.length;
+  const total = totalRounds ?? rounds.length;
 
   return (
     <div className="hgd-scroll flex gap-3 overflow-x-auto pb-2">
       {rounds.map((round) => {
         const matches = bracket.filter((m) => m.round === round).sort((a, b) => a.slot - b.slot);
-        const fromEnd = total - round;
-        const label = fromEnd <= 0 ? 'Final' : fromEnd === 1 ? 'Semifinals' : fromEnd === 2 ? 'Quarterfinals' : `Round ${round}`;
+        const label = roundName(round, total);
         return (
           <div key={round} className="min-w-[190px] flex-1 space-y-2">
             <h3 className="text-center text-[10.5px] uppercase tracking-wide text-muted">{label}</h3>

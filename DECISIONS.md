@@ -730,6 +730,181 @@ label pushes them over, they wrap to a second line rather than overflowing.
 
 ---
 
+## 30. The reported-bug pass: canon classes, political figures, the power cap, and war pacing
+
+**Class gating stops being a one-way door (§27).** The scraped rosters had become a
+ceiling: a name found in one got *only* the classes that roster listed, so Kirito —
+filed as Shielder/Ruler by the VS Battles category scrape — could not be drafted as
+Saber, and Hiccup could not be drafted as Rider at all because the roster's key
+(`hiccup`) never matched his wiki-long name, while Toothless could. Two changes.
+`server/src/data/class-canon.json` is a short hand-written correction layer and it is
+**authoritative in both directions**: a listed character drafts only as the classes
+listed, and is dropped from the classes a scrape mis-filed them in (Rin Tohsaka is no
+longer an Avenger, Frieza no longer an Assassin, Kirito no longer a Shielder). Lookups
+tolerate the names wikis use — the parenthetical on a page title, and the aliases the
+file lists (*Hiccup Horrendous Haddock III*, *Hiccup Haddock*). The rosters became a
+**floor** rather than a ceiling: when the requested class is one they do not vouch
+for, the wiki evidence is consulted and the two verdicts are unioned, so evidence can
+add a class the roster never knew about but can never take away one it did. The fast
+path is intact — canon and roster answers are computed with no lookup at all, and the
+Traits table is unchanged, so a Saber still has to be a swordsman. AI Chooses deals
+the canon into its own class (and only its own) ahead of the sampled roster, and
+`buildRosters.ts` seeds the canon too, so a regeneration cannot drop the corrections.
+
+**Political figures are refused.** A sitting vice president was drafted and then
+powerscaled against a cartoon character who shared his name. Two nets, in
+`server/src/research/politicalFigures.ts`: an explicit denylist of contemporary
+political figures (`server/src/data/political-figures.json`, ~157 names, matched on
+punctuation-proof variants so *J.D. Vance*, *JD Vance* and *James David Vance* are one
+entry), and a biography rule for everyone else — a political office plus a modern
+(1900s+) date, with fictional framing always winning. Julius Caesar and Augustus still
+pass (no modern date); Palpatine still passes (*fictional character*). The rule runs in
+the search API (`isCharacterCandidate`, before every provider shortcut, so a
+typed-out name cannot be offered either) and again in the draft gate, which returns
+*"… is a real-world political figure — the Grail summons heroes, villains and legends,
+not modern politics. This game does not condone the use of political figures."* The
+game's own rosters and fallback list are exempt: they were
+filtered when they were built, and a history draft is *supposed* to contain rulers.
+
+**Max Power level is a war rule.** *Rules of the War* gained a **Max Power level**
+select (`POWER_CAPS` in `shared/src/constants.ts`, default **`4-B` Solar System**).
+The cap is a hard one and it is applied where a tier first exists — when research
+finishes — by `applyPowerCap` (`server/src/research/powerCap.ts`): a Servant above the
+cap is scaled down to it in tier, speed, durability, range and hax, and its score is
+recomputed, so a Universe-tier pick really does fight like a Solar-System one. The
+researched profile is kept separately, so changing the cap in Review re-applies it
+without re-researching (lowering clamps; raising restores), and a host's manual edit
+is bound by the same cap. The draft screen names the room's cap, and Review marks a
+scaled Servant with *capped from 2-A*.
+
+**War pacing.** Two causes of "the text skips itself before the timer ends". The
+autoplay tick was left running at its old deadline when the host stepped forward (or
+back) by hand, so the event they had just revealed was replaced almost immediately —
+`warControl` now restarts the interval on `next`/`prev`/`jump`, and stops playback when
+`next` runs past the last event. And Space was doing two jobs at once: the typewriter
+skipped to the end of the line *and* the page toggled play/pause on the same press. The
+typewriter now reports whether it is still revealing, and Space finishes the line; only
+once the line is on screen does it mean play/pause. The war also gained a note **inside
+the Web-Driven War card** in the mode picker: the mode is AI-powered and scales
+Servants against the VS Battles Wiki, so higher-tier characters usually win, and the
+Max Power level control sits in the same panel right below it.
+
+The visitor's email is now visible in the feedback recipe: the webhook payload carries
+the address as both `email` and `replyTo` (the recipe read `email` while the server sent
+only `replyTo`), and the Apps Script body prints Name / Email / Topic above the message
+with `Reply-To` set, so the owner can answer a submission that Gmail always shows
+coming from their own account.
+
+## 31. The Debate Arena is playable: the bracket that ends, and a second set of rules
+
+**The bracket could not finish.** `buildBracket` padded the field to the next power of
+Two — 6 entrants drew an 8-slot bracket — and dealt the entrants into the first slots.
+That leaves whole *matches* with no fighters in them, and the round above them can
+never be filled: with 6 (or 5, or 9) entrants a semifinal sat waiting for a winner that
+did not exist, so the tournament stalled before a champion — the failure recorded as
+"the debate bracket never produced a champion". The bracket is now built **one round at
+a time** and the field halves every round: `buildRound` shuffles its entrants, pairs
+them, and when the field is odd sends **exactly one random entrant through on a bye**,
+so the next round holds `ceil(field / 2)` characters and no match can be empty. A bye
+is recorded as its own match (with `bye` and `winner` set), which makes the arithmetic
+uniform — *every* match, played or not, advances exactly one character — and lets the
+bracket view show the bye as a row. `Room` builds round 1 from the summoned Servants,
+and when a round has nothing left to play it gathers that round's survivors, crowns
+the last one standing, or opens the next round; a round's shuffle is seeded from the
+room code, the rematch and the round number, so a rematch replays the same bracket.
+`ArenaState.totalRounds` (computed as `ceil(log2(entrants))`) keeps *Round 2 of 3 ·
+Semifinals* correct even though later rounds do not exist yet.
+
+**The arena had no champion.** What it had was `arena.championId`; the Results screen
+crowns whoever `winnerId` names, so a finished debate landed on "The war is over" with
+no victor. The crown now writes `winnerId` too, and the debate results screen is its
+own screen: the champion, then the whole bracket with its vote tallies, and three
+tiles (fights decided, rounds, votes cast) — the war's standings, kills and day counts
+have nothing to say about an arena, and the wish is still war-only.
+
+**Two sets of rules.** The mode card is selectable, and the lobby's *Rules of the War*
+becomes *Rules of the Arena* in that mode. The war-only rows (war length, events per
+day, auto-play speed, class advantage, command-spell rescues, narration) and the war
+location card disappear; the debate keeps its own timings (argue, vote, tie-break,
+Oracle cards), and the shared rows (draft timer, avoid own pick,
+extended war, max Masters, allow spectators, AI Chooses) stay. **Max Power level moved
+out of the war branch** — it caps the Oracle profiles the arena's voters look at, so it
+belongs to both modes. Labels follow the mode: *Extended Arena*, *Classes in this
+Arena*, *Rules of the Arena*.
+
+**Team-ups are parked, visibly.** The next debate mechanic — some rounds becoming a
+2v1 — is a stored setting with no behaviour: `debate.teamUps` and `debate.teamMode`
+(`weaker` / `canonical` / `random`) exist in `RoomSettings`, in `DEFAULT_SETTINGS` and
+in the socket schema, so the mechanic can be built later without a settings migration,
+and the lobby renders the control **greyed with a *coming soon* badge**: a Team-ups
+toggle that cannot move, and the pairing select beneath it ("Weaker characters team
+up", "Canonical allies", "Random pairings") so hosts can see where it is going.
+
+**The chat is a fold, not a feature.** The arena is a party game — the room is on a
+call or in the same house — so the Argument panel is collapsed behind *Show chat*, and
+the panel in its place says what the phase wants ("Argue it out — 43s on the clock",
+"Vote for the winner"). The argue timer itself stays: it is what gives the table time
+to make its case out loud. The chat still works when opened, and remote rooms are no
+worse off than before.
+
+## 32. Every Master votes, the Arena needs three, and the ballot belongs to the server
+
+**The vote that never counted.** A two-Master room could not pass a single ballot. The
+`ownersVote` setting (off by default) told `Room.arenaVote` to refuse the two Masters
+whose Servants were fighting — and in a two-Master room the only match *is* fought by
+both of them — so every ballot was refused, the tally sat at 0-0, `countVotes` returned
+an empty tie and the tie-break handed every match to the host. The client made it worse:
+its "am I in this match?" test read
+`servants.find(s => s.id === match.a || s.id === match.b)?.playerId === playerId`, which
+only ever inspects the **first** Servant in the list who is in the match. One owner was
+shown a disabled card, the other an enabled one, and the enabled owner's click was
+answered with `You are in this match and cannot vote in it.` over a card that already
+claimed *Your vote* — a vote that visibly did not count. Reproduced against the local
+server before touching anything: `{ votedCount: 0, eligibleCount: 2, tie: true }`.
+
+**The owner gate is gone.** Every non-spectator Master now holds a ballot in every
+match, the two whose Servants are fighting included. The rule lives in the client's
+enable/disable logic and in `arenaVote` — which no longer looks at who owns a fighter —
+and the `debate.ownersVote` setting, its schema field and its lobby switch are deleted
+rather than left inert, so there is no configuration a host can get wrong. The client's
+owner test is now a real "do I own either side of this match" check, which also decides
+who may speak during the opening statements. A match resolves the moment every eligible
+Master has voted, and the tally the room reads is the server's own count.
+
+**The Arena needs three Masters.** With two, every match is a duel between the only two
+voters, and the third ballot that breaks a tie can never exist. `LIMITS.DEBATE_MIN_PLAYERS
+= 3` is enforced in `Room.startDraft` and in `Room.startArena` for DEBATE rooms (a
+two-Master WAR is unchanged), and the lobby says why: the waiting line reads *Waiting for
+at least 3 Masters — the Arena needs a third ballot to break a tie between the two
+fighters* and Start Draft stays disabled. The Summon and Power Review screens refuse to
+start the arena below three with the same note.
+
+**An empty window gets one more chance.** When the vote clock runs out with nobody
+having voted, the room is not handed straight to the host: the match gets exactly one
+extra VOTE window (only the clock — a host pressing *Skip phase* still means "resolve it
+now"), and the screens say *Nobody voted — the clock restarted*. A second empty window
+falls back to the host's pick, and the copy tells the two cases apart: *Nobody voted —
+pick the winner from the bracket above* against *It's tied 2–2 — …*.
+
+**Ballots are secret until the match is decided, and then they are public.** A snapshot
+carries a match's ballots only once that match has a winner or a tie-break — before that
+it holds the viewer's own vote and zeroed tallies. The "votes stay hidden until the
+reveal" promise survives an inspection of the payload, the reveal shows the true counts
+instead of the scrubber's zeros, and a tied 2-2 shows all four names to the whole room.
+The host's pending tie-break is read from the match itself (`!winner && tieBroken ===
+'host'`), so reloading in the middle of a tie still hands the host the *Wins* buttons.
+A recorded tie now goes through `arenaSetPhase`, which clears the vote clock: previously
+the tied match kept its pending timer, and when it fired `beginNextArenaMatch` replayed
+the same match with `voters = []` — the ballots visibly vanishing mid-round.
+
+**The chat belongs to the server, so a rematch really does empty it.** `this.chat` was
+already cleared by `rematch()` and `toLobby()`, but the snapshot never carried it and the
+store never cleared its own list, so the last game's conversation reappeared in the next
+arena. The snapshot now includes `chat` and the store syncs it on every state (which
+also restores chat after a page reload), and the same handler drops the previous game's
+arena state — match, result, tally and champion — whenever the snapshot has no live
+bracket.
+
 ## Verification status
 
 | Check | Result |
@@ -741,11 +916,11 @@ label pushes them over, they wrap to a second line rather than overflowing.
 | `npm test` | **163/163** passing across 13 files (incl. 23 image-source, 10 AniList-provider, 11 character-filter, 6 narration, 6 VS Battles lookup, 9 class-affinity, 6 draft-pool and 3 fiction-tier tests) |
 | `npm run images` | 198/200 fallback characters resolve to real artwork in one run; the two stragglers (Rimuru Tempest, Hela) are live-API flakiness and resolve when probed individually via `npm run oracle -- --images` |
 | `npm run smoke -- --players 5 --days 5` | passes with all **10** classes drafted, one winner, 4 deaths, no unresolved tokens |
-| `npm run smoke -- --mode DEBATE --players 7` | **fails** — "the debate bracket never produced a champion" (7 matches drawn, then it stalls). Reproduced on both Node 20 and Node 24, so it is not an upgrade artifact. The mode is unreachable from the lobby (disabled behind a "Coming soon" badge), so it is deferred rather than fixed |
+| `npm run smoke -- --mode DEBATE --players 7` | **failed** — "the debate bracket never produced a champion" (7 matches drawn, then it stalls). Reproduced on both Node 20 and Node 24, so it is not an upgrade artifact. The mode was unreachable from the lobby (disabled behind a "Coming soon" badge), so it was deferred rather than fixed. **Fixed in §31** — see the Debate Arena rows below |
 | `npm run smoke -- --rooms 12 --players 7` | passes, peak 15 rooms / 96 players, 84 sockets |
 | Name change | grep for the old name, its slug and its PascalCase form returns only this document (the two lines describing the rename); the served page reads `Grail Wars` in the title, `GRAIL WARS` on two lines as the home heading, `GW` and `Grail Wars` in the nav, and "Grail Wars is a fan-made party game" on Credits; the server logs `Grail Wars listening`; a full smoke run passes afterwards |
 | Single-screen home page | `/` reports no document scroll and no inner overflow at 1440×800, 1280×720, 1280×600, 1024×600, 414×896, 375×667 and 360×640, in both the *Create* and the *Join* state (`documentElement.scrollHeight === innerHeight`); nav, hero, play controls, mode cards, footer and the `Early Access V.0.5` stamp are all inside the viewport at each size, and the stamp no longer collides with the attribution name on narrow screens. Other routes are untouched: `/credits` still yields a 1698px document with the roomier footer, `/contact` likewise, and `/room/ABCD` keeps its ordinary document scroll at 320×568 with nothing clipped (its container's `scrollHeight` equals its `clientHeight`) |
-| Early-access UI | notice appears on the first load of a session (`z-60`, ending in "click anywhere to close"), is dismissed by a click on the card, a click on the backdrop corner and by Escape — all of which write `hgd:early-access-ack` to `sessionStorage` — and then stays hidden across a reload of both `/` and `/room/JNUA`; clearing session storage (or a new tab) brings it back; landing stamp renders fixed at bottom-right (8px/12px, 10px, `pointer-events: none`); in the lobby the War card is selectable with the `Recommended` badge while the Debate card reports `disabled`, `aria-disabled`, `opacity: .6`, `cursor: not-allowed` and "Coming soon", and clicking it leaves the War settings panel in place |
+| Early-access UI | notice appears on the first load of a session (`z-60`, ending in "click anywhere to close"), is dismissed by a click on the card, a click on the backdrop corner and by Escape — all of which write `hgd:early-access-ack` to `sessionStorage` — and then stays hidden across a reload of both `/` and `/room/JNUA`; clearing session storage (or a new tab) brings it back; landing stamp renders fixed at bottom-right (8px/12px, 10px, `pointer-events: none`); in the lobby the War card is selectable with the `Recommended` badge while the Debate card reports `disabled`, `aria-disabled`, `opacity: .6`, `cursor: not-allowed` and "Coming soon", and clicking it leaves the War settings panel in place (**superseded by §31**: the Debate card is selectable and opens the arena rules) |
 | Browser walkthrough | home / credits / contact render; exactly one attribution footer per route (home, credits, contact and a room URL), with the credit linking out to abhinavaagiri.com without an underline; the nav is translucent; all six credit-page logos load from `/brands`; the narration dropdown lists three styles; class toggles persist across two clients; "Let Players Choose" offers three cities and the choice sticks; draft shows one card per enabled class with a working info popup; a VS Battles pick renders real artwork rather than an initials avatar; feedback form posts and logs |
 | `npm run oracle` | 9/9 within expectation against live VS Battles pages |
 | `Dockerfile` (optional VM path) | **not built** — Docker is unavailable in the development environment; the free Render path builds with Node instead |
@@ -785,3 +960,15 @@ label pushes them over, they wrap to a second line rather than overflowing.
   reachable from the lobby.
 - M9 polish beyond the attribution footer (sound effects, a dedicated
   accessibility pass, a recap-image export) is still open.
+- The deployed Apps Script still runs the recipe as it was when it was last
+  deployed. The visitor's email only appears in the body once the script is
+  updated and redeployed as a **new version** (Deploy → Manage deployments →
+  Edit → New version); the payload already carries it.
+- Political screening is the denylist plus a biography rule. A candidate that
+  arrives with no biography text at all is covered only by the denylist, and the
+  list is deliberately contemporary — historical rulers remain draftable.
+- Team-ups in the Debate Arena are a **stored setting only**. `debate.teamUps` and
+  `debate.teamMode` round-trip through the socket and sit in the room snapshot, but
+  nothing reads them: the lobby control is greyed with a *coming soon* badge, and
+  the 2v1 pairing itself (weaker characters, canonical allies, random) is the next
+  piece of the mode.
