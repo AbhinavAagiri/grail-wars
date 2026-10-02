@@ -173,7 +173,12 @@ export default function Landing({ presetCode }: { presetCode?: string }) {
               <p>Every Servant is researched and power-scaled, then a five-day war plays out one event at a time.</p>
             </div>
             <div className="hgd-card px-3 py-2.5 sm:p-3">
-              <p className="mb-0.5 font-bold text-ink">🗣️ Debate Arena</p>
+              <p className="mb-0.5 font-bold text-ink">
+                🗣️ Debate Arena{' '}
+                <span className="rounded bg-gold px-1.5 py-[2px] align-middle text-[9px] font-black uppercase leading-none text-[#1a1408]">
+                  New
+                </span>
+              </p>
               <p>Random 1v1 matchups. Every Master argues their Servant, everyone votes, winners advance.</p>
             </div>
           </Rise>

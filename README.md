@@ -8,6 +8,7 @@ A host creates a room and shares a **4-letter code**. Up to 7 friends (14 in Ext
 |---|---|
 | **⚔️ Web-Driven War** | The server researches every summoned character on the web, power-scales them from their peak feats, and plays out a **5-day story-driven war** one event at a time — Hunger-Games-Simulator style, with portraits, a live roster, and a "Why?" panel explaining every result. |
 | **🗣️ Debate Arena** | Every Master drafts a character for every class, the Grail hands each of them **one** of their picks, and random 1v1 matchups are argued and voted on in timed rounds until one champion remains. **Three Masters minimum** — every Master votes in every match, including the two whose Servants are fighting, so the room needs a third ballot to break a tie. An uneven field sends one random character through on a bye; a window nobody votes in is re-run once before the host decides. |
+| **🕹️ Interactive War** *(coming soon)* | A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out. The card is in the lobby today — greyed, with a *Coming soon* badge — and the mode itself is not built yet. |
 
 Character portraits are found automatically and can be overridden with an upload or a pasted link.
 

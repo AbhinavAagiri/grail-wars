@@ -133,8 +133,10 @@ export default function Lobby() {
     }
   };
 
+  // A null mode is a card for something that is not playable yet: it never
+  // matches the room's current mode, and clicking it does nothing.
   const modeCard = (
-    mode: Mode,
+    mode: Mode | null,
     icon: string,
     title: string,
     blurb: string,
@@ -142,9 +144,9 @@ export default function Lobby() {
   ) => (
     <button
       type="button"
-      disabled={!isHost || options?.comingSoon}
-      onClick={() => patch({ mode })}
-      aria-disabled={!isHost || Boolean(options?.comingSoon)}
+      disabled={!isHost || mode === null || options?.comingSoon}
+      onClick={() => mode && patch({ mode })}
+      aria-disabled={!isHost || mode === null || Boolean(options?.comingSoon)}
       title={options?.comingSoon ? `${title} is not playable yet.` : undefined}
       className={clsx(
         'hgd-card hgd-card-interactive relative p-3 text-left',
@@ -304,7 +306,6 @@ export default function Lobby() {
                 'Web-Driven War',
                 'The AI researches every Servant, power-scales them, and plays out a five-day Holy Grail War.',
                 {
-                  badge: 'Recommended',
                   note: 'Heads up: this mode is powered by AI, and it scales every Servant against the VS Battles Wiki. Characters with higher tiers also scale higher here, so the stronger ones will usually win — set the Max Power level below if you want a closer war.',
                 },
               )}
@@ -314,8 +315,16 @@ export default function Lobby() {
                 'Debate Arena',
                 'One random 1v1 at a time. Every Master argues their Servant, everyone votes, winners advance.',
                 {
+                  badge: 'NEW',
                   note: `Three to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters, and every Master votes in every match — even the one they are fighting. Each Master drafts a character for every class, then the Grail hands them one to debate for; an uneven field sends one random character through on a bye.`,
                 },
+              )}
+              {modeCard(
+                null,
+                '🕹️',
+                'Interactive War',
+                'A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out.',
+                { comingSoon: true },
               )}
             </div>
 
@@ -369,14 +378,6 @@ export default function Lobby() {
                       checked={settings.war.classAdvantage}
                       disabled={!isHost}
                       onChange={(v) => patchWar({ classAdvantage: v })}
-                    />
-                  </SettingRow>
-                  <SettingRow label="Command Spell rescues" hint="Once per Servant per war">
-                    <Toggle
-                      label="Command Spell rescues"
-                      checked={settings.war.commandSpellRescues}
-                      disabled={!isHost}
-                      onChange={(v) => patchWar({ commandSpellRescues: v })}
                     />
                   </SettingRow>
                   <SettingRow label="Narration" hint="The voice the war is told in">

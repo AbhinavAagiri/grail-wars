@@ -905,6 +905,30 @@ also restores chat after a page reload), and the same handler drops the previous
 arena state — match, result, tally and champion — whenever the snapshot has no live
 bracket.
 
+## 33. The Debate Arena wears the NEW chip, Interactive War is teased, and the Command Spell switch leaves the lobby
+
+**The badges now say what is new.** The Debate Arena wears a gold `NEW` chip in both
+places its card appears — the landing page's mode blurbs and the lobby's mode grid — and
+the `Recommended` chip has come off Web-Driven War. Nothing else carries a badge; the
+caveat under the War card (AI research, VS Battles scaling) is the part a host actually
+needs to read, and it stays.
+
+**A third card says what is coming.** The mode grid gains **Interactive War** — a war
+you steer by hand instead of watching the AI play it out — rendered disabled with the
+same *Coming soon* badge the Team-ups row uses (`cursor-not-allowed`, dimmed, *Not
+playable yet*). `modeCard()`'s first argument is now `Mode | null`: a null mode can
+never equal the room's current mode, so the coming-soon card can never take the gold
+selected outline, and clicking it patches nothing. The two playable cards behave
+exactly as before.
+
+**The Command Spell rescue toggle is gone from the rules, not from the engine.** The
+toggle was removed from the War settings at the author's request; `war.commandSpellRescues`
+still exists — in `RoomSettings`, in `DEFAULT_SETTINGS.war` (`true`), in the socket
+schema and in the score engine, which reads it whenever a losing Servant might be
+rescued. A war therefore always plays with rescues on unless something else sets the
+field. Ripping the setting out end-to-end would have meant rewriting the sim's rescue
+branch and its tests for no player-visible gain.
+
 ## Verification status
 
 | Check | Result |
@@ -952,6 +976,7 @@ bracket.
 | Debate ballot pass (end-to-end) | `npm run build` clean; on a local production server (`:3100`) `npm run smoke -- --mode DEBATE --players {3,4,5,6,7}` all pass **with the new assertions** — every Master's ballot acknowledged in every VOTE window before the loop moves on, and every real match holding exactly one ballot per Master (`voters.length === players`, `votesA + votesB === players`) — plus the new *a two-Master Debate Arena is refused* check that watches the host receive the refusal and the room stay in the lobby; the WAR regression (`--players 5 --days 3`, 24 events, one winner) passes unchanged |
 | Debate ballot pass (browser) | three Masters (the browser host plus two scripted companions) in a one-class DEBATE room: the host's own Servant on the card read **"Vote for this Servant" + "Your Servant is fighting — your vote still counts"** (no *You cannot vote in this match* anywhere), the reveal read **2 votes — Abhinav, Bramble** against **1 vote — Cinder** with *Roronoa Zoro advances*, and the same owner vote was counted in the final as well; an empty window rendered *Nobody voted — pick the winner from the bracket above* and the bracket's *Wins* button settled it (*Kirito advances. (tie-break: host)*); a one-Master and a two-Master Debate room both showed **Start Draft disabled** with *Waiting for at least 3 Masters — the Arena needs a third ballot to break a tie between the two fighters* and enabled at three; the lobby shows the *Ballots — Every Master votes in every match* row where the owners-vote switch used to be; and a chat line posted from the arena was **gone** after Rematch in the same room code — the panel read *No arguments yet.* and the message no longer existed anywhere in the page |
 | Live feedback delivery from the deployed site | the deployed **Contact** form was submitted for real (name *Live delivery check*, reply-to `reply-test@example.com`): the page showed the toast and the *Message received* card, and `POST /api/feedback` took **3005 ms** — the same request takes about 20 ms when no webhook is configured, so Render did call `FEEDBACK_WEBHOOK_URL` and wait on Google — but no email arrived. The Apps Script's **Executions** page showed the newest entry *Completed* while its `to:` was still one of the recipe's placeholder strings, so `MailApp` mailed an address nobody owns; the deployment itself (*Execute as: Me*, access *Anyone*, `/exec` URL) and the Render environment are otherwise correct. The recipe now names the recipient on an explicit `INBOX` line and records that an edited script must be deployed as a new version, and the next submission confirmed the whole path live: the message reached the configured inbox within seconds — subject `Grail Wars feedback (other)`, sent from and to the script's account, with the visitor's address carried in `Reply-To` |
+| Mode cards, the badges and the Command Spell row | `npm run typecheck` clean for server and client; `npm test` **205/205 across 19 files** (an unchanged suite — this pass touches no logic); `npm run build` clean (464 modules). In the browser against a local production server on `:3100`: the landing page's Debate Arena blurb renders the gold `NEW` chip beside its title; the lobby's *Rules of the War* shows Web-Driven War with **no `Recommended` chip** anywhere in the page, Debate Arena with the `NEW` chip, and a third card — **🕹️ Interactive War**, `disabled`, *Coming soon* badge, *Not playable yet*, `cursor-not-allowed opacity-60` — that never takes the gold selected outline; clicking the two playable cards still flips the heading between *Rules of the War* and *Rules of the Arena* with the outline following the playable card each time; and the War settings now run *Class advantage* straight into *Narration* — `Command Spell rescues` is not in the page. The test server was stopped afterwards and port 3100 is clear. |
 
 ## Not done
 
@@ -972,6 +997,9 @@ bracket.
 - Political screening is the denylist plus a biography rule. A candidate that
   arrives with no biography text at all is covered only by the denylist, and the
   list is deliberately contemporary — historical rulers remain draftable.
+- **Interactive War is a card only.** The mode grid shows it with a *Coming soon*
+  badge, and nothing else exists: no `Mode` value, no lobby settings, no engine. It is
+  the next mode to design, not a partially built one.
 - Team-ups in the Debate Arena are a **stored setting only**. `debate.teamUps` and
   `debate.teamMode` round-trip through the socket and sit in the room snapshot, but
   nothing reads them: the lobby control is greyed with a *coming soon* badge, and
