@@ -181,6 +181,21 @@ export default function Landing({ presetCode }: { presetCode?: string }) {
               </p>
               <p>Random 1v1 matchups. Every Master argues their Servant, everyone votes, winners advance.</p>
             </div>
+            {/* A full-width strip for the mode that is not playable yet, so the
+                landing page names all three without pretending it can be played.
+                On a phone the blurb is dropped rather than cost the page its
+                one-screen rule — the badge already says everything that matters. */}
+            <div className="hgd-card col-span-2 flex flex-wrap items-baseline gap-x-2 px-3 py-2 opacity-70 sm:block sm:p-3">
+              <p className="font-bold text-ink">
+                🕹️ Interactive War{' '}
+                <span className="rounded border border-[var(--gold)] px-1.5 py-[2px] align-middle text-[9px] font-black uppercase leading-none tracking-wider text-gold">
+                  Coming soon
+                </span>
+              </p>
+              <p className="hidden sm:mt-0.5 sm:block">
+                A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out.
+              </p>
+            </div>
           </Rise>
         </div>
       </div>
