@@ -938,6 +938,80 @@ rescued. A war therefore always plays with rescues on unless something else sets
 field. Ripping the setting out end-to-end would have meant rewriting the sim's rescue
 branch and its tests for no player-visible gain.
 
+## 34. A mode is declared once, and a flag decides whether it can be played
+
+**The cards were the last thing written twice.** The landing page carried two hardcoded
+blurb divs and a hand-written full-width strip for the teasing mode; the lobby carried
+three `modeCard(mode, icon, title, blurb, options)` calls. Interactive War's icon, title
+and blurb were therefore written in two files, and nothing kept the copies in step.
+`MODE_CARDS` in `shared/src/constants.ts` is now the only declaration: icon, title, one
+blurb both pages show, an optional `badge`, the optional lobby-only `note`, and
+`playable`. Both pages map over the same array in the same order, so the lobby grid and
+the home page grid cannot list different modes, or list them differently.
+
+**The flag is a discriminant, not a comment.** `ModeCard` is a union: `playable: true`
+requires a real `Mode` — the value a click writes into `settings.mode` — and
+`playable: false` requires `mode: null`. That makes the flip honest in both directions:
+a card cannot claim to be playable without naming the mode it selects, and a greyed card
+cannot carry a mode another code path might set. Adding a genuinely new mode is more
+than the flag — it also needs a value in the `Mode` union and an engine behind it — but
+the flag is what the two pages read, and TypeScript raises it at the point of the flip.
+
+**The landing page's wording is the canonical blurb.** It is the page that cannot spend
+height (decision 25), so its two blurbs became `blurb` and the lobby's War card lost its
+own "The AI researches every Servant…" sentence to it; the long AI / VS Battles caveat a
+host should read still rides along as that card's `note`. The Debate card's lobby
+sentence became the landing page's blurb in turn, minus "at a time". Each page keeps its
+own presentation: the landing page draws a playable mode as a half-width card and a
+teased one as a full-width strip that drops its blurb below `sm`, and the lobby draws
+every mode as a full card — icon over title, one badge in the corner, *Not playable yet*
+under a teaser. Neither page knows a mode's name anywhere else.
+
+**A test holds the invariants the pages assume.** `server/tests/modeCards.test.ts` pins
+that every card has a title, icon and blurb; that titles and modes are unique; that a
+coming-soon card has no mode and no badge (the two chips share the card's top-right
+corner, so a card must wear one or the other); that `DEFAULT_SETTINGS.mode` is one of the
+playable cards; and that at least one teaser stays in the list — the mode grid is meant
+to say what is coming, not only what is here.
+
+## 35. Each mode's rules panel is declared with the mode, not branched in the lobby
+
+**The lobby used to ask which mode it was in.** Eight places compared `settings.mode`:
+the heading, the rules rows, the *Extended War* / *Extended Arena* label, the *Classes in
+this war* / *Classes in this Arena* title, the class note's noun, the minimum room size,
+the sentence under the Master list and the War-location block. A third mode would have
+needed a branch at each one, and a branch anyone forgot would silently show war copy in
+a mode that has no war in it.
+
+**`MODE_LOBBY` in `client/src/modes.tsx` carries all of it**, keyed by `Mode`: `title`,
+`classesTitle`, `noun`, `extendedLabel`, `minMasters`, `waitingFor(masters)`, the `Rules`
+component (the rows that go inside the shared, divided settings list) and an optional
+`Extra` component for a block below them (the War-location picker). The lobby renders
+`<Rules />` and `<Extra />` and reads the strings; the only comparison of `settings.mode`
+left in `Lobby.tsx` is the one that decides which card wears the gold outline, and that
+compares the room's mode to the card's own `mode` — the card list, not a branch.
+
+**The panels themselves are unchanged JSX**, moved verbatim out of the lobby: the War
+rows (War length, Events per day, Auto-play speed, Class advantage, Narration, War
+location), the Arena rows (Argue time, Vote time, Tie-break, Ballots, Show Oracle stat
+cards) with the greyed Team-ups block, and the War-location picker. Each panel reads the
+store itself, so none of it is threaded through the lobby as props, and `SettingRow`,
+`Select` and `Toggle` moved to `client/src/components/SettingsControls.tsx` because the
+panels and the lobby's shared rows both build on them.
+
+**Exhaustiveness is the enforcement.** `MODE_LOBBY` is a `Record<Mode, ModeLobby>`:
+adding a value to the `Mode` union does not compile until that mode has a panel. Checked
+by adding a temporary `TEMP_MODE` to the union — the only client error was *"Property
+'TEMP_MODE' is missing in type … but required in type 'Record<Mode, ModeLobby>'"* — and
+reverting it. With decision 34's discriminant, a new mode has to name itself in exactly
+two places (the card list and the rules record) and nowhere else.
+
+**One accessibility fix on the way past.** The Extended switch's accessible name was
+hardcoded `Extended war` even in the arena; it now reads `lobby.extendedLabel`, so a
+screen reader in the arena hears *Extended Arena*, matching the row it sits on. The
+other screens that still branch on the mode (Summon, Research and Results) are
+untouched; `MODE_LOBBY` is where their copy would come from when they are converted.
+
 ## Verification status
 
 | Check | Result |
@@ -986,6 +1060,8 @@ branch and its tests for no player-visible gain.
 | Debate ballot pass (browser) | three Masters (the browser host plus two scripted companions) in a one-class DEBATE room: the host's own Servant on the card read **"Vote for this Servant" + "Your Servant is fighting — your vote still counts"** (no *You cannot vote in this match* anywhere), the reveal read **2 votes — Abhinav, Bramble** against **1 vote — Cinder** with *Roronoa Zoro advances*, and the same owner vote was counted in the final as well; an empty window rendered *Nobody voted — pick the winner from the bracket above* and the bracket's *Wins* button settled it (*Kirito advances. (tie-break: host)*); a one-Master and a two-Master Debate room both showed **Start Draft disabled** with *Waiting for at least 3 Masters — the Arena needs a third ballot to break a tie between the two fighters* and enabled at three; the lobby shows the *Ballots — Every Master votes in every match* row where the owners-vote switch used to be; and a chat line posted from the arena was **gone** after Rematch in the same room code — the panel read *No arguments yet.* and the message no longer existed anywhere in the page |
 | Live feedback delivery from the deployed site | the deployed **Contact** form was submitted for real (name *Live delivery check*, reply-to `reply-test@example.com`): the page showed the toast and the *Message received* card, and `POST /api/feedback` took **3005 ms** — the same request takes about 20 ms when no webhook is configured, so Render did call `FEEDBACK_WEBHOOK_URL` and wait on Google — but no email arrived. The Apps Script's **Executions** page showed the newest entry *Completed* while its `to:` was still one of the recipe's placeholder strings, so `MailApp` mailed an address nobody owns; the deployment itself (*Execute as: Me*, access *Anyone*, `/exec` URL) and the Render environment are otherwise correct. The recipe now names the recipient on an explicit `INBOX` line and records that an edited script must be deployed as a new version, and the next submission confirmed the whole path live: the message reached the configured inbox within seconds — subject `Grail Wars feedback (other)`, sent from and to the script's account, with the visitor's address carried in `Reply-To` |
 | Mode cards, the badges and the Command Spell row | `npm run typecheck` clean for server and client; `npm test` **205/205 across 19 files** (an unchanged suite — this pass touches no logic); `npm run build` clean (464 modules). In the browser against a local production server on `:3100`: the landing page's Debate Arena blurb renders the gold `NEW` chip beside its title; the lobby's *Rules of the War* shows Web-Driven War with **no `Recommended` chip** anywhere in the page, Debate Arena with the `NEW` chip, and a third card — **🕹️ Interactive War**, `disabled`, *Coming soon* badge, *Not playable yet*, `cursor-not-allowed opacity-60` — that never takes the gold selected outline; clicking the two playable cards still flips the heading between *Rules of the War* and *Rules of the Arena* with the outline following the playable card each time; and the War settings now run *Class advantage* straight into *Narration* — `Command Spell rescues` is not in the page. The landing page lists all three modes: the two blurbs plus a full-width **🕹️ Interactive War** strip whose chip measures `rgb(201, 164, 92)` text and 1px border, 9px / 900 weight, uppercase; on the true landing route (`h-dvh`, `overflow-hidden`) the page still has **no document scroll and no inner-column scroll** at 1440×800 (column 675/675; the strip 576×73 with its blurb) and 393×698 (543/543), and at 360×640 the column reads 485/485 with the strip 320×32 — chip and title on one baseline, blurb hidden below `sm` — against 505/485, a 20px scroll, before the trim. The test server was stopped afterwards and port 3100 is clear. |
+| Mode list, one source | `npm run typecheck` clean for server and client; `npm test` **210/210 across 20 files** (5 new in `modeCards.test.ts`); `npm run build` clean (464 modules). In the browser against a local production server on `:3100`, the landing page's grid renders its three cards in declaration order from the one list: Web-Driven War and Debate Arena as 156×110 half-width cards at 360×640 (the Debate card wearing its gold `NEW` chip), and the **🕹️ Interactive War** strip at `span 2/span 2`, 320×32, `opacity: .7`, its blurb `display: none` below `sm` and 576×73 with the blurb at 1440×800. The page's own numbers are unchanged from before the refactor — document 640/640 with the inner column at 485/485 at 360×640, 698/698 and 543/543 at 393×698, 800/800 and 675/675 at 1440×800. In the lobby the same list draws all three cards: Web-Driven War selected (gold outline and border) with its AI caveat note, Debate Arena with the `NEW` chip, and Interactive War `disabled`, `aria-disabled`, `title="Interactive War is not playable yet."`, `cursor: not-allowed`, `opacity: .6`, the gold-bordered *Coming soon* chip and *Not playable yet* — and it never takes the outline. `Recommended` appears nowhere, and clicking Debate Arena flipped the panel to *Rules of the Arena* with the outline following it. As an end-to-end proof of the single source, a **fourth card** was declared in `MODE_CARDS` for the length of one build and appeared on both pages with neither page file touched — the home page drew it as a second full-width strip and the lobby as a second disabled *Coming soon* card with its own tooltip — and at 360×640 the extra card showed up in the inner column as 497/485 (12px of scroll; the document itself stayed 640/640), which is the height a fourth mode costs there. The card was reverted, and typecheck, the suite and the build were re-run on the reverted tree afterwards. The test server was stopped afterwards, port 3100 is clear, and the user's own `:3000` server was not touched. |
+| Mode rules, declared per mode | `npm run typecheck` clean for server and client; `npm test` **210/210 across 20 files** (an unchanged suite — this pass moves JSX and copy, it does not change logic); `npm run build` clean (464 modules). In the browser against a local production server on `:3100` (room `EQAF`), the War panel renders its twelve rows in order — War length, Events per day, Auto-play speed, Class advantage, Narration, War location, then the shared Max Power level, Draft timer, Avoid own pick, **Extended War**, Max Masters, Allow spectators — with the class note ending *"bigger, stranger war"*, the War-location picker below the AI-Chooses block, and the waiting line *"Waiting for at least 2 Masters — share the code above."* Switching to Debate Arena flips the heading to *Rules of the Arena* and renders Argue time, Vote time, Tie-break, Ballots (*Everyone votes*), Show Oracle stat cards and the greyed Team-ups block, then the shared rows under **Extended Arena** and the note ending *"bigger, stranger arena"*; **no war-only string** (*War location*, *War length*, *Narration*, *Class advantage*) appears anywhere in the arena, and the waiting line becomes *"…the Arena needs a third ballot to break a tie between the two fighters."* Both moved panels are still wired to the server — clicking *Oracle cards* flipped `aria-checked` to `false` and it held after the round-trip, and clicking *Class advantage* in War did the same. The Extended switch's accessible name now reads *Extended War* / *Extended Arena* alongside its row. Proving the compile-time guard, a temporary `TEMP_MODE` added to the `Mode` union produced exactly one client error — the missing `MODE_LOBBY` entry — and nothing else; it was reverted, and typecheck, the suite and the build were re-run green afterwards. The test server was stopped afterwards, port 3100 is clear, and the user's own `:3000` server was not touched. |
 
 ## Not done
 
@@ -1006,9 +1082,11 @@ branch and its tests for no player-visible gain.
 - Political screening is the denylist plus a biography rule. A candidate that
   arrives with no biography text at all is covered only by the denylist, and the
   list is deliberately contemporary — historical rulers remain draftable.
-- **Interactive War is a card only.** The mode grid shows it with a *Coming soon*
-  badge, and nothing else exists: no `Mode` value, no lobby settings, no engine. It is
-  the next mode to design, not a partially built one.
+- **Interactive War is a card only.** One entry in `MODE_CARDS` with `playable: false`
+  and `mode: null`, and nothing else exists: no `Mode` value, no lobby settings, no
+  engine. Its card is the place the mode will arrive — the flag is what makes both pages
+  offer it — but the mode behind the flag is still the next one to design, not a
+  partially built one.
 - Team-ups in the Debate Arena are a **stored setting only**. `debate.teamUps` and
   `debate.teamMode` round-trip through the socket and sit in the room snapshot, but
   nothing reads them: the lobby control is greyed with a *coming soon* badge, and

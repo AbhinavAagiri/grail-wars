@@ -10,6 +10,8 @@ A host creates a room and shares a **4-letter code**. Up to 7 friends (14 in Ext
 | **🗣️ Debate Arena** | Every Master drafts a character for every class, the Grail hands each of them **one** of their picks, and random 1v1 matchups are argued and voted on in timed rounds until one champion remains. **Three Masters minimum** — every Master votes in every match, including the two whose Servants are fighting, so the room needs a third ballot to break a tie. An uneven field sends one random character through on a bye; a window nobody votes in is re-run once before the host decides. |
 | **🕹️ Interactive War** *(coming soon)* | A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out. The card is on the home page and in the lobby today — greyed, with a *Coming soon* badge — and the mode itself is not built yet. |
 
+Every card above — its icon, title, blurb, badge and whether the mode can be picked — is declared **once** in `MODE_CARDS` (`shared/src/constants.ts`). The home page and the lobby both render that list, so a mode is announced in one place and moves from *coming soon* to playable by flipping its `playable` flag. Each mode's lobby rules panel, its wording and the room size it needs are declared the same way in `MODE_LOBBY` (`client/src/modes.tsx`), so the lobby itself never asks which mode it is in.
+
 Character portraits are found automatically and can be overridden with an upload or a pasted link.
 
 ### Lobby options worth knowing
@@ -233,7 +235,7 @@ server/src/
   socket/           socket handlers (every payload validated with zod)
   data/             event templates, locations, counters, fallbacks
   scripts/          sim, oracle, and smoke CLIs
-client/src/         React app: pages/, components/, store, socket wiring
+client/src/         React app: pages/, components/, per-mode lobby rules, store, socket wiring
 render.yaml         the free Render blueprint — the published path
 docker-compose.yml  optional self-hosted path: the app container plus Caddy
 Caddyfile           HTTPS termination and the reverse proxy for that path

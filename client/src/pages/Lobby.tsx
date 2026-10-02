@@ -5,100 +5,23 @@ import {
   CLASS_META,
   enabledClasses,
   LIMITS,
+  MODE_CARDS,
   POWER_CAPS,
-  type Mode,
+  type ModeCard,
   type RoomSettings,
   type ServantClass,
   type SettingsPatch,
 } from '@hgd/shared';
+import { SettingRow, Select, Toggle } from '../components/SettingsControls';
 import { AvatarCircle, PlayerDot, StickyHeader, SummoningCircle } from '../components/ui';
+import { MODE_LOBBY } from '../modes';
 import { useStore } from '../store';
-
-function SettingRow({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
-  return (
-    <div className="flex items-center justify-between gap-3 py-2">
-      <div className="min-w-0">
-        <div className="text-[13px] text-ink">{label}</div>
-        {hint && <div className="text-[11px] text-muted">{hint}</div>}
-      </div>
-      <div className="shrink-0">{children}</div>
-    </div>
-  );
-}
-
-function Select<T extends string | number>({
-  value,
-  options,
-  onChange,
-  disabled,
-}: {
-  value: T;
-  options: { value: T; label: string }[];
-  onChange: (value: T) => void;
-  disabled?: boolean;
-}) {
-  return (
-    <select
-      className="hgd-input !min-h-[38px] !w-auto !py-1 !text-[12px]"
-      value={String(value)}
-      disabled={disabled}
-      onChange={(e) => {
-        const raw = e.target.value;
-        const found = options.find((o) => String(o.value) === raw);
-        if (found) onChange(found.value);
-      }}
-    >
-      {options.map((option) => (
-        <option key={String(option.value)} value={String(option.value)}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function Toggle({
-  checked,
-  onChange,
-  disabled,
-  label,
-}: {
-  checked: boolean;
-  onChange: (value: boolean) => void;
-  disabled?: boolean;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={checked}
-      aria-label={label}
-      disabled={disabled}
-      onClick={() => onChange(!checked)}
-      className={clsx(
-        'relative h-[26px] w-[48px] rounded-full border transition-colors',
-        checked ? 'border-gold bg-gold' : 'border-border bg-surface-2',
-        disabled && 'opacity-45',
-      )}
-    >
-      <span
-        className={clsx(
-          'absolute top-[2px] h-[20px] w-[20px] rounded-full bg-[#121216] transition-all',
-          checked ? 'left-[24px]' : 'left-[2px]',
-        )}
-      />
-    </button>
-  );
-}
 
 export default function Lobby() {
   const room = useStore((s) => s.room)!;
   const playerId = useStore((s) => s.playerId);
   const updateSettings = useStore((s) => s.updateSettings);
   const startDraft = useStore((s) => s.startDraft);
-  const pickLocation = useStore((s) => s.pickLocation);
-  const rerollLocation = useStore((s) => s.rerollLocation);
   const kick = useStore((s) => s.kick);
   const transferHost = useStore((s) => s.transferHost);
   const pushToast = useStore((s) => s.pushToast);
@@ -107,11 +30,13 @@ export default function Lobby() {
   const isHost = room.hostId === playerId;
   const masters = room.players.filter((p) => !p.isSpectator);
   const settings = room.settings;
-  // The Arena needs a third ballot to break a tie between the two fighters.
-  const minMasters = settings.mode === 'DEBATE' ? LIMITS.DEBATE_MIN_PLAYERS : LIMITS.MIN_PLAYERS;
+  // Everything the lobby says about this mode — its rules panel, its labels and
+  // the room size it needs — is declared per mode in client/src/modes.tsx.
+  const lobby = MODE_LOBBY[settings.mode];
+  const Rules = lobby.Rules;
+  const Extra = lobby.Extra;
   const patch = (value: SettingsPatch) => updateSettings(value);
   const patchWar = (value: Partial<RoomSettings['war']>) => updateSettings({ war: value });
-  const patchDebate = (value: Partial<RoomSettings['debate']>) => updateSettings({ debate: value });
 
   const enabledClassList = enabledClasses(settings.classes);
   const toggleClass = (cls: ServantClass) => {
@@ -133,51 +58,52 @@ export default function Lobby() {
     }
   };
 
-  // A null mode is a card for something that is not playable yet: it never
-  // matches the room's current mode, and clicking it does nothing.
-  const modeCard = (
-    mode: Mode | null,
-    icon: string,
-    title: string,
-    blurb: string,
-    options?: { badge?: string; comingSoon?: boolean; note?: string },
-  ) => (
-    <button
-      type="button"
-      disabled={!isHost || mode === null || options?.comingSoon}
-      onClick={() => mode && patch({ mode })}
-      aria-disabled={!isHost || mode === null || Boolean(options?.comingSoon)}
-      title={options?.comingSoon ? `${title} is not playable yet.` : undefined}
-      className={clsx(
-        'hgd-card hgd-card-interactive relative p-3 text-left',
-        settings.mode === mode && 'outline outline-1 outline-gold',
-        options?.comingSoon && 'cursor-not-allowed opacity-60',
-      )}
-      style={settings.mode === mode ? { borderColor: 'var(--gold)' } : undefined}
-    >
-      {options?.badge && (
-        <span className="absolute right-2 top-2 rounded bg-gold px-1.5 py-[2px] text-[9px] font-black uppercase text-[#1a1408]">
-          {options.badge}
-        </span>
-      )}
-      {options?.comingSoon && (
-        <span className="absolute right-2 top-2 rounded border border-[var(--gold)] px-1.5 py-[2px] text-[9px] font-black uppercase tracking-wider text-gold">
-          Coming soon
-        </span>
-      )}
-      <div className="text-[20px]">{icon}</div>
-      <div className="mt-1 font-bold text-ink">{title}</div>
-      <p className="mt-1 text-[11.5px] leading-snug text-muted">{blurb}</p>
-      {options?.note && (
-        <p className="mt-2 rounded border border-border bg-surface-2 px-2 py-1.5 text-[10.5px] leading-snug text-muted">
-          {options.note}
-        </p>
-      )}
-      {options?.comingSoon && (
-        <p className="mt-1 text-[11px] font-bold uppercase tracking-wider text-gold">Not playable yet</p>
-      )}
-    </button>
-  );
+  // One card per entry in MODE_CARDS — the same list the landing page renders,
+  // so a mode is declared once and a flag decides whether it can be chosen.
+  // A card that is not playable yet has no `mode` to set: it can never match
+  // the room's current mode, so it never takes the gold selected outline.
+  const renderModeCard = (card: ModeCard) => {
+    const selected = card.playable && settings.mode === card.mode;
+    const locked = !isHost || !card.playable;
+    return (
+      <button
+        key={card.title}
+        type="button"
+        disabled={locked}
+        onClick={() => card.playable && patch({ mode: card.mode })}
+        aria-disabled={locked}
+        title={card.playable ? undefined : `${card.title} is not playable yet.`}
+        className={clsx(
+          'hgd-card hgd-card-interactive relative p-3 text-left',
+          selected && 'outline outline-1 outline-gold',
+          !card.playable && 'cursor-not-allowed opacity-60',
+        )}
+        style={selected ? { borderColor: 'var(--gold)' } : undefined}
+      >
+        {card.badge && (
+          <span className="absolute right-2 top-2 rounded bg-gold px-1.5 py-[2px] text-[9px] font-black uppercase text-[#1a1408]">
+            {card.badge}
+          </span>
+        )}
+        {!card.playable && (
+          <span className="absolute right-2 top-2 rounded border border-[var(--gold)] px-1.5 py-[2px] text-[9px] font-black uppercase tracking-wider text-gold">
+            Coming soon
+          </span>
+        )}
+        <div className="text-[20px]">{card.icon}</div>
+        <div className="mt-1 font-bold text-ink">{card.title}</div>
+        <p className="mt-1 text-[11.5px] leading-snug text-muted">{card.blurb}</p>
+        {card.note && (
+          <p className="mt-2 rounded border border-border bg-surface-2 px-2 py-1.5 text-[10.5px] leading-snug text-muted">
+            {card.note}
+          </p>
+        )}
+        {!card.playable && (
+          <p className="mt-1 text-[11px] font-bold uppercase tracking-wider text-gold">Not playable yet</p>
+        )}
+      </button>
+    );
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -283,210 +209,21 @@ export default function Lobby() {
             {room.spectators > 0 && (
               <p className="mt-2 text-[11.5px] text-muted">{room.spectators} spectating</p>
             )}
-            {masters.length < minMasters && (
-              <p className="mt-3 text-[12px] text-gold">
-                {settings.mode === 'DEBATE'
-                  ? `Waiting for at least ${minMasters} Masters — the Arena needs a third ballot to break a tie between the two fighters.`
-                  : `Waiting for at least ${minMasters} Masters — share the code above.`}
-              </p>
+            {masters.length < lobby.minMasters && (
+              <p className="mt-3 text-[12px] text-gold">{lobby.waitingFor(lobby.minMasters)}</p>
             )}
           </section>
 
           {/* Settings */}
           <section className="hgd-card p-4">
-            <h2 className="hgd-heading mb-2 text-lg">
-              {settings.mode === 'WAR' ? 'Rules of the War' : 'Rules of the Arena'}
-            </h2>
+            <h2 className="hgd-heading mb-2 text-lg">{lobby.title}</h2>
             {!isHost && <p className="mb-2 text-[11.5px] text-muted">Only the host can change these.</p>}
 
-            <div className="grid gap-2 sm:grid-cols-2">
-              {modeCard(
-                'WAR',
-                '⚔️',
-                'Web-Driven War',
-                'The AI researches every Servant, power-scales them, and plays out a five-day Holy Grail War.',
-                {
-                  note: 'Heads up: this mode is powered by AI, and it scales every Servant against the VS Battles Wiki. Characters with higher tiers also scale higher here, so the stronger ones will usually win — set the Max Power level below if you want a closer war.',
-                },
-              )}
-              {modeCard(
-                'DEBATE',
-                '🗣️',
-                'Debate Arena',
-                'One random 1v1 at a time. Every Master argues their Servant, everyone votes, winners advance.',
-                {
-                  badge: 'NEW',
-                  note: `Three to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters, and every Master votes in every match — even the one they are fighting. Each Master drafts a character for every class, then the Grail hands them one to debate for; an uneven field sends one random character through on a bye.`,
-                },
-              )}
-              {modeCard(
-                null,
-                '🕹️',
-                'Interactive War',
-                'A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out.',
-                { comingSoon: true },
-              )}
-            </div>
+            <div className="grid gap-2 sm:grid-cols-2">{MODE_CARDS.map(renderModeCard)}</div>
 
             <div className="mt-3 divide-y divide-[var(--border)]">
-              {settings.mode === 'WAR' ? (
-                <>
-                  <SettingRow label="War length" hint="Number of in-game days">
-                    <Select
-                      value={settings.war.days}
-                      disabled={!isHost}
-                      onChange={(v) => patchWar({ days: Number(v) })}
-                      options={[3, 4, 5, 6, 7].map((n) => ({ value: n, label: `${n} days` }))}
-                    />
-                  </SettingRow>
-                  <SettingRow label="Events per day">
-                    <div className="flex items-center gap-1">
-                      <Select
-                        value={settings.war.minEventsPerDay}
-                        disabled={!isHost}
-                        onChange={(v) => patchWar({ minEventsPerDay: Number(v) })}
-                        options={[4, 5, 6, 7, 8].map((n) => ({ value: n, label: `min ${n}` }))}
-                      />
-                      <Select
-                        value={settings.war.maxEventsPerDay}
-                        disabled={!isHost}
-                        onChange={(v) => patchWar({ maxEventsPerDay: Number(v) })}
-                        options={[4, 5, 6, 7, 8].map((n) => ({ value: n, label: `max ${n}` }))}
-                      />
-                    </div>
-                  </SettingRow>
-                  <SettingRow label="Auto-play speed">
-                    <Select
-                      value={settings.war.autoplayMs}
-                      disabled={!isHost}
-                      onChange={(v) => patchWar({ autoplayMs: Number(v) })}
-                      options={[
-                        { value: 0, label: 'Manual' },
-                        { value: 4000, label: '4 s' },
-                        { value: 7000, label: '7 s' },
-                        { value: 10000, label: '10 s' },
-                        { value: 15000, label: '15 s' },
-                      ]}
-                    />
-                  </SettingRow>
-                  <SettingRow
-                    label="Class advantage"
-                    hint="Saber > Lancer > Archer, Rider > Caster > Assassin, Ruler > Avenger"
-                  >
-                    <Toggle
-                      label="Class advantage"
-                      checked={settings.war.classAdvantage}
-                      disabled={!isHost}
-                      onChange={(v) => patchWar({ classAdvantage: v })}
-                    />
-                  </SettingRow>
-                  <SettingRow label="Narration" hint="The voice the war is told in">
-                    <Select
-                      value={settings.war.narration}
-                      disabled={!isHost}
-                      onChange={(v) => patchWar({ narration: v as RoomSettings['war']['narration'] })}
-                      options={[
-                        { value: 'templated', label: 'Templated' },
-                        { value: 'hunger_games', label: 'Hunger Games' },
-                        { value: 'fate', label: 'Fate' },
-                      ]}
-                    />
-                  </SettingRow>
-                  <SettingRow label="War location" hint="Where on Earth the Grail War takes place">
-                    <Select
-                      value={settings.war.locationMode}
-                      disabled={!isHost}
-                      onChange={(v) => patchWar({ locationMode: v as RoomSettings['war']['locationMode'] })}
-                      options={[
-                        { value: 'ai', label: 'Let AI Decide' },
-                        { value: 'players', label: "Let Players Choose" },
-                      ]}
-                    />
-                  </SettingRow>
-                </>
-              ) : (
-                <>
-                  <SettingRow label="Argue time">
-                    <Select
-                      value={settings.debate.argueSec}
-                      disabled={!isHost}
-                      onChange={(v) => patchDebate({ argueSec: Number(v) })}
-                      options={[30, 60, 90, 120, 180].map((n) => ({ value: n, label: `${n}s` }))}
-                    />
-                  </SettingRow>
-                  <SettingRow label="Vote time">
-                    <Select
-                      value={settings.debate.voteSec}
-                      disabled={!isHost}
-                      onChange={(v) => patchDebate({ voteSec: Number(v) })}
-                      options={[15, 20, 30].map((n) => ({ value: n, label: `${n}s` }))}
-                    />
-                  </SettingRow>
-                  <SettingRow label="Tie-break">
-                    <Select
-                      value={settings.debate.tieBreak}
-                      disabled={!isHost}
-                      onChange={(v) => patchDebate({ tieBreak: v as 'host' | 'random' | 'oracle' })}
-                      options={[
-                        { value: 'host', label: 'Host decides' },
-                        { value: 'random', label: 'Random' },
-                        { value: 'oracle', label: 'Oracle decides' },
-                      ]}
-                    />
-                  </SettingRow>
-                  <SettingRow label="Ballots" hint="Every Master votes in every match — including the two whose Servants are fighting.">
-                    <span className="text-[12px] text-muted">Everyone votes</span>
-                  </SettingRow>
-                  <SettingRow label="Show Oracle stat cards">
-                    <Toggle
-                      label="Oracle cards"
-                      checked={settings.debate.showOracleCards}
-                      disabled={!isHost}
-                      onChange={(v) => patchDebate({ showOracleCards: v })}
-                    />
-                  </SettingRow>
-
-                  {/* Team-ups are designed but not built yet: the row is shown
-                      greyed so hosts can see what is coming, and neither control
-                      is wired to the server. */}
-                  <div className="mt-3 rounded-lg border border-border bg-surface-2 p-3 opacity-70">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-[13px] text-ink">Team-ups</span>
-                          <span className="rounded border border-[var(--gold)] px-1.5 py-[2px] text-[9px] font-black uppercase tracking-wider text-gold">
-                            Coming soon
-                          </span>
-                        </div>
-                        <div className="text-[11px] text-muted">
-                          Off, every round is a straight 1v1. On, some rounds become a 2v1 team-up.
-                        </div>
-                      </div>
-                      <div className="shrink-0">
-                        <Toggle label="Team-ups" checked={false} disabled onChange={() => {}} />
-                      </div>
-                    </div>
-                    <div className="mt-2">
-                      <p className="text-[10.5px] uppercase tracking-wide text-muted">How teams are chosen</p>
-                      <div className="mt-1 flex flex-wrap items-center gap-2">
-                        <Select
-                          value={settings.debate.teamMode}
-                          disabled
-                          onChange={() => {}}
-                          options={[
-                            { value: 'weaker', label: 'Weaker characters team up' },
-                            { value: 'canonical', label: 'Canonical allies' },
-                            { value: 'random', label: 'Random pairings' },
-                          ]}
-                        />
-                        <span className="text-[11px] text-muted">
-                          Two underdogs against a favourite · allies from the same story · anyone at all.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
+              {/* This mode's own rules rows, declared in client/src/modes.tsx. */}
+              <Rules />
 
               {/* The cap applies to both modes: it is what the Oracle profiles
                   are clamped to before the arena shows them. */}
@@ -524,11 +261,11 @@ export default function Lobby() {
                 />
               </SettingRow>
               <SettingRow
-                label={settings.mode === 'WAR' ? 'Extended War' : 'Extended Arena'}
+                label={lobby.extendedLabel}
                 hint={`Up to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters`}
               >
                 <Toggle
-                  label="Extended war"
+                  label={lobby.extendedLabel}
                   checked={settings.extendedWar}
                   disabled={!isHost}
                   onChange={(v) =>
@@ -564,7 +301,7 @@ export default function Lobby() {
               <button
                 type="button"
                 className="hgd-btn hgd-btn-primary mt-4 w-full"
-                disabled={masters.length < minMasters}
+                disabled={masters.length < lobby.minMasters}
                 onClick={startDraft}
               >
                 Start Draft
@@ -575,7 +312,7 @@ export default function Lobby() {
             <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-[13px] text-ink">
-                  {settings.mode === 'WAR' ? 'Classes in this war' : 'Classes in this Arena'}
+                  {lobby.classesTitle}
                 </span>
                 <span className="text-[11px] text-muted">
                   {enabledClassList.length} of {CLASSES.length} selected · one character each
@@ -612,8 +349,7 @@ export default function Lobby() {
                 })}
               </div>
               <p className="mt-2 text-[11px] text-muted">
-                Shielder, Ruler and Avenger are optional — switch them on for a bigger, stranger{' '}
-                {settings.mode === 'WAR' ? 'war' : 'arena'}.
+                Shielder, Ruler and Avenger are optional — switch them on for a bigger, stranger {lobby.noun}.
               </p>
             </div>
 
@@ -649,68 +385,8 @@ export default function Lobby() {
               </div>
             </div>
 
-            {/* The Grail War's real-world location — it has no meaning in the arena. */}
-            {settings.mode === 'WAR' && (
-              <div className="mt-4 rounded-lg border border-border bg-surface-2 p-3">
-                <p className="text-[11px] uppercase tracking-wide text-muted">War location</p>
-                {room.warLocation ? (
-                  <div className="mt-1 flex flex-wrap items-center justify-between gap-2">
-                    <div>
-                      <p className="font-display text-[16px] font-bold text-gold">{room.warLocation.name}</p>
-                      <p className="text-[11.5px] text-muted">{room.warLocation.country}</p>
-                    </div>
-                    {isHost && (
-                      <button
-                        type="button"
-                        className="hgd-btn hgd-btn-ghost !min-h-[30px] !px-2 !text-[11px]"
-                        onClick={rerollLocation}
-                      >
-                        Re-roll
-                      </button>
-                    )}
-                  </div>
-                ) : room.locationChoice ? (
-                  <div className="mt-1">
-                    {room.locationChoice.chooserId === playerId ? (
-                      <p className="text-[12px] text-ink">
-                        You choose where the war happens. Pick one of these three:
-                      </p>
-                    ) : (
-                      <p className="text-[12px] text-ink">
-                        <span className="text-gold">
-                          {room.players.find((p) => p.id === room.locationChoice?.chooserId)?.nickname ?? 'A Master'}
-                        </span>{' '}
-                        is choosing where the war happens.
-                      </p>
-                    )}
-                    <div className="mt-2 grid gap-2 sm:grid-cols-3">
-                      {room.locationChoice.options.map((option) => {
-                        const canPick = room.locationChoice?.chooserId === playerId;
-                        return (
-                          <button
-                            key={option.id}
-                            type="button"
-                            disabled={!canPick}
-                            onClick={() => pickLocation(option.id)}
-                            className={clsx(
-                              'hgd-card p-2 text-left',
-                              canPick ? 'hgd-card-interactive' : 'opacity-70',
-                            )}
-                          >
-                            <span className="block text-[13px] font-bold text-ink">{option.name}</span>
-                            <span className="block text-[11px] text-muted">{option.country}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ) : (
-                  <p className="mt-1 text-[12px] text-muted">
-                    None chosen yet — the Grail will decide when the war starts.
-                  </p>
-                )}
-              </div>
-            )}
+            {/* The mode's own block below the shared rows, if it declared one. */}
+            {Extra && <Extra />}
           </section>
         </div>
       </div>

@@ -2,6 +2,7 @@
  * Shared constants for Grail Wars.
  * Imported by both the server and the client — keep this file free of runtime deps.
  */
+import type { Mode } from './types';
 
 /** Every Servant class the game knows about, in canonical display order. */
 export const CLASSES = [
@@ -248,6 +249,71 @@ export const DEFAULT_SETTINGS = {
     teamMode: 'weaker',
   },
 } as const;
+
+/**
+ * What every mode card has, whichever page draws it.
+ */
+interface ModeCardBase {
+  icon: string;
+  title: string;
+  /** one line, shown on the landing page and on the lobby card alike */
+  blurb: string;
+  /** gold chip in the card's corner, e.g. NEW */
+  badge?: string;
+  /** the longer lobby-only detail a host should read before choosing */
+  note?: string;
+}
+
+/** A mode a room can actually be set to. */
+interface PlayableModeCard extends ModeCardBase {
+  playable: true;
+  /** the value written into `settings.mode` when this card is clicked */
+  mode: Mode;
+}
+
+/** A mode that is announced but not built: greyed out, badged, never clickable. */
+interface ComingSoonModeCard extends ModeCardBase {
+  playable: false;
+  mode: null;
+}
+
+export type ModeCard = PlayableModeCard | ComingSoonModeCard;
+
+/**
+ * Every mode the game knows about, in the order the landing page and the lobby
+ * show them. Both pages render from this one list, so the mode grid cannot
+ * drift between them: a new mode is declared here once, and it goes from a
+ * greyed-out teaser to a selectable card by flipping `playable` — which is also
+ * what forces it to name the `Mode` it selects (the discriminant cannot be set
+ * to `true` while `mode` is still `null`).
+ */
+export const MODE_CARDS: readonly ModeCard[] = [
+  {
+    playable: true,
+    mode: 'WAR',
+    icon: '⚔️',
+    title: 'Web-Driven War',
+    blurb: 'Every Servant is researched and power-scaled, then a five-day war plays out one event at a time.',
+    note: 'Heads up: this mode is powered by AI, and it scales every Servant against the VS Battles Wiki. Characters with higher tiers also scale higher here, so the stronger ones will usually win — set the Max Power level below if you want a closer war.',
+  },
+  {
+    playable: true,
+    mode: 'DEBATE',
+    icon: '🗣️',
+    title: 'Debate Arena',
+    blurb: 'Random 1v1 matchups. Every Master argues their Servant, everyone votes, winners advance.',
+    badge: 'NEW',
+    note: `Three to ${LIMITS.MAX_PLAYERS_EXTENDED} Masters, and every Master votes in every match — even the one they are fighting. Each Master drafts a character for every class, then the Grail hands them one to debate for; an uneven field sends one random character through on a bye.`,
+  },
+  {
+    playable: false,
+    mode: null,
+    icon: '🕹️',
+    title: 'Interactive War',
+    blurb:
+      'A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out.',
+  },
+];
 
 /**
  * The name of a bracket round given how many rounds the whole bracket takes:

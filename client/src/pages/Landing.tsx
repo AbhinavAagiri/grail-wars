@@ -1,9 +1,50 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LIMITS, ROOM_CODE_LENGTH } from '@hgd/shared';
+import { LIMITS, MODE_CARDS, ROOM_CODE_LENGTH, type ModeCard } from '@hgd/shared';
 import { SummoningCircle, Rise } from '../components/ui';
 import { SiteNav } from '../components/SiteNav';
 import { loadNickname, saveNickname, useStore } from '../store';
+
+/**
+ * One card in the home page's mode grid, drawn from MODE_CARDS — the same list
+ * the lobby draws from, so the two can never disagree about which modes exist.
+ *
+ * Two shapes. A playable mode is a half-width blurb. A mode that is not
+ * playable yet takes the whole width, and below `sm` it drops its blurb
+ * instead of costing the page its one-screen rule (decision 25) — the badge
+ * already says everything that matters there.
+ */
+function ModeTile({ card }: { card: ModeCard }) {
+  if (!card.playable) {
+    return (
+      <div className="hgd-card col-span-2 flex flex-wrap items-baseline gap-x-2 px-3 py-2 opacity-70 sm:block sm:p-3">
+        <p className="font-bold text-ink">
+          {card.icon} {card.title}{' '}
+          <span className="rounded border border-[var(--gold)] px-1.5 py-[2px] align-middle text-[9px] font-black uppercase leading-none tracking-wider text-gold">
+            Coming soon
+          </span>
+        </p>
+        <p className="hidden sm:mt-0.5 sm:block">{card.blurb}</p>
+      </div>
+    );
+  }
+  return (
+    <div className="hgd-card px-3 py-2.5 sm:p-3">
+      <p className="mb-0.5 font-bold text-ink">
+        {card.icon} {card.title}
+        {card.badge && (
+          <>
+            {' '}
+            <span className="rounded bg-gold px-1.5 py-[2px] align-middle text-[9px] font-black uppercase leading-none text-[#1a1408]">
+              {card.badge}
+            </span>
+          </>
+        )}
+      </p>
+      <p>{card.blurb}</p>
+    </div>
+  );
+}
 
 export default function Landing({ presetCode }: { presetCode?: string }) {
   const navigate = useNavigate();
@@ -168,34 +209,9 @@ export default function Landing({ presetCode }: { presetCode?: string }) {
             delay={0.1}
             className="mx-auto mt-3 grid w-full max-w-xl grid-cols-2 gap-2 text-[11.5px] leading-tight text-muted sm:mt-4 sm:text-[12px]"
           >
-            <div className="hgd-card px-3 py-2.5 sm:p-3">
-              <p className="mb-0.5 font-bold text-ink">⚔️ Web-Driven War</p>
-              <p>Every Servant is researched and power-scaled, then a five-day war plays out one event at a time.</p>
-            </div>
-            <div className="hgd-card px-3 py-2.5 sm:p-3">
-              <p className="mb-0.5 font-bold text-ink">
-                🗣️ Debate Arena{' '}
-                <span className="rounded bg-gold px-1.5 py-[2px] align-middle text-[9px] font-black uppercase leading-none text-[#1a1408]">
-                  New
-                </span>
-              </p>
-              <p>Random 1v1 matchups. Every Master argues their Servant, everyone votes, winners advance.</p>
-            </div>
-            {/* A full-width strip for the mode that is not playable yet, so the
-                landing page names all three without pretending it can be played.
-                On a phone the blurb is dropped rather than cost the page its
-                one-screen rule — the badge already says everything that matters. */}
-            <div className="hgd-card col-span-2 flex flex-wrap items-baseline gap-x-2 px-3 py-2 opacity-70 sm:block sm:p-3">
-              <p className="font-bold text-ink">
-                🕹️ Interactive War{' '}
-                <span className="rounded border border-[var(--gold)] px-1.5 py-[2px] align-middle text-[9px] font-black uppercase leading-none tracking-wider text-gold">
-                  Coming soon
-                </span>
-              </p>
-              <p className="hidden sm:mt-0.5 sm:block">
-                A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out.
-              </p>
-            </div>
+            {MODE_CARDS.map((card) => (
+              <ModeTile key={card.title} card={card} />
+            ))}
           </Rise>
         </div>
       </div>
