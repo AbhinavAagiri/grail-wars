@@ -197,6 +197,10 @@ const MILESTONES: Milestone[] = [
         body: 'A pick that does not fit the class is refused — and the refusal names the classes that would have worked.',
       },
       {
+        title: 'Faster drafting',
+        body: 'The pick lands immediately and the class check follows as a badge on the card.',
+      },
+      {
         title: 'AI Chooses',
         body: '25 characters dealt per class from committed anime and history rosters, generated and filtered from public wiki data.',
       },
@@ -205,8 +209,12 @@ const MILESTONES: Milestone[] = [
         body: 'A second mode: every Master drafts for every class, the Grail hands them one character, and random 1v1 matchups are argued and voted down to a champion. An odd field sends one random character through on a bye.',
       },
       {
+        title: 'Sound',
+        body: 'Stings for the summoning and the events, with a mute that is remembered.',
+      },
+      {
         title: 'Still rough',
-        body: 'Selecting a character can pause while the Oracle checks it, and refreshing mid-draft can drop a Master to spectator. Both are on the list for v1.0.',
+        body: 'Refreshing mid-draft can drop a Master to spectator. That one is on the list for v1.0.',
       },
     ],
     place: 'left',
@@ -220,10 +228,6 @@ const MILESTONES: Milestone[] = [
     body: 'What v1.0 means: the game stops apologising for itself. The defects come out, the deployment becomes real, and the polish nobody notices until it is missing gets added.',
     items: [
       {
-        title: 'Faster drafting',
-        body: 'Return the pick immediately and report the class check afterwards, as a badge on the card.',
-      },
-      {
         title: 'Rejoining a war mid-draft',
         body: 'Refreshing during the draft should put a Master back in their seat instead of the spectator list.',
       },
@@ -232,8 +236,8 @@ const MILESTONES: Milestone[] = [
         body: 'Docker image, compose stack and Caddy certificates on a live host, idle reclamation included.',
       },
       {
-        title: 'Sound and accessibility',
-        body: 'Stings for the summoning and the events, plus a keyboard-only drafting pass and a contrast review.',
+        title: 'Interactive War',
+        body: 'A war you steer by hand: Masters make the calls between events instead of watching the AI play the whole thing out.',
       },
       {
         title: 'Recap export',
