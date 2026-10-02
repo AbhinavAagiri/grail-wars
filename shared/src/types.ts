@@ -364,6 +364,22 @@ export interface WarCursor {
   speedMs: number;
 }
 
+/**
+ * What the room knows about one drafted pick's class check.
+ *
+ * A pick is written the moment it is made, so the board never waits on a wiki
+ * lookup: the class verdict (and the political screen that runs beside it)
+ * report here afterwards. `flagged` is a character who fights in another class
+ * or whose style the game could not place at all — `classes` names the classes
+ * that would have worked, and is empty when there are none. `refused` is one
+ * the draft will not seat anywhere.
+ */
+export type PickCheck =
+  | { status: 'checking' }
+  | { status: 'ok' }
+  | { status: 'flagged'; message: string; classes: ServantClass[] }
+  | { status: 'refused'; message: string };
+
 /** Sanitized room snapshot. Never contains other players' draft picks during DRAFT. */
 export interface RoomState {
   code: string;
@@ -376,6 +392,8 @@ export interface RoomState {
   serverNow: number;
   /** your own picks by class (only for you) */
   myPicks?: Partial<Record<ServantClass, Character>>;
+  /** the class check behind each of your own picks (only for you) */
+  myPickChecks?: Partial<Record<ServantClass, PickCheck>>;
   /**
    * The room's AI-Chooses roster, 25 characters per class, only present during
    * DRAFT when the setting is on. Shared by every player, never a private pick.

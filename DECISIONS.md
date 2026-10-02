@@ -1012,6 +1012,130 @@ screen reader in the arena hears *Extended Arena*, matching the row it sits on. 
 other screens that still branch on the mode (Summon, Research and Results) are
 untouched; `MODE_LOBBY` is where their copy would come from when they are converted.
 
+## 36. The pick lands first and its class check reports on the card; Lock In is the gate
+
+**The wait moved off the critical path.** `draft:pick` used to *await* the two lookups a
+free-search pick needs — the political screen and the class verdict — before it wrote
+anything, and a verdict that had to read a wiki (decision 26) could take twenty-odd
+seconds. The board sat on a placeholder with no pick and no explanation, and the only
+honesty the draft offered was the apology line under the buttons. `Room.setPick()` is now
+synchronous: it refuses what it can refuse instantly (wrong phase, spectator, already
+locked, class not in this war, not on the roster, duplicate, empty name), writes the
+pick, and returns. The check runs beside it and paints later.
+
+**The verdict is a state on the snapshot, not a promise held by the handler.** The new
+`PickCheck` union in `shared/src/types.ts` is `checking`, `ok`, `flagged` (with the
+refusal sentence and the classes the evidence *does* support) or `refused` (the political
+screen's sentence). `Room` keeps them in `draftChecks`, a map from player to class, and
+`sanitize()` ships a viewer only their own as `myPickChecks`. Nothing about the room's
+timing changes: the snapshot is still the only thing the client renders.
+
+**Decision 27's rule is unchanged — it just moved one control later.** A room may still
+never summon a Servant into a class that does not fit it; what guarantees that now is the
+lock rather than the pick. `lockBlocker()` walks the caller's slots and refuses while any
+check is still `checking` (*"One class check is still running — Lock In again in a
+moment."*) or has come back `flagged` / `refused`, in which case the refusal is quoted
+with the slot named — *"Kirito can only be drafted as Saber — their fighting style
+doesn't fit this class. (Shielder slot)"*. `lock()` returns that as its error before it
+touches `player.locked`, so the gate holds whether or not the client draws it; the client
+draws it anyway — Lock In is disabled with the same reason printed under it — because a
+disabled button with no explanation is the bug this pass exists to remove. A pick that
+never needed a check (a roster pick from a class-legal pool, an autofilled slot) is
+written straight to `ok`: the pool vouched for the class, so there is nothing to look up
+and the gate never blinks.
+
+**A stale verdict cannot paint the next pick.** `checkPick()` applies its answer only
+while `slotHolds(player, cls, key)` — the exact character still seated in that slot — and
+clearing a slot deletes its check. Repicking mid-lookup therefore drops the answer instead
+of badging the new character with the old character's verdict, which is checked directly
+in `server/tests/draftCheck.test.ts` (Kirito cleared, Vegeta picked, Vegeta's card carries
+only *Berserker* and *Avenger*). A lookup that throws is not a pass either: it reads as an
+unplaceable character, the same answer the handler gave before the wait moved.
+
+**On the board.** `SlotCheck` reads the state back: a pulsing dot with *Checking the
+class…* while it runs, *✓ Class checked* when it lands clean, *✕ Doesn't fit the
+Shielder* plus the refusal sentence and **Try** chips for every class the evidence
+supports when it is flagged, and *✕ Not draftable* with the screen's reason when it is
+refused. A Try chip empties the slot and drops the cursor into that class's search box
+(`CharacterSearch` grew an `autoFocus` prop), so moving a mis-seated character is one
+click instead of clear-then-retype, and a chip whose target slot is already full is
+disabled and says why. Every one of those lines is an `aria-live="polite"` region, so
+the verdict is announced rather than only drawn, and the draft's apology line is deleted
+— the delay it apologized for no longer exists.
+
+**The smoke test learned the same lesson.** Its draft probes are a burst of picks, which
+trips the socket's per-second cap; a dropped event there is a dropped `draft:lock`, and
+the room answers *"Slow down a moment."* while nothing locks. The script now presses Lock
+In again until every Master is locked, and if it never gets there it fails with each
+Master's open slots, non-`ok` checks and last errors rather than a bare timeout.
+
+## 37. The stings are a handful of synthesised recipes, and one gate keeps a burst from rattling
+
+**Synthesised, not shipped.** The whole sound set is one file, `client/src/lib/sound.ts`:
+eleven recipes of oscillator notes — *pick*, *clean*, *flagged*, *lock*, *summon*,
+*war*, *tick*, *fall*, *arena*, *verdict*, *finale* — played through the Web Audio API
+when their moment arrives. There is no audio folder, nothing to preload, no dependency,
+and nothing to keep in sync between a file name and the moment it marks; a recipe is a
+list of notes with a pitch, an offset and a ring time, and the bundle carries a few
+hundred bytes of them. Gains sit around 0.05 and never above 0.12 — several notes can
+overlap, and the whole set runs through one master bus at 0.7 — so it is heard under the
+room rather than over it. Each note is an oscillator and a gain with an exponential
+attack and tail, a real swell instead of a click: the summoning chord breathes in over
+420 ms and the war horn glides from 110 to 165 Hz. Nothing loops and nothing plays on
+the landing page; there is no music, only stings.
+
+**One gate decides what is due, and it takes its clock as an argument.**
+`makeStingGate()` is the only pure part of the engine — the clock is passed in, so the
+tests run a whole war's worth of cues in a microsecond. A sting remembers when it last
+played and holds its repeat for a default 150 ms (the war's *tick* overrides that to
+110 ms, because the room's fastest autoplay walks events past in a stream and the
+quietest sound is the one meant to be heard event by event), and no more than five
+stings may ring inside any 600 ms window. Jumping the cursor through a long day, or a
+replayed state arriving in one clump, therefore gets a flourish instead of a rattle —
+five ticks inside 20 ms are one sting, while a war at 150 ms spacing is heard tick by
+tick.
+
+**Every moment is a transition the client already has.** `SoundCues` is mounted once in
+`App` and watches the store, not the pages: a war event (the deeper *fall* note when it
+carries deaths, the *tick* otherwise), the final and the champion (*finale*), a match
+opening (*arena*) and a result landing (*verdict*), the phase moving to SUMMON
+(*summon*) or WAR (*war*), and a diff of the player's own board over the room's enabled
+classes — a pick landing (*pick*), a class check settling `ok` or `flagged`
+(*clean* / *flagged*), and a lock flipping false to true (*lock*). Nothing about it
+touches the wire; it reads the same snapshot every screen renders, and a screen added
+later makes a sound only because it changes one of these things. The *first* snapshot of
+a room is a baseline, never a cue, so joining a room mid-war or reloading a page fires
+no volley for a state that was already true before the player's eyes were on it.
+
+**A sleeping context drops its stings; it does not queue them.** Browsers hold an audio
+context suspended until the page has been interacted with. `ensureUnlock()` binds its
+wake-up at module import rather than at the first sting, so the click that walks into a
+room resumes the context — which is what makes the first sound of a session (a pick
+landing right after joining) audible instead of dropped; before that fix it was observed
+disappearing. A sting that fires while the context is not yet `running` is dropped
+rather than queued, because queued notes would all fire at once the instant it woke.
+
+**The mute lives in the header and the choice survives.** `SoundToggle` sits in
+`StickyHeader`'s right cluster, so every in-room screen has it: a 🔊/🔇 button that
+announces itself as *Game sounds*, reports its state with `aria-pressed`, and titles
+itself *Sounds on — click to mute* / *Sounds off — click to unmute*. The preference is
+`hgd:audio`: sound is on unless the value is `0`, `1` and `0` are written on toggle, and
+storage being unavailable fails open — the default is what a first-time player hears.
+The toggle is a store (`useSyncExternalStore`), so flipping it repaints at once, and it
+was live-checked in a lobby where the icon, the title and the stored value all moved
+together. Sound is a garnish on this game, not a thing a screen depends on: muted, every
+screen behaves exactly the same.
+
+**What the verification does and does not claim.** A headless browser has no speaker, so
+the browser checks patched `AudioContext.prototype.createOscillator` and
+`AudioParam.setValueAtTime` to count oscillators and read the exact pitches requested,
+then walked live rooms and confirmed each recipe's notes appear at its moment (the
+timelines are in the verification table) and that muting produces *zero* new
+oscillators. That is evidence the right notes are asked for at the right moments;
+whether they sound pleasant is left to ears. The recipes' own rules — real pitches,
+bounded rings, the gain ceiling, the cooldowns and the burst gate — are pinned by
+`server/tests/soundCues.test.ts`.
+
 ## Verification status
 
 | Check | Result |
@@ -1061,7 +1185,12 @@ untouched; `MODE_LOBBY` is where their copy would come from when they are conver
 | Live feedback delivery from the deployed site | the deployed **Contact** form was submitted for real (name *Live delivery check*, reply-to `reply-test@example.com`): the page showed the toast and the *Message received* card, and `POST /api/feedback` took **3005 ms** — the same request takes about 20 ms when no webhook is configured, so Render did call `FEEDBACK_WEBHOOK_URL` and wait on Google — but no email arrived. The Apps Script's **Executions** page showed the newest entry *Completed* while its `to:` was still one of the recipe's placeholder strings, so `MailApp` mailed an address nobody owns; the deployment itself (*Execute as: Me*, access *Anyone*, `/exec` URL) and the Render environment are otherwise correct. The recipe now names the recipient on an explicit `INBOX` line and records that an edited script must be deployed as a new version, and the next submission confirmed the whole path live: the message reached the configured inbox within seconds — subject `Grail Wars feedback (other)`, sent from and to the script's account, with the visitor's address carried in `Reply-To` |
 | Mode cards, the badges and the Command Spell row | `npm run typecheck` clean for server and client; `npm test` **205/205 across 19 files** (an unchanged suite — this pass touches no logic); `npm run build` clean (464 modules). In the browser against a local production server on `:3100`: the landing page's Debate Arena blurb renders the gold `NEW` chip beside its title; the lobby's *Rules of the War* shows Web-Driven War with **no `Recommended` chip** anywhere in the page, Debate Arena with the `NEW` chip, and a third card — **🕹️ Interactive War**, `disabled`, *Coming soon* badge, *Not playable yet*, `cursor-not-allowed opacity-60` — that never takes the gold selected outline; clicking the two playable cards still flips the heading between *Rules of the War* and *Rules of the Arena* with the outline following the playable card each time; and the War settings now run *Class advantage* straight into *Narration* — `Command Spell rescues` is not in the page. The landing page lists all three modes: the two blurbs plus a full-width **🕹️ Interactive War** strip whose chip measures `rgb(201, 164, 92)` text and 1px border, 9px / 900 weight, uppercase; on the true landing route (`h-dvh`, `overflow-hidden`) the page still has **no document scroll and no inner-column scroll** at 1440×800 (column 675/675; the strip 576×73 with its blurb) and 393×698 (543/543), and at 360×640 the column reads 485/485 with the strip 320×32 — chip and title on one baseline, blurb hidden below `sm` — against 505/485, a 20px scroll, before the trim. The test server was stopped afterwards and port 3100 is clear. |
 | Mode list, one source | `npm run typecheck` clean for server and client; `npm test` **210/210 across 20 files** (5 new in `modeCards.test.ts`); `npm run build` clean (464 modules). In the browser against a local production server on `:3100`, the landing page's grid renders its three cards in declaration order from the one list: Web-Driven War and Debate Arena as 156×110 half-width cards at 360×640 (the Debate card wearing its gold `NEW` chip), and the **🕹️ Interactive War** strip at `span 2/span 2`, 320×32, `opacity: .7`, its blurb `display: none` below `sm` and 576×73 with the blurb at 1440×800. The page's own numbers are unchanged from before the refactor — document 640/640 with the inner column at 485/485 at 360×640, 698/698 and 543/543 at 393×698, 800/800 and 675/675 at 1440×800. In the lobby the same list draws all three cards: Web-Driven War selected (gold outline and border) with its AI caveat note, Debate Arena with the `NEW` chip, and Interactive War `disabled`, `aria-disabled`, `title="Interactive War is not playable yet."`, `cursor: not-allowed`, `opacity: .6`, the gold-bordered *Coming soon* chip and *Not playable yet* — and it never takes the outline. `Recommended` appears nowhere, and clicking Debate Arena flipped the panel to *Rules of the Arena* with the outline following it. As an end-to-end proof of the single source, a **fourth card** was declared in `MODE_CARDS` for the length of one build and appeared on both pages with neither page file touched — the home page drew it as a second full-width strip and the lobby as a second disabled *Coming soon* card with its own tooltip — and at 360×640 the extra card showed up in the inner column as 497/485 (12px of scroll; the document itself stayed 640/640), which is the height a fourth mode costs there. The card was reverted, and typecheck, the suite and the build were re-run on the reverted tree afterwards. The test server was stopped afterwards, port 3100 is clear, and the user's own `:3000` server was not touched. |
+| Faster drafting (unit) | `npm run typecheck` clean for server and client; `npm test` **221/221 across 21 files** (11 new in `draftCheck.test.ts`): a free pick is seated *before* its verdict exists; the canon settles Kirito as Saber and flags him as Shielder with message `/can only be drafted as Saber/`; a political figure lands and then reads `refused`; a verdict that resolves after the slot was re-picked is dropped; clearing a slot drops its check; `lock()` is held while a check is running and passes once it lands `ok`; a flagged slot refuses the lock with `/Shielder slot/` in the error; "Fill all 2 slots first" still wins over the check gate; a roster pick is `ok` immediately and locks at once; the duplicate and class-not-in-war refusals are still instant |
+| Faster drafting (end-to-end) | `npm run build` clean (464 modules, `dist/assets/index-CMAY_ivU.js`); on a local production server (`:3100`) `BASE_URL=http://127.0.0.1:3100 npm run smoke -- --players 3 --days 3` passes **with the new assertions** — every Master filled all 10 class slots, the duplicate pick was rejected, a real-world political figure **landed and was then refused on its card**, the canon settled Kirito as Saber and flagged him as Shielder, all 10 class checks settled clean on every Master, every Master locked in (Lock In is pressed until the room agrees, since the probe burst can trip the per-second event cap), summoning → research → a 26-event war to one winner with no dead Servant walking and no unresolved tokens. The test server was stopped afterwards, port 3100 is clear, and the user's own `:3000` server was not touched |
+| Faster drafting (browser) | a two-Master, two-class (Saber + Shielder) free-search room on `:3100`: *Kirito* picked into the Shielder slot **stayed on the board** and reported *✕ Doesn't fit the Shielder* + *"Kirito can only be drafted as Saber — their fighting style doesn't fit this class."* + **Try Saber** (enabled, and clicking it emptied the slot and focused the Saber search box — the placeholder read *Search a Saber…*) — the same chips disabled with their *the slot already holds a character* tooltips once both slots were full; *Mash Kyrielight* in Saber and *All Might* in Shielder each read *✓ Class checked*. A wiki-path character (*Kirito Kamui*) showed the pulsing *Checking the class…* line **151 ms** after the pick and settled **3.3 s** later as `flagged` with *Saber or Caster* chips; while it ran, Lock In was disabled with *"One class check is still running — try Lock In again in a moment."*, and with the slot flagged the line read *"Change the Shielder pick to lock in — it did not pass its class check."* (the server's refusal names the slot; the client never lets the click through). With both checks clean Lock In enabled, and pressing it locked the Master in — the other side of the room logged `locked=1`. The old apology line under the buttons is gone from the page |
 | Mode rules, declared per mode | `npm run typecheck` clean for server and client; `npm test` **210/210 across 20 files** (an unchanged suite — this pass moves JSX and copy, it does not change logic); `npm run build` clean (464 modules). In the browser against a local production server on `:3100` (room `EQAF`), the War panel renders its twelve rows in order — War length, Events per day, Auto-play speed, Class advantage, Narration, War location, then the shared Max Power level, Draft timer, Avoid own pick, **Extended War**, Max Masters, Allow spectators — with the class note ending *"bigger, stranger war"*, the War-location picker below the AI-Chooses block, and the waiting line *"Waiting for at least 2 Masters — share the code above."* Switching to Debate Arena flips the heading to *Rules of the Arena* and renders Argue time, Vote time, Tie-break, Ballots (*Everyone votes*), Show Oracle stat cards and the greyed Team-ups block, then the shared rows under **Extended Arena** and the note ending *"bigger, stranger arena"*; **no war-only string** (*War location*, *War length*, *Narration*, *Class advantage*) appears anywhere in the arena, and the waiting line becomes *"…the Arena needs a third ballot to break a tie between the two fighters."* Both moved panels are still wired to the server — clicking *Oracle cards* flipped `aria-checked` to `false` and it held after the round-trip, and clicking *Class advantage* in War did the same. The Extended switch's accessible name now reads *Extended War* / *Extended Arena* alongside its row. Proving the compile-time guard, a temporary `TEMP_MODE` added to the `Mode` union produced exactly one client error — the missing `MODE_LOBBY` entry — and nothing else; it was reverted, and typecheck, the suite and the build were re-run green afterwards. The test server was stopped afterwards, port 3100 is clear, and the user's own `:3000` server was not touched. |
+| Stings and the mute (unit) | `npm run typecheck` clean for server and client; `npm test` **230/230 across 22 files** (9 new in `soundCues.test.ts`): every recipe has at least one note with a real pitch and a ring no longer than 2000 ms; no gain above 0.12; the war *tick*'s 110 ms cooldown is faster than the default 150 ms; all eleven moment names exist; the gate lets a sting through once and holds its repeat to the exact cooldown boundary, lets different stings ring at the same instant, and caps a burst at `BURST_MAX` with the ceiling counted over the 600 ms window rather than the whole run; a war at 150 ms spacing is heard tick by tick (6 of 6) while a clump of five in 20 ms is **one** sting; and the mute preference is on by default and remembers being turned off — with no `window` in the Node test environment, this pins the fail-open default path. `npm run build` clean — 468 modules, `dist/assets/index-umKtUErp.js`, 348.43 kB (gzip 107.64 kB). |
+| Stings and the mute (browser) | against a local production server on `:3100`, with `AudioContext.prototype.createOscillator` and `AudioParam.setValueAtTime` patched to count oscillators and capture the exact pitches requested: the context read `running` immediately after the join click — the import-time unlock working — and room **`QMWK`**, played as a Master, heard `659` (a pick), `311`+`233` (a flagged check), `659`+`784`+`1175` (a clean pick), `523`+`659`+`880` (the lock), then `196`/`294`/`392` (the summon chord) and `110`/`220` (the war horn) as the phase moved; a spectator in a 3-second war (**`SDXV`**) heard `880` ticks at 0 / 2999 / 6000 / 15003 ms, `160`+`80` twice at 9001 ms for the two deaths, and the `392`/`523`/`659`/`784` finale at 15006 ms — the join baseline held and the coalescing never muted a war three seconds per event; an Arena room (**`HWFL`**) heard `523`+`415` when a match opened, `494`+`740` at the verdict and the finale at the champion; and the re-check in room **`VPDQ`** flipped the header toggle — `aria-pressed` true↔false, 🔊↔🔇, the title between *Sounds on — click to mute* and *Sounds off — click to unmute*, and `hgd:audio` `1`→`0`→`1` — while with the game muted a later pick produced **zero** new oscillators (the count frozen at 3), unmuting wrote `1` and the next pick produced +3, and a normal tab kept the preference across a reload where an incognito tab did not; the registered preview showed no console or network errors |
 
 ## Not done
 
@@ -1073,8 +1202,9 @@ untouched; `MODE_LOBBY` is where their copy would come from when they are conver
 - Live research with AI narration (`narration: 'ai'`) has not been exercised
   end-to-end, since no LLM key is configured — and the style is no longer
   reachable from the lobby.
-- M9 polish beyond the attribution footer (sound effects, a dedicated
-  accessibility pass, a recap-image export) is still open.
+- M9 polish beyond the attribution footer is partly done: sound effects landed in
+  decision 37, while the dedicated accessibility pass (keyboard support and a
+  contrast audit, the next pass) and the recap-image export are still open.
 - The deployed Apps Script still runs the recipe as it was when it was last
   deployed. The visitor's email only appears in the body once the script is
   updated and redeployed as a **new version** (Deploy → Manage deployments →

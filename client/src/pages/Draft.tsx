@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import { clsx } from 'clsx';
-import { CLASS_META, enabledClasses, POWER_CAPS, type Character, type SearchCandidate, type ServantClass } from '@hgd/shared';
+import {
+  CLASS_META,
+  enabledClasses,
+  POWER_CAPS,
+  type Character,
+  type PickCheck,
+  type SearchCandidate,
+  type ServantClass,
+} from '@hgd/shared';
 import { ClassBadge, Modal, Portrait, StickyHeader } from '../components/ui';
 import { CharacterSearch } from '../components/CharacterSearch';
 import { ImagePickerModal } from '../components/ImagePickerModal';
@@ -24,6 +32,91 @@ function Countdown({ endsAt }: { endsAt?: number }) {
   );
 }
 
+/**
+ * What the room's class check found for one drafted slot. The pick lands on the
+ * board before the check runs (decision 36), so the verdict is read here: the
+ * tick for a clean slot, a line for one still being checked, or the refusal
+ * with the classes that would have worked — each of which, while it still has
+ * room on the board, is a button that empties this slot and drops the cursor
+ * into that class's search box.
+ */
+function SlotCheck({
+  check,
+  cls,
+  free,
+  onMove,
+}: {
+  check?: PickCheck;
+  cls: ServantClass;
+  /** the classes with no pick yet, so they could take this character */
+  free: ServantClass[];
+  onMove: (to: ServantClass) => void;
+}) {
+  if (!check) return null;
+
+  if (check.status === 'checking') {
+    return (
+      <p className="mt-2 flex items-center gap-1.5 text-[11px] text-muted" aria-live="polite">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" aria-hidden="true" />
+        Checking the class…
+      </p>
+    );
+  }
+
+  if (check.status === 'ok') {
+    return (
+      <p className="mt-2 text-[10.5px] text-[var(--success)]" aria-live="polite">
+        ✓ Class checked
+      </p>
+    );
+  }
+
+  if (check.status === 'refused') {
+    return (
+      <div className="mt-2" aria-live="polite">
+        <p className="text-[11px] font-bold text-crimson">✕ Not draftable</p>
+        <p className="mt-1 text-[11px] text-crimson">{check.message}</p>
+      </div>
+    );
+  }
+
+  // Flagged: they fight in another class, or the game could not place them at
+  // all (in which case there is nothing to suggest).
+  const { message, classes: suggestions } = check;
+  return (
+    <div className="mt-2" aria-live="polite">
+      <p className="text-[11px] font-bold text-crimson">✕ Doesn't fit the {CLASS_META[cls].label}</p>
+      <p className="mt-1 text-[11px] text-crimson">{message}</p>
+      {suggestions.length > 0 && (
+        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+          {suggestions.map((suggested) => {
+            const canMove = free.includes(suggested);
+            return (
+              <button
+                key={suggested}
+                type="button"
+                disabled={!canMove}
+                title={
+                  canMove
+                    ? `Empty this slot and search the ${CLASS_META[suggested].label} slot for this character`
+                    : `The ${CLASS_META[suggested].label} slot already holds a character`
+                }
+                onClick={() => onMove(suggested)}
+                className={clsx(
+                  'rounded-full border border-border px-2 py-[3px] text-[10.5px] font-bold uppercase tracking-wide text-gold transition-colors',
+                  canMove ? 'hover:border-gold' : 'cursor-not-allowed opacity-50',
+                )}
+              >
+                Try {CLASS_META[suggested].label}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Draft() {
   const room = useStore((s) => s.room)!;
   const playerId = useStore((s) => s.playerId);
@@ -42,7 +135,29 @@ export default function Draft() {
   const isHost = room.hostId === playerId;
   const classes = enabledClasses(room.settings.classes);
   const myPicks = (room.myPicks ?? {}) as Partial<Record<ServantClass, Character>>;
+  const checks = room.myPickChecks ?? {};
   const filled = classes.filter((cls) => myPicks[cls]).length;
+  const free = classes.filter((cls) => !myPicks[cls]);
+  const [focusCls, setFocusCls] = useState<ServantClass | null>(null);
+  // Why Lock In is not ready, straight from the class checks the room has run.
+  // The server refuses the same way — this is the reason in front of the Master.
+  const pendingChecks = classes.filter((cls) => checks[cls]?.status === 'checking');
+  const failedChecks = classes.filter((cls) => {
+    const status = checks[cls]?.status;
+    return status === 'flagged' || status === 'refused';
+  });
+  const lockBlocker =
+    filled < classes.length
+      ? null
+      : pendingChecks.length > 0
+        ? pendingChecks.length === 1
+          ? 'One class check is still running — try Lock In again in a moment.'
+          : `${pendingChecks.length} class checks are still running — try Lock In again in a moment.`
+        : failedChecks.length > 0
+          ? failedChecks.length === 1
+            ? `Change the ${CLASS_META[failedChecks[0]!].label} pick to lock in — it did not pass its class check.`
+            : `Change ${failedChecks.length} picks to lock in — they did not pass their class checks.`
+          : null;
   const allLocked = room.players.filter((p) => !p.isSpectator).every((p) => p.locked);
   const aiChooses = room.settings.aiChooses;
   const draftPool = room.draftPool ?? {};
@@ -191,6 +306,7 @@ export default function Draft() {
                       <CharacterSearch
                         placeholder={`Search a ${meta.label}…`}
                         disabled={me?.locked}
+                        autoFocus={focusCls === cls}
                         onSelect={(candidate) => handleSelect(cls, candidate)}
                         onCustom={(name) => handleCustom(cls, name)}
                       />
@@ -199,6 +315,17 @@ export default function Draft() {
                 )}
 
                 {error && <p className="mt-2 text-[11px] text-crimson">{error}</p>}
+                {character && (
+                  <SlotCheck
+                    check={checks[cls]}
+                    cls={cls}
+                    free={free}
+                    onMove={(to) => {
+                      clearSlot(cls);
+                      setFocusCls(to);
+                    }}
+                  />
+                )}
               </article>
             );
           })}
@@ -218,14 +345,20 @@ export default function Draft() {
               </button>
             </>
           ) : (
-            <button
-              type="button"
-              className="hgd-btn hgd-btn-primary"
-              disabled={filled < classes.length}
-              onClick={lock}
-            >
-              Lock In {filled < classes.length ? `(${filled}/${classes.length})` : ''}
-            </button>
+            <>
+              <button
+                type="button"
+                className="hgd-btn hgd-btn-primary"
+                disabled={filled < classes.length || lockBlocker !== null}
+                title={lockBlocker ?? undefined}
+                onClick={lock}
+              >
+                Lock In {filled < classes.length ? `(${filled}/${classes.length})` : ''}
+              </button>
+              {lockBlocker && (
+                <p className="max-w-md text-center text-[11.5px] text-crimson">{lockBlocker}</p>
+              )}
+            </>
           )}
 
           {isHost && (
@@ -244,9 +377,6 @@ export default function Draft() {
             // two lines sit as a block rather than stretching the bar's width.
             <p className="mt-1 max-w-md text-center text-pretty text-[11px] text-muted">
               The host can begin once every Master has locked in.
-              <span className="mt-0.5 block text-[10.5px] italic text-muted">
-                I apologize for any delay when selecting characters, I am still trying to optimize the drafter.
-              </span>
             </p>
           )}
         </div>

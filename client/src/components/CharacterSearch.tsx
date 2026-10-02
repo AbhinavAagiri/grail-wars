@@ -19,13 +19,17 @@ export function CharacterSearch({
   onSelect,
   onCustom,
   disabled,
+  autoFocus,
 }: {
   placeholder?: string;
   onSelect: (candidate: SearchCandidate) => void;
   onCustom: (name: string) => void;
   disabled?: boolean;
+  /** the draft asks for the cursor here when a pick is moved to this class */
+  autoFocus?: boolean;
 }) {
   const search = useStore((s) => s.search);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchCandidate[]>([]);
   const [loading, setLoading] = useState(false);
@@ -51,6 +55,10 @@ export function CharacterSearch({
   }, [query, search]);
 
   useEffect(() => {
+    if (autoFocus && !disabled) inputRef.current?.focus();
+  }, [autoFocus, disabled]);
+
+  useEffect(() => {
     const onClickAway = (event: MouseEvent) => {
       if (!containerRef.current?.contains(event.target as Node)) setOpen(false);
     };
@@ -72,6 +80,7 @@ export function CharacterSearch({
   return (
     <div ref={containerRef} className="relative">
       <input
+        ref={inputRef}
         className="hgd-input !text-[13px]"
         placeholder={placeholder ?? 'Search any character…'}
         value={query}

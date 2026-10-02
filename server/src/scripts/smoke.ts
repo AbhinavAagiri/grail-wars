@@ -276,32 +276,80 @@ async function setUpGame(playerCount: number, mode: 'WAR' | 'DEBATE', days: numb
 
   // The two rules the reported bugs were about: a hand-curated class the
   // scraped rosters had mis-filed (Kirito was a Shielder there), and the ban on
-  // real-world political figures. Both settle without a wiki lookup.
+  // real-world political figures. Both settle without a wiki lookup — and both
+  // now land first and report on the card, so it is the *check* the smoke test
+  // watches, not an error, and each probe puts its slot back afterwards so the
+  // lock-in below is about an ordinary draft.
   const arbiter = clients[0]!;
+  const checkOf = (cls: ServantClass) => arbiter.state?.myPickChecks?.[cls];
+
   arbiter.emit(C2S.draftPick, { cls: 'ruler', customName: 'JD Vance' });
-  await until(
-    'the political figure to be refused',
-    () => arbiter.errors.some((message) => /political figure/i.test(message)),
-    10_000,
-  );
-  log('✓ a real-world political figure was refused');
+  await until('the political figure to be refused on its card', () => checkOf('ruler')?.status === 'refused', 10_000);
+  log('✓ a real-world political figure landed, then was refused by its class check');
+  arbiter.emit(C2S.draftClear, { cls: 'ruler' });
+  arbiter.emit(C2S.draftPick, { cls: 'ruler', candidate: candidateFor('ruler', 0) });
+  await until('the ruler slot to be restored', () => checkOf('ruler')?.status === 'ok', 10_000);
 
   arbiter.emit(C2S.draftPick, { cls: 'saber', customName: 'Kirito' });
-  await until('the canon Saber to be accepted', () => Boolean(arbiter.state?.myPicks?.saber), 10_000);
+  await until('the canon Saber to pass its check', () => checkOf('saber')?.status === 'ok', 10_000);
   arbiter.emit(C2S.draftPick, { cls: 'shielder', customName: 'Kirito' });
   await until(
-    'the canon Saber to be refused as Shielder',
-    () => arbiter.errors.some((message) => /Kirito can only be drafted as Saber/i.test(message)),
+    'the canon Saber to be flagged as Shielder',
+    () => {
+      const check = checkOf('shielder');
+      return check?.status === 'flagged' && /Kirito can only be drafted as Saber/i.test(check.message);
+    },
     10_000,
   );
-  log('✓ the class canon settles Kirito as Saber and refuses him as Shielder');
+  log('✓ the class canon settles Kirito as Saber and flags him as Shielder');
+  arbiter.emit(C2S.draftClear, { cls: 'shielder' });
+  arbiter.emit(C2S.draftPick, { cls: 'shielder', candidate: candidateFor('shielder', 0) });
 
-  for (const client of clients) client.emit(C2S.draftLock);
+  // Nothing locks in until every slot has come back clean — the gate that
+  // keeps a flagged pick out of the war now that the pick itself never waits.
   await until(
-    'every Master to lock in',
-    () => clients.every((c) => c.masters.every((p) => p.locked)),
-    15_000,
+    'every class check to settle',
+    () =>
+      clients.every((c) =>
+        CLASSES.every((cls) => {
+          const status = c.state?.myPickChecks?.[cls]?.status;
+          return status === undefined || status === 'ok';
+        }),
+      ),
+    30_000,
   );
+  log(`✓ all ${CLASSES.length} class checks settled clean on every Master`);
+
+  // Lock In is pressed, not fired once: the socket drops an event when a burst
+  // trips the per-second cap (the probe picks above are exactly such a burst),
+  // and a dropped Lock In reads as "Slow down a moment." with nothing locked —
+  // so press it again until the room agrees, and report what it said if it never
+  // does.
+  const lockDeadline = Date.now() + 15_000;
+  for (;;) {
+    for (const client of clients) client.emit(C2S.draftLock);
+    try {
+      await until(
+        'every Master to lock in',
+        () => clients.every((c) => c.masters.every((p) => p.locked)),
+        1_500,
+      );
+      break;
+    } catch (err) {
+      if (Date.now() > lockDeadline) {
+        const detail = clients
+          .map((c) => {
+            const open = c.masters.filter((p) => !p.locked).map((p) => p.nickname);
+            const bad = CLASSES.filter((cls) => c.state?.myPickChecks?.[cls]?.status !== 'ok').map(
+              (cls) => `${cls}:${c.state?.myPickChecks?.[cls]?.status ?? 'no check'}`,
+            );
+            return `${c.nickname}: not locked=${open.join(',') || '-'} checks=${bad.join(',') || '-'} errors=${c.errors.join(' | ') || '-'}`;
+          })
+          .join('\n  ');
+        throw new Error(`${(err as Error).message}\n  ${detail}`);
+      }
+    }
+  }
   log('✓ every Master locked in');
 
   /* ------------------------------------------------------------------ */

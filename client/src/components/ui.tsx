@@ -3,6 +3,7 @@ import { clsx } from 'clsx';
 import { motion, type HTMLMotionProps } from 'framer-motion';
 import { CLASS_META, PLAYER_COLORS, type PersonalityTag, type Player, type ServantClass, type Toast } from '@hgd/shared';
 import { generatedAvatar, onPortraitError } from '../lib/avatar';
+import { setAudioEnabled, useAudioEnabled } from '../lib/sound';
 import { useStore } from '../store';
 
 /* ------------------------------------------------------------------ */
@@ -311,6 +312,28 @@ export function Toasts() {
 /* Sticky in-room header                                               */
 /* ------------------------------------------------------------------ */
 
+/**
+ * The mute switch. It rides in the room header because that is the chrome every
+ * in-room screen shares — the stings mark a draft, a summoning, a war and an
+ * arena alike, so the control that silences them must not belong to one of
+ * them. `aria-pressed` carries the state; the icon is decoration.
+ */
+export function SoundToggle() {
+  const on = useAudioEnabled();
+  return (
+    <button
+      type="button"
+      onClick={() => setAudioEnabled(!on)}
+      aria-pressed={on}
+      aria-label="Game sounds"
+      title={on ? 'Sounds on — click to mute' : 'Sounds off — click to unmute'}
+      className="hgd-btn hgd-btn-ghost !min-h-[36px] !px-2 text-[14px] leading-none"
+    >
+      <span aria-hidden="true">{on ? '🔊' : '🔇'}</span>
+    </button>
+  );
+}
+
 export function StickyHeader({ right }: { right?: React.ReactNode }) {
   const room = useStore((s) => s.room);
   const playerId = useStore((s) => s.playerId);
@@ -341,6 +364,7 @@ export function StickyHeader({ right }: { right?: React.ReactNode }) {
         </span>
         <div className="ml-auto flex items-center gap-2">
           {right}
+          <SoundToggle />
           <span className="hidden text-[12px] text-muted sm:inline">{me?.nickname}</span>
           <button onClick={leaveRoom} className="hgd-btn hgd-btn-ghost !min-h-[36px]">
             Leave

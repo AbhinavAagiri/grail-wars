@@ -15,6 +15,7 @@ import {
   type ChatMessage,
   type Mode,
   type Phase,
+  type PickCheck,
   type Player,
   type Profile,
   type RoomSettings,
@@ -90,6 +91,13 @@ export class Room {
   readonly players = new Map<string, Player>();
   private readonly sessions = new Map<string, string>();
   readonly picks = new Map<string, Partial<Record<ServantClass, Character>>>();
+  /**
+   * The class check behind each of a player's own picks. The pick is stored the
+   * moment it is made (decision 36): the two web lookups that decide whether it
+   * is legal run beside it and report here, and it is the lock gate — not the
+   * pick handler — that keeps an unverified Servant out of the war.
+   */
+  private readonly draftChecks = new Map<string, Partial<Record<ServantClass, PickCheck>>>();
   private readonly disconnectTimers = new Map<string, NodeJS.Timeout>();
 
   assignments: Assignment[] = [];
@@ -415,6 +423,8 @@ export class Room {
     this.timeline = undefined;
     this.researchStarted = false;
     this.refreshDraftPool();
+    // A fresh draft starts with no verdicts from the last one.
+    this.draftChecks.clear();
     for (const p of this.players.values()) {
       p.locked = false;
       if (!p.isSpectator && !this.picks.has(p.id)) this.picks.set(p.id, {});
@@ -467,6 +477,8 @@ export class Room {
         const choice = options[Math.floor(Math.random() * Math.max(1, options.length))] ?? source[0];
         if (!choice) continue;
         table[cls] = { ...choice, submittedBy: player.id };
+        // Filled from a class-legal roster, so there is nothing left to check.
+        this.setCheck(player.id, cls, { status: 'ok' });
         // Auto-filled Servants deserve real artwork too, not just initials.
         void this.fillCandidates(player.id, cls, choice);
       }
@@ -485,7 +497,16 @@ export class Room {
     return keys;
   }
 
-  async setPick(playerId: string, cls: ServantClass, character: Character): Promise<{ ok: boolean; error?: string }> {
+  /**
+   * Seat a character in a class slot. Everything that needs no lookup is still
+   * refused here, in the same words as ever — the draft being closed, a locked
+   * Master, a class that is not in this war, a character off the room's roster,
+   * a character someone else already holds. The class check and the political
+   * screen are wiki lookups, so they run *beside* the pick and report on the
+   * card: the pick has to land the moment the Master makes it, and decision 27's
+   * strictness is enforced by the lock gate below rather than by this wait.
+   */
+  setPick(playerId: string, cls: ServantClass, character: Character): { ok: boolean; error?: string } {
     if (this.phase !== 'DRAFT') return { ok: false, error: 'The draft is not open.' };
     const player = this.players.get(playerId);
     if (!player || player.isSpectator) return { ok: false, error: 'Spectators cannot draft.' };
@@ -496,21 +517,6 @@ export class Room {
     const pool = this.draftPool.get(cls);
     if (pool && !pool.some((entry) => entry.key === character.key)) {
       return { ok: false, error: `That character is not on this room's ${CLASS_META[cls].label} roster.` };
-    }
-
-    // A free draft must fit the class: Saber is a swordsman, Archer fights at
-    // range, and a character the game cannot place at all is refused rather
-    // than seated in a class that makes no sense. The requested class is passed
-    // in so the canon and the curated rosters can answer without a wiki lookup.
-    if (!pool) {
-      const refused = await politicalRefusal(character);
-      if (refused) return { ok: false, error: refused };
-      const verdict = await classVerdictFor(character, cls).catch(
-        (): ClassVerdict => ({ classes: [], verified: false, evidence: 'none' }),
-      );
-      if (!verdict.verified || !verdict.classes.includes(cls)) {
-        return { ok: false, error: classRefusal(character, verdict) };
-      }
     }
 
     const duplicate = [...this.picks.entries()].find(([otherId, table]) => {
@@ -527,9 +533,69 @@ export class Room {
     this.picks.set(playerId, table);
     this.touch();
 
+    // The verdict behind the pick. A roster pick arrived from a class-legal
+    // pool, so it is clean already and has nothing to look up; a free pick is
+    // checked beside itself.
+    if (pool) this.setCheck(playerId, cls, { status: 'ok' });
+    else {
+      this.setCheck(playerId, cls, { status: 'checking' });
+      void this.checkPick(playerId, cls, character);
+    }
+
     // Fill the alternate image candidates in the background.
     void this.fillCandidates(playerId, cls, character);
     return { ok: true };
+  }
+
+  /** Write the class check behind one slot, which the snapshot shows to its owner. */
+  private setCheck(playerId: string, cls: ServantClass, check: PickCheck): void {
+    const table = this.draftChecks.get(playerId) ?? {};
+    table[cls] = check;
+    this.draftChecks.set(playerId, table);
+  }
+
+  /** True while a slot still holds the exact character a check was run for. */
+  private slotHolds(playerId: string, cls: ServantClass, key: string): boolean {
+    return this.picks.get(playerId)?.[cls]?.key === key;
+  }
+
+  /**
+   * Run the two lookups a free-draft pick needs and badge its card with what
+   * they found. The verdict is applied only while the slot still holds the
+   * character it was run for — clearing or replacing a pick mid-check must not
+   * paint the next one with the old answer — and a lookup that blows up is not
+   * a pass: it reads as an unplaceable character, which is the answer this
+   * handler gave before the wait moved off the critical path.
+   */
+  private async checkPick(playerId: string, cls: ServantClass, character: Character): Promise<void> {
+    let check: PickCheck | null = null;
+    try {
+      const refused = await politicalRefusal(character);
+      if (!this.slotHolds(playerId, cls, character.key)) return;
+      if (refused) {
+        check = { status: 'refused', message: refused };
+      } else {
+        const verdict = await classVerdictFor(character, cls).catch(
+          (): ClassVerdict => ({ classes: [], verified: false, evidence: 'none' }),
+        );
+        if (!this.slotHolds(playerId, cls, character.key)) return;
+        check =
+          verdict.verified && verdict.classes.includes(cls)
+            ? { status: 'ok' }
+            : { status: 'flagged', message: classRefusal(character, verdict), classes: verdict.classes };
+      }
+    } catch (err) {
+      logger.debug({ err }, 'draft class check failed');
+      if (!this.slotHolds(playerId, cls, character.key)) return;
+      check = {
+        status: 'flagged',
+        message: classRefusal(character, { classes: [], verified: false, evidence: 'none' }),
+        classes: [],
+      };
+    }
+    if (!check) return;
+    this.setCheck(playerId, cls, check);
+    this.broadcast();
   }
 
   private async fillCandidates(playerId: string, cls: ServantClass, character: Character): Promise<void> {
@@ -579,7 +645,35 @@ export class Room {
     if (!player || player.locked) return;
     const table = this.picks.get(playerId);
     if (table) delete table[cls];
+    // The slot is empty again, so the verdict behind the old pick goes with it.
+    const checks = this.draftChecks.get(playerId);
+    if (checks) delete checks[cls];
     this.touch();
+  }
+
+  /**
+   * Why this Master cannot lock in yet, or null when they can. Filled slots are
+   * not enough: every one of them must also have come back clean from its class
+   * check. Because the pick lands the moment it is made (decision 36), this gate
+   * is what guarantees a room can never summon a Servant into a class that does
+   * not fit it — decision 27's rule, moved from the pick to the lock.
+   */
+  private lockBlocker(playerId: string): string | null {
+    const checks = this.draftChecks.get(playerId) ?? {};
+    const classes = this.classes();
+    const pending = classes.filter((c) => checks[c]?.status === 'checking').length;
+    if (pending) {
+      return pending === 1
+        ? 'One class check is still running — Lock In again in a moment.'
+        : `${pending} class checks are still running — Lock In again in a moment.`;
+    }
+    for (const cls of classes) {
+      const check = checks[cls];
+      if (check && (check.status === 'flagged' || check.status === 'refused')) {
+        return `${check.message} (${CLASS_META[cls].label} slot)`;
+      }
+    }
+    return null;
   }
 
   lock(playerId: string): { ok: boolean; error?: string } {
@@ -591,6 +685,8 @@ export class Room {
     if (filled < classes.length) {
       return { ok: false, error: `Fill all ${classes.length} slots first (${filled} done).` };
     }
+    const blocked = this.lockBlocker(playerId);
+    if (blocked) return { ok: false, error: blocked };
     player.locked = true;
     this.touch();
     if ([...this.players.values()].filter((p) => !p.isSpectator).every((p) => p.locked)) {
@@ -1302,6 +1398,7 @@ export class Room {
     this.arenaTimer = null;
     this.arena = { bracket: [], phase: 'IDLE', totalRounds: 0 };
     this.chat = [];
+    this.draftChecks.clear();
     for (const p of this.players.values()) p.locked = false;
     this.touch();
     return true;
@@ -1322,6 +1419,7 @@ export class Room {
     this.chat = [];
     this.researchStarted = false;
     this.draftPool.clear();
+    this.draftChecks.clear();
     for (const p of this.players.values()) {
       p.locked = false;
       this.picks.set(p.id, {});
@@ -1368,6 +1466,7 @@ export class Room {
       chat: this.chat,
     };
     state.myPicks = mine;
+    state.myPickChecks = this.draftChecks.get(viewerId) ?? {};
     state.draftEndsAt = this.draftEndsAt;
     if (this.phase === 'DRAFT' && this.draftPool.size) {
       const pool: Partial<Record<ServantClass, Character[]>> = {};

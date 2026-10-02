@@ -6,6 +6,7 @@ import { useStore } from './store';
 import { socket } from './socket';
 import { SiteFooter, Toasts } from './components/ui';
 import { EarlyAccessNotice } from './components/EarlyAccessNotice';
+import { SoundCues } from './components/SoundCues';
 import Landing from './pages/Landing';
 import Credits from './pages/Credits';
 import Contact from './pages/Contact';
@@ -123,6 +124,9 @@ export default function App() {
         <SiteFooter compact={singleScreen} />
       </div>
       <Toasts />
+      {/* One listener for the whole app: it turns the room's transitions into the
+          game's stings (and does nothing at all when the player has muted it). */}
+      <SoundCues />
       {/* Shown once per page load, on every route: the game is an early release. */}
       <EarlyAccessNotice />
     </>

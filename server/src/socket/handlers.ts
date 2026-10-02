@@ -287,17 +287,18 @@ export function registerHandlers(io: Server, manager: RoomManager): void {
       else room.broadcast();
     });
 
-    on(C2S.draftPick, pickSchema, async (payload, room) => {
+    on(C2S.draftPick, pickSchema, (payload, room) => {
       if (!data.playerId) return;
       const playerId = data.playerId;
-      let character = payload.candidate
+      const character = payload.candidate
         ? candidateToCharacter(payload.candidate as SearchCandidate, playerId, payload.imageUrl)
         : customCharacter(payload.customName ?? '', playerId);
       if (!character.name) {
         fail('That name is empty.');
         return;
       }
-      const result = await room.setPick(playerId, payload.cls as ServantClass, character);
+      // The pick lands now; its class check reports on the card afterwards.
+      const result = room.setPick(playerId, payload.cls as ServantClass, character);
       if (!result.ok) {
         socket.emit('error', { kind: 'error', message: result.error ?? 'Pick rejected.', slot: payload.cls });
         return;
